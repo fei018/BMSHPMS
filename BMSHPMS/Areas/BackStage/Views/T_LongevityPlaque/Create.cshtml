@@ -1,0 +1,16 @@
+﻿@model BMSHPMS.Areas.BackStage.ViewModels.T_LongevityPlaqueVMs.T_LongevityPlaqueVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:textbox field="Entity.Name" />
+<wt:textbox field="Entity.Sum" />
+<wt:textbox field="Entity.Serial" />
+<wt:textbox field="Entity.PRemark" />
+<wt:combobox field="Entity.ReceiptID" items="AllReceipts"/>
+</wt:row>
+    <wt:row align="AlignEnum.Right">
+        <wt:submitbutton />
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

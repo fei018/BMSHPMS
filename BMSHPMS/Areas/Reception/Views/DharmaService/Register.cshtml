@@ -1,0 +1,62 @@
+﻿@model DSRegisterVM
+@{
+    List<T_LeadDonorSerial> leadList = null;
+    List<T_LongevitySerial> longeList = null;
+    List<T_MemorialSerial> memoList = null;
+
+    if (Model.MSD.IsValid)
+    {
+        Model.RegisterSubmitted();
+        leadList = Model.ShowLeadDonorSerials;
+        longeList = Model.ShowLongevitySerials;
+        memoList = Model.ShowMemorialSerials;
+    }
+}
+
+<div class="reception-serial">
+    @if (Model.MSD.IsValid)
+    {
+        <p class="layui-font-red layui-font-16">@Model.Message</p>
+
+        @if (leadList != null && leadList.Count > 0)
+        {
+            <hr class="layui-border-red" />
+            <p class="layui-font-red layui-font-16">功德主編號 @leadList.Count 個</p>
+            <div class="layui-row">
+                @foreach (var item in leadList)
+                {
+                    <div class="layui-col-sx12 layui-col-sm6 layui-col-md3 layui-font-16">@item.Serial</div>
+                }
+            </div>
+        }
+
+        @if (longeList != null && longeList.Count > 0)
+        {
+            <hr class="layui-border-red" />
+            <p class="layui-font-red layui-font-16">延生編號 @longeList.Count 個</p>
+            <div class="layui-row">
+                @foreach (var item in longeList)
+                {
+                    <div class="layui-col-sx12 layui-col-sm6 layui-col-md3 layui-font-16">@item.Serial</div>
+                }
+            </div>
+        }
+
+        @if (memoList != null && memoList.Count > 0)
+        {
+            <hr class="layui-border-red" />
+            <p class="layui-font-red layui-font-16">附薦編號 @memoList.Count 個</p>
+            <div class="layui-row">
+                @foreach (var item in memoList)
+                {
+                    <div class="layui-col-sx12 layui-col-sm6 layui-col-md3 layui-font-16">@item.Serial</div>
+                }
+            </div>           
+        }        
+    }
+    else
+    {
+        <p class="layui-font-red layui-font-16">@Model.MSD.GetFirstError()</p>
+    }
+    <hr class="layui-border-red" />
+</div>

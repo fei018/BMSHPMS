@@ -1,0 +1,13 @@
+﻿@model BMSHPMS.Areas.BackStage.ViewModels.T_LongevityPlaqueVMs.T_LongevityPlaqueListVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+<wt:row items-per-row="ItemsPerRowEnum.Three">
+<wt:textbox field="Searcher.Name" />
+<wt:textbox field="Searcher.Sum" />
+<wt:textbox field="Searcher.Serial" />
+<wt:textbox field="Searcher.Remark" />
+<wt:combobox field="Searcher.ReceiptID" items="Searcher.AllReceipts" empty-text="@Localizer["Sys.All"]" />
+</wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" url="/BackStage/T_LongevityPlaque/Search"/>

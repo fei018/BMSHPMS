@@ -1,0 +1,1053 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Codegen.ApiOnly" xml:space="preserve">
+    <value>勾選此項將只生成api，而沒有前端代碼</value>
+  </data>
+  <data name="Codegen.Attachment" xml:space="preserve">
+    <value>附件</value>
+  </data>
+  <data name="Codegen.AuthMode" xml:space="preserve">
+    <value>認證方式</value>
+  </data>
+  <data name="Codegen.Confirm" xml:space="preserve">
+    <value>該操作將生成如下檔，是否確定？</value>
+  </data>
+  <data name="Codegen.ControllerNs" xml:space="preserve">
+    <value>Controller命名空間</value>
+  </data>
+  <data name="Codegen.DataNs" xml:space="preserve">
+    <value>Data命名空間</value>
+  </data>
+  <data name="Codegen.EnglishOnly" xml:space="preserve">
+    <value>{0}只能以英文字母或底線開頭</value>
+  </data>
+  <data name="Codegen.FieldDes" xml:space="preserve">
+    <value>欄位描述</value>
+  </data>
+  <data name="Codegen.FileName" xml:space="preserve">
+    <value>檔案名</value>
+  </data>
+  <data name="Codegen.Gen" xml:space="preserve">
+    <value>生成代碼</value>
+  </data>
+  <data name="Codegen.GenApi" xml:space="preserve">
+    <value>生成Api</value>
+  </data>
+  <data name="Codegen.InputModuleName" xml:space="preserve">
+    <value>請輸入模組名稱，比如xx管理</value>
+  </data>
+  <data name="Codegen.IsBatchField" xml:space="preserve">
+    <value>批量更新欄位</value>
+  </data>
+  <data name="Codegen.IsFormField" xml:space="preserve">
+    <value>表單字段</value>
+  </data>
+  <data name="Codegen.IsImportField" xml:space="preserve">
+    <value>導入欄位</value>
+  </data>
+  <data name="Codegen.IsListField" xml:space="preserve">
+    <value>列表展示</value>
+  </data>
+  <data name="Codegen.IsSearcherField" xml:space="preserve">
+    <value>搜索條件</value>
+  </data>
+  <data name="Codegen.LinkedType" xml:space="preserve">
+    <value>關聯類型</value>
+  </data>
+  <data name="Codegen.ManyToMany" xml:space="preserve">
+    <value>多對多</value>
+  </data>
+  <data name="Codegen.ModelNS" xml:space="preserve">
+    <value>Model命名空間</value>
+  </data>
+  <data name="Codegen.ModuleName" xml:space="preserve">
+    <value>模組名稱</value>
+  </data>
+  <data name="Codegen.OneToMany" xml:space="preserve">
+    <value>一對多</value>
+  </data>
+  <data name="Codegen.SelectedModelMustBeBasePoco" xml:space="preserve">
+    <value>所選模型必須繼承TopBasePoco基類</value>
+  </data>
+  <data name="Codegen.SelectModule" xml:space="preserve">
+    <value>請選擇一個模組</value>
+  </data>
+  <data name="Codegen.Setup" xml:space="preserve">
+    <value>請進行欄位配置</value>
+  </data>
+  <data name="Codegen.Start" xml:space="preserve">
+    <value>開始生成</value>
+  </data>
+  <data name="Codegen.SubField" xml:space="preserve">
+    <value>關聯表顯示欄位</value>
+  </data>
+  <data name="Codegen.Success" xml:space="preserve">
+    <value>生成成功！請關閉調試重新編譯運行</value>
+  </data>
+  <data name="Codegen.TestNs" xml:space="preserve">
+    <value>Test命名空間</value>
+  </data>
+  <data name="Codegen.VMNs" xml:space="preserve">
+    <value>VM命名空間</value>
+  </data>
+  <data name="Login.ChangePassword" xml:space="preserve">
+    <value>修改密碼</value>
+  </data>
+  <data name="Login.ChangePasswordSuccess" xml:space="preserve">
+    <value>密碼修改成功，下次請使用新密碼登錄。</value>
+  </data>
+  <data name="Login.InputPassword" xml:space="preserve">
+    <value>請輸入密碼</value>
+  </data>
+  <data name="Login.InputTenant" xml:space="preserve">
+    <value>請輸入租戶號</value>
+  </data>
+  <data name="Login.InputUserName" xml:space="preserve">
+    <value>請輸入用戶名</value>
+  </data>
+  <data name="Login.InputValidation" xml:space="preserve">
+    <value>請輸入驗證碼</value>
+  </data>
+  <data name="Login.ItcodeDuplicate" xml:space="preserve">
+    <value>帳號重複</value>
+  </data>
+  <data name="Login.Login" xml:space="preserve">
+    <value>登 錄</value>
+  </data>
+  <data name="Login.LogOut" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="Login.NewPassword" xml:space="preserve">
+    <value>新密碼</value>
+  </data>
+  <data name="Login.NewPasswordComfirm" xml:space="preserve">
+    <value>新密碼</value>
+  </data>
+  <data name="Login.OldPassword" xml:space="preserve">
+    <value>當前密碼</value>
+  </data>
+  <data name="Login.OldPasswrodWrong" xml:space="preserve">
+    <value>當前密碼錯誤</value>
+  </data>
+  <data name="Login.PasswordNotSame" xml:space="preserve">
+    <value>兩次新密碼輸入不一致</value>
+  </data>
+  <data name="Login.Register" xml:space="preserve">
+    <value>注 冊</value>
+  </data>
+  <data name="Login.RegTitle" xml:space="preserve">
+    <value>新用戶註冊</value>
+  </data>
+  <data name="Login.RememberMe" xml:space="preserve">
+    <value>記住我</value>
+  </data>
+  <data name="Login.ValidationFail" xml:space="preserve">
+    <value>驗證碼不正確</value>
+  </data>
+  <data name="MenuKey.ActionLog" xml:space="preserve">
+    <value>日誌</value>
+  </data>
+  <data name="MenuKey.Api" xml:space="preserve">
+    <value>內置Api</value>
+  </data>
+  <data name="MenuKey.DataPrivilege" xml:space="preserve">
+    <value>數據許可權</value>
+  </data>
+  <data name="MenuKey.FrameworkTenant" xml:space="preserve">
+    <value>租戶管理</value>
+  </data>
+  <data name="MenuKey.GroupManagement" xml:space="preserve">
+    <value>部門管理</value>
+  </data>
+  <data name="MenuKey.Login" xml:space="preserve">
+    <value>登錄</value>
+  </data>
+  <data name="MenuKey.MenuMangement" xml:space="preserve">
+    <value>功能表管理</value>
+  </data>
+  <data name="MenuKey.RoleManagement" xml:space="preserve">
+    <value>角色管理</value>
+  </data>
+  <data name="MenuKey.SystemManagement" xml:space="preserve">
+    <value>系統管理</value>
+  </data>
+  <data name="MenuKey.UserManagement" xml:space="preserve">
+    <value>用戶管理</value>
+  </data>
+  <data name="MenuKey.Workflow" xml:space="preserve">
+    <value>流程管理</value>
+  </data>
+  <data name="MenuMangement" xml:space="preserve">
+    <value>功能表管理</value>
+  </data>
+  <data name="Reception" xml:space="preserve">
+    <value>贊助前臺</value>
+  </data>
+  <data name="Reg.Success" xml:space="preserve">
+    <value>註冊成功</value>
+  </data>
+  <data name="Sys.Account" xml:space="preserve">
+    <value>帳號</value>
+  </data>
+  <data name="Sys.Admin" xml:space="preserve">
+    <value>超級管理員</value>
+  </data>
+  <data name="Sys.Aggree" xml:space="preserve">
+    <value>同意</value>
+  </data>
+  <data name="Sys.All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="Sys.ApiDoc" xml:space="preserve">
+    <value>Api文檔</value>
+  </data>
+  <data name="Sys.Approve" xml:space="preserve">
+    <value>審批</value>
+  </data>
+  <data name="Sys.AttemptedValueIsInvalidAccessor" xml:space="preserve">
+    <value>'{0}' 不是 {1} 的有效格式</value>
+  </data>
+  <data name="Sys.BackHome" xml:space="preserve">
+    <value>返回首頁</value>
+  </data>
+  <data name="Sys.BatchDelete" xml:space="preserve">
+    <value>批量刪除</value>
+  </data>
+  <data name="Sys.BatchDeleteConfirm" xml:space="preserve">
+    <value>確定要刪除以下資料麼：</value>
+  </data>
+  <data name="Sys.BatchDeleteSuccess" xml:space="preserve">
+    <value>成功刪除{0}行資料</value>
+  </data>
+  <data name="Sys.BatchEdit" xml:space="preserve">
+    <value>批量修改</value>
+  </data>
+  <data name="Sys.BatchEditConfirm" xml:space="preserve">
+    <value>批量修改以下資料</value>
+  </data>
+  <data name="Sys.BatchEditSuccess" xml:space="preserve">
+    <value>成功修改{0}行資料</value>
+  </data>
+  <data name="Sys.CannotDelete" xml:space="preserve">
+    <value>{0}已被使用，無法刪除</value>
+  </data>
+  <data name="Sys.CannotFindUser" xml:space="preserve">
+    <value>無法找到帳號為{0}的用戶</value>
+  </data>
+  <data name="Sys.CellIndex" xml:space="preserve">
+    <value>列號</value>
+  </data>
+  <data name="Sys.CheckExport" xml:space="preserve">
+    <value>勾選匯出</value>
+  </data>
+  <data name="Sys.Close" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="Sys.CloseAllTags" xml:space="preserve">
+    <value>關閉全部標籤頁</value>
+  </data>
+  <data name="Sys.CloseOtherTags" xml:space="preserve">
+    <value>關閉其它標籤頁</value>
+  </data>
+  <data name="Sys.CloseThisTag" xml:space="preserve">
+    <value>關閉當前標籤頁</value>
+  </data>
+  <data name="Sys.CodeGen" xml:space="preserve">
+    <value>代碼生成器</value>
+  </data>
+  <data name="Sys.ColumnFilter" xml:space="preserve">
+    <value>篩選列</value>
+  </data>
+  <data name="Sys.ComboBox" xml:space="preserve">
+    <value>下拉式功能表</value>
+  </data>
+  <data name="Sys.Continue" xml:space="preserve">
+    <value>繼續</value>
+  </data>
+  <data name="Sys.Create" xml:space="preserve">
+    <value>新建</value>
+  </data>
+  <data name="Sys.DataCannotDelete" xml:space="preserve">
+    <value>資料被使用，無法刪除</value>
+  </data>
+  <data name="Sys.DataNotExist" xml:space="preserve">
+    <value>資料不存在</value>
+  </data>
+  <data name="Sys.DataRange" xml:space="preserve">
+    <value>在{0}到{1}之間</value>
+  </data>
+  <data name="Sys.DebugOnly" xml:space="preserve">
+    <value>該位址只能在調試模式下訪問</value>
+  </data>
+  <data name="Sys.DefaultArea" xml:space="preserve">
+    <value>預設區域</value>
+  </data>
+  <data name="Sys.Delete" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="Sys.DeleteConfirm" xml:space="preserve">
+    <value>確定要刪除這條資料麼：</value>
+  </data>
+  <data name="Sys.DeleteFailed" xml:space="preserve">
+    <value>資料使用中，無法刪除</value>
+  </data>
+  <data name="Sys.Details" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="Sys.Download" xml:space="preserve">
+    <value>下載</value>
+  </data>
+  <data name="Sys.DownloadTemplate" xml:space="preserve">
+    <value>下載範本</value>
+  </data>
+  <data name="Sys.DuplicateError" xml:space="preserve">
+    <value>{0}資料重複</value>
+  </data>
+  <data name="Sys.DuplicateGroupError" xml:space="preserve">
+    <value>{0}組合欄位重複</value>
+  </data>
+  <data name="Sys.Edit" xml:space="preserve">
+    <value>修改</value>
+  </data>
+  <data name="Sys.EditFailed" xml:space="preserve">
+    <value>修改失敗</value>
+  </data>
+  <data name="Sys.Enable" xml:space="preserve">
+    <value>啟用</value>
+  </data>
+  <data name="Sys.Error" xml:space="preserve">
+    <value>錯誤</value>
+  </data>
+  <data name="Sys.ErrorHandle" xml:space="preserve">
+    <value>錯誤處理</value>
+  </data>
+  <data name="Sys.ErrorMsg" xml:space="preserve">
+    <value>錯誤資訊</value>
+  </data>
+  <data name="Sys.Export" xml:space="preserve">
+    <value>匯出</value>
+  </data>
+  <data name="Sys.ExportByIds" xml:space="preserve">
+    <value>勾選匯出</value>
+  </data>
+  <data name="Sys.ExportExcel" xml:space="preserve">
+    <value>匯出Excel</value>
+  </data>
+  <data name="Sys.FailedLoadData" xml:space="preserve">
+    <value>獲取資料失敗</value>
+  </data>
+  <data name="Sys.Female" xml:space="preserve">
+    <value>女</value>
+  </data>
+  <data name="Sys.FileNotFound" xml:space="preserve">
+    <value>沒有找到檔</value>
+  </data>
+  <data name="Sys.ForSelect" xml:space="preserve">
+    <value>待選擇</value>
+  </data>
+  <data name="Sys.Get" xml:space="preserve">
+    <value>獲取</value>
+  </data>
+  <data name="Sys.Goto" xml:space="preserve">
+    <value>到第</value>
+  </data>
+  <data name="Sys.GotoButtonText" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="Sys.Have" xml:space="preserve">
+    <value>有</value>
+  </data>
+  <data name="Sys.HideShow" xml:space="preserve">
+    <value>側邊伸縮</value>
+  </data>
+  <data name="Sys.Home" xml:space="preserve">
+    <value>首頁</value>
+  </data>
+  <data name="Sys.Import" xml:space="preserve">
+    <value>導入</value>
+  </data>
+  <data name="Sys.ImportError" xml:space="preserve">
+    <value>導入時發生錯誤</value>
+  </data>
+  <data name="Sys.ImportStep1" xml:space="preserve">
+    <value>點擊右側按鈕下載範本</value>
+  </data>
+  <data name="Sys.ImportStep2" xml:space="preserve">
+    <value>將編輯好的範本上傳</value>
+  </data>
+  <data name="Sys.ImportStep3" xml:space="preserve">
+    <value>導入失敗，請下載錯誤檔查看詳情</value>
+  </data>
+  <data name="Sys.ImportSuccess" xml:space="preserve">
+    <value>成功導入{0}行資料</value>
+  </data>
+  <data name="Sys.Info" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="Sys.Invalid" xml:space="preserve">
+    <value>無效</value>
+  </data>
+  <data name="Sys.Layout" xml:space="preserve">
+    <value>佈局</value>
+  </data>
+  <data name="Sys.LayuiDateLan" xml:space="preserve">
+    <value>CN</value>
+  </data>
+  <data name="Sys.LeftRight" xml:space="preserve">
+    <value>左右結構</value>
+  </data>
+  <data name="Sys.LoadFailed" xml:space="preserve">
+    <value>載入失敗</value>
+  </data>
+  <data name="Sys.LoginFailed" xml:space="preserve">
+    <value>登錄失敗</value>
+  </data>
+  <data name="Sys.MainPage" xml:space="preserve">
+    <value>主頁面</value>
+  </data>
+  <data name="Sys.Male" xml:space="preserve">
+    <value>男</value>
+  </data>
+  <data name="Sys.MoreSettings" xml:space="preserve">
+    <value>更多設置</value>
+  </data>
+  <data name="Sys.NeedLogin" xml:space="preserve">
+    <value>您沒有登錄或登錄已過期，請重新登陸</value>
+  </data>
+  <data name="Sys.No" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="Sys.NoData" xml:space="preserve">
+    <value>無數據</value>
+  </data>
+  <data name="Sys.NoMatchingData" xml:space="preserve">
+    <value>無匹配資料</value>
+  </data>
+  <data name="Sys.None" xml:space="preserve">
+    <value>無</value>
+  </data>
+  <data name="Sys.NoPrivilege" xml:space="preserve">
+    <value>您沒有訪問該頁面的許可權</value>
+  </data>
+  <data name="Sys.NotHave" xml:space="preserve">
+    <value>無</value>
+  </data>
+  <data name="Sys.NoWorkflow" xml:space="preserve">
+    <value>沒有找到匹配的工作流</value>
+  </data>
+  <data name="Sys.OK" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="Sys.Operation" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Sys.OprationSuccess" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="Sys.Page" xml:space="preserve">
+    <value>頁</value>
+  </data>
+  <data name="Sys.PageError" xml:space="preserve">
+    <value>頁面發生錯誤</value>
+  </data>
+  <data name="Sys.PleaseInputDecimal" xml:space="preserve">
+    <value>請輸入小數</value>
+  </data>
+  <data name="Sys.PleaseInputDecimalFormat" xml:space="preserve">
+    <value>請輸入小數格式</value>
+  </data>
+  <data name="Sys.PleaseInputExistData" xml:space="preserve">
+    <value>請輸入下拉式功能表中存在的資料</value>
+  </data>
+  <data name="Sys.PleaseInputNumber" xml:space="preserve">
+    <value>請輸入數位</value>
+  </data>
+  <data name="Sys.PleaseInputNumberFormat" xml:space="preserve">
+    <value>請輸入數位格式</value>
+  </data>
+  <data name="Sys.PleaseInputText" xml:space="preserve">
+    <value>請輸入文本</value>
+  </data>
+  <data name="Sys.PleaseSelect" xml:space="preserve">
+    <value>請選擇</value>
+  </data>
+  <data name="Sys.PleaseUploadTemplate" xml:space="preserve">
+    <value>請上傳範本檔</value>
+  </data>
+  <data name="Sys.Preview" xml:space="preserve">
+    <value>預覽</value>
+  </data>
+  <data name="Sys.Print" xml:space="preserve">
+    <value>列印</value>
+  </data>
+  <data name="Sys.Record" xml:space="preserve">
+    <value>條</value>
+  </data>
+  <data name="Sys.RecordsPerPage" xml:space="preserve">
+    <value>條/頁</value>
+  </data>
+  <data name="Sys.Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="Sys.Refuse" xml:space="preserve">
+    <value>拒絕</value>
+  </data>
+  <data name="Sys.Reset" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="Sys.Rollback" xml:space="preserve">
+    <value>已回滾</value>
+  </data>
+  <data name="Sys.RowIndex" xml:space="preserve">
+    <value>行號</value>
+  </data>
+  <data name="Sys.Search" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="Sys.SearchCondition" xml:space="preserve">
+    <value>搜索條件</value>
+  </data>
+  <data name="Sys.Select" xml:space="preserve">
+    <value>選擇</value>
+  </data>
+  <data name="Sys.Selected" xml:space="preserve">
+    <value>已選擇</value>
+  </data>
+  <data name="Sys.SelectOneRow" xml:space="preserve">
+    <value>請選擇一行</value>
+  </data>
+  <data name="Sys.SelectOneRowMax" xml:space="preserve">
+    <value>最多只能選擇一行</value>
+  </data>
+  <data name="Sys.SelectOneRowMin" xml:space="preserve">
+    <value>請至少選擇一行</value>
+  </data>
+  <data name="Sys.SinglePage" xml:space="preserve">
+    <value>單頁面</value>
+  </data>
+  <data name="Sys.Submit" xml:space="preserve">
+    <value>提交</value>
+  </data>
+  <data name="Sys.SubmitFailed" xml:space="preserve">
+    <value>提交失敗</value>
+  </data>
+  <data name="Sys.Tabs" xml:space="preserve">
+    <value>多標籤</value>
+  </data>
+  <data name="Sys.Theme" xml:space="preserve">
+    <value>主題</value>
+  </data>
+  <data name="Sys.Total" xml:space="preserve">
+    <value>合計：</value>
+  </data>
+  <data name="Sys.UpdateDone" xml:space="preserve">
+    <value>更新成功</value>
+  </data>
+  <data name="Sys.UpDown" xml:space="preserve">
+    <value>上下結構</value>
+  </data>
+  <data name="Sys.UploadFailed" xml:space="preserve">
+    <value>上傳失敗</value>
+  </data>
+  <data name="Sys.UploadTemplate" xml:space="preserve">
+    <value>上傳範本</value>
+  </data>
+  <data name="Sys.Valid" xml:space="preserve">
+    <value>有效</value>
+  </data>
+  <data name="Sys.ValueIsInvalidAccessor" xml:space="preserve">
+    <value>{0} 格式錯誤</value>
+  </data>
+  <data name="Sys.WrongTemplate" xml:space="preserve">
+    <value>錯誤的範本</value>
+  </data>
+  <data name="Sys.WrongTextLength" xml:space="preserve">
+    <value>文本長度不符合要求</value>
+  </data>
+  <data name="Sys.WtmDoc" xml:space="preserve">
+    <value>WTM文檔</value>
+  </data>
+  <data name="Sys.Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="Sys.{0}formaterror" xml:space="preserve">
+    <value>{0}格式錯誤</value>
+  </data>
+  <data name="Sys.{0}ValueNotExist" xml:space="preserve">
+    <value>{0}輸入的值在資料庫中不存在</value>
+  </data>
+  <data name="Sys.{0}ValueTypeNotAllowed" xml:space="preserve">
+    <value>{0}輸入的值不在允許的資料類型範圍內</value>
+  </data>
+  <data name="Validate.{0}formaterror" xml:space="preserve">
+    <value>{0}格式錯誤</value>
+  </data>
+  <data name="Validate.{0}number" xml:space="preserve">
+    <value>{0}必須是數位</value>
+  </data>
+  <data name="Validate.{0}range{1}" xml:space="preserve">
+    <value>{0}至少是{1}</value>
+  </data>
+  <data name="Validate.{0}range{1}{2}" xml:space="preserve">
+    <value>{0}必須是{1}到{2}之間的數</value>
+  </data>
+  <data name="Validate.{0}range{2}" xml:space="preserve">
+    <value>{0}最多是{1}</value>
+  </data>
+  <data name="Validate.{0}required" xml:space="preserve">
+    <value>{0}是必填項</value>
+  </data>
+  <data name="Validate.{0}stringmax{1}" xml:space="preserve">
+    <value>{0}最多輸入{1}個字元</value>
+  </data>
+  <data name="_Admin.Account" xml:space="preserve">
+    <value>帳號</value>
+  </data>
+  <data name="_Admin.Action" xml:space="preserve">
+    <value>動作</value>
+  </data>
+  <data name="_Admin.ActionLogApi" xml:space="preserve">
+    <value>日誌管理Api</value>
+  </data>
+  <data name="_Admin.ActionName" xml:space="preserve">
+    <value>動作名稱</value>
+  </data>
+  <data name="_Admin.ActionTime" xml:space="preserve">
+    <value>操作時間</value>
+  </data>
+  <data name="_Admin.AdditionInfo" xml:space="preserve">
+    <value>附加資訊</value>
+  </data>
+  <data name="_Admin.Address" xml:space="preserve">
+    <value>地址</value>
+  </data>
+  <data name="_Admin.AllDp" xml:space="preserve">
+    <value>全部許可權</value>
+  </data>
+  <data name="_Admin.Allowed" xml:space="preserve">
+    <value>允許</value>
+  </data>
+  <data name="_Admin.AllowedDp" xml:space="preserve">
+    <value>允許訪問</value>
+  </data>
+  <data name="_Admin.AllowedRole" xml:space="preserve">
+    <value>允許角色</value>
+  </data>
+  <data name="_Admin.AllPris" xml:space="preserve">
+    <value>全部許可權</value>
+  </data>
+  <data name="_Admin.BasicInfo" xml:space="preserve">
+    <value>基本資訊</value>
+  </data>
+  <data name="_Admin.CellPhone" xml:space="preserve">
+    <value>手機</value>
+  </data>
+  <data name="_Admin.CheckPage" xml:space="preserve">
+    <value>檢查頁面</value>
+  </data>
+  <data name="_Admin.Children" xml:space="preserve">
+    <value>子項</value>
+  </data>
+  <data name="_Admin.ClassName" xml:space="preserve">
+    <value>類名</value>
+  </data>
+  <data name="_Admin.CreateBy" xml:space="preserve">
+    <value>創建人</value>
+  </data>
+  <data name="_Admin.CreateTime" xml:space="preserve">
+    <value>創建時間</value>
+  </data>
+  <data name="_Admin.DataPrivilege" xml:space="preserve">
+    <value>數據許可權</value>
+  </data>
+  <data name="_Admin.DataPrivilegeApi" xml:space="preserve">
+    <value>數據許可權Api</value>
+  </data>
+  <data name="_Admin.DataPrivilegeCount" xml:space="preserve">
+    <value>許可權數量</value>
+  </data>
+  <data name="_Admin.DataPrivilegeName" xml:space="preserve">
+    <value>許可權名稱</value>
+  </data>
+  <data name="_Admin.Debug" xml:space="preserve">
+    <value>調試</value>
+  </data>
+  <data name="_Admin.DisplayOrder" xml:space="preserve">
+    <value>順序</value>
+  </data>
+  <data name="_Admin.Domain" xml:space="preserve">
+    <value>域</value>
+  </data>
+  <data name="_Admin.DpTargetName" xml:space="preserve">
+    <value>授權對象</value>
+  </data>
+  <data name="_Admin.DpType" xml:space="preserve">
+    <value>許可權類別</value>
+  </data>
+  <data name="_Admin.Duration" xml:space="preserve">
+    <value>時長</value>
+  </data>
+  <data name="_Admin.Email" xml:space="preserve">
+    <value>郵箱</value>
+  </data>
+  <data name="_Admin.Exception" xml:space="preserve">
+    <value>異常</value>
+  </data>
+  <data name="_Admin.FieldName" xml:space="preserve">
+    <value>欄位名稱</value>
+  </data>
+  <data name="_Admin.FileApi" xml:space="preserve">
+    <value>檔操作Api</value>
+  </data>
+  <data name="_Admin.FileExt" xml:space="preserve">
+    <value>副檔名</value>
+  </data>
+  <data name="_Admin.FolderOnly" xml:space="preserve">
+    <value>目錄</value>
+  </data>
+  <data name="_Admin.Gender" xml:space="preserve">
+    <value>性別</value>
+  </data>
+  <data name="_Admin.Group" xml:space="preserve">
+    <value>部門</value>
+  </data>
+  <data name="_Admin.GroupApi" xml:space="preserve">
+    <value>部門管理Api</value>
+  </data>
+  <data name="_Admin.GroupCode" xml:space="preserve">
+    <value>部門編號</value>
+  </data>
+  <data name="_Admin.GroupDp" xml:space="preserve">
+    <value>部門許可權</value>
+  </data>
+  <data name="_Admin.GroupManager" xml:space="preserve">
+    <value>部門主管</value>
+  </data>
+  <data name="_Admin.GroupName" xml:space="preserve">
+    <value>部門名</value>
+  </data>
+  <data name="_Admin.HasMainHost" xml:space="preserve">
+    <value>當前網站已設置了主站，無法進行此操作，請到主站進行相應操作</value>
+  </data>
+  <data name="_Admin.HomePhone" xml:space="preserve">
+    <value>座機</value>
+  </data>
+  <data name="_Admin.Icon" xml:space="preserve">
+    <value>圖示</value>
+  </data>
+  <data name="_Admin.IconFont" xml:space="preserve">
+    <value>圖示庫</value>
+  </data>
+  <data name="_Admin.Inside" xml:space="preserve">
+    <value>內部</value>
+  </data>
+  <data name="_Admin.IsInherit" xml:space="preserve">
+    <value>繼承</value>
+  </data>
+  <data name="_Admin.IsInside" xml:space="preserve">
+    <value>網址類別型</value>
+  </data>
+  <data name="_Admin.IsPublic" xml:space="preserve">
+    <value>公開</value>
+  </data>
+  <data name="_Admin.IsValid" xml:space="preserve">
+    <value>是否有效</value>
+  </data>
+  <data name="_Admin.Job" xml:space="preserve">
+    <value>作業</value>
+  </data>
+  <data name="_Admin.Length" xml:space="preserve">
+    <value>長度</value>
+  </data>
+  <data name="_Admin.LoginApi" xml:space="preserve">
+    <value>帳號操作Api</value>
+  </data>
+  <data name="_Admin.LogType" xml:space="preserve">
+    <value>類型</value>
+  </data>
+  <data name="_Admin.MenuApi" xml:space="preserve">
+    <value>功能表管理Api</value>
+  </data>
+  <data name="_Admin.MenuItem" xml:space="preserve">
+    <value>功能表項目</value>
+  </data>
+  <data name="_Admin.MethodName" xml:space="preserve">
+    <value>方法</value>
+  </data>
+  <data name="_Admin.Module" xml:space="preserve">
+    <value>模組</value>
+  </data>
+  <data name="_Admin.ModuleHasSet" xml:space="preserve">
+    <value>該模組已經配置過了</value>
+  </data>
+  <data name="_Admin.Name" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="_Admin.NoIndexInModule" xml:space="preserve">
+    <value>模組中沒有找到頁面</value>
+  </data>
+  <data name="_Admin.NoPris" xml:space="preserve">
+    <value>無許可權</value>
+  </data>
+  <data name="_Admin.Normal" xml:space="preserve">
+    <value>普通</value>
+  </data>
+  <data name="_Admin.Outside" xml:space="preserve">
+    <value>外部</value>
+  </data>
+  <data name="_Admin.PageFunction" xml:space="preserve">
+    <value>頁面許可權</value>
+  </data>
+  <data name="_Admin.PageName" xml:space="preserve">
+    <value>頁面名稱</value>
+  </data>
+  <data name="_Admin.Parent" xml:space="preserve">
+    <value>父級</value>
+  </data>
+  <data name="_Admin.ParentFolder" xml:space="preserve">
+    <value>父目錄</value>
+  </data>
+  <data name="_Admin.Password" xml:space="preserve">
+    <value>密碼</value>
+  </data>
+  <data name="_Admin.Path" xml:space="preserve">
+    <value>路徑</value>
+  </data>
+  <data name="_Admin.Photo" xml:space="preserve">
+    <value>照片</value>
+  </data>
+  <data name="_Admin.Privileges" xml:space="preserve">
+    <value>許可權</value>
+  </data>
+  <data name="_Admin.RefreshMenu" xml:space="preserve">
+    <value>刷新菜單</value>
+  </data>
+  <data name="_Admin.Remark" xml:space="preserve">
+    <value>備註</value>
+  </data>
+  <data name="_Admin.Role" xml:space="preserve">
+    <value>角色</value>
+  </data>
+  <data name="_Admin.RoleApi" xml:space="preserve">
+    <value>角色管理Api</value>
+  </data>
+  <data name="_Admin.RoleCode" xml:space="preserve">
+    <value>角色編號</value>
+  </data>
+  <data name="_Admin.RoleName" xml:space="preserve">
+    <value>角色名稱</value>
+  </data>
+  <data name="_Admin.SameRole" xml:space="preserve">
+    <value>除管理員外，用戶無法修改自身所屬角色的頁面許可權</value>
+  </data>
+  <data name="_Admin.SelectedModel" xml:space="preserve">
+    <value>選擇模型</value>
+  </data>
+  <data name="_Admin.SelectPris" xml:space="preserve">
+    <value>選擇許可權</value>
+  </data>
+  <data name="_Admin.ShowOnMenu" xml:space="preserve">
+    <value>功能表顯示</value>
+  </data>
+  <data name="_Admin.TableName" xml:space="preserve">
+    <value>許可權名稱</value>
+  </data>
+  <data name="_Admin.Tenant" xml:space="preserve">
+    <value>租戶</value>
+  </data>
+  <data name="_Admin.TenantAllowed" xml:space="preserve">
+    <value>租戶可見</value>
+  </data>
+  <data name="_Admin.TenantChoose" xml:space="preserve">
+    <value>選擇租戶</value>
+  </data>
+  <data name="_Admin.TenantCode" xml:space="preserve">
+    <value>租戶編號</value>
+  </data>
+  <data name="_Admin.TenantDb" xml:space="preserve">
+    <value>租戶資料庫</value>
+  </data>
+  <data name="_Admin.TenantDbContext" xml:space="preserve">
+    <value>資料庫架構</value>
+  </data>
+  <data name="_Admin.TenantDbError" xml:space="preserve">
+    <value>創建資料庫失敗</value>
+  </data>
+  <data name="_Admin.TenantDbType" xml:space="preserve">
+    <value>資料庫類型</value>
+  </data>
+  <data name="_Admin.TenantDomain" xml:space="preserve">
+    <value>租戶功能變數名稱</value>
+  </data>
+  <data name="_Admin.TenantEnableSub" xml:space="preserve">
+    <value>允許子租戶</value>
+  </data>
+  <data name="_Admin.TenantHost" xml:space="preserve">
+    <value>主站</value>
+  </data>
+  <data name="_Admin.TenantName" xml:space="preserve">
+    <value>租戶名稱</value>
+  </data>
+  <data name="_Admin.TenantNotAllowed" xml:space="preserve">
+    <value>當前租戶無法使用該功能</value>
+  </data>
+  <data name="_Admin.TenantRole" xml:space="preserve">
+    <value>使用所選角色的許可權建立本租戶的管理員，帳號admin，密碼000000</value>
+  </data>
+  <data name="_Admin.UnsetPages" xml:space="preserve">
+    <value>未設置頁面</value>
+  </data>
+  <data name="_Admin.UpdateBy" xml:space="preserve">
+    <value>修改人</value>
+  </data>
+  <data name="_Admin.UpdateTime" xml:space="preserve">
+    <value>修改時間</value>
+  </data>
+  <data name="_Admin.User" xml:space="preserve">
+    <value>用戶</value>
+  </data>
+  <data name="_Admin.UserApi" xml:space="preserve">
+    <value>用戶管理Api</value>
+  </data>
+  <data name="_Admin.UserDp" xml:space="preserve">
+    <value>用戶許可權</value>
+  </data>
+  <data name="_Admin.UsersCount" xml:space="preserve">
+    <value>包含用戶</value>
+  </data>
+  <data name="_Admin.WorkflowApi" xml:space="preserve">
+    <value>工作流Api</value>
+  </data>
+  <data name="_Admin.ZipCode" xml:space="preserve">
+    <value>郵編</value>
+  </data>
+  <data name="_Workflow.Canceled" xml:space="preserve">
+    <value>已取消</value>
+  </data>
+  <data name="_Workflow.Finished" xml:space="preserve">
+    <value>已完成</value>
+  </data>
+  <data name="_Workflow.NotStarted" xml:space="preserve">
+    <value>未開始</value>
+  </data>
+  <data name="_Workflow.Processing" xml:space="preserve">
+    <value>進行中</value>
+  </data>
+</root>

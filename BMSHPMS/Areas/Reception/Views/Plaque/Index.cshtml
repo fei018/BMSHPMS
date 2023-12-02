@@ -1,0 +1,66 @@
+﻿
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>贊助前台牌位登記</legend>
+</fieldset>
+
+<div class="layui-bg-gray" style="padding: 30px;">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md4">
+            <div class="layui-panel">
+                <button lay-href="Reception/RegLeadDonor/Register" class="layui-btn layui-btn-normal reception-btn">
+                    護法功德主
+                </button>
+            </div>
+        </div>
+        <div class="layui-col-md4">
+            <div class="layui-panel">
+                <button lay-href="Reception/RegLongevity/Register" class="layui-btn layui-btn- reception-btn">
+                延生消災位
+                </button>
+                @* <button onclick="register(this)" data-url="Reception/RegLongevity/Index" data-title="延生消災位" class="layui-btn layui-btn- reception-btn">
+                    延生消災位
+                </button> *@
+            </div>
+        </div>
+        <div class="layui-col-md4">
+            <div class="layui-panel">
+                <button lay-href="Reception/RegMemorial/Register" class="layui-btn layui-btn-warm reception-btn">
+                    先人附薦位
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // layui.use(function () {
+    //     var form = layui.form;
+    //     var layer = layui.layer;
+
+    //     form.on('submit(serialSubmit)', function (data) {
+    //         $('#result').html('');
+    //         $.post("/reception/regleaddonor/index", data.field, function (html) {
+    //             $('#result').html(html);
+    //         }, 'html')
+    //     });
+
+
+    // });
+
+    // function register(btn) {
+    //     let url = $(btn).attr('data-url');
+    //     let title = $(btn).attr('data-title');
+    //     layui.use(function () {
+    //         var layer = layui.layer;
+
+    //         $.get(url, function (html) {
+    //             layer.open({
+    //                 type: 1,
+    //                 content: html,
+    //                 title: [title, 'font-size:16px;']
+    //             });
+    //         },'html')
+    //     });
+    // }
+</script>

@@ -1,0 +1,94 @@
+﻿
+<div class="reception-register layui-font-16">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>法會登記</legend>
+    </fieldset>
+
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">收據號碼</label>
+            <div class="layui-input-block">
+                <input type="text" name="RegReceiptNumber" lay-verify="required" lay-reqtext="請輸入收據號碼" autocomplete="on" placeholder="請輸入收據號碼" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">功德主數目</label>
+            <div class="layui-input-inline">
+                <input type="number" name="RegLeadDonorCount" @* lay-verify="required" lay-reqtext="請輸入功德主數目" *@ placeholder="請輸入功德主數目" class="layui-input">
+            </div>
+        </div>
+
+         <div class="layui-form-item">
+            <label class="layui-form-label">延生位數目</label>
+            <div class="layui-input-inline">
+                <input type="number" name="RegLongevityCount" @* lay-verify="required" lay-reqtext="請輸入延生位數目" *@ placeholder="請輸入延生位數目" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">附薦位數目</label>
+            <div class="layui-input-inline">
+                <input type="number" name="RegMemorialCount" @* lay-verify="required" lay-reqtext="請輸入附薦位數目" *@ placeholder="請輸入附薦位數目" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button lay-filter="dharmaServiceReg" type="button" class="layui-btn" lay-submit>登記</button>
+            </div>
+        </div>
+    </form>
+
+
+
+    <div id="dharmaService">
+    </div>
+</div>
+
+<script>
+    layui.use(function () {
+        var form = layui.form;
+        var layer = layui.layer;
+
+        form.on('submit(dharmaServiceReg)', function (data) {
+
+            let yes = confirm("確定要登記?");
+
+            if (yes) {
+                let index = layer.load(1);
+
+                $('#dharmaService').html('');
+
+                $.post("/Reception/DharmaService/Register", data.field, function (html) {
+                    layer.close(index);
+
+                    $('#dharmaService').html(html);
+
+                }, 'html')
+            }          
+        });
+
+        // form.on('submit(dharmaService)', function (data) {
+
+        //     let yes = confirm("確定要登記?");
+
+        //     if (yes) {
+        //         let index = layer.load(1);
+
+        //         $.post("/reception/regleaddonor/Register", data.field, function (html) {
+        //             layer.close(index);
+
+        //             layer.open({
+        //                 type: 1,
+        //                 content: html,
+        //                 title: ['護法功德主編號', 'font-size:16px;'],
+        //                 maxHeight: '500'
+        //             });
+        //         }, 'html');
+        //     }
+
+        // });
+    });
+</script>
+

@@ -1,0 +1,11 @@
+﻿@model Exception
+
+@{
+    Layout = null;
+}
+
+<div style="font-size:16px;padding:20px">
+    <p style="color:red">異常錯誤頁面:</p>
+    <hr />
+    @Model?.GetBaseException()?.Message
+</div>

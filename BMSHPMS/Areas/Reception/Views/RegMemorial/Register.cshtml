@@ -1,0 +1,67 @@
+﻿@model RegMemorialVM
+
+<div class="reception-register layui-font-16">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>先人附薦登記</legend>
+    </fieldset>
+
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">收據號碼</label>
+            <div class="layui-input-block">
+                <input type="text" name="ReceiptNumber" lay-verify="required" lay-reqtext="請輸入收據號碼" autocomplete="on" placeholder="請輸入收據號碼" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">登記數目</label>
+            <div class="layui-input-inline">
+                <input type="number" name="SubmitCount" lay-verify="required" lay-reqtext="請輸入登記數目" autocomplete="on" placeholder="請輸入登記數目" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button lay-filter="regMemorial" type="button" class="layui-btn" lay-submit>登記</button>
+            </div>
+        </div>
+    </form>
+
+    @* <div id="result">
+    </div> *@
+</div>
+
+<script>
+    layui.use(function () {
+        var form = layui.form;
+        var layer = layui.layer;
+
+        // form.on('submit(serialSubmit)', function (data) {
+        //     $('#result').html('');
+        //     $.post("/reception/regmemorial/index", data.field, function (html) {
+        //         $('#result').html(html);
+        //     }, 'html')
+        // });
+
+        form.on('submit(regMemorial)', function (data) {
+
+            let yes = confirm("確定要登記?");
+
+            if (yes) {
+                let index = layer.load(1);
+
+                $.post("/reception/regMemorial/Register", data.field, function (html) {
+                    layer.close(index);
+
+                    layer.open({
+                        type: 1,
+                        content: html,
+                        title: ['護法功德主編號', 'font-size:16px;'],
+                        maxHeight: '500'
+                    });
+                }, 'html');
+            }
+            
+        });
+    });
+</script>

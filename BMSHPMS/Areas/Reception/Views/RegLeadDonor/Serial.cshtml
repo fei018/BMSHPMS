@@ -1,0 +1,27 @@
+﻿@model RegLeadDonorVM
+@{
+    List<T_LeadDonorSerial> list = Model.SerialList;
+}
+
+<div class="reception-serial">
+    @if (!Model.MSD.IsValid)
+    {
+        <p class="layui-font-red layui-font-16">@Model.MSD.GetFirstError()</p>
+    }
+    else
+    {
+        <p class="layui-font-red layui-font-16">@Model.Message</p>
+        <br />
+        @if (list != null && list.Count > 0)
+        {
+            <div class="layui-row">
+                @foreach (var item in list)
+                {
+                    <div class="layui-col-sx12 layui-col-sm6 layui-col-md3 layui-font-16">@item.Serial</div>
+                }
+            </div>
+        }
+    }
+
+    <hr class="layui-border-red" />
+</div>
