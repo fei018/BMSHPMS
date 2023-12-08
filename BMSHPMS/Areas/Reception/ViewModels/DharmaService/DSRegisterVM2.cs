@@ -13,13 +13,13 @@ namespace BMSHPMS.Areas.Reception.ViewModels
     {
         #region 查詢各編號數量是否足夠
         /// <summary>
-        /// 查詢各編號數量是否足夠
+        /// 查詢各編號數量是否足夠, 不足寫入 Message
         /// </summary>
         /// <param name="leadDonorSerials"></param>
         /// <param name="longevitySerials"></param>
         /// <param name="memorialSerials"></param>
         /// <returns></returns>
-        protected bool QuerySerialCountEnough(out List<T_LeadDonorSerial> leadDonorSerials,out List<T_LongevitySerial> longevitySerials,out List<T_MemorialSerial> memorialSerials)
+        protected bool QuerySerialCountEnough(out List<DSLeadDonorSerial> leadDonorSerials,out List<DSLongevitySerial> longevitySerials,out List<DSMemorialSerial> memorialSerials)
         {
             bool isEnough = true;
             StringBuilder msg = null;
@@ -31,7 +31,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
             #region 功德主
             if (RegLeadDonorCount >= 1)
             {
-                leadDonorSerials = DC.Set<T_LeadDonorSerial>().Where(s => !s.Used && !s.Disused).ToList();
+                leadDonorSerials = DC.Set<DSLeadDonorSerial>().Where(s => !s.Used).ToList();
 
                 if (leadDonorSerials == null)
                 {
@@ -50,7 +50,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
             #region 延生
             if (RegLongevityCount >= 1)
             {
-                longevitySerials = DC.Set<T_LongevitySerial>().Where(s => !s.Used && !s.Disused).ToList();
+                longevitySerials = DC.Set<DSLongevitySerial>().Where(s => !s.Used && !s.Disused).ToList();
 
                 if (longevitySerials == null)
                 {
@@ -69,7 +69,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
             #region 附薦
             if (RegMemorialCount >= 1)
             {
-                memorialSerials = DC.Set<T_MemorialSerial>().Where(s => !s.Used && !s.Disused).ToList();
+                memorialSerials = DC.Set<DSMemorialSerial>().Where(s => !s.Used && !s.Disused).ToList();
 
                 if (memorialSerials == null)
                 {
@@ -94,14 +94,14 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         /// <summary>
         /// 查詢 收據號碼 是否已存在
         /// </summary>
-        protected bool QueryReceiptNumberExist(out T_Receipt receipt)
+        protected bool QueryReceiptNumberExist(out DSReceiptInfo receipt)
         {
             receipt = null;
             //leadDonorSerials = null;
             //longevitieSerials = null;
             //memorialSerials = null;
 
-            receipt = DC.Set<T_Receipt>().SingleOrDefault(r => r.ReceiptNumber.ToLower() == RegReceiptNumber.ToLower());
+            receipt = DC.Set<DSReceiptInfo>().SingleOrDefault(r => r.ReceiptNumber.ToLower() == RegReceiptNumber.ToLower());
 
             if (receipt == null)
             {
@@ -130,10 +130,10 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         /// </summary>
         /// <param name="receipt"></param>
         /// <returns></returns>
-        protected List<T_LeadDonorSerial> QueryLeadDonorSerialByReceipt(T_Receipt receipt)
+        protected List<DSLeadDonorSerial> QueryLeadDonorSerialByReceipt(DSReceiptInfo receipt)
         {
-            var list = DC.Set<T_LeadDonorSerial>().Where(s => s.ReceiptID == receipt.ID).ToList();
-            list.Sort((x, y) => x.Serial.CompareTo(y.Serial));
+            var list = DC.Set<DSLeadDonorSerial>().Where(s => s.ReceiptID == receipt.ID).ToList();
+            list?.Sort((x, y) => x.Serial.CompareTo(y.Serial));
             return list;
         }
         #endregion
@@ -144,10 +144,10 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         /// </summary>
         /// <param name="receipt"></param>
         /// <returns></returns>
-        protected List<T_LongevitySerial> QueryLongevitySerialByReceipt(T_Receipt receipt)
+        protected List<DSLongevitySerial> QueryLongevitySerialByReceipt(DSReceiptInfo receipt)
         {
-            var list = DC.Set<T_LongevitySerial>().Where(s => s.ReceiptID == receipt.ID).ToList();
-            list.Sort((x, y) => x.Serial.CompareTo(y.Serial));
+            var list = DC.Set<DSLongevitySerial>().Where(s => s.ReceiptID == receipt.ID).ToList();
+            list?.Sort((x, y) => x.Serial.CompareTo(y.Serial));
             return list;
         }
         #endregion
@@ -158,10 +158,10 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         /// </summary>
         /// <param name="receipt"></param>
         /// <returns></returns>
-        protected List<T_MemorialSerial> QueryMemorialSerialByReceipt(T_Receipt receipt)
+        protected List<DSMemorialSerial> QueryMemorialSerialByReceipt(DSReceiptInfo receipt)
         {
-            var list = DC.Set<T_MemorialSerial>().Where(s => s.ReceiptID == receipt.ID).ToList();
-            list.Sort((x, y) => x.Serial.CompareTo(y.Serial));
+            var list = DC.Set<DSMemorialSerial>().Where(s => s.ReceiptID == receipt.ID).ToList();
+            list?.Sort((x, y) => x.Serial.CompareTo(y.Serial));
             return list;
         }
         #endregion
@@ -172,11 +172,11 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         /// </summary>
         /// <param name="receiptNumber"></param>
         /// <returns></returns>
-        protected T_Receipt AddNewReceipt()
+        protected DSReceiptInfo AddNewReceipt()
         {
             lock (DbTableLocker.T_Receipt)
             {
-                T_Receipt receipt = new()
+                DSReceiptInfo receipt = new()
                 {
                     ReceiptNumber = RegReceiptNumber,
                     ID = Guid.NewGuid(),
@@ -187,7 +187,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
                     UpdateTime = DateTime.Now
                 };
 
-                Wtm.DC.Set<T_Receipt>().Add(receipt);
+                Wtm.DC.Set<DSReceiptInfo>().Add(receipt);
                 Wtm.DC.SaveChanges();
                 return receipt;
             }
@@ -201,7 +201,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         /// <param name="receipt"></param>
         /// <param name="leadDonorSerials"></param>
         /// <returns></returns>
-        protected List<T_LeadDonorSerial> UpdateReceiptIDToLeadDonorTable(T_Receipt receipt, List<T_LeadDonorSerial> leadDonorSerials)
+        protected List<DSLeadDonorSerial> UpdateReceiptIDToLeadDonorTable(DSReceiptInfo receipt, List<DSLeadDonorSerial> leadDonorSerials)
         {
             if (RegLeadDonorCount >0)
             {
@@ -217,7 +217,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
 
                 lock (DbTableLocker.T_LeadDonorSerial)
                 {
-                    Wtm.DC.Set<T_LeadDonorSerial>().UpdateRange(list);
+                    Wtm.DC.Set<DSLeadDonorSerial>().UpdateRange(list);
                     Wtm.DC.SaveChanges();
                     return list;
                 }
@@ -233,7 +233,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         /// <param name="receipt"></param>
         /// <param name="longevitySerials"></param>
         /// <returns></returns>
-        protected List<T_LongevitySerial> UpdateReceiptIDToLongvitySerialTable(T_Receipt receipt, List<T_LongevitySerial> longevitySerials)
+        protected List<DSLongevitySerial> UpdateReceiptIDToLongvitySerialTable(DSReceiptInfo receipt, List<DSLongevitySerial> longevitySerials)
         {
             if (RegLongevityCount > 0)
             {
@@ -249,7 +249,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
 
                 lock (DbTableLocker.T_LongevitySerial)
                 {
-                    Wtm.DC.Set<T_LongevitySerial>().UpdateRange(list);
+                    Wtm.DC.Set<DSLongevitySerial>().UpdateRange(list);
                     Wtm.DC.SaveChanges();
                     return list;
                 }
@@ -265,7 +265,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         /// <param name="receipt"></param>
         /// <param name="memorialSerials"></param>
         /// <returns></returns>
-        private List<T_MemorialSerial> UpdateReceiptIDToMemorialSerialTable(T_Receipt receipt, List<T_MemorialSerial> memorialSerials)
+        private List<DSMemorialSerial> UpdateReceiptIDToMemorialSerialTable(DSReceiptInfo receipt, List<DSMemorialSerial> memorialSerials)
         {
             if (RegMemorialCount > 0)
             {
@@ -281,7 +281,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
 
                 lock (DbTableLocker.T_MemorialSerial)
                 {
-                    Wtm.DC.Set<T_MemorialSerial>().UpdateRange(list);
+                    Wtm.DC.Set<DSMemorialSerial>().UpdateRange(list);
                     Wtm.DC.SaveChanges();
                     return list;
                 }

@@ -22,7 +22,7 @@ namespace BMSHPMS.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("BMSHPMS.Models.Plaque.T_LeadDonorPlaque", b =>
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.DSLeadDonor", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -63,7 +63,8 @@ namespace BMSHPMS.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasComment("功德主編號");
 
-                    b.Property<int>("Sum")
+                    b.Property<int?>("Sum")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasComment("金額");
 
@@ -78,10 +79,10 @@ namespace BMSHPMS.Migrations
 
                     b.HasIndex("ReceiptID");
 
-                    b.ToTable("T_LeadDonorPlaques");
+                    b.ToTable("DSLeadDonors");
                 });
 
-            modelBuilder.Entity("BMSHPMS.Models.Plaque.T_LeadDonorSerial", b =>
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.DSLeadDonorSerial", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -104,7 +105,7 @@ namespace BMSHPMS.Migrations
 
                     b.Property<string>("Serial")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(450)")
                         .HasComment("編號");
 
                     b.Property<string>("UpdateBy")
@@ -122,10 +123,13 @@ namespace BMSHPMS.Migrations
 
                     b.HasIndex("ReceiptID");
 
-                    b.ToTable("T_LeadDonorSerials");
+                    b.HasIndex("Serial")
+                        .IsUnique();
+
+                    b.ToTable("DSDonorSerials");
                 });
 
-            modelBuilder.Entity("BMSHPMS.Models.Plaque.T_LongevityPlaque", b =>
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.DSLongevity", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -171,10 +175,10 @@ namespace BMSHPMS.Migrations
 
                     b.HasIndex("ReceiptID");
 
-                    b.ToTable("T_LongevityPlaques");
+                    b.ToTable("DSLongevitys");
                 });
 
-            modelBuilder.Entity("BMSHPMS.Models.Plaque.T_LongevitySerial", b =>
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.DSLongevitySerial", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -197,7 +201,7 @@ namespace BMSHPMS.Migrations
 
                     b.Property<string>("Serial")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(450)")
                         .HasComment("編號");
 
                     b.Property<string>("UpdateBy")
@@ -215,10 +219,13 @@ namespace BMSHPMS.Migrations
 
                     b.HasIndex("ReceiptID");
 
-                    b.ToTable("T_LongevitySerials");
+                    b.HasIndex("Serial")
+                        .IsUnique();
+
+                    b.ToTable("DSLongevitySerials");
                 });
 
-            modelBuilder.Entity("BMSHPMS.Models.Plaque.T_MemorialPlaque", b =>
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.DSMemorial", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -269,10 +276,10 @@ namespace BMSHPMS.Migrations
 
                     b.HasIndex("ReceiptID");
 
-                    b.ToTable("T_MemorialPlaques");
+                    b.ToTable("DSMemorials");
                 });
 
-            modelBuilder.Entity("BMSHPMS.Models.Plaque.T_MemorialSerial", b =>
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.DSMemorialSerial", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -295,7 +302,7 @@ namespace BMSHPMS.Migrations
 
                     b.Property<string>("Serial")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(450)")
                         .HasComment("編號");
 
                     b.Property<string>("UpdateBy")
@@ -313,10 +320,13 @@ namespace BMSHPMS.Migrations
 
                     b.HasIndex("ReceiptID");
 
-                    b.ToTable("T_MemorialSerials");
+                    b.HasIndex("Serial")
+                        .IsUnique();
+
+                    b.ToTable("DSMemorialSerials");
                 });
 
-            modelBuilder.Entity("BMSHPMS.Models.Plaque.T_Receipt", b =>
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.DSReceipt", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -341,20 +351,20 @@ namespace BMSHPMS.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasComment("備註");
 
-                    b.Property<DateTime>("ReceiptDate")
+                    b.Property<DateTime?>("ReceiptDate")
                         .HasColumnType("datetime2")
                         .HasComment("開收據日期");
 
                     b.Property<string>("ReceiptNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(450)")
                         .HasComment("收據號碼");
 
                     b.Property<string>("ReceiptOwn")
                         .HasColumnType("nvarchar(max)")
                         .HasComment("收據人姓名");
 
-                    b.Property<int>("Sum")
+                    b.Property<int?>("Sum")
                         .HasColumnType("int")
                         .HasComment("金額");
 
@@ -367,7 +377,9 @@ namespace BMSHPMS.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("T_Receipts");
+                    b.HasIndex("ReceiptNumber");
+
+                    b.ToTable("DSReceipts");
                 });
 
             modelBuilder.Entity("WalkingTec.Mvvm.Core.ActionLog", b =>
@@ -1236,9 +1248,9 @@ namespace BMSHPMS.Migrations
                     b.ToTable("WorkflowInstances", "Elsa");
                 });
 
-            modelBuilder.Entity("BMSHPMS.Models.Plaque.T_LeadDonorPlaque", b =>
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.DSLeadDonor", b =>
                 {
-                    b.HasOne("BMSHPMS.Models.Plaque.T_Receipt", "Receipt")
+                    b.HasOne("BMSHPMS.Models.DharmaService.DSReceipt", "Receipt")
                         .WithMany()
                         .HasForeignKey("ReceiptID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1247,18 +1259,18 @@ namespace BMSHPMS.Migrations
                     b.Navigation("Receipt");
                 });
 
-            modelBuilder.Entity("BMSHPMS.Models.Plaque.T_LeadDonorSerial", b =>
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.DSLeadDonorSerial", b =>
                 {
-                    b.HasOne("BMSHPMS.Models.Plaque.T_Receipt", "Receipt")
+                    b.HasOne("BMSHPMS.Models.DharmaService.DSReceipt", "Receipt")
                         .WithMany("LeadDonorSerials")
                         .HasForeignKey("ReceiptID");
 
                     b.Navigation("Receipt");
                 });
 
-            modelBuilder.Entity("BMSHPMS.Models.Plaque.T_LongevityPlaque", b =>
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.DSLongevity", b =>
                 {
-                    b.HasOne("BMSHPMS.Models.Plaque.T_Receipt", "Receipt")
+                    b.HasOne("BMSHPMS.Models.DharmaService.DSReceipt", "Receipt")
                         .WithMany()
                         .HasForeignKey("ReceiptID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1267,18 +1279,18 @@ namespace BMSHPMS.Migrations
                     b.Navigation("Receipt");
                 });
 
-            modelBuilder.Entity("BMSHPMS.Models.Plaque.T_LongevitySerial", b =>
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.DSLongevitySerial", b =>
                 {
-                    b.HasOne("BMSHPMS.Models.Plaque.T_Receipt", "Receipt")
+                    b.HasOne("BMSHPMS.Models.DharmaService.DSReceipt", "Receipt")
                         .WithMany("LongevitySerials")
                         .HasForeignKey("ReceiptID");
 
                     b.Navigation("Receipt");
                 });
 
-            modelBuilder.Entity("BMSHPMS.Models.Plaque.T_MemorialPlaque", b =>
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.DSMemorial", b =>
                 {
-                    b.HasOne("BMSHPMS.Models.Plaque.T_Receipt", "Receipt")
+                    b.HasOne("BMSHPMS.Models.DharmaService.DSReceipt", "Receipt")
                         .WithMany()
                         .HasForeignKey("ReceiptID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1287,9 +1299,9 @@ namespace BMSHPMS.Migrations
                     b.Navigation("Receipt");
                 });
 
-            modelBuilder.Entity("BMSHPMS.Models.Plaque.T_MemorialSerial", b =>
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.DSMemorialSerial", b =>
                 {
-                    b.HasOne("BMSHPMS.Models.Plaque.T_Receipt", "Receipt")
+                    b.HasOne("BMSHPMS.Models.DharmaService.DSReceipt", "Receipt")
                         .WithMany("MemorialSerials")
                         .HasForeignKey("ReceiptID");
 
@@ -1324,7 +1336,7 @@ namespace BMSHPMS.Migrations
                     b.Navigation("Photo");
                 });
 
-            modelBuilder.Entity("BMSHPMS.Models.Plaque.T_Receipt", b =>
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.DSReceipt", b =>
                 {
                     b.Navigation("LeadDonorSerials");
 

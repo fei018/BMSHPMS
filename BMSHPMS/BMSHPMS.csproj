@@ -37,5 +37,16 @@
     <PackageReference Include="WalkingTec.Mvvm.TagHelpers.LayUI" Version="6.4.7" />
     <PackageReference Include="WalkingTec.Mvvm.Mvc" Version="6.4.7" />
 </ItemGroup>
+
+
+
+
+  <ItemGroup>
+    <Folder Include="Areas\DSReception\Controllers\" />
+    <Folder Include="Areas\DSReception\Views\" />
+    <Folder Include="Areas\DSReception\ViewModels\" />
+    <Folder Include="Areas\Reception\ViewModels\DSRegister\" />
+    <Folder Include="Migrations\" />
+  </ItemGroup>
 </Project>
 

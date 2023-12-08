@@ -15,7 +15,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         /// <summary>
         /// 
         /// </summary>
-        public List<T_LongevitySerial> SerialList { get; set; }
+        public List<DSLongevitySerial> SerialList { get; set; }
         #endregion
 
 
@@ -28,7 +28,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         {
             #region 檢查 延生編號
             // 查詢未使用 LongevitySerial (延生編號)  
-            List<T_LongevitySerial> querySerials = DC.Set<T_LongevitySerial>().Where(s => !s.Used).ToList();
+            List<DSLongevitySerial> querySerials = DC.Set<DSLongevitySerial>().Where(s => !s.Used).ToList();
 
             if (querySerials == null)
             {
@@ -45,7 +45,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
             #endregion
 
             #region 檢查 編號表里是否有 此收據號碼
-            if (ReceiptNumberExist(out T_Receipt receipt, out List<T_LongevitySerial> serials))
+            if (ReceiptNumberExist(out DSReceiptInfo receipt, out List<DSLongevitySerial> serials))
             {
                 if (serials.Count >= 1) // 收據號碼已存在 並且 登記過本編號時
                 {
@@ -82,7 +82,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         /// <param name="receipt"></param>
         /// <param name="querySerials"></param>
         /// <returns></returns>
-        private List<T_LongevitySerial> UpdateReceiptIDToSerialTable(T_Receipt receipt, List<T_LongevitySerial> querySerials)
+        private List<DSLongevitySerial> UpdateReceiptIDToSerialTable(DSReceiptInfo receipt, List<DSLongevitySerial> querySerials)
         {
             var list = querySerials.GetMinListByCount(s => s.Serial, SubmitCount.Value);
 
@@ -96,7 +96,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
 
             lock (DbTableLocker.T_LongevitySerial)
             {
-                Wtm.DC.Set<T_LongevitySerial>().UpdateRange(list);
+                Wtm.DC.Set<DSLongevitySerial>().UpdateRange(list);
                 Wtm.DC.SaveChanges();
                 return list;
             }
@@ -107,7 +107,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         /// <summary>
         /// 向 收據表 插入新數據， 延生表 更新 收據ID 
         /// </summary>
-        private List<T_LongevitySerial> AddNewReceiptAndUpdateSerialTable(string receiptNumber, List<T_LongevitySerial> querySerials)
+        private List<DSLongevitySerial> AddNewReceiptAndUpdateSerialTable(string receiptNumber, List<DSLongevitySerial> querySerials)
         {
             // 添加 新收據
             var receipt = AddNewReceipt(receiptNumber);

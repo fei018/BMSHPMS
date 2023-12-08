@@ -1,12 +1,9 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using BMSHPMS.Models.DharmaService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using System.Linq;
+using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
-using BMSHPMS.Models.DharmaService;
-using System.Collections.Generic;
-using System;
-using WalkingTec.Mvvm.Core.Extensions;
 
 namespace BMSHPMS
 {
@@ -15,42 +12,22 @@ namespace BMSHPMS
         #region DbSet<Models>
         public DbSet<FrameworkUser> FrameworkUsers { get; set; }
 
-        /// <summary>
-        /// 護法功德主表
-        /// </summary>
-        public DbSet<T_LeadDonorPlaque> T_LeadDonorPlaques { get; set; }
 
-        /// <summary>
-        /// 護法功德主編號表
-        /// </summary>
-        public DbSet<T_LeadDonorSerial> T_LeadDonorSerials { get; set; }
+        public DbSet<DSReceiptInfo> DSReceiptInfos { get; set; }
 
-        /// <summary>
-        /// 附薦表
-        /// </summary>
-        public DbSet<T_MemorialPlaque> T_MemorialPlaques { get; set; }
+        public DbSet<DSProject> DSNameCategorys { get; set; }
 
-        /// <summary>
-        /// 附薦編號表
-        /// </summary>
-        public DbSet<T_MemorialSerial> T_MemorialSerials { get; set; }
+        public DbSet<DSDonorCategory> DSDonorCategorys { get; set; }
 
-        /// <summary>
-        /// 延生表
-        /// </summary>
+        public DbSet<DSLongevityCategory> DSLongevityCategorys { get; set; }
 
-        public DbSet<T_LongevityPlaque> T_LongevityPlaques { get; set; }
+        public DbSet<DSMemorialCategory> DSMemorialCategorys { get; set; }
 
-        /// <summary>
-        /// 延生編號表
-        /// </summary>
-        public DbSet<T_LongevitySerial> T_LongevitySerials { get; set; }
+        public DbSet<DSDonorInfo> DSDonorInfos { get; set; }
 
-        /// <summary>
-        /// 收據表
-        /// </summary>
-        public DbSet<T_Receipt> T_Receipt { get; set; }
+        public DbSet<DSLongevityInfo> DSLongevityInfos { get; set; }
 
+        public DbSet<DSMemorialInfo> DSMemorialInfos { get; set; }
         #endregion
 
 
@@ -103,26 +80,14 @@ namespace BMSHPMS
                 Set<FrameworkUser>().Add(user);
                 Set<FrameworkUserRole>().Add(userrole);
 
-                DataInit2();
+
 
                 await SaveChangesAsync();
             }
             return state;
         }
 
-        private void DataInit2()
-        {
-            for (int i = 1; i < 50000; i++)
-            {
-                string lead = "LD" + i.ToString().PadLeft(5,'0');
-                string longevity = "LG" + i.ToString().PadLeft(5, '0');
-                string memorial = "ME" + i.ToString().PadLeft(5, '0');
 
-                T_LeadDonorSerials.Add(new T_LeadDonorSerial { Serial = lead });
-                T_LongevitySerials.Add(new T_LongevitySerial { Serial = longevity });
-                T_MemorialSerials.Add(new T_MemorialSerial { Serial = memorial });
-            }
-        }
         #endregion
 
     }

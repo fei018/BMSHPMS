@@ -1,32 +1,8 @@
 {
   "Files": [
     {
-      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\Pages\\Plaque\\LeadDonor.html",
-      "PackagePath": "staticwebassets\\Pages\\Plaque\\LeadDonor.html"
-    },
-    {
-      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\Pages\\Plaque\\Longevity.html",
-      "PackagePath": "staticwebassets\\Pages\\Plaque\\Longevity.html"
-    },
-    {
-      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\Pages\\Plaque\\Memorial.html",
-      "PackagePath": "staticwebassets\\Pages\\Plaque\\Memorial.html"
-    },
-    {
-      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\Pages\\Registry - 複製.html",
-      "PackagePath": "staticwebassets\\Pages\\Registry - 複製.html"
-    },
-    {
-      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\Pages\\Registry.html",
-      "PackagePath": "staticwebassets\\Pages\\Registry.html"
-    },
-    {
-      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\Pages\\registry.css",
-      "PackagePath": "staticwebassets\\Pages\\registry.css"
-    },
-    {
-      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\Pages\\registry.js",
-      "PackagePath": "staticwebassets\\Pages\\registry.js"
+      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\Pages\\DSRegister\\Donor.html",
+      "PackagePath": "staticwebassets\\Pages\\DSRegister\\Donor.html"
     },
     {
       "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\echarts\\chalk.js",
@@ -1683,6 +1659,10 @@
     {
       "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\logo.png",
       "PackagePath": "staticwebassets\\logo.png"
+    },
+    {
+      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\sitecss\\backstage.css",
+      "PackagePath": "staticwebassets\\sitecss\\backstage.css"
     },
     {
       "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\sitecss\\logincss.css",

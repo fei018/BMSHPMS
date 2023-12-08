@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace BMSHPMS.Areas.Reception.ViewModels
 {
-    public partial class DSRegisterVM:BaseVM
+    public partial class DSRegisterVM : BaseVM
     {
         #region 提交頁面綁定屬性
 
@@ -29,17 +29,18 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         #endregion
 
         #region
-        public List<T_LeadDonorSerial> ShowLeadDonorSerials { get; set; }
+        public List<DSLeadDonorSerial> ShowLeadDonorSerials { get; set; }
 
-        public List<T_LongevitySerial> ShowLongevitySerials { get; set; }
+        public List<DSLongevitySerial> ShowLongevitySerials { get; set; }
 
-        public List<T_MemorialSerial> ShowMemorialSerials { get; set; }
+        public List<DSMemorialSerial> ShowMemorialSerials { get; set; }
         #endregion
 
         public string Message { get; set; }
 
 
-        #region MyRegion
+        #region RegisterSubmitted
+
         public void RegisterSubmitted()
         {
             if ((!RegLeadDonorCount.HasValue || RegLeadDonorCount.Value <= 0)
@@ -50,20 +51,31 @@ namespace BMSHPMS.Areas.Reception.ViewModels
                 return;
             }
 
+            // 查詢各編號數據庫里是否足夠
+            bool isSerialEnough = QuerySerialCountEnough(out List<DSLeadDonorSerial> leadSerials, out List<DSLongevitySerial> longeSerials, out List<DSMemorialSerial> memoSerials);
+            if (!isSerialEnough)
+            {
+                return;
+            }
+
             // 先查詢 收據號碼是否存在, 存在就返回 各關聯編號
-            if (QueryReceiptNumberExist(out T_Receipt receipt))
+            if (QueryReceiptNumberExist(out DSReceiptInfo receipt))
             {
                 Message = $"此收據號碼已經登記過, 登記時間:{receipt.ReceiptDate:yyyy-MM-dd}";
 
                 ShowLeadDonorSerials = QueryLeadDonorSerialByReceipt(receipt);
+                ShowLeadDonorSerials ??= UpdateReceiptIDToLeadDonorTable(receipt, leadSerials);
+
                 ShowLongevitySerials = QueryLongevitySerialByReceipt(receipt);
+                ShowLongevitySerials ??= UpdateReceiptIDToLongvitySerialTable(receipt, longeSerials);
+
                 ShowMemorialSerials = QueryMemorialSerialByReceipt(receipt);
+                ShowMemorialSerials ??= UpdateReceiptIDToMemorialSerialTable(receipt, memoSerials);
 
                 return;
             }
 
-            // 查詢各編號是否足夠
-            if (QuerySerialCountEnough(out List<T_LeadDonorSerial> leadSerials,out List<T_LongevitySerial> longeSerials,out List<T_MemorialSerial> memoSerials))
+            if (isSerialEnough)
             {
                 //新增收據
                 var newReceipt = AddNewReceipt();

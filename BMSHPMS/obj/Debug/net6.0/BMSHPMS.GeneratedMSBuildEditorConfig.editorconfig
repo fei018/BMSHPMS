@@ -18,48 +18,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Fei\code project\Github\BMSHPMS\BMSHPMS
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/BackStage/Views/LongevityPlaque/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja1N0YWdlXFZpZXdzXExvbmdldml0eVBsYXF1ZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/BackStage/Views/T_LongevityPlaque/BatchDelete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja1N0YWdlXFZpZXdzXFRfTG9uZ2V2aXR5UGxhcXVlXEJhdGNoRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/BackStage/Views/T_LongevityPlaque/BatchEdit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja1N0YWdlXFZpZXdzXFRfTG9uZ2V2aXR5UGxhcXVlXEJhdGNoRWRpdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/BackStage/Views/T_LongevityPlaque/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja1N0YWdlXFZpZXdzXFRfTG9uZ2V2aXR5UGxhcXVlXENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/BackStage/Views/T_LongevityPlaque/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja1N0YWdlXFZpZXdzXFRfTG9uZ2V2aXR5UGxhcXVlXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/BackStage/Views/T_LongevityPlaque/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja1N0YWdlXFZpZXdzXFRfTG9uZ2V2aXR5UGxhcXVlXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/BackStage/Views/T_LongevityPlaque/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja1N0YWdlXFZpZXdzXFRfTG9uZ2V2aXR5UGxhcXVlXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/BackStage/Views/T_LongevityPlaque/Import.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja1N0YWdlXFZpZXdzXFRfTG9uZ2V2aXR5UGxhcXVlXEltcG9ydC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/BackStage/Views/T_LongevityPlaque/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja1N0YWdlXFZpZXdzXFRfTG9uZ2V2aXR5UGxhcXVlXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/Reception/Views/DharmaService/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUmVjZXB0aW9uXFZpZXdzXERoYXJtYVNlcnZpY2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/Reception/Views/DharmaService/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUmVjZXB0aW9uXFZpZXdzXERoYXJtYVNlcnZpY2VcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/Reception/Views/DSRegister/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUmVjZXB0aW9uXFZpZXdzXERTUmVnaXN0ZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/Reception/Views/Plaque/Index.cshtml]

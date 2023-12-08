@@ -38,18 +38,18 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         /// <param name="receipt"></param>
         /// <param name="longevitieSerials"></param>
         /// <returns></returns>
-        protected bool ReceiptNumberExist(out T_Receipt receipt, out List<T_LongevitySerial> longevitieSerials)
+        protected bool ReceiptNumberExist(out DSReceiptInfo receipt, out List<DSLongevitySerial> longevitieSerials)
         {
             receipt = null;
             longevitieSerials = null;
 
-            receipt = DC.Set<T_Receipt>().Include(r => r.LongevitySerials).SingleOrDefault(r => r.ReceiptNumber.ToLower() == ReceiptNumber.ToLower());
+            receipt = DC.Set<DSReceiptInfo>().SingleOrDefault(r => r.ReceiptNumber.ToLower() == ReceiptNumber.ToLower());
             if (receipt == null)
             {
                 return false;
             }
 
-            longevitieSerials = receipt.LongevitySerials.OrderBy(s => s.Serial).ToList();
+
 
             return true;
         }
@@ -62,18 +62,18 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         /// <param name="receipt"></param>
         /// <param name="memorialSerials"></param>
         /// <returns></returns>
-        protected bool ReceiptNumberExist(out T_Receipt receipt, out List<T_MemorialSerial> memorialSerials)
+        protected bool ReceiptNumberExist(out DSReceiptInfo receipt, out List<DSMemorialSerial> memorialSerials)
         {
             receipt = null;
             memorialSerials = null;
 
-            receipt = DC.Set<T_Receipt>().Include(r => r.MemorialSerials).FirstOrDefault(r => r.ReceiptNumber.ToLower() == ReceiptNumber.ToLower());
+            receipt = DC.Set<DSReceiptInfo>().FirstOrDefault(r => r.ReceiptNumber.ToLower() == ReceiptNumber.ToLower());
             if (receipt == null)
             {
                 return false;
             }
 
-            memorialSerials = receipt.MemorialSerials.OrderBy(s => s.Serial).ToList();
+         
 
             return true;
         }
@@ -86,18 +86,18 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         /// <param name="receipt"></param>
         /// <param name="memorialSerials"></param>
         /// <returns></returns>
-        protected bool ReceiptNumberExist(out T_Receipt receipt, out List<T_LeadDonorSerial> leadDonorSerials)
+        protected bool ReceiptNumberExist(out DSReceiptInfo receipt, out List<DSLeadDonorSerial> leadDonorSerials)
         {
             receipt = null;
             leadDonorSerials = null;
 
-            receipt = DC.Set<T_Receipt>().Include(r => r.LeadDonorSerials).FirstOrDefault(r => r.ReceiptNumber.ToLower() == ReceiptNumber.ToLower());
+            receipt = DC.Set<DSReceiptInfo>().FirstOrDefault(r => r.ReceiptNumber.ToLower() == ReceiptNumber.ToLower());
             if (receipt == null)
             {
                 return false;
             }
 
-            leadDonorSerials = receipt.LeadDonorSerials.OrderBy(s => s.Serial).ToList();
+            
 
             return true;
         }
@@ -109,11 +109,11 @@ namespace BMSHPMS.Areas.Reception.ViewModels
         /// </summary>
         /// <param name="receiptNumber"></param>
         /// <returns></returns>
-        protected T_Receipt AddNewReceipt(string receiptNumber)
+        protected DSReceiptInfo AddNewReceipt(string receiptNumber)
         {
             lock (DbTableLocker.T_Receipt)
             {
-                T_Receipt receipt = new()
+                DSReceiptInfo receipt = new()
                 {
                     ReceiptNumber = receiptNumber,
                     ID = Guid.NewGuid(),
@@ -124,7 +124,7 @@ namespace BMSHPMS.Areas.Reception.ViewModels
                     UpdateTime = DateTime.Now
                 };
 
-                Wtm.DC.Set<T_Receipt>().Add(receipt);
+                Wtm.DC.Set<DSReceiptInfo>().Add(receipt);
                 Wtm.DC.SaveChanges();
                 return receipt;
             }
