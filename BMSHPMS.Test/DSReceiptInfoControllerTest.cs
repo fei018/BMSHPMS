@@ -43,13 +43,13 @@ namespace BMSHPMS.Test
             DSReceiptInfoVM vm = rv.Model as DSReceiptInfoVM;
             DSReceiptInfo v = new DSReceiptInfo();
 			
-            v.ReceiptNumber = "q7RhxVQvP";
-            v.ReceiptOwn = "NIghtzxBoOq";
-            v.ContactName = "QnipoMrYTxWt";
-            v.ContactPhone = "v";
-            v.Sum = 62;
-            v.DSRemark = "p";
-            v.ReceiptDate = DateTime.Parse("2022-07-27 13:34:04");
+            v.ReceiptNumber = "WJbJZMuY";
+            v.ReceiptOwn = "Oo3qUjpOC";
+            v.ContactName = "qB3Ex5wG67x1j9x8qZ";
+            v.ContactPhone = "Z4aoheCMkxweVHVl";
+            v.Sum = 26;
+            v.DSRemark = "eQIf1jXvSELrjIayx9";
+            v.ReceiptDate = DateTime.Parse("2023-12-03 11:06:51");
             vm.Entity = v;
             _controller.Create(vm);
 
@@ -57,13 +57,13 @@ namespace BMSHPMS.Test
             {
                 var data = context.Set<DSReceiptInfo>().Find(v.ID);
 				
-                Assert.AreEqual(data.ReceiptNumber, "q7RhxVQvP");
-                Assert.AreEqual(data.ReceiptOwn, "NIghtzxBoOq");
-                Assert.AreEqual(data.ContactName, "QnipoMrYTxWt");
-                Assert.AreEqual(data.ContactPhone, "v");
-                Assert.AreEqual(data.Sum, 62);
-                Assert.AreEqual(data.DSRemark, "p");
-                Assert.AreEqual(data.ReceiptDate, DateTime.Parse("2022-07-27 13:34:04"));
+                Assert.AreEqual(data.ReceiptNumber, "WJbJZMuY");
+                Assert.AreEqual(data.ReceiptOwn, "Oo3qUjpOC");
+                Assert.AreEqual(data.ContactName, "qB3Ex5wG67x1j9x8qZ");
+                Assert.AreEqual(data.ContactPhone, "Z4aoheCMkxweVHVl");
+                Assert.AreEqual(data.Sum, 26);
+                Assert.AreEqual(data.DSRemark, "eQIf1jXvSELrjIayx9");
+                Assert.AreEqual(data.ReceiptDate, DateTime.Parse("2023-12-03 11:06:51"));
                 Assert.AreEqual(data.CreateBy, "user");
                 Assert.IsTrue(DateTime.Now.Subtract(data.CreateTime.Value).Seconds < 10);
             }
@@ -77,13 +77,13 @@ namespace BMSHPMS.Test
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
        			
-                v.ReceiptNumber = "q7RhxVQvP";
-                v.ReceiptOwn = "NIghtzxBoOq";
-                v.ContactName = "QnipoMrYTxWt";
-                v.ContactPhone = "v";
-                v.Sum = 62;
-                v.DSRemark = "p";
-                v.ReceiptDate = DateTime.Parse("2022-07-27 13:34:04");
+                v.ReceiptNumber = "WJbJZMuY";
+                v.ReceiptOwn = "Oo3qUjpOC";
+                v.ContactName = "qB3Ex5wG67x1j9x8qZ";
+                v.ContactPhone = "Z4aoheCMkxweVHVl";
+                v.Sum = 26;
+                v.DSRemark = "eQIf1jXvSELrjIayx9";
+                v.ReceiptDate = DateTime.Parse("2023-12-03 11:06:51");
                 context.Set<DSReceiptInfo>().Add(v);
                 context.SaveChanges();
             }
@@ -96,13 +96,13 @@ namespace BMSHPMS.Test
             v = new DSReceiptInfo();
             v.ID = vm.Entity.ID;
        		
-            v.ReceiptNumber = "oy";
-            v.ReceiptOwn = "wQB8KrxAOjPW";
-            v.ContactName = "xX1QA6";
-            v.ContactPhone = "2HNEPjXqHoFBQJ7S";
-            v.Sum = 65;
-            v.DSRemark = "xnDoLJdIpjw0nkM";
-            v.ReceiptDate = DateTime.Parse("2024-09-24 13:34:04");
+            v.ReceiptNumber = "Is7A784Czw16wJy48";
+            v.ReceiptOwn = "ilcBjpB2IHnUn";
+            v.ContactName = "BPlaYi0";
+            v.ContactPhone = "Lm0va7x";
+            v.Sum = 13;
+            v.DSRemark = "Uq";
+            v.ReceiptDate = DateTime.Parse("2023-02-01 11:06:51");
             vm.Entity = v;
             vm.FC = new Dictionary<string, object>();
 			
@@ -119,13 +119,13 @@ namespace BMSHPMS.Test
             {
                 var data = context.Set<DSReceiptInfo>().Find(v.ID);
  				
-                Assert.AreEqual(data.ReceiptNumber, "oy");
-                Assert.AreEqual(data.ReceiptOwn, "wQB8KrxAOjPW");
-                Assert.AreEqual(data.ContactName, "xX1QA6");
-                Assert.AreEqual(data.ContactPhone, "2HNEPjXqHoFBQJ7S");
-                Assert.AreEqual(data.Sum, 65);
-                Assert.AreEqual(data.DSRemark, "xnDoLJdIpjw0nkM");
-                Assert.AreEqual(data.ReceiptDate, DateTime.Parse("2024-09-24 13:34:04"));
+                Assert.AreEqual(data.ReceiptNumber, "Is7A784Czw16wJy48");
+                Assert.AreEqual(data.ReceiptOwn, "ilcBjpB2IHnUn");
+                Assert.AreEqual(data.ContactName, "BPlaYi0");
+                Assert.AreEqual(data.ContactPhone, "Lm0va7x");
+                Assert.AreEqual(data.Sum, 13);
+                Assert.AreEqual(data.DSRemark, "Uq");
+                Assert.AreEqual(data.ReceiptDate, DateTime.Parse("2023-02-01 11:06:51"));
                 Assert.AreEqual(data.UpdateBy, "user");
                 Assert.IsTrue(DateTime.Now.Subtract(data.UpdateTime.Value).Seconds < 10);
             }
@@ -140,13 +140,13 @@ namespace BMSHPMS.Test
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
         		
-                v.ReceiptNumber = "q7RhxVQvP";
-                v.ReceiptOwn = "NIghtzxBoOq";
-                v.ContactName = "QnipoMrYTxWt";
-                v.ContactPhone = "v";
-                v.Sum = 62;
-                v.DSRemark = "p";
-                v.ReceiptDate = DateTime.Parse("2022-07-27 13:34:04");
+                v.ReceiptNumber = "WJbJZMuY";
+                v.ReceiptOwn = "Oo3qUjpOC";
+                v.ContactName = "qB3Ex5wG67x1j9x8qZ";
+                v.ContactPhone = "Z4aoheCMkxweVHVl";
+                v.Sum = 26;
+                v.DSRemark = "eQIf1jXvSELrjIayx9";
+                v.ReceiptDate = DateTime.Parse("2023-12-03 11:06:51");
                 context.Set<DSReceiptInfo>().Add(v);
                 context.SaveChanges();
             }
@@ -176,13 +176,13 @@ namespace BMSHPMS.Test
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
 				
-                v.ReceiptNumber = "q7RhxVQvP";
-                v.ReceiptOwn = "NIghtzxBoOq";
-                v.ContactName = "QnipoMrYTxWt";
-                v.ContactPhone = "v";
-                v.Sum = 62;
-                v.DSRemark = "p";
-                v.ReceiptDate = DateTime.Parse("2022-07-27 13:34:04");
+                v.ReceiptNumber = "WJbJZMuY";
+                v.ReceiptOwn = "Oo3qUjpOC";
+                v.ContactName = "qB3Ex5wG67x1j9x8qZ";
+                v.ContactPhone = "Z4aoheCMkxweVHVl";
+                v.Sum = 26;
+                v.DSRemark = "eQIf1jXvSELrjIayx9";
+                v.ReceiptDate = DateTime.Parse("2023-12-03 11:06:51");
                 context.Set<DSReceiptInfo>().Add(v);
                 context.SaveChanges();
             }
@@ -199,20 +199,20 @@ namespace BMSHPMS.Test
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
 				
-                v1.ReceiptNumber = "q7RhxVQvP";
-                v1.ReceiptOwn = "NIghtzxBoOq";
-                v1.ContactName = "QnipoMrYTxWt";
-                v1.ContactPhone = "v";
-                v1.Sum = 62;
-                v1.DSRemark = "p";
-                v1.ReceiptDate = DateTime.Parse("2022-07-27 13:34:04");
-                v2.ReceiptNumber = "oy";
-                v2.ReceiptOwn = "wQB8KrxAOjPW";
-                v2.ContactName = "xX1QA6";
-                v2.ContactPhone = "2HNEPjXqHoFBQJ7S";
-                v2.Sum = 65;
-                v2.DSRemark = "xnDoLJdIpjw0nkM";
-                v2.ReceiptDate = DateTime.Parse("2024-09-24 13:34:04");
+                v1.ReceiptNumber = "WJbJZMuY";
+                v1.ReceiptOwn = "Oo3qUjpOC";
+                v1.ContactName = "qB3Ex5wG67x1j9x8qZ";
+                v1.ContactPhone = "Z4aoheCMkxweVHVl";
+                v1.Sum = 26;
+                v1.DSRemark = "eQIf1jXvSELrjIayx9";
+                v1.ReceiptDate = DateTime.Parse("2023-12-03 11:06:51");
+                v2.ReceiptNumber = "Is7A784Czw16wJy48";
+                v2.ReceiptOwn = "ilcBjpB2IHnUn";
+                v2.ContactName = "BPlaYi0";
+                v2.ContactPhone = "Lm0va7x";
+                v2.Sum = 13;
+                v2.DSRemark = "Uq";
+                v2.ReceiptDate = DateTime.Parse("2023-02-01 11:06:51");
                 context.Set<DSReceiptInfo>().Add(v1);
                 context.Set<DSReceiptInfo>().Add(v2);
                 context.SaveChanges();
@@ -249,20 +249,20 @@ namespace BMSHPMS.Test
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
 				
-                v1.ReceiptNumber = "q7RhxVQvP";
-                v1.ReceiptOwn = "NIghtzxBoOq";
-                v1.ContactName = "QnipoMrYTxWt";
-                v1.ContactPhone = "v";
-                v1.Sum = 62;
-                v1.DSRemark = "p";
-                v1.ReceiptDate = DateTime.Parse("2022-07-27 13:34:04");
-                v2.ReceiptNumber = "oy";
-                v2.ReceiptOwn = "wQB8KrxAOjPW";
-                v2.ContactName = "xX1QA6";
-                v2.ContactPhone = "2HNEPjXqHoFBQJ7S";
-                v2.Sum = 65;
-                v2.DSRemark = "xnDoLJdIpjw0nkM";
-                v2.ReceiptDate = DateTime.Parse("2024-09-24 13:34:04");
+                v1.ReceiptNumber = "WJbJZMuY";
+                v1.ReceiptOwn = "Oo3qUjpOC";
+                v1.ContactName = "qB3Ex5wG67x1j9x8qZ";
+                v1.ContactPhone = "Z4aoheCMkxweVHVl";
+                v1.Sum = 26;
+                v1.DSRemark = "eQIf1jXvSELrjIayx9";
+                v1.ReceiptDate = DateTime.Parse("2023-12-03 11:06:51");
+                v2.ReceiptNumber = "Is7A784Czw16wJy48";
+                v2.ReceiptOwn = "ilcBjpB2IHnUn";
+                v2.ContactName = "BPlaYi0";
+                v2.ContactPhone = "Lm0va7x";
+                v2.Sum = 13;
+                v2.DSRemark = "Uq";
+                v2.ReceiptDate = DateTime.Parse("2023-02-01 11:06:51");
                 context.Set<DSReceiptInfo>().Add(v1);
                 context.Set<DSReceiptInfo>().Add(v2);
                 context.SaveChanges();

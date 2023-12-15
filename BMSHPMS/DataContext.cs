@@ -15,13 +15,10 @@ namespace BMSHPMS
 
         public DbSet<DSReceiptInfo> DSReceiptInfos { get; set; }
 
-        public DbSet<DSProject> DSNameCategorys { get; set; }
+        public DbSet<DServiceProject> DServiceProjects { get; set; }
 
-        public DbSet<DSDonorCategory> DSDonorCategorys { get; set; }
+        public DbSet<DSDonationProject> DSDonationProjects { get; set; }
 
-        public DbSet<DSLongevityCategory> DSLongevityCategorys { get; set; }
-
-        public DbSet<DSMemorialCategory> DSMemorialCategorys { get; set; }
 
         public DbSet<DSDonorInfo> DSDonorInfos { get; set; }
 

@@ -1,0 +1,21 @@
+﻿@model DSRegisterVM
+
+<div id="dsRegisterDiv">
+    <div class="layui-btn-container" style="padding:50px;">
+        @foreach (var ds in Model.DSProjects)
+        {
+            <button onclick="dsRegister('@ds.ID')" class="layui-btn layui-btn-normal layui-btn-lg">@ds.ProjectName</button>
+        }
+
+    </div>
+</div>
+
+<script>
+    function dsRegister(id){
+        let url = '/DSReception/DSRegister/Register?DSProjectID=' + id;
+
+        $.get(url, function (data) {
+            $('#dsRegisterDiv').html(data);
+        }, 'html');
+    }
+</script>

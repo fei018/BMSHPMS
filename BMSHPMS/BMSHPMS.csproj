@@ -42,9 +42,6 @@
 
 
   <ItemGroup>
-    <Folder Include="Areas\DSReception\Controllers\" />
-    <Folder Include="Areas\DSReception\Views\" />
-    <Folder Include="Areas\DSReception\ViewModels\" />
     <Folder Include="Areas\Reception\ViewModels\DSRegister\" />
     <Folder Include="Migrations\" />
   </ItemGroup>

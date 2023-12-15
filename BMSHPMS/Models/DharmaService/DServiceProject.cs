@@ -5,19 +5,19 @@ using WalkingTec.Mvvm.Core;
 
 namespace BMSHPMS.Models.DharmaService
 {
-    [Table("DSProject")]
+    [Table("DServiceProject")]
     [Display(Name = "法會項目")]
-    public class DSProject : BasePoco
+    public class DServiceProject : BasePoco
     {
-        [Display(Name = "法會類別")]
-        [Comment("法會類別")]
+        [Display(Name = "法會名")]
+        [Comment("法會名")]
         [Required(ErrorMessage = "Validate.{0}required")]
-        public string DSCategory { get; set; }
+        public string ProjectName { get; set; }
 
-        [Display(Name = "法會代號")]
-        [Comment("法會代號")]
+        [Display(Name = "編號代碼")]
+        [Comment("編號代碼")]
         [Required(ErrorMessage = "Validate.{0}required")]
-        public string Code { get; set; }
+        public string SerialCode { get; set; }
 
     }
 }

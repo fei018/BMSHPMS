@@ -11,7 +11,7 @@ namespace BMSHPMS.Models.DharmaService
     /// 功德主
     /// </summary>
     [Table("DSDonorInfo")]
-    [Display(Name = "功德主")]
+    [Display(Name = "功德主位")]
     public class DSDonorInfo:BasePoco
     {
         [Display(Name = "延生位姓名")]
@@ -31,22 +31,27 @@ namespace BMSHPMS.Models.DharmaService
 
         [Display(Name = "金額")]
         [Comment("金額")]
-        [Required(ErrorMessage = "Validate.{0}required")]
+        //[Required(ErrorMessage = "Validate.{0}required")]
         public int? Sum { get; set; }
 
         [Display(Name = "功德主編號")]
         [Comment("功德主編號")]
         //[Required(ErrorMessage = "Validate.{0}required")]
-        public string Serial { get; set; }
+        public string SerialCode { get; set; }
 
         [Display(Name = "備註")]
         [Comment("備註")]
         public string DSRemark { get; set; }
 
-        [Display(Name = "收據號碼")]
-        [Comment("收據號碼")]
+
+        [Display(Name = "收據ID")]
+        [Comment("收據ID")]
         [Required(ErrorMessage = "Validate.{0}required")]
-        public string ReceiptNumber { get; set; }
+        public Guid ReceiptInfoID { get; set; }
+
+        [Display(Name = "收據")]
+        [Comment("收據")]
+        public DSReceiptInfo ReceiptInfo { get; set; }
 
 
 

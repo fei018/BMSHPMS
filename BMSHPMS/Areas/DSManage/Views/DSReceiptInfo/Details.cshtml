@@ -1,0 +1,17 @@
+﻿@model BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs.DSReceiptInfoVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:display field="Entity.ReceiptNumber" />
+<wt:display field="Entity.ReceiptOwn" />
+<wt:display field="Entity.ContactName" />
+<wt:display field="Entity.ContactPhone" />
+<wt:display field="Entity.Sum" />
+<wt:display field="Entity.DSRemark" />
+<wt:display field="Entity.ReceiptDate" />
+</wt:row>
+    <wt:row align="AlignEnum.Right">
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

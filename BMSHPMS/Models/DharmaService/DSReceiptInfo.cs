@@ -36,6 +36,11 @@ namespace BMSHPMS.Models.DharmaService
         [Comment("金額")]
         public int? Sum { get; set; }
 
+        [Display(Name = "法會名")]
+        [Comment("法會名")]
+        [Required(ErrorMessage = "Validate.{0}required")]
+        public string DSProjectName { get; set; }
+
         //[Display(Name = "銀行名")]
         //[Comment("銀行名")]
         //public string BankName { get; set; }
@@ -56,7 +61,7 @@ namespace BMSHPMS.Models.DharmaService
         //==========
 
 
-        public List<DSDonorInfo> DSLeadDonorInfos { get; set; } = new List<DSDonorInfo>();
+        public List<DSDonorInfo> DSDonorInfos { get; set; } = new List<DSDonorInfo>();
 
         public List<DSMemorialInfo> DSMemorialInfos { get; set; } = new List<DSMemorialInfo>();
 
