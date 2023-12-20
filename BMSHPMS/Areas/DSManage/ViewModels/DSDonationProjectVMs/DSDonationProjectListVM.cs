@@ -17,13 +17,13 @@ namespace BMSHPMS.DSManage.ViewModels.DSDonationProjectVMs
         {
             return new List<GridAction>
             {
-                this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800,dialogHeight:500),
-                this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800,dialogHeight:500),
-                this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800,dialogHeight:500),
-                this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800,dialogHeight:500),
-                this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "DSManage", dialogWidth: 800,dialogHeight:500),
-                this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800,dialogHeight:500),
-                this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800,dialogHeight:500),
+                this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800,dialogHeight:400),
+                this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800,dialogHeight:400),              
+                this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800,dialogHeight:400),
+                this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800,dialogHeight:400),
+                //this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "DSManage", dialogWidth: 800,dialogHeight:500),
+                //this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800,dialogHeight:500),
+                //this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800,dialogHeight:500),
                 this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
             };
         }

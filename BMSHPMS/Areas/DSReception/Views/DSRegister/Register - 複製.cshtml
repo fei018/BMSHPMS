@@ -1,0 +1,152 @@
+﻿@model DSRegisterVM
+@{
+    var donors = Model.DSDonationProject_Donors;
+    var longevitys = Model.DSDonationProject_Longevitys;
+    var memorials = Model.DSDonationProject_Memorials;
+
+}
+
+<style>
+    form .layui-row {
+        font-size: 16px;
+    }
+
+    form .layui-card-header {
+        font-size: 16px;
+    }
+</style>
+
+<button class="layui-btn " onclick="javascript:window.location.reload();"><i class="layui-icon layui-icon-return"></i>返回</button>
+<br />
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>功德項目登記</legend>
+</fieldset>
+
+<div style="padding: 20px; margin:0 auto; background-color:#F2F2F2;">
+    <form class="layui-form" action="">
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <div class="layui-card">
+                    <div class="layui-card-header">收據</div>
+                    <div class="layui-card-body">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">收據號碼</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="ReceiptNumber" lay-verify="required" lay-reqtext="請輸入收據號碼" required class="layui-input" placeholder="請輸入收據號碼">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        @if (donors.Count >= 1)
+        {
+            <div class="layui-row">
+                <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <div class="layui-card-header">功德主</div>
+                        <div class="layui-card-body">
+                            @foreach (var item in donors)
+                            {
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">金額:@item.Sum</label>
+                                        <div class="layui-input-inline">
+                                            <input type="number" name="@item.ID" class="layui-input" placeholder="請輸入數目">
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+        }
+        @if (longevitys.Count >= 1)
+        {
+            <div class="layui-row">
+                <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <div class="layui-card-header">延生位</div>
+                        <div class="layui-card-body">
+                            @foreach (var item in longevitys)
+                            {
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">金額:@item.Sum</label>
+                                        <div class="layui-input-inline">
+                                            <input type="number" name="@item.ID" class="layui-input" placeholder="請輸入數目">
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+        }
+        @if (memorials.Count >= 1)
+        {
+            <div class="layui-row">
+                <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <div class="layui-card-header">附薦位</div>
+                        <div class="layui-card-body">
+                            @foreach (var item in memorials)
+                            {
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">金額:@item.Sum</label>
+                                        <div class="layui-input-inline">
+                                            <input type="number" name="@item.ID" class="layui-input" placeholder="請輸入數目">
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+        }
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="dsRegisterform" type="submit">確定</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">清除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="DSProjectID" value="@Model.DSProjectID" />
+    </form>
+</div>
+
+<div id="dsRegisterResult"></div>
+<div id="dsRegisterResult_end"></div>
+
+<script>
+    layui.use(function () {
+        let form = layui.form;
+        form.on('submit(dsRegisterform)', function (data) {
+
+            let yes = confirm("確定提交登記?");
+            if (yes) {
+                $.post("DSReception/DSRegister/Register", data.field, function (html) {
+                    $('#dsRegisterResult').html(html);
+
+                    document.getElementById('dsRegisterResult_end').scrollIntoView();
+
+                }, 'html');
+            }
+            return false; //阻止表單跳轉
+        });
+    });
+</script>

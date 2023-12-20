@@ -1,0 +1,13 @@
+﻿@model BMSHPMS.DSManage.ViewModels.DSDonorInfoVMs.DSDonorInfoListVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+    <wt:row items-per-row="ItemsPerRowEnum.Three">
+        <wt:textbox field="Searcher.SerialCode" />
+        <wt:textbox field="Searcher.Sum" />
+        <wt:textbox field="Searcher.LongevityName" />
+        <wt:textbox field="Searcher.BenefactorName" />      
+        <wt:textbox field="Searcher.DeceasedName" />
+    </wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" url="/DSManage/DSDonorInfo/Search" hidden-checkbox />

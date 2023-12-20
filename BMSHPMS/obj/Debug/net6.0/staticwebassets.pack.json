@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\Pages\\DSRegister\\Donor.html",
-      "PackagePath": "staticwebassets\\Pages\\DSRegister\\Donor.html"
-    },
-    {
       "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\echarts\\chalk.js",
       "PackagePath": "staticwebassets\\echarts\\chalk.js"
     },

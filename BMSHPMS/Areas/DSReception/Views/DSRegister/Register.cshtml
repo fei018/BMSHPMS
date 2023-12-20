@@ -42,11 +42,11 @@
                 </div>
             </div>
         </div>
-        <br />
-        @if (donors.Count >= 1)
-        {
-            <div class="layui-row">
-                <div class="layui-col-md6">
+        <hr class="layui-border-green" />
+        <div class="layui-row layui-col-space10">
+            @if (donors.Count >= 1)
+            {
+                <div class="layui-col-md4">
                     <div class="layui-card">
                         <div class="layui-card-header">功德主</div>
                         <div class="layui-card-body">
@@ -64,13 +64,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <br />
-        }
-        @if (longevitys.Count >= 1)
-        {
-            <div class="layui-row">
-                <div class="layui-col-md6">
+
+            }
+            @if (longevitys.Count >= 1)
+            {
+                <div class="layui-col-md4">
                     <div class="layui-card">
                         <div class="layui-card-header">延生位</div>
                         <div class="layui-card-body">
@@ -88,13 +86,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <br />
-        }
-        @if (memorials.Count >= 1)
-        {
-            <div class="layui-row">
-                <div class="layui-col-md6">
+            }
+            @if (memorials.Count >= 1)
+            {
+                <div class="layui-col-md4">
                     <div class="layui-card">
                         <div class="layui-card-header">附薦位</div>
                         <div class="layui-card-body">
@@ -112,9 +107,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <br />
-        }
+            }
+        </div>
+        <hr class="layui-border-green" />
         <div class="layui-row">
             <div class="layui-col-md6">
                 <div class="layui-form-item">
@@ -137,13 +132,15 @@
         let form = layui.form;
         form.on('submit(dsRegisterform)', function (data) {
 
-            $.post("DSReception/DSRegister/Register", data.field, function (html) {
-                $('#dsRegisterResult').html(html);
+            let yes = confirm("確定提交登記?");
+            if (yes) {
+                $.post("DSReception/DSRegister/Register", data.field, function (html) {
+                    $('#dsRegisterResult').html(html);
 
-                document.getElementById('dsRegisterResult_end').scrollIntoView();
+                    document.getElementById('dsRegisterResult_end').scrollIntoView();
 
-            }, 'html');
-
+                }, 'html');
+            }
             return false; //阻止表單跳轉
         });
     });

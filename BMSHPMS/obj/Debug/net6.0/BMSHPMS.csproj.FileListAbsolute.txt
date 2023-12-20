@@ -698,3 +698,4 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\zh-Hans\Microsoft.Co
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Debug\net6.0\BMSHPMS.sourcelink.json
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Debug\net6.0\BMSHPMS.Resources.Program - 複製.zh.resources
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\appsettings - 複製.json

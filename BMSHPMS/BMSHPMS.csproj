@@ -9,13 +9,36 @@
 </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Reception\**" />
+    <Compile Remove="Models\Old\**" />
     <Compile Remove="wwwroot\layui-2.8.3\**" />
+    <Content Remove="Areas\Reception\**" />
+    <Content Remove="Models\Old\**" />
     <Content Remove="wwwroot\layui-2.8.3\**" />
+    <EmbeddedResource Remove="Areas\Reception\**" />
+    <EmbeddedResource Remove="Models\Old\**" />
     <EmbeddedResource Remove="wwwroot\layui-2.8.3\**" />
+    <None Remove="Areas\Reception\**" />
+    <None Remove="Models\Old\**" />
     <None Remove="wwwroot\layui-2.8.3\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\DSManage\ViewModels\DSDonationProjectVMs\DSDonationProjectImportVM.cs" />
+    <Compile Remove="Areas\DSManage\ViewModels\DSDonorInfoVMs\DSDonorInfoImportVM.cs" />
+    <Compile Remove="Areas\DSManage\ViewModels\DServiceProjectVMs\DServiceProjectImportVM.cs" />
+    <Compile Remove="Areas\DSManage\ViewModels\DSLongevityInfoVMs\DSLongevityInfoImportVM.cs" />
+    <Compile Remove="Areas\DSManage\ViewModels\DSMemorialInfoVMs\DSMemorialInfoImportVM.cs" />
+    <Compile Remove="Areas\DSManage\ViewModels\DSReceiptInfoVMs\DSReceiptInfoImportVM.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Areas\DSManage\Views\DSDonationProject\Import.cshtml" />
+    <Content Remove="Areas\DSManage\Views\DSDonorInfo\Import.cshtml" />
+    <Content Remove="Areas\DSManage\Views\DServiceProject\Import.cshtml" />
+    <Content Remove="Areas\DSManage\Views\DSLongevityInfo\Import.cshtml" />
+    <Content Remove="Areas\DSManage\Views\DSMemorialInfo\Import.cshtml" />
+    <Content Remove="Areas\DSManage\Views\DSReceiptInfo\Import.cshtml" />
     <Content Remove="wwwroot\vue.js" />
   </ItemGroup>
 
@@ -24,7 +47,7 @@
 
   <ItemGroup>
     <PackageReference Include="Elsa.Designer.Components.Web" Version="2.12.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.24" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.25" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.25">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -34,16 +57,15 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
-    <PackageReference Include="WalkingTec.Mvvm.TagHelpers.LayUI" Version="6.4.7" />
-    <PackageReference Include="WalkingTec.Mvvm.Mvc" Version="6.4.7" />
+    <PackageReference Include="WalkingTec.Mvvm.TagHelpers.LayUI" Version="6.5.3" />
+    <PackageReference Include="WalkingTec.Mvvm.Mvc" Version="6.5.3" />
 </ItemGroup>
 
 
 
 
   <ItemGroup>
-    <Folder Include="Areas\Reception\ViewModels\DSRegister\" />
-    <Folder Include="Migrations\" />
+    <Folder Include="wwwroot\Pages\" />
   </ItemGroup>
 </Project>
 

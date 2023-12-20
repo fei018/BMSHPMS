@@ -2,15 +2,15 @@
 @inject IStringLocalizer<Program> Localizer;
 
 <wt:form vm="@Model">
-<wt:row items-per-row="ItemsPerRowEnum.Two">
-<wt:textbox field="Entity.ReceiptNumber" />
-<wt:textbox field="Entity.ReceiptOwn" />
-<wt:textbox field="Entity.ContactName" />
-<wt:textbox field="Entity.ContactPhone" />
-<wt:textbox field="Entity.Sum" />
-<wt:textbox field="Entity.DSRemark" />
-<wt:datetime field="Entity.ReceiptDate" />
-</wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.Two">
+        <wt:textbox field="Entity.ReceiptNumber" />
+        <wt:textbox field="Entity.ReceiptOwn" />
+        <wt:textbox field="Entity.ContactName" />
+        <wt:textbox field="Entity.ContactPhone" />
+        <wt:textbox field="Entity.Sum" />
+        <wt:textbox field="Entity.DSRemark" />
+        <wt:datetime field="Entity.ReceiptDate" />
+    </wt:row>
     <wt:hidden field="Entity.ID" />
     <wt:row align="AlignEnum.Right">
         <wt:submitbutton />

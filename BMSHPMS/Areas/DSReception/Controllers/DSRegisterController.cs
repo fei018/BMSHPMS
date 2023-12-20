@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Mvc;
 
@@ -33,14 +34,14 @@ namespace BMSHPMS.Areas.DSReception.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
             IFormCollection form = Wtm.HttpContext.Request.Form;
             var vm = Wtm.CreateVM<DSRegisterVM>();
 
             try
             {
-                DSRegResultVM resultVM = vm.Submitted(form);
+                DSRegResultVM resultVM = await vm.Submitted(form);
 
                 return PartialView("RegResult", resultVM);
             }

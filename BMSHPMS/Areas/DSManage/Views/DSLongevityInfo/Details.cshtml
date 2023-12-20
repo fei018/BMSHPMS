@@ -1,0 +1,15 @@
+﻿@model BMSHPMS.DSManage.ViewModels.DSLongevityInfoVMs.DSLongevityInfoVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+    <wt:row items-per-row="ItemsPerRowEnum.Two">
+        <wt:display field="Entity.ReceiptInfo.ReceiptNumber" />
+        <wt:display field="Entity.Name" />
+        <wt:display field="Entity.Sum" />
+        <wt:display field="Entity.SerialCode" />
+        <wt:display field="Entity.DSRemark" />
+    </wt:row>
+    <wt:row align="AlignEnum.Right">
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

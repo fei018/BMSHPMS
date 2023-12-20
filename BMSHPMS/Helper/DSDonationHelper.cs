@@ -3,16 +3,9 @@ using WalkingTec.Mvvm.Core;
 
 namespace BMSHPMS.Helper
 {
-    public static class DSDonationSelectHelper
+    public static class DSProjectSelectHelper
     {
-        public enum CategoryEnum
-        {
-            功德主,
-            延生位,
-            附薦位
-        }
-
-        public static class Category
+        public static class DonationCategory
         {
             public const string 功德主 = "功德主";
             public const string 延生位 = "延生位";
@@ -29,6 +22,11 @@ namespace BMSHPMS.Helper
             };
 
             return list;
+        }
+
+        public static List<ComboSelectListItem> GetDharmaServiceCategoryComboSelectItems()
+        {
+            DataContext dc = new DataContext();
         }
     }
 }

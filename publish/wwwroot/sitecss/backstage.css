@@ -1,0 +1,33 @@
+﻿@media screen and (max-width: 500px) {
+    .reception-register {
+        padding: 10px;
+        border: 1px solid #eee;
+        margin: 0 auto;
+        position: relative;
+        width: 350px;
+    }
+}
+
+@media screen and (min-width: 480px) {
+    .reception-register {
+        padding: 10px;
+        border: 1px solid #eee;
+        margin: 0 auto;
+        position: relative;
+        width: 600px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .reception-serial {
+        padding: 10px;
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .reception-serial {
+        padding: 10px;
+        width: 300px;
+    }
+}

@@ -7,6 +7,8 @@ using WalkingTec.Mvvm.Core.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using BMSHPMS.Models.DharmaService;
+using NetBox.Extensions;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 
 
 namespace BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs
@@ -17,13 +19,13 @@ namespace BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs
         {
             return new List<GridAction>
             {
-                this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
-                this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800),
-                this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800),
-                this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800),
-                this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "DSManage", dialogWidth: 800),
-                this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
-                this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800),
+                //this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800,dialogHeight:400),
+                this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800, dialogHeight : 400),
+                this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800, dialogHeight : 600),
+                this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800, dialogHeight : 400),               
+                //this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "DSManage", dialogWidth: 800),
+                //this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
+                //this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
             };
         }
@@ -32,13 +34,13 @@ namespace BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs
         protected override IEnumerable<IGridColumn<DSReceiptInfo_View>> InitGridHeader()
         {
             return new List<GridColumn<DSReceiptInfo_View>>{
+                this.MakeGridHeader(x => x.ReceiptDate),
                 this.MakeGridHeader(x => x.ReceiptNumber),
                 this.MakeGridHeader(x => x.ReceiptOwn),
                 this.MakeGridHeader(x => x.ContactName),
                 this.MakeGridHeader(x => x.ContactPhone),
                 this.MakeGridHeader(x => x.Sum),
-                this.MakeGridHeader(x => x.DSRemark),
-                this.MakeGridHeader(x => x.ReceiptDate),
+                this.MakeGridHeader(x => x.DSRemark),              
                 this.MakeGridHeaderAction(width: 200)
             };
         }
@@ -51,7 +53,7 @@ namespace BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs
                 .CheckContain(Searcher.ContactName, x=>x.ContactName)
                 .CheckContain(Searcher.ContactPhone, x=>x.ContactPhone)
                 .CheckEqual(Searcher.Sum, x=>x.Sum)
-                .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.ReceiptDate, includeMax: false)
+                //.CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetStartTime(), x => x.ReceiptDate /*includeMax: false*/)
                 .Select(x => new DSReceiptInfo_View
                 {
 				    ID = x.ID,
@@ -63,7 +65,14 @@ namespace BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs
                     DSRemark = x.DSRemark,
                     ReceiptDate = x.ReceiptDate,
                 })
-                .OrderBy(x => x.ID);
+                .OrderBy(x => x.ReceiptDate);
+
+            if (Searcher.ReceiptDate.HasValue)
+            {
+                query = query.Where(x => DateTime.Compare(Searcher.ReceiptDate.Value.Date, x.ReceiptDate.Value.Date) == 0)
+                             .OrderBy(x => x.ReceiptDate);
+            }
+
             return query;
         }
 

@@ -43,13 +43,13 @@ namespace BMSHPMS.Test
             DSDonorInfoVM vm = rv.Model as DSDonorInfoVM;
             DSDonorInfo v = new DSDonorInfo();
 			
-            v.LongevityName = "Gj";
-            v.DeceasedName = "7X";
-            v.BenefactorName = "lkglqVi4J";
-            v.Sum = 26;
-            v.Serial = "zyAK5nKvSjDE7tcPu";
-            v.DSRemark = "YwkTgKGpy0BXb01MP";
-            v.ReceiptNumber = "8EO";
+            v.LongevityName = "9db3LZP3R64mv9uFn";
+            v.DeceasedName = "R";
+            v.BenefactorName = "lmyycZZd362uQ";
+            v.Sum = 42;
+            v.SerialCode = "4no3bJjaIORDl30BKX";
+            v.DSRemark = "nJPL";
+            v.ReceiptInfoID = AddDSReceiptInfo();
             vm.Entity = v;
             _controller.Create(vm);
 
@@ -57,13 +57,12 @@ namespace BMSHPMS.Test
             {
                 var data = context.Set<DSDonorInfo>().Find(v.ID);
 				
-                Assert.AreEqual(data.LongevityName, "Gj");
-                Assert.AreEqual(data.DeceasedName, "7X");
-                Assert.AreEqual(data.BenefactorName, "lkglqVi4J");
-                Assert.AreEqual(data.Sum, 26);
-                Assert.AreEqual(data.Serial, "zyAK5nKvSjDE7tcPu");
-                Assert.AreEqual(data.DSRemark, "YwkTgKGpy0BXb01MP");
-                Assert.AreEqual(data.ReceiptNumber, "8EO");
+                Assert.AreEqual(data.LongevityName, "9db3LZP3R64mv9uFn");
+                Assert.AreEqual(data.DeceasedName, "R");
+                Assert.AreEqual(data.BenefactorName, "lmyycZZd362uQ");
+                Assert.AreEqual(data.Sum, 42);
+                Assert.AreEqual(data.SerialCode, "4no3bJjaIORDl30BKX");
+                Assert.AreEqual(data.DSRemark, "nJPL");
                 Assert.AreEqual(data.CreateBy, "user");
                 Assert.IsTrue(DateTime.Now.Subtract(data.CreateTime.Value).Seconds < 10);
             }
@@ -77,13 +76,13 @@ namespace BMSHPMS.Test
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
        			
-                v.LongevityName = "Gj";
-                v.DeceasedName = "7X";
-                v.BenefactorName = "lkglqVi4J";
-                v.Sum = 26;
-                v.Serial = "zyAK5nKvSjDE7tcPu";
-                v.DSRemark = "YwkTgKGpy0BXb01MP";
-                v.ReceiptNumber = "8EO";
+                v.LongevityName = "9db3LZP3R64mv9uFn";
+                v.DeceasedName = "R";
+                v.BenefactorName = "lmyycZZd362uQ";
+                v.Sum = 42;
+                v.SerialCode = "4no3bJjaIORDl30BKX";
+                v.DSRemark = "nJPL";
+                v.ReceiptInfoID = AddDSReceiptInfo();
                 context.Set<DSDonorInfo>().Add(v);
                 context.SaveChanges();
             }
@@ -96,13 +95,12 @@ namespace BMSHPMS.Test
             v = new DSDonorInfo();
             v.ID = vm.Entity.ID;
        		
-            v.LongevityName = "sMidJCwc";
-            v.DeceasedName = "MQO4lpL";
-            v.BenefactorName = "z5bqCSz";
-            v.Sum = 47;
-            v.Serial = "x5ZfBop3";
-            v.DSRemark = "kATm0Mbo8J6RPbUPg6";
-            v.ReceiptNumber = "wHrvgI5kHNk";
+            v.LongevityName = "TsDle2v";
+            v.DeceasedName = "0SbtXIMBH";
+            v.BenefactorName = "kUDm2OU0aj8HP3G";
+            v.Sum = 95;
+            v.SerialCode = "EOLH0d2";
+            v.DSRemark = "Z7yE4";
             vm.Entity = v;
             vm.FC = new Dictionary<string, object>();
 			
@@ -110,22 +108,21 @@ namespace BMSHPMS.Test
             vm.FC.Add("Entity.DeceasedName", "");
             vm.FC.Add("Entity.BenefactorName", "");
             vm.FC.Add("Entity.Sum", "");
-            vm.FC.Add("Entity.Serial", "");
+            vm.FC.Add("Entity.SerialCode", "");
             vm.FC.Add("Entity.DSRemark", "");
-            vm.FC.Add("Entity.ReceiptNumber", "");
+            vm.FC.Add("Entity.ReceiptInfoID", "");
             _controller.Edit(vm);
 
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
                 var data = context.Set<DSDonorInfo>().Find(v.ID);
  				
-                Assert.AreEqual(data.LongevityName, "sMidJCwc");
-                Assert.AreEqual(data.DeceasedName, "MQO4lpL");
-                Assert.AreEqual(data.BenefactorName, "z5bqCSz");
-                Assert.AreEqual(data.Sum, 47);
-                Assert.AreEqual(data.Serial, "x5ZfBop3");
-                Assert.AreEqual(data.DSRemark, "kATm0Mbo8J6RPbUPg6");
-                Assert.AreEqual(data.ReceiptNumber, "wHrvgI5kHNk");
+                Assert.AreEqual(data.LongevityName, "TsDle2v");
+                Assert.AreEqual(data.DeceasedName, "0SbtXIMBH");
+                Assert.AreEqual(data.BenefactorName, "kUDm2OU0aj8HP3G");
+                Assert.AreEqual(data.Sum, 95);
+                Assert.AreEqual(data.SerialCode, "EOLH0d2");
+                Assert.AreEqual(data.DSRemark, "Z7yE4");
                 Assert.AreEqual(data.UpdateBy, "user");
                 Assert.IsTrue(DateTime.Now.Subtract(data.UpdateTime.Value).Seconds < 10);
             }
@@ -140,13 +137,13 @@ namespace BMSHPMS.Test
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
         		
-                v.LongevityName = "Gj";
-                v.DeceasedName = "7X";
-                v.BenefactorName = "lkglqVi4J";
-                v.Sum = 26;
-                v.Serial = "zyAK5nKvSjDE7tcPu";
-                v.DSRemark = "YwkTgKGpy0BXb01MP";
-                v.ReceiptNumber = "8EO";
+                v.LongevityName = "9db3LZP3R64mv9uFn";
+                v.DeceasedName = "R";
+                v.BenefactorName = "lmyycZZd362uQ";
+                v.Sum = 42;
+                v.SerialCode = "4no3bJjaIORDl30BKX";
+                v.DSRemark = "nJPL";
+                v.ReceiptInfoID = AddDSReceiptInfo();
                 context.Set<DSDonorInfo>().Add(v);
                 context.SaveChanges();
             }
@@ -176,13 +173,13 @@ namespace BMSHPMS.Test
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
 				
-                v.LongevityName = "Gj";
-                v.DeceasedName = "7X";
-                v.BenefactorName = "lkglqVi4J";
-                v.Sum = 26;
-                v.Serial = "zyAK5nKvSjDE7tcPu";
-                v.DSRemark = "YwkTgKGpy0BXb01MP";
-                v.ReceiptNumber = "8EO";
+                v.LongevityName = "9db3LZP3R64mv9uFn";
+                v.DeceasedName = "R";
+                v.BenefactorName = "lmyycZZd362uQ";
+                v.Sum = 42;
+                v.SerialCode = "4no3bJjaIORDl30BKX";
+                v.DSRemark = "nJPL";
+                v.ReceiptInfoID = AddDSReceiptInfo();
                 context.Set<DSDonorInfo>().Add(v);
                 context.SaveChanges();
             }
@@ -199,20 +196,20 @@ namespace BMSHPMS.Test
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
 				
-                v1.LongevityName = "Gj";
-                v1.DeceasedName = "7X";
-                v1.BenefactorName = "lkglqVi4J";
-                v1.Sum = 26;
-                v1.Serial = "zyAK5nKvSjDE7tcPu";
-                v1.DSRemark = "YwkTgKGpy0BXb01MP";
-                v1.ReceiptNumber = "8EO";
-                v2.LongevityName = "sMidJCwc";
-                v2.DeceasedName = "MQO4lpL";
-                v2.BenefactorName = "z5bqCSz";
-                v2.Sum = 47;
-                v2.Serial = "x5ZfBop3";
-                v2.DSRemark = "kATm0Mbo8J6RPbUPg6";
-                v2.ReceiptNumber = "wHrvgI5kHNk";
+                v1.LongevityName = "9db3LZP3R64mv9uFn";
+                v1.DeceasedName = "R";
+                v1.BenefactorName = "lmyycZZd362uQ";
+                v1.Sum = 42;
+                v1.SerialCode = "4no3bJjaIORDl30BKX";
+                v1.DSRemark = "nJPL";
+                v1.ReceiptInfoID = AddDSReceiptInfo();
+                v2.LongevityName = "TsDle2v";
+                v2.DeceasedName = "0SbtXIMBH";
+                v2.BenefactorName = "kUDm2OU0aj8HP3G";
+                v2.Sum = 95;
+                v2.SerialCode = "EOLH0d2";
+                v2.DSRemark = "Z7yE4";
+                v2.ReceiptInfoID = v1.ReceiptInfoID; 
                 context.Set<DSDonorInfo>().Add(v1);
                 context.Set<DSDonorInfo>().Add(v2);
                 context.SaveChanges();
@@ -249,20 +246,20 @@ namespace BMSHPMS.Test
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
 				
-                v1.LongevityName = "Gj";
-                v1.DeceasedName = "7X";
-                v1.BenefactorName = "lkglqVi4J";
-                v1.Sum = 26;
-                v1.Serial = "zyAK5nKvSjDE7tcPu";
-                v1.DSRemark = "YwkTgKGpy0BXb01MP";
-                v1.ReceiptNumber = "8EO";
-                v2.LongevityName = "sMidJCwc";
-                v2.DeceasedName = "MQO4lpL";
-                v2.BenefactorName = "z5bqCSz";
-                v2.Sum = 47;
-                v2.Serial = "x5ZfBop3";
-                v2.DSRemark = "kATm0Mbo8J6RPbUPg6";
-                v2.ReceiptNumber = "wHrvgI5kHNk";
+                v1.LongevityName = "9db3LZP3R64mv9uFn";
+                v1.DeceasedName = "R";
+                v1.BenefactorName = "lmyycZZd362uQ";
+                v1.Sum = 42;
+                v1.SerialCode = "4no3bJjaIORDl30BKX";
+                v1.DSRemark = "nJPL";
+                v1.ReceiptInfoID = AddDSReceiptInfo();
+                v2.LongevityName = "TsDle2v";
+                v2.DeceasedName = "0SbtXIMBH";
+                v2.BenefactorName = "kUDm2OU0aj8HP3G";
+                v2.Sum = 95;
+                v2.SerialCode = "EOLH0d2";
+                v2.DSRemark = "Z7yE4";
+                v2.ReceiptInfoID = v1.ReceiptInfoID; 
                 context.Set<DSDonorInfo>().Add(v1);
                 context.Set<DSDonorInfo>().Add(v2);
                 context.SaveChanges();
@@ -291,6 +288,29 @@ namespace BMSHPMS.Test
             Assert.IsInstanceOfType(rv.Model, typeof(IBasePagedListVM<TopBasePoco, BaseSearcher>));
             IActionResult rv2 = _controller.ExportExcel(rv.Model as DSDonorInfoListVM);
             Assert.IsTrue((rv2 as FileContentResult).FileContents.Length > 0);
+        }
+
+        private Guid AddDSReceiptInfo()
+        {
+            DSReceiptInfo v = new DSReceiptInfo();
+            using (var context = new DataContext(_seed, DBTypeEnum.Memory))
+            {
+                try{
+
+                v.ReceiptNumber = "ae1zQY";
+                v.ReceiptOwn = "qdU7wt7jQSpzOmJE";
+                v.ContactName = "nDSM2rSy7iUz";
+                v.ContactPhone = "MwIBHJeqhhZl3";
+                v.Sum = 31;
+                v.DSProjectName = "W2IAOjmfGlBwzlE";
+                v.DSRemark = "l";
+                v.ReceiptDate = DateTime.Parse("2023-12-19 14:07:25");
+                context.Set<DSReceiptInfo>().Add(v);
+                context.SaveChanges();
+                }
+                catch{}
+            }
+            return v.ID;
         }
 
 

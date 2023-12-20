@@ -63,7 +63,7 @@ namespace BMSHPMS
                 var user = new FrameworkUser
                 {
                     ITCode = "admin",
-                    Password = Utils.GetMD5String("000000"),
+                    Password = Utils.GetMD5String("bmsh2808"),
                     IsValid = true,
                     Name = "Admin"
                 };

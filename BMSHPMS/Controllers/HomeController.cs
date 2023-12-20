@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Org.BouncyCastle.Math.EC.Multiplier;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Auth;
 using WalkingTec.Mvvm.Core.Extensions;
@@ -19,6 +20,13 @@ namespace BMSHPMS.Controllers
 {
     public class HomeController : BaseController
     {
+        [AllRights]
+        [ActionDescription("Test")]
+        public IActionResult Test()
+        {
+            return PartialView();
+        }
+
         [AllRights]
         public IActionResult Index()
         {

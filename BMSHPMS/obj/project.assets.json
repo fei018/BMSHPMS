@@ -1838,11 +1838,11 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Microsoft.AspNetCore.Mvc.Razor.Extensions/6.0.24": {
+      "Microsoft.AspNetCore.Mvc.Razor.Extensions/6.0.25": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Razor.Language": "6.0.24",
-          "Microsoft.CodeAnalysis.Razor": "6.0.24"
+          "Microsoft.AspNetCore.Razor.Language": "6.0.25",
+          "Microsoft.CodeAnalysis.Razor": "6.0.25"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.dll": {}
@@ -1851,11 +1851,11 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/6.0.24": {
+      "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/6.0.25": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Mvc.Razor.Extensions": "6.0.24",
-          "Microsoft.CodeAnalysis.Razor": "6.0.24",
+          "Microsoft.AspNetCore.Mvc.Razor.Extensions": "6.0.25",
+          "Microsoft.CodeAnalysis.Razor": "6.0.25",
           "Microsoft.Extensions.DependencyModel": "6.0.0"
         },
         "compile": {
@@ -1946,7 +1946,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Razor.Language/6.0.24": {
+      "Microsoft.AspNetCore.Razor.Language/6.0.25": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {}
@@ -2434,10 +2434,10 @@
           }
         }
       },
-      "Microsoft.CodeAnalysis.Razor/6.0.24": {
+      "Microsoft.CodeAnalysis.Razor/6.0.25": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Razor.Language": "6.0.24",
+          "Microsoft.AspNetCore.Razor.Language": "6.0.25",
           "Microsoft.CodeAnalysis.CSharp": "4.0.0",
           "Microsoft.CodeAnalysis.Common": "4.0.0"
         },
@@ -6876,7 +6876,7 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "WalkingTec.Mvvm.Core/6.4.7": {
+      "WalkingTec.Mvvm.Core/6.5.3": {
         "type": "package",
         "dependencies": {
           "Aliyun.OSS.SDK.NetCore": "2.13.0",
@@ -6914,7 +6914,7 @@
           }
         }
       },
-      "WalkingTec.Mvvm.Mvc/6.4.7": {
+      "WalkingTec.Mvvm.Mvc/6.5.3": {
         "type": "package",
         "dependencies": {
           "Elsa.Activities.Email": "2.13.0",
@@ -6935,7 +6935,7 @@
           "Swashbuckle.AspNetCore.SwaggerGen": "6.4.0",
           "Swashbuckle.AspNetCore.SwaggerUI": "6.4.0",
           "VueCliMiddleware": "6.0.0",
-          "WalkingTec.Mvvm.TagHelpers.LayUI": "6.4.7"
+          "WalkingTec.Mvvm.TagHelpers.LayUI": "6.5.3"
         },
         "compile": {
           "lib/net6.0/WalkingTec.Mvvm.Mvc.dll": {
@@ -6951,13 +6951,13 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "WalkingTec.Mvvm.TagHelpers.LayUI/6.4.7": {
+      "WalkingTec.Mvvm.TagHelpers.LayUI/6.5.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.1.3",
           "Microsoft.AspNetCore.Razor.Runtime": "2.1.2",
           "System.IO.FileSystem": "4.3.0",
-          "WalkingTec.Mvvm.Core": "6.4.7"
+          "WalkingTec.Mvvm.Core": "6.5.3"
         },
         "compile": {
           "lib/net6.0/WalkingTec.Mvvm.TagHelpers.LayUI.dll": {
@@ -9371,24 +9371,24 @@
         "microsoft.aspnetcore.mvc.newtonsoftjson.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.Razor.Extensions/6.0.24": {
-      "sha512": "z+3tMaqaulZ5nL5LK3EC2PkdeSEcL2EstL9xmVIQwSam6iHeTW/wVCmreTldL48nRF8nxNWnuyyDJG8RVMtAMg==",
+    "Microsoft.AspNetCore.Mvc.Razor.Extensions/6.0.25": {
+      "sha512": "8jlqgV4KnCUr1iiI01jc+QXPCpAbvFo94miIXEl88MuzRhCvIs59zo7NpBsvuO31Lryg9+VQh4W2kkDuJ8ozVQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.mvc.razor.extensions/6.0.24",
+      "path": "microsoft.aspnetcore.mvc.razor.extensions/6.0.25",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.dll",
-        "microsoft.aspnetcore.mvc.razor.extensions.6.0.24.nupkg.sha512",
+        "microsoft.aspnetcore.mvc.razor.extensions.6.0.25.nupkg.sha512",
         "microsoft.aspnetcore.mvc.razor.extensions.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/6.0.24": {
-      "sha512": "HM1nOvb4XwZn1U6AhtzGIedCf6qgyrooMborO91OjcdlRNzQL5B228wAHT+UqQP3vqL9K9d/MbuOkmvfVY6x+w==",
+    "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/6.0.25": {
+      "sha512": "ZaEfnI1JcB2Crz1azK1zTi1AYH+3EUfT5COWoP3eNLvKzmC3R/gzfYTYNQUXhu57Wb46Q058w3AMEDf4wZZoiA==",
       "type": "package",
-      "path": "microsoft.aspnetcore.mvc.razor.runtimecompilation/6.0.24",
+      "path": "microsoft.aspnetcore.mvc.razor.runtimecompilation/6.0.25",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -9398,7 +9398,7 @@
         "buildTransitive/net6.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.targets",
         "lib/net6.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll",
         "lib/net6.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.xml",
-        "microsoft.aspnetcore.mvc.razor.runtimecompilation.6.0.24.nupkg.sha512",
+        "microsoft.aspnetcore.mvc.razor.runtimecompilation.6.0.25.nupkg.sha512",
         "microsoft.aspnetcore.mvc.razor.runtimecompilation.nuspec"
       ]
     },
@@ -9466,17 +9466,17 @@
         "microsoft.aspnetcore.razor.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Razor.Language/6.0.24": {
-      "sha512": "kBL6ljTREp/3fk8EKN27mrPy3WTqWUjiqCkKFlCKHUKRO3/9rAasKizX3vPWy4ZTcNsIPmVWUHwjDFmiW4MyNA==",
+    "Microsoft.AspNetCore.Razor.Language/6.0.25": {
+      "sha512": "Thv1gDVuakcVIErTEf/RVBJc8YKrAU2/3+aQiXqzvxAICidTmoObVwa0gg0g6G0R5DuS5wwfHJOB2jZgFQMbew==",
       "type": "package",
-      "path": "microsoft.aspnetcore.razor.language/6.0.24",
+      "path": "microsoft.aspnetcore.razor.language/6.0.25",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll",
-        "microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
+        "microsoft.aspnetcore.razor.language.6.0.25.nupkg.sha512",
         "microsoft.aspnetcore.razor.language.nuspec"
       ]
     },
@@ -9985,17 +9985,17 @@
         "microsoft.codeanalysis.features.nuspec"
       ]
     },
-    "Microsoft.CodeAnalysis.Razor/6.0.24": {
-      "sha512": "xIAjR6l/1PO2ILT6/lOGYfe8OzMqfqxh1lxFuM4Exluwc2sQhJw0kS7pEyJ0DE/UMYu6Jcdc53DmjOxQUDT2Pg==",
+    "Microsoft.CodeAnalysis.Razor/6.0.25": {
+      "sha512": "KmiuLPvmWQyzuXr9y9oR3pqmoNqnLq5q0f6SxH6h+i0gGcTbStcX80BcLmysZGyY0xdYWWfVZ8ppzjWiaZo0tQ==",
       "type": "package",
-      "path": "microsoft.codeanalysis.razor/6.0.24",
+      "path": "microsoft.codeanalysis.razor/6.0.25",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard2.0/Microsoft.CodeAnalysis.Razor.dll",
-        "microsoft.codeanalysis.razor.6.0.24.nupkg.sha512",
+        "microsoft.codeanalysis.razor.6.0.25.nupkg.sha512",
         "microsoft.codeanalysis.razor.nuspec"
       ]
     },
@@ -17928,45 +17928,45 @@
         "vueclimiddleware.nuspec"
       ]
     },
-    "WalkingTec.Mvvm.Core/6.4.7": {
-      "sha512": "Psx8UeIXRf/hS7pvmTeSG4teNmiUVfozjhbdpRu1f08qOgl7Z/Ol9LBjlnr4hwEWcyeWKkn3r6Vhjr2yRkG0pg==",
+    "WalkingTec.Mvvm.Core/6.5.3": {
+      "sha512": "/bkqw6IBPPUW3PwjYvtxB7Gzyy+1jVvyekTB5rvY/gWBxWCNpxrPgXQt51LdE0MIhdz6VkCov4W1tiaDyu/hZQ==",
       "type": "package",
-      "path": "walkingtec.mvvm.core/6.4.7",
+      "path": "walkingtec.mvvm.core/6.5.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "lib/net6.0/WalkingTec.Mvvm.Core.dll",
         "lib/net6.0/WalkingTec.Mvvm.Core.xml",
-        "walkingtec.mvvm.core.6.4.7.nupkg.sha512",
+        "walkingtec.mvvm.core.6.5.3.nupkg.sha512",
         "walkingtec.mvvm.core.nuspec"
       ]
     },
-    "WalkingTec.Mvvm.Mvc/6.4.7": {
-      "sha512": "yWp1TKYAHfBZOkf2mMI91ycYUAXEUrH6i1xDQLRMxhsNlfUbUz0tDr0etTZM3S1RLHrB/ar3DWQhpe7gFVbYng==",
+    "WalkingTec.Mvvm.Mvc/6.5.3": {
+      "sha512": "XJP6TRTNGJUCGPdzPOc7dFNrd0wAsOioFdkiM9nFWROsaiXMZSJOR2L9VWXNXsejr8sdmmWWGk7fLTfcHyKn/A==",
       "type": "package",
-      "path": "walkingtec.mvvm.mvc/6.4.7",
+      "path": "walkingtec.mvvm.mvc/6.5.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "lib/net6.0/WalkingTec.Mvvm.Mvc.dll",
         "lib/net6.0/WalkingTec.Mvvm.Mvc.xml",
-        "walkingtec.mvvm.mvc.6.4.7.nupkg.sha512",
+        "walkingtec.mvvm.mvc.6.5.3.nupkg.sha512",
         "walkingtec.mvvm.mvc.nuspec"
       ]
     },
-    "WalkingTec.Mvvm.TagHelpers.LayUI/6.4.7": {
-      "sha512": "2IpgaaOitnTrHC5hIOu8mpiMj0CfmCRKlGb9GconC39juKzDi4LCfF3HgMJX+9XfbWi3eTPqrnvs21l7p0t2Nw==",
+    "WalkingTec.Mvvm.TagHelpers.LayUI/6.5.3": {
+      "sha512": "RYS8f2maXCrnBUze952/7KZMoIP9f6KXp6D4w/U2JYNtOG8ipeDhERBlzI+Abl1NJjzMF3pB8q652FCtN+JooA==",
       "type": "package",
-      "path": "walkingtec.mvvm.taghelpers.layui/6.4.7",
+      "path": "walkingtec.mvvm.taghelpers.layui/6.5.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "lib/net6.0/WalkingTec.Mvvm.TagHelpers.LayUI.dll",
         "lib/net6.0/WalkingTec.Mvvm.TagHelpers.LayUI.xml",
-        "walkingtec.mvvm.taghelpers.layui.6.4.7.nupkg.sha512",
+        "walkingtec.mvvm.taghelpers.layui.6.5.3.nupkg.sha512",
         "walkingtec.mvvm.taghelpers.layui.nuspec"
       ]
     }
@@ -17974,12 +17974,12 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Elsa.Designer.Components.Web >= 2.12.0",
-      "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 6.0.24",
+      "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 6.0.25",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.25",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.25",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.16",
-      "WalkingTec.Mvvm.Mvc >= 6.4.7",
-      "WalkingTec.Mvvm.TagHelpers.LayUI >= 6.4.7"
+      "WalkingTec.Mvvm.Mvc >= 6.5.3",
+      "WalkingTec.Mvvm.TagHelpers.LayUI >= 6.5.3"
     ]
   },
   "packageFolders": {
@@ -18033,7 +18033,7 @@
           },
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
             "target": "Package",
-            "version": "[6.0.24, )"
+            "version": "[6.0.25, )"
           },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -18053,11 +18053,11 @@
           },
           "WalkingTec.Mvvm.Mvc": {
             "target": "Package",
-            "version": "[6.4.7, )"
+            "version": "[6.5.3, )"
           },
           "WalkingTec.Mvvm.TagHelpers.LayUI": {
             "target": "Package",
-            "version": "[6.4.7, )"
+            "version": "[6.5.3, )"
           }
         },
         "imports": [

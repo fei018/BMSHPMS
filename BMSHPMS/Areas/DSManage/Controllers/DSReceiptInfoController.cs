@@ -5,6 +5,7 @@ using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Mvc;
 using WalkingTec.Mvvm.Core.Extensions;
 using BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs;
+using System.Threading.Tasks;
 
 namespace BMSHPMS.DSManage.Controllers
 {
@@ -130,9 +131,10 @@ namespace BMSHPMS.DSManage.Controllers
 
         #region Details
         [ActionDescription("Sys.Details")]
-        public ActionResult Details(string id)
+        public async Task<ActionResult> Details(string id)
         {
             var vm = Wtm.CreateVM<DSReceiptInfoVM>(id);
+            await vm.InitialDetails();
             return PartialView(vm);
         }
         #endregion
@@ -162,50 +164,50 @@ namespace BMSHPMS.DSManage.Controllers
         #endregion
 
         #region BatchDelete
-        [HttpPost]
-        [ActionDescription("Sys.BatchDelete")]
-        public ActionResult BatchDelete(string[] IDs)
-        {
-            var vm = Wtm.CreateVM<DSReceiptInfoBatchVM>(Ids: IDs);
-            return PartialView(vm);
-        }
+        //[HttpPost]
+        //[ActionDescription("Sys.BatchDelete")]
+        //public ActionResult BatchDelete(string[] IDs)
+        //{
+        //    var vm = Wtm.CreateVM<DSReceiptInfoBatchVM>(Ids: IDs);
+        //    return PartialView(vm);
+        //}
 
-        [HttpPost]
-        [ActionDescription("Sys.BatchDelete")]
-        public ActionResult DoBatchDelete(DSReceiptInfoBatchVM vm, IFormCollection nouse)
-        {
-            if (!ModelState.IsValid || !vm.DoBatchDelete())
-            {
-                return PartialView("BatchDelete",vm);
-            }
-            else
-            {
-                return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.BatchDeleteSuccess", vm.Ids.Length]);
-            }
-        }
+        //[HttpPost]
+        //[ActionDescription("Sys.BatchDelete")]
+        //public ActionResult DoBatchDelete(DSReceiptInfoBatchVM vm, IFormCollection nouse)
+        //{
+        //    if (!ModelState.IsValid || !vm.DoBatchDelete())
+        //    {
+        //        return PartialView("BatchDelete",vm);
+        //    }
+        //    else
+        //    {
+        //        return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.BatchDeleteSuccess", vm.Ids.Length]);
+        //    }
+        //}
         #endregion
 
         #region Import
-		[ActionDescription("Sys.Import")]
-        public ActionResult Import()
-        {
-            var vm = Wtm.CreateVM<DSReceiptInfoImportVM>();
-            return PartialView(vm);
-        }
+		//[ActionDescription("Sys.Import")]
+  //      public ActionResult Import()
+  //      {
+  //          var vm = Wtm.CreateVM<DSReceiptInfoImportVM>();
+  //          return PartialView(vm);
+  //      }
 
-        [HttpPost]
-        [ActionDescription("Sys.Import")]
-        public ActionResult Import(DSReceiptInfoImportVM vm, IFormCollection nouse)
-        {
-            if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
-            {
-                return PartialView(vm);
-            }
-            else
-            {
-                return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
-            }
-        }
+  //      [HttpPost]
+  //      [ActionDescription("Sys.Import")]
+  //      public ActionResult Import(DSReceiptInfoImportVM vm, IFormCollection nouse)
+  //      {
+  //          if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
+  //          {
+  //              return PartialView(vm);
+  //          }
+  //          else
+  //          {
+  //              return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
+  //          }
+  //      }
         #endregion
 
         [ActionDescription("Sys.Export")]

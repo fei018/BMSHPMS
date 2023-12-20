@@ -25,7 +25,7 @@ namespace BMSHPMS.DSManage.ViewModels.DSDonationProjectVMs
         protected override void InitVM()
         {
             AllDServiceProjs = DC.Set<DServiceProject>().GetSelectListItems(Wtm, y => y.ProjectName);
-            AllDSDonationCategory = DSDonationSelectHelper.GetDonationCategoryComboSelectItems();
+            AllDSDonationCategory = DSProjectSelectHelper.GetDonationCategoryComboSelectItems();
         }
 
         public override void DoAdd()

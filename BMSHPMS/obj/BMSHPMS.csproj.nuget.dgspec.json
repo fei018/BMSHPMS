@@ -51,7 +51,7 @@
             },
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
-              "version": "[6.0.24, )"
+              "version": "[6.0.25, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -71,11 +71,11 @@
             },
             "WalkingTec.Mvvm.Mvc": {
               "target": "Package",
-              "version": "[6.4.7, )"
+              "version": "[6.5.3, )"
             },
             "WalkingTec.Mvvm.TagHelpers.LayUI": {
               "target": "Package",
-              "version": "[6.4.7, )"
+              "version": "[6.5.3, )"
             }
           },
           "imports": [
