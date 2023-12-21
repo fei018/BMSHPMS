@@ -35,11 +35,12 @@ namespace BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs
         {
             return new List<GridColumn<DSReceiptInfo_View>>{
                 this.MakeGridHeader(x => x.ReceiptDate),
-                this.MakeGridHeader(x => x.ReceiptNumber),
+                this.MakeGridHeader(x => x.ReceiptNumber),               
                 this.MakeGridHeader(x => x.ReceiptOwn),
                 this.MakeGridHeader(x => x.ContactName),
                 this.MakeGridHeader(x => x.ContactPhone),
-                this.MakeGridHeader(x => x.Sum),
+                this.MakeGridHeader(x => x.Sum,width:100),
+                this.MakeGridHeader(x => x.DSProjectName),
                 this.MakeGridHeader(x => x.DSRemark),              
                 this.MakeGridHeaderAction(width: 200)
             };
@@ -53,6 +54,7 @@ namespace BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs
                 .CheckContain(Searcher.ContactName, x=>x.ContactName)
                 .CheckContain(Searcher.ContactPhone, x=>x.ContactPhone)
                 .CheckEqual(Searcher.Sum, x=>x.Sum)
+                .CheckEqual(Searcher.DSProjectName, x=>x.DSProjectName)
                 //.CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetStartTime(), x => x.ReceiptDate /*includeMax: false*/)
                 .Select(x => new DSReceiptInfo_View
                 {
@@ -64,6 +66,7 @@ namespace BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs
                     Sum = x.Sum,
                     DSRemark = x.DSRemark,
                     ReceiptDate = x.ReceiptDate,
+                    DSProjectName = x.DSProjectName,
                 })
                 .OrderBy(x => x.ReceiptDate);
 

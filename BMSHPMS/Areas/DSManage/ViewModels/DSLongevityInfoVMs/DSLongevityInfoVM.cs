@@ -23,18 +23,21 @@ namespace BMSHPMS.DSManage.ViewModels.DSLongevityInfoVMs
         }
 
         public override void DoAdd()
-        {           
-            base.DoAdd();
+        {
+            DC.Set<DSLongevityInfo>().Add(Entity);
+            DC.SaveChanges();
         }
 
         public override void DoEdit(bool updateAllFields = false)
         {
-            base.DoEdit(updateAllFields);
+            DC.Set<DSLongevityInfo>().Update(Entity);
+            DC.SaveChanges();
         }
 
         public override void DoDelete()
         {
-            base.DoDelete();
+            DC.Set<DSLongevityInfo>().Remove(Entity);
+            DC.SaveChanges();
         }
     }
 }

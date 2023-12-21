@@ -23,18 +23,21 @@ namespace BMSHPMS.DSManage.ViewModels.DSDonorInfoVMs
         }
 
         public override void DoAdd()
-        {           
-            base.DoAdd();
+        {
+            DC.Set<DSDonorInfo>().Add(Entity);
+            DC.SaveChanges();
         }
 
         public override void DoEdit(bool updateAllFields = false)
         {
-            base.DoEdit(updateAllFields);
+            DC.Set<DSDonorInfo>().Update(Entity);
+            DC.SaveChanges();
         }
 
         public override void DoDelete()
         {
-            base.DoDelete();
+            DC.Set<DSDonorInfo>().Remove(Entity);
+            DC.SaveChanges();
         }
     }
 }

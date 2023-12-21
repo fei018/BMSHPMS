@@ -26,20 +26,30 @@ namespace BMSHPMS.DSManage.ViewModels.DServiceProjectVMs
         {
             if(DC.Set<DServiceProject>().Any(d => d.SerialCode == Entity.SerialCode))
             {
-                Wtm.MSD.AddModelError("ProjectCode", $"{ToolsHelper.GetDisplayName(()=>Entity.SerialCode)}已存在.");
+                Wtm.MSD.AddModelError("ProjectCode", $"{ToolsHelper.GetDisplayName(()=>Entity.SerialCode)} 已存在.");
                 return;
             }
-            base.DoAdd();
+
+            if (DC.Set<DServiceProject>().Any(d => d.ProjectName == Entity.ProjectName))
+            {
+                Wtm.MSD.AddModelError("ProjectName", $"{ToolsHelper.GetDisplayName(() => Entity.ProjectName)} 已存在.");
+                return;
+            }
+
+            DC.Set<DServiceProject>().Add(Entity);
+            DC.SaveChanges();
         }
 
         public override void DoEdit(bool updateAllFields = false)
         {
-            base.DoEdit(updateAllFields);
+            DC.Set<DServiceProject>().Update(Entity);
+            DC.SaveChanges();
         }
 
         public override void DoDelete()
         {
-            base.DoDelete();
+            DC.Set<DServiceProject>().Remove(Entity);
+            DC.SaveChanges();
         }
     }
 }

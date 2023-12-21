@@ -114,8 +114,8 @@
             <div class="layui-col-md6">
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit lay-filter="dsRegisterform" type="submit">確定</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">清除</button>
+                        <button class="layui-btn" lay-submit lay-filter="dsRegisterSubmit" type="submit">確定</button>
+                        <button type="reset" id="dsRegisterReset" class="layui-btn layui-btn-primary">清除</button>
                     </div>
                 </div>
             </div>
@@ -130,7 +130,7 @@
 <script>
     layui.use(function () {
         let form = layui.form;
-        form.on('submit(dsRegisterform)', function (data) {
+        form.on('submit(dsRegisterSubmit)', function (data) {
 
             let yes = confirm("確定提交登記?");
             if (yes) {
@@ -142,6 +142,14 @@
                 }, 'html');
             }
             return false; //阻止表單跳轉
+        });
+
+        $('#dsRegisterReset').on('click', function (event) {
+            let url = '/DSReception/DSRegister/Register?DSProjectID=' + $('input[name="DSProjectID"]').val();
+
+            $.get(url, function (data) {
+                $('#dsRegisterDiv').html(data);
+            }, 'html');
         });
     });
 </script>

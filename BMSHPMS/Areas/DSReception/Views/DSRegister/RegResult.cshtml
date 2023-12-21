@@ -10,6 +10,7 @@
         padding: 20px;
         margin: 0 auto;
         background-color: #F2F2F2;
+        margin-bottom:100px;
     }
 
         .reg-result .layui-row {
@@ -23,7 +24,9 @@
 
 @if (!string.IsNullOrEmpty(Model.Message))
 {
+    <br />
     <div style="font-size:16px; color:red;">@Model.Message</div>
+    <br />
 }
 
 <div class="reg-result">
@@ -44,9 +47,9 @@
                             {
                                 <div class="layui-form-item">
                                     <div class="layui-inline">
-                                        <label class="layui-form-label">金額:@item.Sum</label>
+                                        <label class="layui-form-label">金額 @item.Sum:</label>
                                         <div class="layui-input-inline">
-                                            <label class="layui-form-label">@item.SerialCode</label>
+                                            <label class="layui-form-label layui-font-red">@item.SerialCode</label>
                                         </div>
                                     </div>
                                 </div>
@@ -65,9 +68,9 @@
                             {
                                 <div class="layui-form-item">
                                     <div class="layui-inline">
-                                        <label class="layui-form-label">金額:@item.Sum</label>
+                                        <label class="layui-form-label">金額 @item.Sum:</label>
                                         <div class="layui-input-inline">
-                                            <label class="layui-form-label">@item.SerialCode</label>
+                                            <label class="layui-form-label layui-font-red">@item.SerialCode</label>
                                         </div>
                                     </div>
                                 </div>
@@ -86,9 +89,9 @@
                             {
                                 <div class="layui-form-item">
                                     <div class="layui-inline">
-                                        <label class="layui-form-label">金額:@item.Sum</label>
+                                        <label class="layui-form-label">金額 @item.Sum:</label>
                                         <div class="layui-input-inline">
-                                            <label class="layui-form-label">@item.SerialCode</label>
+                                            <label class="layui-form-label layui-font-red">@item.SerialCode</label>
                                         </div>
                                     </div>
                                 </div>

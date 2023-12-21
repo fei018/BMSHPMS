@@ -21,6 +21,7 @@ namespace BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs
 
         public List<DSMemorialInfo> MemorialInfos { get; set; }
 
+        public List<ComboSelectListItem> AllDSProjectName { get; set; }
 
         public DSReceiptInfoVM()
         {
@@ -28,43 +29,32 @@ namespace BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs
 
         protected override void InitVM()
         {
-            base.InitVM();
+            AllDSProjectName = DC.Set<DServiceProject>().GetSelectListItems(Wtm, x => x.ProjectName, y => y.ProjectName);
         }
 
         public override void DoAdd()
-        {           
-            base.DoAdd();
+        {
+            DC.Set<DSReceiptInfo>().Add(Entity);
+            DC.SaveChanges();
         }
 
         public override void DoEdit(bool updateAllFields = false)
         {
-            base.DoEdit(updateAllFields);
+            DC.Set<DSReceiptInfo>().Update(Entity);
+            DC.SaveChanges();
         }
 
         public override void DoDelete()
         {
-            base.DoDelete();
+            DC.Set<DSReceiptInfo>().Remove(Entity);
+            DC.SaveChanges();
         }
 
         public async Task InitialDetails()
         {
-            DonorInfos = await DC.Set<DSDonorInfo>().Where(q => q.ReceiptInfoID == Entity.ID).ToListAsync();
-            LongevityInfos = await DC.Set<DSLongevityInfo>().Where(q => q.ReceiptInfoID == Entity.ID).ToListAsync();
-            MemorialInfos = await DC.Set<DSMemorialInfo>().Where(q => q.ReceiptInfoID == Entity.ID).ToListAsync();
-
-            this.SortList();
-        }
-
-        private void SortList()
-        {
-            DonorInfos?.Sort((x, y) => x.SerialCode.CompareTo(y.SerialCode));
-            DonorInfos.Sort((x, y) => x.Sum.Value.CompareTo(y.Sum.Value));
-
-            LongevityInfos?.Sort((x, y) => x.SerialCode.CompareTo(y.SerialCode));
-            LongevityInfos.Sort((x, y) => x.Sum.Value.CompareTo(y.Sum.Value));
-
-            MemorialInfos?.Sort((x, y) => x.SerialCode.CompareTo(y.SerialCode));
-            MemorialInfos.Sort((x, y) => x.Sum.Value.CompareTo(y.Sum.Value));
+            DonorInfos = await DC.Set<DSDonorInfo>().Where(q => q.ReceiptInfoID == Entity.ID).OrderBy(q=>q.Sum).ToListAsync();
+            LongevityInfos = await DC.Set<DSLongevityInfo>().Where(q => q.ReceiptInfoID == Entity.ID).OrderBy(q => q.Sum).ToListAsync();
+            MemorialInfos = await DC.Set<DSMemorialInfo>().Where(q => q.ReceiptInfoID == Entity.ID).OrderBy(q => q.Sum).ToListAsync();
         }
     }
 }

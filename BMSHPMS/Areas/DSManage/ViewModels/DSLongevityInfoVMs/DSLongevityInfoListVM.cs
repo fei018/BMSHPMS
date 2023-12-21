@@ -33,10 +33,10 @@ namespace BMSHPMS.DSManage.ViewModels.DSLongevityInfoVMs
         {
             return new List<GridColumn<DSLongevityInfo_View>>{
                 this.MakeGridHeader(x => x.ReceiptDate_view),
-                this.MakeGridHeader(x => x.ReceiptNumber_view),               
-                this.MakeGridHeader(x => x.Name),
-                this.MakeGridHeader(x => x.Sum),
+                this.MakeGridHeader(x => x.ReceiptNumber_view),
                 this.MakeGridHeader(x => x.SerialCode),
+                this.MakeGridHeader(x => x.Name),
+                this.MakeGridHeader(x => x.Sum,width:80),              
                 this.MakeGridHeader(x => x.DSRemark),               
                 this.MakeGridHeaderAction(width: 200)
             };

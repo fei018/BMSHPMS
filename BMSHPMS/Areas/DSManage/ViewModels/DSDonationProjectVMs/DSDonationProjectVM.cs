@@ -29,18 +29,21 @@ namespace BMSHPMS.DSManage.ViewModels.DSDonationProjectVMs
         }
 
         public override void DoAdd()
-        {           
-            base.DoAdd();
+        {
+            DC.Set<DSDonationProject>().Add(Entity);
+            DC.SaveChanges();
         }
 
         public override void DoEdit(bool updateAllFields = false)
         {
-            base.DoEdit(updateAllFields);
+            DC.Set<DSDonationProject>().Update(Entity);
+            DC.SaveChanges();
         }
 
         public override void DoDelete()
         {
-            base.DoDelete();
+            DC.Set<DSDonationProject>().Remove(Entity);
+            DC.SaveChanges();
         }
     }
 }

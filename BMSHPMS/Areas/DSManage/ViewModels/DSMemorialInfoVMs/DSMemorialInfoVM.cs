@@ -24,17 +24,18 @@ namespace BMSHPMS.DSManage.ViewModels.DSMemorialInfoVMs
 
         public override void DoAdd()
         {           
-            base.DoAdd();
+            //base.DoAdd();
         }
 
         public override void DoEdit(bool updateAllFields = false)
         {
-            base.DoEdit(updateAllFields);
+            DC.Set<DSMemorialInfo>().Update(Entity);
+            DC.SaveChanges();
         }
 
         public override void DoDelete()
         {
-            base.DoDelete();
+            //base.DoDelete();
         }
     }
 }

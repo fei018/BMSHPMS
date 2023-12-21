@@ -46,6 +46,26 @@ namespace BMSHPMS
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
+        #region protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+
+        //    modelBuilder.Entity<DSReceiptInfo>().HasMany(x => x.DSDonorInfos)
+        //                                        .WithOne(x => x.ReceiptInfo).HasForeignKey(x => x.ReceiptInfoID)
+        //                                        .OnDelete(DeleteBehavior.Restrict);
+
+        //    modelBuilder.Entity<DSReceiptInfo>().HasMany(x => x.DSLongevityInfos)
+        //                                        .WithOne(x => x.ReceiptInfo).HasForeignKey(x => x.ReceiptInfoID)
+        //                                        .OnDelete(DeleteBehavior.Restrict);
+
+        //    modelBuilder.Entity<DSReceiptInfo>().HasMany(x => x.DSMemorialInfos)
+        //                                        .WithOne(x => x.ReceiptInfo).HasForeignKey(x => x.ReceiptInfoID)
+        //                                        .OnDelete(DeleteBehavior.Restrict);
+        //}
+        #endregion
+
+
         #region 數據庫初始化
         public override async Task<bool> DataInit(object allModules, bool IsSpa)
         {
@@ -63,7 +83,7 @@ namespace BMSHPMS
                 var user = new FrameworkUser
                 {
                     ITCode = "admin",
-                    Password = Utils.GetMD5String("bmsh2808"),
+                    Password = Utils.GetMD5String("000000"),
                     IsValid = true,
                     Name = "Admin"
                 };

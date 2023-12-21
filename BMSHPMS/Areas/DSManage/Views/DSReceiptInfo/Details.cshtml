@@ -7,18 +7,20 @@
 }
 
 <wt:form vm="@Model" style="font-size:16px;">
-    <wt:row items-per-row="ItemsPerRowEnum.Two">
+    <wt:row items-per-row="ItemsPerRowEnum.Two">      
+        <wt:display field="Entity.DSProjectName" />
         <wt:display field="Entity.ReceiptDate"/>
-        <wt:display field="Entity.ReceiptNumber" />
+        <wt:display field="Entity.ReceiptNumber" />       
         <wt:display field="Entity.ReceiptOwn" />
         <wt:display field="Entity.ContactName" />
         <wt:display field="Entity.ContactPhone" />
         <wt:display field="Entity.Sum" />
-        <wt:display field="Entity.DSRemark" />           
+        <wt:display field="Entity.DSRemark" /> 
+        <wt:display field="Entity.CreateBy" />
     </wt:row>
     @if (donors != null && donors.Count > 0)
     {
-        <wt:fieldset title="功德主">
+        <wt:fieldset title="功德主" style="border-color:gray">
             @foreach (var item in donors)
             {
                 <div class="layui-form-item">
@@ -69,7 +71,7 @@
     }
     @if (longevitys != null && longevitys.Count > 0)
     {
-        <wt:fieldset title="延生位">
+        <wt:fieldset title="延生位" style="border-color:gray">
             @foreach (var item in longevitys)
             {
                 <div class="layui-form-item">
@@ -106,7 +108,7 @@
     }
     @if (memorials != null && memorials.Count > 0)
     {
-        <wt:fieldset title="附薦位">
+        <wt:fieldset title="附薦位" style="border-color:gray">
             @foreach (var item in memorials)
             {
                 <div class="layui-form-item">

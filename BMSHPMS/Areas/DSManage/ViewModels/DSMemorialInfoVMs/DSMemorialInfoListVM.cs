@@ -37,7 +37,7 @@ namespace BMSHPMS.DSManage.ViewModels.DSMemorialInfoVMs
                 this.MakeGridHeader(x => x.SerialCode),
                 this.MakeGridHeader(x => x.DeceasedName),
                 this.MakeGridHeader(x => x.BenefactorName),                
-                this.MakeGridHeader(x => x.Sum),
+                this.MakeGridHeader(x => x.Sum,width:80),
                 this.MakeGridHeader(x => x.DSRemark),               
                 this.MakeGridHeaderAction(width: 200)
             };

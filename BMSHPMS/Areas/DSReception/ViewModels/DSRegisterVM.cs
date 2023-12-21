@@ -60,9 +60,9 @@ namespace BMSHPMS.DSReception.ViewModels
                 }
             }
 
-            DSDonationProject_Donors.Sort((x, y) => x.Sum.Value.CompareTo(y.Sum));
-            DSDonationProject_Longevitys.Sort((x, y) => x.Sum.Value.CompareTo(y.Sum));
-            DSDonationProject_Memorials.Sort((x, y) => x.Sum.Value.CompareTo(y.Sum));
+            DSDonationProject_Donors?.Sort((x, y) => x.Sum.Value.CompareTo(y.Sum));
+            DSDonationProject_Longevitys?.Sort((x, y) => x.Sum.Value.CompareTo(y.Sum));
+            DSDonationProject_Memorials?.Sort((x, y) => x.Sum.Value.CompareTo(y.Sum));
         }
         #endregion
 
@@ -85,7 +85,6 @@ namespace BMSHPMS.DSReception.ViewModels
                 regResultVM.DonorInfos = await   DC.Set<DSDonorInfo>().Where(q => q.ReceiptInfoID == exsitReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
                 regResultVM.LongevityInfos = await DC.Set<DSLongevityInfo>().Where(q => q.ReceiptInfoID == exsitReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
                 regResultVM.MemorialInfos = await DC.Set<DSMemorialInfo>().Where(q => q.ReceiptInfoID == exsitReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
-                regResultVM.Sort();
 
                 regResultVM.Message = "收據號碼已存在";
 
@@ -259,7 +258,7 @@ namespace BMSHPMS.DSReception.ViewModels
             regResultVM.DonorInfos = await DC.Set<DSDonorInfo>().Where(q => q.ReceiptInfoID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
             regResultVM.LongevityInfos = await DC.Set<DSLongevityInfo>().Where(q => q.ReceiptInfoID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
             regResultVM.MemorialInfos = await DC.Set<DSMemorialInfo>().Where(q => q.ReceiptInfoID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
-            regResultVM.Sort();
+
             regResultVM.Message = "登記成功.";
 
             return regResultVM;

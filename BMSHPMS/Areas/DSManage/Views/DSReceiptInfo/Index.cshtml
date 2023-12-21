@@ -2,14 +2,15 @@
 @inject IStringLocalizer<Program> Localizer;
 
 <wt:searchpanel vm="@Model" reset-btn="true">
-<wt:row items-per-row="ItemsPerRowEnum.Three">
-<wt:textbox field="Searcher.ReceiptNumber" />
-<wt:textbox field="Searcher.ReceiptOwn" />
-<wt:textbox field="Searcher.ContactName" />
-<wt:textbox field="Searcher.ContactPhone" />
-<wt:textbox field="Searcher.Sum" />
-<wt:datetime field="Searcher.ReceiptDate" />
-@* <input type="date" asp-for="Searcher.ReceiptDate" /> *@
-</wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.Three">
+        <wt:combobox field="Searcher.DSProjectName" items="Searcher.AllDSProjectName" />
+        <wt:textbox field="Searcher.ReceiptNumber" />      
+        <wt:textbox field="Searcher.ReceiptOwn" />
+        <wt:textbox field="Searcher.ContactName" />
+        <wt:textbox field="Searcher.ContactPhone" />
+        <wt:textbox field="Searcher.Sum" />
+        <wt:datetime field="Searcher.ReceiptDate" />
+        @* <input type="date" asp-for="Searcher.ReceiptDate" /> *@
+    </wt:row>
 </wt:searchpanel>
 <wt:grid vm="@Model" url="/DSManage/DSReceiptInfo/Search" hidden-checkbox />

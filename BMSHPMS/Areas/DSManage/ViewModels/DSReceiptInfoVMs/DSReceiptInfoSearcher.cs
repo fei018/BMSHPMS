@@ -30,8 +30,14 @@ namespace BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs
         [Display(Name = "收據日期")]
         public DateTime? ReceiptDate { get; set; }
 
+        [Display(Name = "法會項目")]
+        public string DSProjectName { get; set; }
+
+        public List<ComboSelectListItem> AllDSProjectName { get; set; }
+
         protected override void InitVM()
         {
+            AllDSProjectName = DC.Set<DServiceProject>().GetSelectListItems(Wtm, x => x.ProjectName, y => y.ProjectName);
         }
 
     }

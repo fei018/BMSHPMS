@@ -24,7 +24,7 @@ namespace BMSHPMS.Controllers
             if (Wtm.ConfigInfo.IsQuickDebug == true)
             {
                 vm.ITCode = "admin";
-                vm.Password = "bmsh2808";
+                vm.Password = "000000";
             }
             return View(vm);
         }

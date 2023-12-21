@@ -1,7 +1,10 @@
 ﻿using BMSHPMS.DSReception.ViewModels;
+using BMSHPMS.Helper;
+using BMSHPMS.Models.DharmaService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Mvc;
@@ -12,7 +15,7 @@ namespace BMSHPMS.Areas.DSReception.Controllers
     [ActionDescription("功德登記")]
     public class DSRegisterController : BaseController
     {
-        [ActionDescription("登記")]
+        [ActionDescription("Index")]
         public IActionResult Index()
         {
             DSRegisterVM vm = Wtm.CreateVM<DSRegisterVM>();
@@ -20,6 +23,7 @@ namespace BMSHPMS.Areas.DSReception.Controllers
             return PartialView(vm);
         }
 
+        [ActionDescription("登記")]
         public IActionResult Register(DSRegisterVM vm)
         {
             try
@@ -33,6 +37,7 @@ namespace BMSHPMS.Areas.DSReception.Controllers
             }
         }
 
+        [ActionDescription("登記")]
         [HttpPost]
         public async Task<IActionResult> Register()
         {
