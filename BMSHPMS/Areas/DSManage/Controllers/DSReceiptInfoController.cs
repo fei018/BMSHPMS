@@ -188,34 +188,42 @@ namespace BMSHPMS.DSManage.Controllers
         #endregion
 
         #region Import
-		//[ActionDescription("Sys.Import")]
-  //      public ActionResult Import()
-  //      {
-  //          var vm = Wtm.CreateVM<DSReceiptInfoImportVM>();
-  //          return PartialView(vm);
-  //      }
+        //[ActionDescription("Sys.Import")]
+        //      public ActionResult Import()
+        //      {
+        //          var vm = Wtm.CreateVM<DSReceiptInfoImportVM>();
+        //          return PartialView(vm);
+        //      }
 
-  //      [HttpPost]
-  //      [ActionDescription("Sys.Import")]
-  //      public ActionResult Import(DSReceiptInfoImportVM vm, IFormCollection nouse)
-  //      {
-  //          if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
-  //          {
-  //              return PartialView(vm);
-  //          }
-  //          else
-  //          {
-  //              return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
-  //          }
-  //      }
+        //      [HttpPost]
+        //      [ActionDescription("Sys.Import")]
+        //      public ActionResult Import(DSReceiptInfoImportVM vm, IFormCollection nouse)
+        //      {
+        //          if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
+        //          {
+        //              return PartialView(vm);
+        //          }
+        //          else
+        //          {
+        //              return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
+        //          }
+        //      }
         #endregion
 
+        #region Export
         [ActionDescription("Sys.Export")]
         [HttpPost]
         public IActionResult ExportExcel(DSReceiptInfoListVM vm)
         {
             return vm.GetExportData();
         }
+        #endregion
 
+        [HttpPost]
+        public IActionResult Test(string[] IDs)
+        {
+
+            return Content(IDs.ToString());
+        }
     }
 }

@@ -35,10 +35,10 @@ namespace BMSHPMS.DSManage.ViewModels.DSDonorInfoVMs
                 this.MakeGridHeader(x => x.ReceiptDate_view),
                 this.MakeGridHeader(x => x.ReceiptNumber_view),
                 this.MakeGridHeader(x => x.SerialCode),
+                this.MakeGridHeader(x => x.Sum,width:80),
                 this.MakeGridHeader(x => x.LongevityName),
                 this.MakeGridHeader(x => x.DeceasedName),
-                this.MakeGridHeader(x => x.BenefactorName),
-                this.MakeGridHeader(x => x.Sum,width:80),              
+                this.MakeGridHeader(x => x.BenefactorName),                              
                 this.MakeGridHeader(x => x.DSRemark),
                 this.MakeGridHeaderAction(width: 200)
             };

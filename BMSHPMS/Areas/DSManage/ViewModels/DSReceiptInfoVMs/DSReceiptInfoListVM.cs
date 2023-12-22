@@ -27,6 +27,7 @@ namespace BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs
                 //this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
                 //this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("DSReceiptInfo", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
+                this.MakeAction("DSReceiptInfo","Test","test","test title", GridActionParameterTypesEnum.MultiIds,"DSManage").SetOnClickScript("test"),
             };
         }
 
@@ -35,11 +36,11 @@ namespace BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs
         {
             return new List<GridColumn<DSReceiptInfo_View>>{
                 this.MakeGridHeader(x => x.ReceiptDate),
-                this.MakeGridHeader(x => x.ReceiptNumber),               
+                this.MakeGridHeader(x => x.ReceiptNumber),
+                this.MakeGridHeader(x => x.Sum,width:100),
                 this.MakeGridHeader(x => x.ReceiptOwn),
                 this.MakeGridHeader(x => x.ContactName),
-                this.MakeGridHeader(x => x.ContactPhone),
-                this.MakeGridHeader(x => x.Sum,width:100),
+                this.MakeGridHeader(x => x.ContactPhone),                
                 this.MakeGridHeader(x => x.DSProjectName),
                 this.MakeGridHeader(x => x.DSRemark),              
                 this.MakeGridHeaderAction(width: 200)
