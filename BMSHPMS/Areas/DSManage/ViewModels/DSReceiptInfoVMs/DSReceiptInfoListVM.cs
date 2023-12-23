@@ -35,13 +35,13 @@ namespace BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs
         protected override IEnumerable<IGridColumn<DSReceiptInfo_View>> InitGridHeader()
         {
             return new List<GridColumn<DSReceiptInfo_View>>{
-                this.MakeGridHeader(x => x.ReceiptDate),
-                this.MakeGridHeader(x => x.ReceiptNumber),
+                this.MakeGridHeader(x => x.ReceiptDate,width:120),
+                this.MakeGridHeader(x => x.ReceiptNumber,width:120),              
                 this.MakeGridHeader(x => x.Sum,width:100),
+                this.MakeGridHeader(x => x.DSProjectName),
                 this.MakeGridHeader(x => x.ReceiptOwn),
                 this.MakeGridHeader(x => x.ContactName),
-                this.MakeGridHeader(x => x.ContactPhone),                
-                this.MakeGridHeader(x => x.DSProjectName),
+                this.MakeGridHeader(x => x.ContactPhone),                              
                 this.MakeGridHeader(x => x.DSRemark),              
                 this.MakeGridHeaderAction(width: 200)
             };

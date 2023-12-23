@@ -5,9 +5,9 @@
     <wt:row items-per-row="ItemsPerRowEnum.Three">
         <wt:textbox field="Searcher.ReceiptNumber" />
         <wt:textbox field="Searcher.SerialCode" />      
-        <wt:textbox field="Searcher.Sum" />
-        <wt:textbox field="Searcher.BenefactorName" />     
+        <wt:textbox field="Searcher.Sum" />            
         <wt:textbox field="Searcher.DeceasedName" />
+        <wt:textbox field="Searcher.BenefactorName" />
     </wt:row>
 </wt:searchpanel>
-<wt:grid vm="@Model" url="/DSManage/DSMemorialInfo/Search" hidden-grid-index />
+<wt:grid vm="@Model" url="/DSManage/DSMemorialInfo/Search" multi-line/>

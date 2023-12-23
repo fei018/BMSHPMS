@@ -30,8 +30,16 @@ namespace BMSHPMS.DSManage.ViewModels.DSLongevityInfoVMs
 
         public override void DoEdit(bool updateAllFields = false)
         {
-            DC.Set<DSLongevityInfo>().Update(Entity);
-            DC.SaveChanges();
+            var old = DC.Set<DSLongevityInfo>().Find(Entity.ID);
+            if (old != null)
+            {
+                old.Name = Entity.Name;
+                old.DSRemark = Entity.DSRemark;
+                old.UpdateBy = LoginUserInfo.Name;
+                old.UpdateTime = DateTime.Now;
+                DC.UpdateEntity(old);
+                DC.SaveChanges();
+            }
         }
 
         public override void DoDelete()

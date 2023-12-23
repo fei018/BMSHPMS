@@ -41,7 +41,7 @@ namespace BMSHPMS.Models.DharmaService
         [Display(Name = "收據ID")]
         [Comment("收據ID")]
         [Required(ErrorMessage = "Validate.{0}required")]
-        public Guid ReceiptInfoID { get; set; }
+        public Guid? ReceiptInfoID { get; set; }
 
         [Display(Name = "收據")]
         [Comment("收據")]

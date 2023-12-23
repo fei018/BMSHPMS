@@ -30,8 +30,18 @@ namespace BMSHPMS.DSManage.ViewModels.DSDonorInfoVMs
 
         public override void DoEdit(bool updateAllFields = false)
         {
-            DC.Set<DSDonorInfo>().Update(Entity);
-            DC.SaveChanges();
+            var old = DC.Set<DSDonorInfo>().Find(Entity.ID);
+            if (old != null)
+            {
+                old.BenefactorName = Entity.BenefactorName;
+                old.DeceasedName = Entity.DeceasedName;
+                old.LongevityName = Entity.LongevityName;
+                old.DSRemark = Entity.DSRemark;
+                old.UpdateBy = LoginUserInfo.Name;
+                old.UpdateTime = DateTime.Now;
+                DC.UpdateEntity(old);
+                DC.SaveChanges();
+            }          
         }
 
         public override void DoDelete()

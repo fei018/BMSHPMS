@@ -29,8 +29,17 @@ namespace BMSHPMS.DSManage.ViewModels.DSMemorialInfoVMs
 
         public override void DoEdit(bool updateAllFields = false)
         {
-            DC.Set<DSMemorialInfo>().Update(Entity);
-            DC.SaveChanges();
+            var old = DC.Set<DSMemorialInfo>().Find(Entity.ID);
+            if (old != null)
+            {
+                old.BenefactorName = Entity.BenefactorName;
+                old.DeceasedName = Entity.DeceasedName;
+                old.DSRemark = Entity.DSRemark;
+                old.UpdateBy = LoginUserInfo.Name;
+                old.UpdateTime = DateTime.Now;
+                DC.UpdateEntity(old);
+                DC.SaveChanges();
+            }
         }
 
         public override void DoDelete()

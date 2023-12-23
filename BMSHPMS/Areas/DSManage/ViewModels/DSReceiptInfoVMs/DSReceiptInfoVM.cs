@@ -40,8 +40,23 @@ namespace BMSHPMS.DSManage.ViewModels.DSReceiptInfoVMs
 
         public override void DoEdit(bool updateAllFields = false)
         {
-            DC.Set<DSReceiptInfo>().Update(Entity);
-            DC.SaveChanges();
+            var old = DC.Set<DSReceiptInfo>().Find(Entity.ID);
+            if (old != null)
+            {
+                old.ContactName = Entity.ContactName;
+                old.ReceiptOwn = Entity.ReceiptOwn;
+                old.Sum = Entity.Sum;
+                old.DSRemark = Entity.DSRemark;
+                old.ContactPhone = Entity.ContactPhone;
+                old.ReceiptNumber = Entity.ReceiptNumber;
+                old.DSProjectName = Entity.DSProjectName;
+                old.UpdateBy = LoginUserInfo.Name;
+                old.UpdateTime = DateTime.Now;
+                old.ReceiptDate = Entity.ReceiptDate;
+
+                DC.UpdateEntity(old);
+                DC.SaveChanges();
+            }
         }
 
         public override void DoDelete()
