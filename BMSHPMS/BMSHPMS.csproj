@@ -24,21 +24,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Areas\DSManage\ViewModels\DSDonationProjectVMs\DSDonationProjectImportVM.cs" />
-    <Compile Remove="Areas\DSManage\ViewModels\DSDonorInfoVMs\DSDonorInfoImportVM.cs" />
-    <Compile Remove="Areas\DSManage\ViewModels\DServiceProjectVMs\DServiceProjectImportVM.cs" />
-    <Compile Remove="Areas\DSManage\ViewModels\DSLongevityInfoVMs\DSLongevityInfoImportVM.cs" />
-    <Compile Remove="Areas\DSManage\ViewModels\DSMemorialInfoVMs\DSMemorialInfoImportVM.cs" />
-    <Compile Remove="Areas\DSManage\ViewModels\DSReceiptInfoVMs\DSReceiptInfoImportVM.cs" />
+    <Compile Remove="Areas\DSManage\ViewModels\Opt_DonationProjectVMs\DSDonationProjectImportVM.cs" />
+    <Compile Remove="Areas\DSManage\ViewModels\Info_DonorVMs\DSDonorInfoImportVM.cs" />
+    <Compile Remove="Areas\DSManage\ViewModels\Opt_DharmaServiceVMs\DServiceProjectImportVM.cs" />
+    <Compile Remove="Areas\DSManage\ViewModels\Info_LongevityVMs\DSLongevityInfoImportVM.cs" />
+    <Compile Remove="Areas\DSManage\ViewModels\Info_MemorialVMs\DSMemorialInfoImportVM.cs" />
+    <Compile Remove="Areas\DSManage\ViewModels\Info_ReceiptVMs\DSReceiptInfoImportVM.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Areas\DSManage\Views\DSDonationProject\Import.cshtml" />
-    <Content Remove="Areas\DSManage\Views\DSDonorInfo\Import.cshtml" />
-    <Content Remove="Areas\DSManage\Views\DServiceProject\Import.cshtml" />
-    <Content Remove="Areas\DSManage\Views\DSLongevityInfo\Import.cshtml" />
-    <Content Remove="Areas\DSManage\Views\DSMemorialInfo\Import.cshtml" />
-    <Content Remove="Areas\DSManage\Views\DSReceiptInfo\Import.cshtml" />
+    <Content Remove="Areas\DSManage\Views\Opt_DonationProject\Import.cshtml" />
+    <Content Remove="Areas\DSManage\Views\Info_Donor\Import.cshtml" />
+    <Content Remove="Areas\DSManage\Views\Opt_DharmaService\Import.cshtml" />
+    <Content Remove="Areas\DSManage\Views\Info_Longevity\Import.cshtml" />
+    <Content Remove="Areas\DSManage\Views\Info_Memorial\Import.cshtml" />
+    <Content Remove="Areas\DSManage\Views\Info_Receipt\Import.cshtml" />
     <Content Remove="wwwroot\vue.js" />
   </ItemGroup>
 
@@ -47,6 +47,7 @@
 
   <ItemGroup>
     <PackageReference Include="Elsa.Designer.Components.Web" Version="2.12.0" />
+    <PackageReference Include="Magicodes.IE.Excel.AspNetCore" Version="2.7.4.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.25" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.25">
       <PrivateAssets>all</PrivateAssets>

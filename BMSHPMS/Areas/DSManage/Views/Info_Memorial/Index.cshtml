@@ -1,0 +1,13 @@
+﻿@model BMSHPMS.DSManage.ViewModels.Info_MemorialVMs.Info_MemorialListVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+    <wt:row items-per-row="ItemsPerRowEnum.Three">
+        <wt:textbox field="Searcher.ReceiptNumber" />
+        <wt:textbox field="Searcher.SerialCode" />      
+        <wt:textbox field="Searcher.Sum" />            
+        <wt:textbox field="Searcher.DeceasedName" />
+        <wt:textbox field="Searcher.BenefactorName" />
+    </wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" url="/DSManage/Info_Memorial/Search" hidden-grid-index />

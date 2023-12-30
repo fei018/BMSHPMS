@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
+﻿using NPOI.Util.Collections;
 using System;
-using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Text.RegularExpressions;
+using WalkingTec.Mvvm.Core;
 
 namespace BMSHPMS.Helper
 {
@@ -25,5 +27,27 @@ namespace BMSHPMS.Helper
             var attr = property?.GetCustomAttributes(typeof(DisplayAttribute), false).FirstOrDefault() as DisplayAttribute;
             return attr?.GetName() ?? exp.Member.Name;
         }
+
+        #region 用 T1 Properties 建立新 VM
+        /// <summary>
+        /// 用 T1 Properties 建立新 VM
+        /// </summary>
+        /// <typeparam name="T1">in Entity</typeparam>
+        /// <typeparam name="T2">out New VM</typeparam>
+        /// <param name="t1"></param>
+        /// <returns></returns>
+        public static T2 CreateNewObjectUseProperties<T1,T2>(in T1 t1)
+        {
+            T2 t2 = Activator.CreateInstance<T2>();
+
+            var props = t2.GetType().GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            foreach (var p2 in props)
+            {
+                p2.SetValue(t2, t1.GetPropertyValue(p2.Name));
+            }
+
+            return t2;
+        }
+        #endregion
     }
 }

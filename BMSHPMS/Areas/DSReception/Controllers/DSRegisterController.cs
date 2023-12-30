@@ -19,7 +19,7 @@ namespace BMSHPMS.Areas.DSReception.Controllers
         public IActionResult Index()
         {
             DSRegisterVM vm = Wtm.CreateVM<DSRegisterVM>();
-            vm.FillDSProjectList();
+            vm.FillDharmaServiceList();
             return PartialView(vm);
         }
 
@@ -28,7 +28,7 @@ namespace BMSHPMS.Areas.DSReception.Controllers
         {
             try
             {
-                vm.FillDSDonationProjectList(vm.DSProjectID);
+                vm.FillDonationProjectList(vm.DharmaServiceID);
                 return PartialView(vm);
             }
             catch (Exception ex)

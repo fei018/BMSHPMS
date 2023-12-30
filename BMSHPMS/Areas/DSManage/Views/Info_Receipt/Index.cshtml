@@ -1,0 +1,17 @@
+﻿@model BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs.Info_ReceiptListVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+    <wt:row items-per-row="ItemsPerRowEnum.Three">
+        <wt:combobox field="Searcher.DharmaServiceName" items="Searcher.AllDharmaServiceName" />
+        <wt:textbox field="Searcher.ReceiptNumber" />    
+        <wt:textbox field="Searcher.Sum" />
+        <wt:textbox field="Searcher.ReceiptOwn" />
+        <wt:textbox field="Searcher.ContactName" />
+        <wt:textbox field="Searcher.ContactPhone" />      
+        <wt:datetime field="Searcher.ReceiptDate" />
+    </wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" url="/DSManage/Info_Receipt/Search" limits="new int[]{10,20,50,80,100,150,200,1000}" hidden-grid-index />
+
+

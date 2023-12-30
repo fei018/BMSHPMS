@@ -5,7 +5,7 @@ using WalkingTec.Mvvm.Core.Extensions;
 
 namespace BMSHPMS.Helper
 {
-    public static class DSProjectSelectHelper
+    public static class DharmaServiceSelectHelper
     {
         public static class DonationCategory
         {
@@ -29,7 +29,7 @@ namespace BMSHPMS.Helper
         public static void GetDharmaServiceCategoryComboSelectItems(WTMContext wtm)
         {
             var dc = wtm.DC;
-            dc.Set<DServiceProject>().GetSelectListItems(wtm, x => x.ProjectName, y=>y.ProjectName);
+            dc.Set<Opt_DharmaService>().GetSelectListItems(wtm, x => x.ServiceName, y=>y.ServiceName);
         }
     }
 }

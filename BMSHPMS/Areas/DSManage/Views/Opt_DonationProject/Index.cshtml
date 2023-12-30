@@ -1,0 +1,12 @@
+﻿@model BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs.Opt_DonationProjectListVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+    <wt:row items-per-row="ItemsPerRowEnum.Three">
+        <wt:textbox field="Searcher.Sum" />
+        <wt:textbox field="Searcher.SumCode" />
+        <wt:combobox field="Searcher.DonationCategory" items="Searcher.AllDSDonationCategory" empty-text="@Localizer["Sys.All"]" />
+        <wt:combobox field="Searcher.DharmaServiceID" items="Searcher.AllDharmaService" empty-text="@Localizer["Sys.All"]" />
+    </wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" url="/DSManage/Opt_DonationProject/Search" />

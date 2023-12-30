@@ -7,11 +7,13 @@ namespace BMSHPMS.DSReception.ViewModels
     {
         public string Message { get; set; }
 
-        public List<DSDonorInfo> DonorInfos { get; set; } = new List<DSDonorInfo>();
+        public string ReceiptNumber { get; set; }
 
-        public List<DSLongevityInfo> LongevityInfos { get; set; } = new List<DSLongevityInfo>();
+        public List<Info_Donor> DonorInfos { get; set; } = new List<Info_Donor>();
 
-        public List<DSMemorialInfo> MemorialInfos { get; set; } = new List<DSMemorialInfo>();
+        public List<Info_Longevity> LongevityInfos { get; set; } = new List<Info_Longevity>();
+
+        public List<Info_Memorial> MemorialInfos { get; set; } = new List<Info_Memorial>();
 
         public void Sort()
         {

@@ -29,12 +29,23 @@
     <br />
 }
 
-<div class="reg-result">
-    @if (donors.Count > 0 || longevitys.Count > 0 || memorials.Count > 0)
-    {
+@if (donors.Count > 0 || longevitys.Count > 0 || memorials.Count > 0)
+{
+    <div class="reg-result" id="reg-result">
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
             <legend>功德項目登記結果</legend>
         </fieldset>
+
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-form-item">
+                    <lable class="layui-form-label">收據號碼:</lable>
+                    <div class="layui-input-block">
+                        <lable class="layui-form-label">@Model.ReceiptNumber</lable>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="layui-row layui-col-space15">
             @if (donors.Count > 0)
@@ -101,5 +112,26 @@
                 </div>
             }
         </div>
+    </div>
+    @* <div class="layui-row" style="margin-bottom:100px;">
+        <div class="layui-col-md6">
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" onclick="printRegResult()">打印結果</button>
+                </div>
+            </div>
+        </div>
+    </div> *@
+}
+
+
+@* <script>
+    function printRegResult(){
+        let oldbody = window.document.body.innerHTML;
+        let printObj = document.getElementById('reg-result');
+        printObj.style = "";
+        window.document.body.innerHTML = printObj.innerHTML
+        window.print();
+        window.document.body.innerHTML = oldbody;
     }
-</div>
+</script> *@

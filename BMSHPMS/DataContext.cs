@@ -13,18 +13,18 @@ namespace BMSHPMS
         public DbSet<FrameworkUser> FrameworkUsers { get; set; }
 
 
-        public DbSet<DSReceiptInfo> DSReceiptInfos { get; set; }
+        public DbSet<Info_Receipt> Info_Receipts { get; set; }
 
-        public DbSet<DServiceProject> DServiceProjects { get; set; }
+        public DbSet<Opt_DharmaService> Opt_DharmaServices { get; set; }
 
-        public DbSet<DSDonationProject> DSDonationProjects { get; set; }
+        public DbSet<Opt_DonationProject> Opt_DonationProjects { get; set; }
 
 
-        public DbSet<DSDonorInfo> DSDonorInfos { get; set; }
+        public DbSet<Info_Donor> Info_Donors { get; set; }
 
-        public DbSet<DSLongevityInfo> DSLongevityInfos { get; set; }
+        public DbSet<Info_Longevity> Info_Longevitys { get; set; }
 
-        public DbSet<DSMemorialInfo> DSMemorialInfos { get; set; }
+        public DbSet<Info_Memorial> Info_Memorials { get; set; }
         #endregion
 
 
@@ -96,8 +96,6 @@ namespace BMSHPMS
 
                 Set<FrameworkUser>().Add(user);
                 Set<FrameworkUserRole>().Add(userrole);
-
-
 
                 await SaveChangesAsync();
             }

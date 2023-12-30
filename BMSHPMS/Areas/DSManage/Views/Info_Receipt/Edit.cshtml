@@ -1,0 +1,22 @@
+﻿@model BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs.Info_ReceiptVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+    <wt:row items-per-row="ItemsPerRowEnum.Two">
+        <wt:combobox field="Entity.DharmaServiceName" items="AllOpt_DharmaServiceName" />
+        <wt:textbox field="Entity.ReceiptNumber" />
+        <wt:textbox field="Entity.Sum" />
+        <wt:textbox field="Entity.ReceiptOwn" />
+        <wt:textbox field="Entity.ContactName" />
+        <wt:textbox field="Entity.ContactPhone" />     
+        <wt:datetime field="Entity.ReceiptDate" />
+    </wt:row>
+    <wt:row>
+        <wt:textbox field="Entity.DSRemark" />
+    </wt:row>
+    <wt:hidden field="Entity.ID" />
+    <wt:row align="AlignEnum.Right">
+        <wt:submitbutton />
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

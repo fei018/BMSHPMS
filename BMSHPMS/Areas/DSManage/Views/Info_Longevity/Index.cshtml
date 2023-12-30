@@ -1,0 +1,13 @@
+﻿@model BMSHPMS.DSManage.ViewModels.Info_LongevityVMs.Info_LongevityListVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+    <wt:row items-per-row="ItemsPerRowEnum.Three">
+        <wt:textbox field="Searcher.ReceiptNumber" />
+        <wt:textbox field="Searcher.SerialCode" />
+        <wt:textbox field="Searcher.Sum" />        
+        @* <wt:datetime field="Searcher.ReceiptDate" /> *@
+        <wt:textbox field="Searcher.Name" />     
+    </wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" url="/DSManage/Info_Longevity/Search" hidden-grid-index />

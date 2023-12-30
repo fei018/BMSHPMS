@@ -1,8 +1,8 @@
 ﻿@model DSRegisterVM
 @{
-    var donors = Model.DSDonationProject_Donors;
-    var longevitys = Model.DSDonationProject_Longevitys;
-    var memorials = Model.DSDonationProject_Memorials;
+    var donors = Model.DonationProject_Donors;
+    var longevitys = Model.DonationProject_Longevitys;
+    var memorials = Model.DonationProject_Memorials;
 
 }
 
@@ -120,7 +120,7 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" name="DSProjectID" value="@Model.DSProjectID" />
+        <input type="hidden" name="DharmaServiceID" value="@Model.DharmaServiceID" />
     </form>
 </div>
 
@@ -145,7 +145,7 @@
         });
 
         $('#dsRegisterReset').on('click', function (event) {
-            let url = '/DSReception/DSRegister/Register?DSProjectID=' + $('input[name="DSProjectID"]').val();
+            let url = '/DSReception/DSRegister/Register?DharmaServiceID=' + $('input[name="DharmaServiceID"]').val();
 
             $.get(url, function (data) {
                 $('#dsRegisterDiv').html(data);

@@ -699,3 +699,20 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\zh-Hant\Microsoft.Co
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Debug\net6.0\BMSHPMS.sourcelink.json
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Debug\net6.0\BMSHPMS.Resources.Program - 複製.zh.resources
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\appsettings - 複製.json
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\Collections.Pooled.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\DynamicExpresso.Core.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\Magicodes.IE.Core.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\Magicodes.IE.EPPlus.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\Magicodes.IE.Excel.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\Magicodes.IE.Excel.AspNetCore.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\SkiaSharp.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\System.Linq.Dynamic.Core.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\zh-Hans\Magicodes.IE.Core.resources.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\linux-arm\native\libSkiaSharp.so
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\linux-arm64\native\libSkiaSharp.so
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\linux-musl-x64\native\libSkiaSharp.so
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\linux-x64\native\libSkiaSharp.so
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\osx\native\libSkiaSharp.dylib
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\win-arm64\native\libSkiaSharp.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\win-x64\native\libSkiaSharp.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\win-x86\native\libSkiaSharp.dll
