@@ -8,6 +8,8 @@ using WalkingTec.Mvvm.Core.Extensions;
 using BMSHPMS.Models.DharmaService;
 using NetBox.Extensions;
 using Microsoft.EntityFrameworkCore;
+using EFCore.BulkExtensions;
+using BMSHPMS.Helper;
 
 
 namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
@@ -22,6 +24,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
         public List<Info_Memorial> MemorialInfos { get; set; }
 
         public List<ComboSelectListItem> AllOpt_DharmaServiceName { get; set; }
+
+        
 
         public Info_ReceiptVM()
         {
@@ -61,7 +65,42 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 
         public override void DoDelete()
         {
-            DC.Set<Info_Receipt>().Remove(Entity);
+            var dc = DC as DataContext;
+
+            if (Entity.IsDataValid)
+            {
+                //Entity.IsDataValid = false;
+                //Entity.UpdateBy = LoginUserInfo.Name;
+                //Entity.UpdateTime = DateTime.Now;
+                //DC.UpdateProperty(Entity, x => x.IsDataValid);
+                //DC.UpdateProperty(Entity, x => x.UpdateBy);
+                //DC.UpdateProperty(Entity, x => x.UpdateTime);
+
+                dc.FakeDeleteEntity(Entity, Wtm);
+
+                // 功德主 標記刪除
+                DC.Set<Info_Donor>().Where(x => x.ReceiptID == Entity.ID).ToList().ForEach(x =>
+                {
+                    dc.FakeDeleteEntity(x, Wtm);
+                });
+
+                // 延生 標記刪除
+                DC.Set<Info_Longevity>().Where(x => x.ReceiptID == Entity.ID).ToList().ForEach(x =>
+                {
+                    dc.FakeDeleteEntity(x, Wtm);
+                });
+
+                // 附薦 標記刪除
+                DC.Set<Info_Memorial>().Where(x => x.ReceiptID == Entity.ID).ToList().ForEach(x =>
+                {
+                    dc.FakeDeleteEntity(x, Wtm);
+                });
+            }
+            else
+            {
+                DC.DeleteEntity(Entity);
+            }
+
             DC.SaveChanges();
         }
 
@@ -71,5 +110,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
             LongevityInfos = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
             MemorialInfos = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
         }
+
+        #region MyRegion
+
+        #endregion
     }
 }

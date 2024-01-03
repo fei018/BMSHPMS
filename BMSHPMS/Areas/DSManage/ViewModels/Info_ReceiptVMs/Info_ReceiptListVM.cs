@@ -32,7 +32,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 //this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
                 //this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
-                //this.MakeAction("Info_Receipt","Test","test","test title", GridActionParameterTypesEnum.MultiIds,"DSManage").SetOnClickScript("test"),
+                this.MakeAction("Info_Receipt","ExportExcelToday","匯出今日","匯出今日收據", GridActionParameterTypesEnum.NoId,"DSManage").SetIsDownload(),
             };
         }
 
@@ -48,44 +48,53 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 this.MakeGridHeader(x => x.ContactName),
                 this.MakeGridHeader(x => x.ContactPhone),
                 this.MakeGridHeader(x => x.DSRemark),
-                this.MakeGridHeaderAction(width: 220)
+                this.MakeGridHeaderAction(width: 200)
             };
         }
 
         public override IOrderedQueryable<Info_Receipt_View> GetSearchQuery()
         {
             var query = DC.Set<Info_Receipt>()
-                .CheckContain(Searcher.ReceiptNumber, x => x.ReceiptNumber)
-                .CheckContain(Searcher.ReceiptOwn, x => x.ReceiptOwn)
-                .CheckContain(Searcher.ContactName, x => x.ContactName)
-                .CheckContain(Searcher.ContactPhone, x => x.ContactPhone)
-                .CheckEqual(Searcher.Sum, x => x.Sum)
-                .CheckEqual(Searcher.DharmaServiceName, x => x.DharmaServiceName)
-                .Where(x => x.IsValid)
-                //.CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetStartTime(), x => x.ReceiptDate /*includeMax: false*/)
-                .Select(x => new Info_Receipt_View
-                {
-                    ID = x.ID,
-                    ReceiptNumber = x.ReceiptNumber,
-                    ReceiptOwn = x.ReceiptOwn,
-                    ContactName = x.ContactName,
-                    ContactPhone = x.ContactPhone,
-                    Sum = x.Sum,
-                    DSRemark = x.DSRemark,
-                    ReceiptDate = x.ReceiptDate,
-                    DharmaServiceName = x.DharmaServiceName,
-                    UpdateTime = x.UpdateTime,
-                })
-                .OrderByDescending(x => x.UpdateTime)
-                .ThenByDescending(x => x.ReceiptNumber);
+                            .CheckContain(Searcher.ReceiptNumber, x => x.ReceiptNumber)
+                            .CheckContain(Searcher.ReceiptOwn, x => x.ReceiptOwn)
+                            .CheckContain(Searcher.ContactName, x => x.ContactName)
+                            .CheckContain(Searcher.ContactPhone, x => x.ContactPhone)
+                            .CheckEqual(Searcher.Sum, x => x.Sum)
+                            .CheckEqual(Searcher.DharmaServiceName, x => x.DharmaServiceName);
+
+            if (Searcher.ShowDeleted.HasValue)
+            {
+                query = query.Where(x => !x.IsDataValid);
+            }
+            else
+            {
+                query = query.Where(x => x.IsDataValid);
+            }
 
             if (Searcher.ReceiptDate.HasValue)
             {
-                query = query.Where(x => DateTime.Compare(Searcher.ReceiptDate.Value.Date, x.ReceiptDate.Value.Date) == 0)
-                             .OrderByDescending(x => x.UpdateTime);
+                query = query.Where(x => DateTime.Compare(Searcher.ReceiptDate.Value.Date, x.ReceiptDate.Value.Date) == 0);
             }
 
-            return query;
+            var query1 = query.Select(x => new Info_Receipt_View
+            {
+                ID = x.ID,
+                ReceiptNumber = x.ReceiptNumber,
+                ReceiptOwn = x.ReceiptOwn,
+                ContactName = x.ContactName,
+                ContactPhone = x.ContactPhone,
+                Sum = x.Sum,
+                DSRemark = x.DSRemark,
+                ReceiptDate = x.ReceiptDate,
+                DharmaServiceName = x.DharmaServiceName,
+                UpdateTime = x.UpdateTime,
+                CreateBy = x.CreateBy,
+                CreateTime = x.CreateTime,
+            })
+            .OrderByDescending(x => x.UpdateTime)
+            .ThenByDescending(x => x.ReceiptNumber);
+
+            return query1;
         }
 
         public async Task<byte[]> ExportExcel()
@@ -94,7 +103,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 
             if (this.Ids == null || this.Ids.Count <= 0)
             {
-                receiptList = await GetSearchQuery().ToListAsync<Info_Receipt>();                            
+                receiptList = await GetSearchQuery().ToListAsync<Info_Receipt>();
             }
             else
             {
@@ -103,7 +112,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 
             if (receiptList == null || receiptList.Count <= 0)
             {
-                return null;
+                throw new Exception("查詢數據是空.");
             }
 
             foreach (var r in receiptList)
@@ -115,11 +124,15 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 
             return await ReceiptExcelVM.ExportExcelAsBytes(receiptList);
         }
+
     }
 
 
+    #region public class Info_Receipt_View : Info_Receipt
     public class Info_Receipt_View : Info_Receipt
     {
 
     }
+    #endregion
+
 }

@@ -43,7 +43,12 @@ namespace BMSHPMS.Helper
             var props = t2.GetType().GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
             foreach (var p2 in props)
             {
-                p2.SetValue(t2, t1.GetPropertyValue(p2.Name));
+                var value = t1.GetPropertyValue(p2.Name);
+
+                if (value != null)
+                {
+                    p2.SetValue(t2, value);
+                }              
             }
 
             return t2;

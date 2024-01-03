@@ -2,11 +2,16 @@
 
 <div id="dsRegisterDiv">
     <div class="layui-btn-container" style="padding:50px;">
-        @foreach (var ds in Model.DharmaServices)
+        @if (Model.DharmaServices != null && Model.DharmaServices.Count > 0)
         {
-            <button onclick="dsRegister('@ds.ID')" class="layui-btn layui-btn-normal layui-btn-lg">@ds.ServiceName</button>
+            @foreach (var ds in Model.DharmaServices)
+            {
+                <button onclick="dsRegister('@ds.ID')" class="layui-btn layui-btn-normal layui-btn-lg">@ds.ServiceName</button>
+            }
+        }else
+        {
+            <p>請新增法會項目.</p>
         }
-
     </div>
 </div>
 

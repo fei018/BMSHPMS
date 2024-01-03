@@ -4,7 +4,7 @@ using System;
 
 namespace BMSHPMS.DSManage.ViewModels.ExcelVMs
 {
-    [ExcelExporter(Name = "延生", AutoFitAllColumn = true)]
+    [ExcelExporter(Name = "延生")]
     public class LongevityExcelVM
     {
         [ExporterHeader(DisplayName = "收據號碼")]
@@ -22,10 +22,10 @@ namespace BMSHPMS.DSManage.ViewModels.ExcelVMs
         [ExporterHeader(DisplayName = "備註")]
         public string DSRemark { get; set; }
 
-        [ExporterHeader(DisplayName = "建立人")]
+        [ExporterHeader(DisplayName = "資料登記人")]
         public string CreateBy { get; set; }
 
-        [ExporterHeader(DisplayName = "建立時間", Format = "yyyy-MM-dd HH:mm:ss")]
+        [ExporterHeader(DisplayName = "登記時間", Format = "yyyy-MM-dd HH:mm:ss")]
         public DateTime? CreateTime { get; set; }
 
         [ExporterHeader(DisplayName = "ID")]

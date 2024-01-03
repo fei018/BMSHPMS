@@ -40,7 +40,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 this.MakeGridHeader(x => x.DeceasedName),
                 this.MakeGridHeader(x => x.BenefactorName),                              
                 this.MakeGridHeader(x => x.DSRemark),
-                this.MakeGridHeaderAction(width: 220)
+                this.MakeGridHeaderAction(width: 200)
             };
         }
 
@@ -53,7 +53,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 .CheckEqual(Searcher.Sum, x=>x.Sum)
                 .CheckContain(Searcher.SerialCode, x=>x.SerialCode)
                 .CheckContain(Searcher.ReceiptNumber, x => x.Receipt.ReceiptNumber)
-                .Where(x => x.IsValid)
+                .Where(x => x.IsDataValid)
                 .Select(x => new Info_Donor_View
                 {
 				    ID = x.ID,
@@ -80,7 +80,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
         [Display(Name = "收據日期")]
         public DateTime ReceiptDate_view { get; set; }
 
-        [Display(Name = "收據更新日期")]
+        [Display(Name = "更新日期")]
         public DateTime ReceiptUpdateTime_view { get; set; }
 
     }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WalkingTec.Mvvm.Core;
@@ -13,7 +14,7 @@ namespace BMSHPMS.Models.DharmaService
     [Table("Info_Receipt")]
     [Index(nameof(ReceiptNumber))]
     [Display(Name = "收據")]
-    public class Info_Receipt : PersistPoco
+    public class Info_Receipt : BasePoco, IDataValid
     {
         [Display(Name = "收據號碼")]
         [Comment("收據號碼")]
@@ -49,6 +50,10 @@ namespace BMSHPMS.Models.DharmaService
         [Comment("備註")]
         public string DSRemark { get; set; }
 
+        [Display(Name = "數據有效")]
+        [Comment("數據有效")]
+        [DefaultValue(true)]
+        public bool IsDataValid { get; set; }
 
         //[Display(Name = "銀行名")]
         //[Comment("銀行名")]

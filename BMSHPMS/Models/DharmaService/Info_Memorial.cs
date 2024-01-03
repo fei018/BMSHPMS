@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WalkingTec.Mvvm.Core;
@@ -12,7 +13,7 @@ namespace BMSHPMS.Models.DharmaService
 	[Table("Info_Memorial")]
 
     [Display(Name = "附薦位")]
-    public class Info_Memorial : PersistPoco
+    public class Info_Memorial : BasePoco, IDataValid
     {
         [Display(Name = "附薦編號")]
         [Comment("附薦編號")]
@@ -38,6 +39,10 @@ namespace BMSHPMS.Models.DharmaService
         [Comment("備註")]
         public string DSRemark { get; set; }
 
+        [Display(Name = "數據有效")]
+        [Comment("數據有效")]
+        [DefaultValue(true)]
+        public bool IsDataValid { get; set; }
 
         [Display(Name = "收據ID")]
         [Comment("收據ID")]

@@ -39,7 +39,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                 this.MakeGridHeader(x => x.DeceasedName),
                 this.MakeGridHeader(x => x.BenefactorName),                         
                 this.MakeGridHeader(x => x.DSRemark),               
-                this.MakeGridHeaderAction(width: 220)
+                this.MakeGridHeaderAction(width: 200)
             };
         }
 
@@ -51,7 +51,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                 .CheckContain(Searcher.DeceasedName, x=>x.DeceasedName)
                 .CheckEqual(Searcher.Sum, x=>x.Sum)
                 .CheckContain(Searcher.ReceiptNumber, x => x.Receipt.ReceiptNumber)
-                .Where(x => x.IsValid)
+                .Where(x => x.IsDataValid)
                 .Select(x => new Info_Memorial_View
                 {
 				    ID = x.ID,

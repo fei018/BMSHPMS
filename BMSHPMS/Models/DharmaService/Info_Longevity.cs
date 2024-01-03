@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WalkingTec.Mvvm.Core;
@@ -12,7 +13,7 @@ namespace BMSHPMS.Models.DharmaService
     [Table("Info_Longevity")]
 
     [Display(Name = "延生位")]
-    public class Info_Longevity : PersistPoco
+    public class Info_Longevity : BasePoco, IDataValid
     {
         [Display(Name = "姓名")]
         [Comment("姓名")]
@@ -33,6 +34,10 @@ namespace BMSHPMS.Models.DharmaService
         [Comment("備註")]
         public string DSRemark { get; set; }
 
+        [Display(Name = "數據有效")]
+        [Comment("數據有效")]
+        [DefaultValue(true)]
+        public bool IsDataValid { get; set; }
 
         [Display(Name = "收據ID")]
         [Comment("收據ID")]

@@ -270,6 +270,7 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\en\BMSH
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Aliyun.OSS.Core.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\AutoMapper.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Collections.Pooled.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\DistributedLock.Core.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\DistributedLock.FileSystem.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\DotLiquid.dll
@@ -278,6 +279,7 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NPOI.OO
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NPOI.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NPOI.OpenXml4Net.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NPOI.OpenXmlFormats.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\DynamicExpresso.Core.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\EFCore.BulkExtensions.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Elsa.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Elsa.Abstractions.dll
@@ -306,6 +308,10 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Fluid.d
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Humanizer.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Jint.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\LinqKit.Core.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Magicodes.IE.Core.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Magicodes.IE.EPPlus.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Magicodes.IE.Excel.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Magicodes.IE.Excel.AspNetCore.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\MailKit.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\MediatR.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\MediatR.Contracts.dll
@@ -443,6 +449,7 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\ICSharp
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\SixLabors.Fonts.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\SixLabors.ImageSharp.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\SixLabors.ImageSharp.Drawing.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\SkiaSharp.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\SQLitePCLRaw.batteries_v2.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\SQLitePCLRaw.core.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\SQLitePCLRaw.provider.e_sqlite3.dll
@@ -470,6 +477,7 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\System.
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\System.IO.Pipelines.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\System.Linq.Async.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\System.Linq.Dynamic.Core.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\System.Reflection.MetadataLoadContext.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\System.Runtime.Caching.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\System.Security.Cryptography.Pkcs.dll
@@ -533,6 +541,7 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\vi\Huma
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\zh-CN\Humanizer.resources.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\zh-Hans\Humanizer.resources.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\zh-Hant\Humanizer.resources.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\zh-Hans\Magicodes.IE.Core.resources.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\de\Microsoft.CodeAnalysis.resources.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\es\Microsoft.CodeAnalysis.resources.dll
@@ -634,6 +643,14 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\runtime
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\runtimes\win-arm64\native\sni.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\runtimes\win-x64\native\sni.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\runtimes\win-x86\native\sni.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\runtimes\linux-arm\native\libSkiaSharp.so
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\runtimes\linux-arm64\native\libSkiaSharp.so
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\runtimes\linux-musl-x64\native\libSkiaSharp.so
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\runtimes\linux-x64\native\libSkiaSharp.so
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\runtimes\osx\native\libSkiaSharp.dylib
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\runtimes\win-arm64\native\libSkiaSharp.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\runtimes\win-x64\native\libSkiaSharp.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\runtimes\win-x86\native\libSkiaSharp.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\runtimes\alpine-arm\native\libe_sqlite3.so
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\runtimes\alpine-arm64\native\libe_sqlite3.so
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\runtimes\alpine-x64\native\libe_sqlite3.so

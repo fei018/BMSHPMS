@@ -38,7 +38,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                 this.MakeGridHeader(x => x.Sum,width:100),
                 this.MakeGridHeader(x => x.Name),                             
                 this.MakeGridHeader(x => x.DSRemark),               
-                this.MakeGridHeaderAction(width: 220)
+                this.MakeGridHeaderAction(width: 200)
             };
         }
 
@@ -49,7 +49,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                 .CheckEqual(Searcher.Sum, x=>x.Sum)
                 .CheckContain(Searcher.SerialCode, x=>x.SerialCode)
                 .CheckContain(Searcher.ReceiptNumber, x=>x.Receipt.ReceiptNumber)
-                .Where(x => x.IsValid)
+                .Where(x => x.IsDataValid)
                 .Select(x => new Info_Longevity_View
                 {
 				    ID = x.ID,

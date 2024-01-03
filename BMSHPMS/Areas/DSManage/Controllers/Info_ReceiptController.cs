@@ -233,11 +233,23 @@ namespace BMSHPMS.DSManage.Controllers
         }
         #endregion
 
-        [HttpPost]
-        public IActionResult Test(string[] IDs)
+        [ActionDescription("匯出今日")]
+        public async Task<IActionResult> ExportExcelToday()
         {
+            try
+            {
+                var vm = Wtm.CreateVM<Info_ReceiptReportVM>();
+                var result = await vm.ExportExcelByToday();
 
-            return Content(IDs.ToString());
+                string fileName = "法會收據_" + DateTime.Today.ToString("yyyy-MM-dd") + ".xlsx";
+
+                return new XlsxFileResult(bytes: result, fileName);
+            }
+            catch (Exception ex)
+            {
+                return PartialView("Exception", ex);
+                //return FFResult().Alert(ex.GetBaseException().Message);
+            }
         }
     }
 }

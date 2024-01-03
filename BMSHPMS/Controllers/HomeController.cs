@@ -44,15 +44,14 @@ namespace BMSHPMS.Controllers
         [ActionDescription("FrontPage")]
         public IActionResult FrontPage()
         {
-            //if (Wtm.LoginUserInfo.Roles.Find(x=>x.RoleCode == "001") != null)
-            //{
-            //    return PartialView();
-            //}
-            //else
-            //{
-            //    return PartialView("Test");
-            //}
-            return PartialView();
+            if (Wtm.LoginUserInfo.Roles.Find(x => x.RoleCode == "001") != null)
+            {
+                return PartialView();
+            }
+            else
+            {
+                return PartialView("Test");
+            }
         }
 
         public IActionResult GetActionChart()
