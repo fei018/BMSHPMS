@@ -47,13 +47,13 @@ namespace BMSHPMS.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasComment("附薦宗親名及稱呼");
 
+                    b.Property<bool>("IsDataValid")
+                        .HasColumnType("bit")
+                        .HasComment("數據有效");
+
                     b.Property<string>("LongevityName")
                         .HasColumnType("nvarchar(max)")
                         .HasComment("延生位姓名");
-
-                    b.Property<bool>("NotDeleted")
-                        .HasColumnType("bit")
-                        .HasComment("非刪除");
 
                     b.Property<Guid?>("ReceiptID")
                         .IsRequired()
@@ -99,13 +99,13 @@ namespace BMSHPMS.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasComment("備註");
 
+                    b.Property<bool>("IsDataValid")
+                        .HasColumnType("bit")
+                        .HasComment("數據有效");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)")
                         .HasComment("姓名");
-
-                    b.Property<bool>("NotDeleted")
-                        .HasColumnType("bit")
-                        .HasComment("非刪除");
 
                     b.Property<Guid?>("ReceiptID")
                         .IsRequired()
@@ -159,9 +159,9 @@ namespace BMSHPMS.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasComment("附薦宗親名及稱呼");
 
-                    b.Property<bool>("NotDeleted")
+                    b.Property<bool>("IsDataValid")
                         .HasColumnType("bit")
-                        .HasComment("非刪除");
+                        .HasComment("數據有效");
 
                     b.Property<Guid?>("ReceiptID")
                         .IsRequired()
@@ -220,9 +220,13 @@ namespace BMSHPMS.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasComment("法會名");
 
-                    b.Property<bool>("NotDeleted")
+                    b.Property<int?>("DharmaServiceYear")
+                        .HasColumnType("int")
+                        .HasComment("法會年份");
+
+                    b.Property<bool>("IsDataValid")
                         .HasColumnType("bit")
-                        .HasComment("非刪除");
+                        .HasComment("數據有效");
 
                     b.Property<DateTime?>("ReceiptDate")
                         .HasColumnType("datetime2")

@@ -33,6 +33,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
         [Display(Name = "法會項目")]
         public string DharmaServiceName { get; set; }
 
+        [Display(Name = "法會年份")]
+        public int? DharmaServiceYear { get; set; }
+
         [Display(Name = "已刪除")]
         public bool? ShowDeleted { get; set; }
 

@@ -117,7 +117,7 @@ namespace BMSHPMS
     {
         public DataContext CreateDbContext(string[] args)
         {
-            string conn = "Data Source=localhost\\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            string conn = "Data Source=localhost\\SQLEXPRESS;Database=BMSHPMS_db;Integrated Security=True;";
 
             return new DataContext(conn, DBTypeEnum.SqlServer);
         }

@@ -3,6 +3,7 @@
 
 <wt:form vm="@Model">
     <wt:row items-per-row="ItemsPerRowEnum.Two">
+        <wt:datetime field="Entity.DharmaServiceYear" type="Year"/>
         <wt:combobox field="Entity.DharmaServiceName" items="AllOpt_DharmaServiceName" />
         <wt:textbox field="Entity.ReceiptNumber" />
         <wt:textbox field="Entity.Sum" />

@@ -43,6 +43,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 this.MakeGridHeader(x => x.ReceiptDate,width:150).SetSort(),
                 this.MakeGridHeader(x => x.ReceiptNumber,width:150).SetSort(),
                 this.MakeGridHeader(x => x.Sum,width:150).SetSort(),
+                this.MakeGridHeader(x => x.DharmaServiceYear,width:120).SetSort(),
                 this.MakeGridHeader(x => x.DharmaServiceName),
                 this.MakeGridHeader(x => x.ReceiptOwn),
                 this.MakeGridHeader(x => x.ContactName),
@@ -71,6 +72,11 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 query = query.Where(x => x.IsDataValid);
             }
 
+            if (Searcher.DharmaServiceYear.HasValue)
+            {
+                query = query.Where(x => x.DharmaServiceYear.HasValue && x.DharmaServiceYear.Value.Equals(Searcher.DharmaServiceYear.Value));
+            }
+
             if (Searcher.ReceiptDate.HasValue)
             {
                 query = query.Where(x => DateTime.Compare(Searcher.ReceiptDate.Value.Date, x.ReceiptDate.Value.Date) == 0);
@@ -87,6 +93,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 DSRemark = x.DSRemark,
                 ReceiptDate = x.ReceiptDate,
                 DharmaServiceName = x.DharmaServiceName,
+                DharmaServiceYear = x.DharmaServiceYear,
                 UpdateTime = x.UpdateTime,
                 CreateBy = x.CreateBy,
                 CreateTime = x.CreateTime,

@@ -47,17 +47,20 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
             var old = DC.Set<Info_Receipt>().Find(Entity.ID);
             if (old != null)
             {
-                old.ContactName = Entity.ContactName;
-                old.ReceiptOwn = Entity.ReceiptOwn;
-                old.Sum = Entity.Sum;
-                old.DSRemark = Entity.DSRemark;
-                old.ContactPhone = Entity.ContactPhone;
-                old.ReceiptNumber = Entity.ReceiptNumber;
-                old.DharmaServiceName = Entity.DharmaServiceName;
+                if (Entity.DharmaServiceYear.HasValue) old.DharmaServiceYear = Entity.DharmaServiceYear;
+                if (!string.IsNullOrEmpty(Entity.DharmaServiceName)) old.DharmaServiceName = Entity.DharmaServiceName;
+                if (!string.IsNullOrEmpty(Entity.ReceiptNumber)) old.ReceiptNumber = Entity.ReceiptNumber;
+                if (Entity.Sum.HasValue) old.Sum = Entity.Sum;
+                if(!string.IsNullOrEmpty(Entity.ReceiptOwn)) old.ReceiptOwn = Entity.ReceiptOwn;
+                if (!string.IsNullOrEmpty(Entity.ContactName)) old.ContactName = Entity.ContactName;
+                if (!string.IsNullOrEmpty(Entity.ContactPhone)) old.ContactPhone = Entity.ContactPhone;
+                if (Entity.ReceiptDate.HasValue) old.ReceiptDate = Entity.ReceiptDate;
+                if (!string.IsNullOrEmpty(Entity.DSRemark)) old.DSRemark = Entity.DSRemark;
+
                 old.UpdateBy = LoginUserInfo.Name;
                 old.UpdateTime = DateTime.Now;
                 old.ReceiptDate = Entity.ReceiptDate;
-
+                
                 DC.UpdateEntity(old);
                 DC.SaveChanges();
             }

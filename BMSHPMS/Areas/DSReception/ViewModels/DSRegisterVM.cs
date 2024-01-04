@@ -209,6 +209,7 @@ namespace BMSHPMS.DSReception.ViewModels
                         CreateBy = LoginUserInfo.Name,
                         ReceiptNumber = receiptNumber,
                         DharmaServiceName = dharmaService.ServiceName,
+                        DharmaServiceYear = DateTime.Now.Year,
                         ReceiptDate = DateTime.Now.Date,
                         UpdateBy = LoginUserInfo.Name,
                         UpdateTime = DateTime.Now,

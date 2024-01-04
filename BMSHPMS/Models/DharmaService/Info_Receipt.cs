@@ -25,6 +25,10 @@ namespace BMSHPMS.Models.DharmaService
         [Comment("收據日期")]
         public DateTime? ReceiptDate { get; set; }
 
+        [Display(Name = "法會年份")]
+        [Comment("法會年份")]
+        public int? DharmaServiceYear { get; set; }
+
         [Display(Name = "法會名")]
         [Comment("法會名")]
         [Required(ErrorMessage = "Validate.{0}required")]
