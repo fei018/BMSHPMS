@@ -13,13 +13,11 @@ namespace BMSHPMS
         #region DbSet<Models>
         public DbSet<FrameworkUser> FrameworkUsers { get; set; }
 
-
         public DbSet<Info_Receipt> Info_Receipts { get; set; }
 
         public DbSet<Opt_DharmaService> Opt_DharmaServices { get; set; }
 
         public DbSet<Opt_DonationProject> Opt_DonationProjects { get; set; }
-
 
         public DbSet<Info_Donor> Info_Donors { get; set; }
 

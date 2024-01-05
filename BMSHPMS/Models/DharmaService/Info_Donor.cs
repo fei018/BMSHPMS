@@ -45,8 +45,7 @@ namespace BMSHPMS.Models.DharmaService
 
         [Display(Name = "數據有效")]
         [Comment("數據有效")]
-        [DefaultValue(true)]
-        public bool IsDataValid { get; set; }
+        public bool IsDataValid { get; set; } = true;
 
         [Display(Name = "收據ID")]
         [Comment("收據ID")]

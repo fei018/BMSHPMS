@@ -122,16 +122,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcSW5mb19SZWNlaXB0XERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Info_Receipt/Download.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcSW5mb19SZWNlaXB0XERvd25sb2FkLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Info_Receipt/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcSW5mb19SZWNlaXB0XEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Info_Receipt/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcSW5mb19SZWNlaXB0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Info_Receipt/ShowDeleted.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcSW5mb19SZWNlaXB0XFNob3dEZWxldGVkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Opt_DharmaService/BatchDelete.cshtml]

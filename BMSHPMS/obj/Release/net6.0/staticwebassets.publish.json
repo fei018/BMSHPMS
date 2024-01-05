@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9FHUISa8fuS5cSN/+zj3HT0nKNTzM1uur/GmmN9eeW8=",
+  "Hash": "oerdLghpWFpGdmOUElSqweVkNVS6hMMgaEEsjlc7HPQ=",
   "Source": "BMSHPMS",
   "BasePath": "_content/BMSHPMS",
   "Mode": "Default",
@@ -2599,6 +2599,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\layui\\lay\\modules\\jquery.js"
+    },
+    {
+      "Identity": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\layui\\lay\\modules\\laydate - 複製.js",
+      "SourceId": "BMSHPMS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\",
+      "BasePath": "_content/BMSHPMS",
+      "RelativePath": "layui/lay/modules/laydate - 複製.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\layui\\lay\\modules\\laydate - 複製.js"
     },
     {
       "Identity": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\layui\\lay\\modules\\laydate.js",

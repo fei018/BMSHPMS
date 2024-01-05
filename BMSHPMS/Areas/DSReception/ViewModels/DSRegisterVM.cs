@@ -150,6 +150,7 @@ namespace BMSHPMS.DSReception.ViewModels
                                 CreateTime = DateTime.Now,
                                 UpdateBy = LoginUserInfo.Name,
                                 UpdateTime = DateTime.Now,
+                                IsDataValid = true,
                             };
                             newDonorList.Add(info);
                         }
@@ -167,6 +168,7 @@ namespace BMSHPMS.DSReception.ViewModels
                                 CreateTime = DateTime.Now,
                                 UpdateBy = LoginUserInfo.Name,
                                 UpdateTime = DateTime.Now,
+                                IsDataValid = true,
                             };
                             newLongevityList.Add(info);
                         }
@@ -184,6 +186,7 @@ namespace BMSHPMS.DSReception.ViewModels
                                 CreateTime = DateTime.Now,
                                 UpdateBy = LoginUserInfo.Name,
                                 UpdateTime = DateTime.Now,
+                                IsDataValid = true,
                             };
                             newMemorialList.Add(info);
                         }
@@ -213,6 +216,7 @@ namespace BMSHPMS.DSReception.ViewModels
                         ReceiptDate = DateTime.Now.Date,
                         UpdateBy = LoginUserInfo.Name,
                         UpdateTime = DateTime.Now,
+                        IsDataValid = true,
                     };
 
                     DC.AddEntity(receiptInfo);
