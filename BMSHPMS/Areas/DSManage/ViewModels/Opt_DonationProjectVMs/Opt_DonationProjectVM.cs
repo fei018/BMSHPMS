@@ -30,13 +30,28 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
 
         public override void DoAdd()
         {
-            DC.Set<Opt_DonationProject>().Add(Entity);
+            Entity.CreateBy = LoginUserInfo.Name;
+            Entity.UpdateBy = LoginUserInfo.Name;
+            Entity.CreateTime = DateTime.Now;
+            Entity.UpdateTime = DateTime.Now;
+
+            DC.AddEntity(Entity);
             DC.SaveChanges();
         }
 
         public override void DoEdit(bool updateAllFields = false)
         {
-            DC.Set<Opt_DonationProject>().Update(Entity);
+            var old = DC.Set<Opt_DonationProject>().Find(Entity.ID);
+
+            if (Entity.Sum.HasValue) old.Sum = Entity.Sum.Value;
+            if (!string.IsNullOrEmpty(Entity.SerialCode)) old.SerialCode = Entity.SerialCode;
+            if (!string.IsNullOrEmpty(Entity.DonationCategory)) old.DonationCategory = Entity.DonationCategory;
+            if (Entity.DharmaServiceID.HasValue) old.DharmaServiceID = Entity.DharmaServiceID;
+
+            old.UpdateBy = LoginUserInfo.Name;
+            old.UpdateTime = DateTime.Now;
+
+            DC.UpdateEntity(old);
             DC.SaveChanges();
         }
 

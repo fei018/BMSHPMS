@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
 using BMSHPMS.Models.DharmaService;
+using BMSHPMS.Helper;
 
 
 namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
@@ -31,6 +32,8 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
         protected override void InitVM()
         {
             AllDharmaService = DC.Set<Opt_DharmaService>().GetSelectListItems(Wtm, y => y.ServiceName);
+
+            AllDSDonationCategory = DharmaServiceSelectHelper.GetDonationCategoryComboSelectItems();
         }
 
     }

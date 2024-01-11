@@ -716,5 +716,3 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\osx\native\
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\win-arm64\native\libSkiaSharp.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\win-x64\native\libSkiaSharp.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\win-x86\native\libSkiaSharp.dll
-C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Debug\net6.0\zh\BMSHPMS.resources.cs
-C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Debug\net6.0\en\BMSHPMS.resources.cs

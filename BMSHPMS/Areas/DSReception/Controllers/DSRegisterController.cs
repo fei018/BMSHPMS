@@ -11,6 +11,7 @@ using WalkingTec.Mvvm.Mvc;
 
 namespace BMSHPMS.Areas.DSReception.Controllers
 {
+    [NoLog]
     [Area("DSReception")]
     [ActionDescription("功德登記")]
     public class DSRegisterController : BaseController

@@ -36,13 +36,23 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs
                 return;
             }
 
+            Entity.CreateBy = LoginUserInfo.Name;
+            Entity.UpdateBy = LoginUserInfo.Name;
+            Entity.CreateTime = DateTime.Now;
+            Entity.UpdateTime = DateTime.Now;
+
             DC.Set<Opt_DharmaService>().Add(Entity);
             DC.SaveChanges();
         }
 
         public override void DoEdit(bool updateAllFields = false)
         {
-            DC.Set<Opt_DharmaService>().Update(Entity);
+            var old = DC.Set<Opt_DharmaService>().Find(Entity.ID);
+
+            if (!string.IsNullOrEmpty(Entity.ServiceName)) old.ServiceName = Entity.ServiceName;
+            if (!string.IsNullOrEmpty(Entity.SerialCode)) old.SerialCode = Entity.SerialCode;
+
+            DC.UpdateEntity(old);
             DC.SaveChanges();
         }
 

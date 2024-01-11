@@ -8,6 +8,7 @@ using BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs;
 
 namespace BMSHPMS.DSManage.Controllers
 {
+    [NoLog]
     [Area("DSManage")]
     [ActionDescription("法會項目")]
     public partial class Opt_DharmaServiceController : BaseController

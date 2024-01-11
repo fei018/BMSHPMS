@@ -8,6 +8,7 @@ using BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs;
 
 namespace BMSHPMS.DSManage.Controllers
 {
+    [NoLog]
     [Area("DSManage")]
     [ActionDescription("功德項目")]
     public partial class Opt_DonationProjectController : BaseController

@@ -8,6 +8,7 @@ using BMSHPMS.DSManage.ViewModels.Info_DonorVMs;
 
 namespace BMSHPMS.DSManage.Controllers
 {
+    [NoLog]
     [Area("DSManage")]
     [ActionDescription("法會功德主")]
     public partial class Info_DonorController : BaseController
