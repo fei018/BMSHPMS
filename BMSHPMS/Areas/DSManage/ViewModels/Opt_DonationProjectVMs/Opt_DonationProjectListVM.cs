@@ -17,14 +17,15 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
         {
             return new List<GridAction>
             {
-                this.MakeStandardAction("Opt_DonationProject", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800,dialogHeight:400),
-                this.MakeStandardAction("Opt_DonationProject", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800,dialogHeight:400),              
+                this.MakeStandardAction("Opt_DonationProject", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800,dialogHeight:600),
+                this.MakeStandardAction("Opt_DonationProject", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800,dialogHeight:600),
                 this.MakeStandardAction("Opt_DonationProject", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800,dialogHeight:400),
                 this.MakeStandardAction("Opt_DonationProject", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800,dialogHeight:400),
                 //this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "DSManage", dialogWidth: 800,dialogHeight:500),
                 //this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800,dialogHeight:500),
                 //this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800,dialogHeight:500),
-                this.MakeStandardAction("Opt_DonationProject", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
+                //this.MakeStandardAction("Opt_DonationProject", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
+                this.MakeAction("Opt_DonationProject","CleanUsedNumber","清除已使用數","清除已使用數", GridActionParameterTypesEnum.NoId,"DSManage"),
             };
         }
 

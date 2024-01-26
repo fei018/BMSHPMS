@@ -5,6 +5,7 @@ using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Mvc;
 using WalkingTec.Mvvm.Core.Extensions;
 using BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs;
+using System.Threading.Tasks;
 
 namespace BMSHPMS.DSManage.Controllers
 {
@@ -216,5 +217,45 @@ namespace BMSHPMS.DSManage.Controllers
             return vm.GetExportData();
         }
 
+        #region CleanUsedNumber
+
+        [ActionDescription("清除已使用數")]
+        public IActionResult CleanUsedNumber()
+        {
+            var vm = Wtm.CreateVM<Opt_DonationProjectCleanVM>();
+            
+            return PartialView(vm);
+        }
+
+        [HttpPost]
+        [ActionDescription("清除已使用數")]
+        public async Task<IActionResult> CleanUsedNumber(Opt_DonationProjectCleanVM vm)
+        {
+            try
+            {
+                await vm.CleanUsedNumber();
+                return Json(new { code = 200, msg = "已清除" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { code = 400, msg = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        [ActionDescription("清除所有已使用數")]
+        public async Task<IActionResult> CleanUsedNumberAll(Opt_DonationProjectCleanVM vm)
+        {
+            try
+            {
+                await vm.CleanUsedNumberAll();
+                return Json(new { code = 200, msg = "已清除全部" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { code = 400, msg = ex.Message });
+            }
+        }
+        #endregion
     }
 }

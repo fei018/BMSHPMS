@@ -11,8 +11,6 @@
         <wt:textbox field="Searcher.ContactName" />
         <wt:textbox field="Searcher.ContactPhone" />
         <wt:datetime field="Searcher.ReceiptDate" type="Date"/>
-        <wt:combobox field="Searcher.ShowDeleted" items="Searcher.ShowDeletedSelection" />
     </wt:row>
 </wt:searchpanel>
-<wt:grid vm="@Model" url="/DSManage/Info_Receipt/Search" limits="new int[]{10,20,50,80,100,150,200,1000}" hidden-grid-index />
-
+<wt:grid vm="@Model" url="/DSManage/Info_Receipt/Search" hidden-grid-index /> @* limits="new int[]{10,20,50,80,100,150,200,1000}" *@

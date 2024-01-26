@@ -86,10 +86,10 @@ namespace BMSHPMS.DSManage.ViewModels.ExcelVMs
                 }
             }
 
-            allReceiptExcelVMs =  allReceiptExcelVMs.OrderByDescending(x => x.ReceiptDate).ThenByDescending(x => x.ReceiptNumber).ToList();
-            allDonorExcelVMs = allDonorExcelVMs.OrderBy(x => x.Sum).ThenByDescending(x => x.SerialCode).ToList();
-            allLongevityExcelVMs = allLongevityExcelVMs.OrderBy(x => x.Sum).ThenByDescending(x => x.SerialCode).ToList();
-            allMemoryExcelVMs = allMemoryExcelVMs.OrderBy(x => x.Sum).ThenByDescending(x => x.SerialCode).ToList();
+            allReceiptExcelVMs =  allReceiptExcelVMs.OrderBy(x => x.ReceiptDate).ThenBy(x => x.ReceiptNumber).ToList();
+            allDonorExcelVMs = allDonorExcelVMs.OrderBy(x => x.Sum).ThenBy(x => x.SerialCode).ToList();
+            allLongevityExcelVMs = allLongevityExcelVMs.OrderBy(x => x.Sum).ThenBy(x => x.SerialCode).ToList();
+            allMemoryExcelVMs = allMemoryExcelVMs.OrderBy(x => x.Sum).ThenBy(x => x.SerialCode).ToList();
 
             var exporter = new ExcelExporter();
             var result = await exporter.Append(allReceiptExcelVMs)

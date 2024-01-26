@@ -49,7 +49,6 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                 .CheckEqual(Searcher.Sum, x=>x.Sum)
                 .CheckContain(Searcher.SerialCode, x=>x.SerialCode)
                 .CheckContain(Searcher.ReceiptNumber, x=>x.Receipt.ReceiptNumber)
-                .Where(x => x.IsDataValid)
                 .Select(x => new Info_Longevity_View
                 {
 				    ID = x.ID,

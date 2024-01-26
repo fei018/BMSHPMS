@@ -36,9 +36,11 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 this.MakeGridHeader(x => x.ReceiptNumber_view,width:150),
                 this.MakeGridHeader(x => x.SerialCode,width:150),
                 this.MakeGridHeader(x => x.Sum,width:100),
-                this.MakeGridHeader(x => x.LongevityName),
-                this.MakeGridHeader(x => x.DeceasedName),
-                this.MakeGridHeader(x => x.BenefactorName),                              
+                this.MakeGridHeader(x => x.LongevityName, width : 100),
+                this.MakeGridHeader(x => x.DeceasedName_1,width:180),
+                this.MakeGridHeader(x => x.DeceasedName_2,width:180),
+                this.MakeGridHeader(x => x.DeceasedName_3,width:180),
+                this.MakeGridHeader(x => x.BenefactorName, width : 100),                              
                 this.MakeGridHeader(x => x.DSRemark),
                 this.MakeGridHeaderAction(width: 200)
             };
@@ -48,17 +50,20 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
         {
             var query = DC.Set<Info_Donor>()
                 .CheckContain(Searcher.LongevityName, x=>x.LongevityName)
-                .CheckContain(Searcher.DeceasedName, x=>x.DeceasedName)
+                .CheckContain(Searcher.DeceasedName, x=>x.DeceasedName_1)
+                .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_2)
+                .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_3)
                 .CheckContain(Searcher.BenefactorName, x=>x.BenefactorName)
                 .CheckEqual(Searcher.Sum, x=>x.Sum)
                 .CheckContain(Searcher.SerialCode, x=>x.SerialCode)
                 .CheckContain(Searcher.ReceiptNumber, x => x.Receipt.ReceiptNumber)
-                .Where(x => x.IsDataValid)
                 .Select(x => new Info_Donor_View
                 {
 				    ID = x.ID,
                     LongevityName = x.LongevityName,
-                    DeceasedName = x.DeceasedName,
+                    DeceasedName_1 = x.DeceasedName_1,
+                    DeceasedName_2 = x.DeceasedName_2,
+                    DeceasedName_3 = x.DeceasedName_3,
                     BenefactorName = x.BenefactorName,
                     Sum = x.Sum,
                     SerialCode = x.SerialCode,

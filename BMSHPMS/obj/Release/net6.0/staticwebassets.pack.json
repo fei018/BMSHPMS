@@ -117,6 +117,10 @@
       "PackagePath": "staticwebassets\\jquery.min.js"
     },
     {
+      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\js\\reception.js",
+      "PackagePath": "staticwebassets\\js\\reception.js"
+    },
+    {
       "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\layui\\css\\layui.css",
       "PackagePath": "staticwebassets\\layui\\css\\layui.css"
     },

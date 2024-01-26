@@ -14,7 +14,7 @@ namespace BMSHPMS.Models.DharmaService
     [Table("Info_Receipt")]
     [Index(nameof(ReceiptNumber))]
     [Display(Name = "收據")]
-    public class Info_Receipt : BasePoco, IDataValid
+    public class Info_Receipt : BasePoco
     {
         [Display(Name = "收據號碼")]
         [Comment("收據號碼")]
@@ -53,10 +53,6 @@ namespace BMSHPMS.Models.DharmaService
         [Display(Name = "備註")]
         [Comment("備註")]
         public string DSRemark { get; set; }
-
-        [Display(Name = "數據有效")]
-        [Comment("數據有效")]
-        public bool IsDataValid { get; set; } = true;
 
         //[Display(Name = "銀行名")]
         //[Comment("銀行名")]

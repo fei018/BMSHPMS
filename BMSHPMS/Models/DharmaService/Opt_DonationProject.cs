@@ -29,7 +29,7 @@ namespace BMSHPMS.Models.DharmaService
         [Display(Name = "已使用數")]
         [Comment("已使用數")]
         [DefaultValue(0)]
-        public int UsedNumber { get; set; }
+        public int UsedNumber { get; set; } = 0;
 
         [Display(Name = "法會項目ID")]
         [Comment("法會項目ID")]

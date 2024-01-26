@@ -13,7 +13,7 @@ namespace BMSHPMS.Models.DharmaService
 	[Table("Info_Memorial")]
 
     [Display(Name = "附薦位")]
-    public class Info_Memorial : BasePoco, IDataValid
+    public class Info_Memorial : BasePoco
     {
         [Display(Name = "附薦編號")]
         [Comment("附薦編號")]
@@ -25,23 +25,25 @@ namespace BMSHPMS.Models.DharmaService
         //[Required(ErrorMessage = "Validate.{0}required")]
         public string BenefactorName { get; set; }
 
-        [Display(Name = "附薦宗親名及稱呼")]
-        [Comment("附薦宗親名及稱呼")]
-        //[Required(ErrorMessage = "Validate.{0}required")]
-        public string DeceasedName { get; set; }
+        [Display(Name = "附薦宗親名及稱呼_1")]
+        [Comment("附薦宗親名及稱呼_1")]
+        public string DeceasedName_1 { get; set; }
+
+        [Display(Name = "附薦宗親名及稱呼_2")]
+        [Comment("附薦宗親名及稱呼_2")]
+        public string DeceasedName_2 { get; set; }
+
+        [Display(Name = "附薦宗親名及稱呼_3")]
+        [Comment("附薦宗親名及稱呼_3")]
+        public string DeceasedName_3 { get; set; }
 
         [Display(Name = "金額")]
         [Comment("金額")]
-        //[Required(ErrorMessage = "Validate.{0}required")]
         public int? Sum { get; set; }
 
         [Display(Name = "備註")]
         [Comment("備註")]
         public string DSRemark { get; set; }
-
-        [Display(Name = "數據有效")]
-        [Comment("數據有效")]
-        public bool IsDataValid { get; set; } = true;
 
         [Display(Name = "收據ID")]
         [Comment("收據ID")]

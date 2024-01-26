@@ -1,0 +1,18 @@
+﻿@model BMSHPMS.DSManage.ViewModels.Info_Memorial_delVMs.Info_Memorial_delVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:display field="Entity.SerialCode" />
+<wt:display field="Entity.BenefactorName" />
+<wt:display field="Entity.DeceasedName_1" />
+<wt:display field="Entity.DeceasedName_2" />
+<wt:display field="Entity.DeceasedName_3" />
+<wt:display field="Entity.Sum" />
+<wt:display field="Entity.DSRemark" />
+<wt:display field="Entity.Receipt_del.ContactName" />
+</wt:row>
+    <wt:row align="AlignEnum.Right">
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

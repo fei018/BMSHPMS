@@ -36,7 +36,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                 this.MakeGridHeader(x => x.ReceiptNumber_view,width:150),
                 this.MakeGridHeader(x => x.SerialCode,width:150),
                 this.MakeGridHeader(x => x.Sum,width:100),
-                this.MakeGridHeader(x => x.DeceasedName),
+                this.MakeGridHeader(x => x.DeceasedName_1),
+                this.MakeGridHeader(x => x.DeceasedName_2),
+                this.MakeGridHeader(x => x.DeceasedName_3),
                 this.MakeGridHeader(x => x.BenefactorName),                         
                 this.MakeGridHeader(x => x.DSRemark),               
                 this.MakeGridHeaderAction(width: 200)
@@ -48,16 +50,19 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
             var query = DC.Set<Info_Memorial>()
                 .CheckContain(Searcher.SerialCode, x=>x.SerialCode)
                 .CheckContain(Searcher.BenefactorName, x=>x.BenefactorName)
-                .CheckContain(Searcher.DeceasedName, x=>x.DeceasedName)
+                .CheckContain(Searcher.DeceasedName, x=>x.DeceasedName_1)
+                .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_2)
+                .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_3)
                 .CheckEqual(Searcher.Sum, x=>x.Sum)
                 .CheckContain(Searcher.ReceiptNumber, x => x.Receipt.ReceiptNumber)
-                .Where(x => x.IsDataValid)
                 .Select(x => new Info_Memorial_View
                 {
 				    ID = x.ID,
                     SerialCode = x.SerialCode,
                     BenefactorName = x.BenefactorName,
-                    DeceasedName = x.DeceasedName,
+                    DeceasedName_1 = x.DeceasedName_1,
+                    DeceasedName_2 = x.DeceasedName_2,
+                    DeceasedName_3 = x.DeceasedName_3,
                     Sum = x.Sum,
                     DSRemark = x.DSRemark,
                     ReceiptNumber_view = x.Receipt.ReceiptNumber,

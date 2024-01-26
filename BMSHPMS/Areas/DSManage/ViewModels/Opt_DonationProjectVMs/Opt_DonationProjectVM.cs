@@ -47,6 +47,7 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
             if (!string.IsNullOrEmpty(Entity.SerialCode)) old.SerialCode = Entity.SerialCode;
             if (!string.IsNullOrEmpty(Entity.DonationCategory)) old.DonationCategory = Entity.DonationCategory;
             if (Entity.DharmaServiceID.HasValue) old.DharmaServiceID = Entity.DharmaServiceID;
+            old.UsedNumber = Entity.UsedNumber;
 
             old.UpdateBy = LoginUserInfo.Name;
             old.UpdateTime = DateTime.Now;
@@ -59,6 +60,11 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
         {
             DC.Set<Opt_DonationProject>().Remove(Entity);
             DC.SaveChanges();
+        }
+
+        public void CleanUsedNumber()
+        {
+
         }
     }
 }

@@ -1,0 +1,74 @@
+﻿@model BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs.Opt_DonationProjectCleanVM
+
+<div style="padding:20px;">
+    @foreach (var item in Model.DharmaServices)
+    {
+
+        <form onsubmit="return aea386b7e8ed4509a443f96e81471d6e(this);">
+            <div class="layui-form-item">
+                <label class="layui-form-label reception-lable">@item.ServiceName</label>
+                <div class="layui-input-block">
+                    <button class="layui-btn" type="submit">清除</button>
+                </div>
+            </div>
+            <input type="hidden" value="@item.ID" name="DharmaServiceID" />
+        </form>
+    }
+
+    <script>
+        function aea386b7e8ed4509a443f96e81471d6e(form){
+            let data = $(form).serializeArray();
+            $.post('/dsmanage/Opt_DonationProject/CleanUsedNumber', data, function (json) {
+                if (json.code == 200) {
+                    layui.layer.msg(json.msg);
+                } else {
+                    layui.layer.alert(json.msg);
+                }
+            }, 'json');
+            return false;
+        }
+    </script>
+    <br />
+    <hr />
+    <br />
+    <form>
+        <div class="layui-form-item">
+            <label class="layui-form-label reception-lable">清除全部</label>
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="3cbe59faca204e91a870bdeef1fa0f9a">清除</button>
+            </div>
+        </div>
+    </form>
+    <script>
+        layui.use(function () {
+            layui.form.on('submit(3cbe59faca204e91a870bdeef1fa0f9a)', function (data) {
+                $.post('/dsmanage/Opt_DonationProject/CleanUsedNumberAll', data.field, function (json) {
+                    if (json.code == 200) {
+                        layui.layer.msg(json.msg);
+                    } else {
+                        layui.layer.alert(json.msg);
+                    }
+                }, 'json');
+                return false;
+            });
+        });
+    </script>
+
+    <br />
+    <hr />
+    <br />
+    <div class="layui-row " style="width:100%;text-align:right">
+        <button class="layui-btn" id="a0f9fa09bde84b1bba3c1197b6f0ebee" lay-filter="a0f9fa09bde84b1bba3c1197b6f0ebeefilter">關閉</button>
+        <script>
+            $('#a0f9fa09bde84b1bba3c1197b6f0ebee').on('click', function () {
+
+                ff.CloseDialog();
+                ff.RefreshGrid('LAY_app_body', '0');
+                return false;
+            });
+        </script>
+    </div>
+</div>
+
+
+

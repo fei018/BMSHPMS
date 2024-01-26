@@ -63,15 +63,6 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                             .CheckEqual(Searcher.Sum, x => x.Sum)
                             .CheckEqual(Searcher.DharmaServiceName, x => x.DharmaServiceName);
 
-            if (Searcher.ShowDeleted.HasValue)
-            {
-                query = query.Where(x => !x.IsDataValid);
-            }
-            else
-            {
-                query = query.Where(x => x.IsDataValid);
-            }
-
             if (Searcher.DharmaServiceYear.HasValue)
             {
                 query = query.Where(x => x.DharmaServiceYear.HasValue && x.DharmaServiceYear.Value.Equals(Searcher.DharmaServiceYear.Value));

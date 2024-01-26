@@ -43,13 +43,17 @@ namespace BMSHPMS.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasComment("備註");
 
-                    b.Property<string>("DeceasedName")
+                    b.Property<string>("DeceasedName_1")
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("附薦宗親名及稱呼");
+                        .HasComment("附薦宗親名及稱呼_1");
 
-                    b.Property<bool>("IsDataValid")
-                        .HasColumnType("bit")
-                        .HasComment("數據有效");
+                    b.Property<string>("DeceasedName_2")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("附薦宗親名及稱呼_2");
+
+                    b.Property<string>("DeceasedName_3")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("附薦宗親名及稱呼_3");
 
                     b.Property<string>("LongevityName")
                         .HasColumnType("nvarchar(max)")
@@ -82,6 +86,70 @@ namespace BMSHPMS.Migrations
                     b.ToTable("Info_Donor");
                 });
 
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_Donor_del", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("BenefactorName")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("陽居姓名");
+
+                    b.Property<string>("CreateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DSRemark")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("備註");
+
+                    b.Property<string>("DeceasedName_1")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("附薦宗親名及稱呼_1");
+
+                    b.Property<string>("DeceasedName_2")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("附薦宗親名及稱呼_2");
+
+                    b.Property<string>("DeceasedName_3")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("附薦宗親名及稱呼_3");
+
+                    b.Property<string>("LongevityName")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("延生位姓名");
+
+                    b.Property<Guid?>("Receipt_delID")
+                        .IsRequired()
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("收據ID");
+
+                    b.Property<string>("SerialCode")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("功德主編號");
+
+                    b.Property<int?>("Sum")
+                        .HasColumnType("int")
+                        .HasComment("金額");
+
+                    b.Property<string>("UpdateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("Receipt_delID");
+
+                    b.ToTable("Info_Donor_del");
+                });
+
             modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_Longevity", b =>
                 {
                     b.Property<Guid>("ID")
@@ -98,10 +166,6 @@ namespace BMSHPMS.Migrations
                     b.Property<string>("DSRemark")
                         .HasColumnType("nvarchar(max)")
                         .HasComment("備註");
-
-                    b.Property<bool>("IsDataValid")
-                        .HasColumnType("bit")
-                        .HasComment("數據有效");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)")
@@ -134,6 +198,54 @@ namespace BMSHPMS.Migrations
                     b.ToTable("Info_Longevity");
                 });
 
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_Longevity_del", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DSRemark")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("備註");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("姓名");
+
+                    b.Property<Guid?>("Receipt_delID")
+                        .IsRequired()
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("收據ID");
+
+                    b.Property<string>("SerialCode")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("延生編號");
+
+                    b.Property<int?>("Sum")
+                        .HasColumnType("int")
+                        .HasComment("金額");
+
+                    b.Property<string>("UpdateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("Receipt_delID");
+
+                    b.ToTable("Info_Longevity_del");
+                });
+
             modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_Memorial", b =>
                 {
                     b.Property<Guid>("ID")
@@ -155,13 +267,17 @@ namespace BMSHPMS.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasComment("備註");
 
-                    b.Property<string>("DeceasedName")
+                    b.Property<string>("DeceasedName_1")
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("附薦宗親名及稱呼");
+                        .HasComment("附薦宗親名及稱呼_1");
 
-                    b.Property<bool>("IsDataValid")
-                        .HasColumnType("bit")
-                        .HasComment("數據有效");
+                    b.Property<string>("DeceasedName_2")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("附薦宗親名及稱呼_2");
+
+                    b.Property<string>("DeceasedName_3")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("附薦宗親名及稱呼_3");
 
                     b.Property<Guid?>("ReceiptID")
                         .IsRequired()
@@ -188,6 +304,70 @@ namespace BMSHPMS.Migrations
                     b.HasIndex("ReceiptID");
 
                     b.ToTable("Info_Memorial");
+                });
+
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_Memorial_del", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("BenefactorName")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("陽居姓名");
+
+                    b.Property<string>("CreateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DSRemark")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("備註");
+
+                    b.Property<string>("DeceasedName_1")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("附薦宗親名及稱呼_1");
+
+                    b.Property<string>("DeceasedName_2")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("附薦宗親名及稱呼_2");
+
+                    b.Property<string>("DeceasedName_3")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("附薦宗親名及稱呼_3");
+
+                    b.Property<bool>("IsDataValid")
+                        .HasColumnType("bit")
+                        .HasComment("數據有效");
+
+                    b.Property<Guid?>("Receipt_delID")
+                        .IsRequired()
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("收據ID");
+
+                    b.Property<string>("SerialCode")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("附薦編號");
+
+                    b.Property<int?>("Sum")
+                        .HasColumnType("int")
+                        .HasComment("金額");
+
+                    b.Property<string>("UpdateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("Receipt_delID");
+
+                    b.ToTable("Info_Memorial_del");
                 });
 
             modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_Receipt", b =>
@@ -224,10 +404,6 @@ namespace BMSHPMS.Migrations
                         .HasColumnType("int")
                         .HasComment("法會年份");
 
-                    b.Property<bool>("IsDataValid")
-                        .HasColumnType("bit")
-                        .HasComment("數據有效");
-
                     b.Property<DateTime?>("ReceiptDate")
                         .HasColumnType("datetime2")
                         .HasComment("收據日期");
@@ -257,6 +433,71 @@ namespace BMSHPMS.Migrations
                     b.HasIndex("ReceiptNumber");
 
                     b.ToTable("Info_Receipt");
+                });
+
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_Receipt_del", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ContactName")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("聯絡人姓名");
+
+                    b.Property<string>("ContactPhone")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("聯絡人電話");
+
+                    b.Property<string>("CreateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DSRemark")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("備註");
+
+                    b.Property<string>("DharmaServiceName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("法會名");
+
+                    b.Property<int?>("DharmaServiceYear")
+                        .HasColumnType("int")
+                        .HasComment("法會年份");
+
+                    b.Property<DateTime?>("ReceiptDate")
+                        .HasColumnType("datetime2")
+                        .HasComment("收據日期");
+
+                    b.Property<string>("ReceiptNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
+                        .HasComment("收據號碼");
+
+                    b.Property<string>("ReceiptOwn")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("收據人姓名");
+
+                    b.Property<int?>("Sum")
+                        .HasColumnType("int")
+                        .HasComment("金額");
+
+                    b.Property<string>("UpdateBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ReceiptNumber");
+
+                    b.ToTable("Info_Receipt_del");
                 });
 
             modelBuilder.Entity("BMSHPMS.Models.DharmaService.Opt_DharmaService", b =>
@@ -1222,6 +1463,17 @@ namespace BMSHPMS.Migrations
                     b.Navigation("Receipt");
                 });
 
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_Donor_del", b =>
+                {
+                    b.HasOne("BMSHPMS.Models.DharmaService.Info_Receipt_del", "Receipt_del")
+                        .WithMany("Info_Donors_del")
+                        .HasForeignKey("Receipt_delID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Receipt_del");
+                });
+
             modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_Longevity", b =>
                 {
                     b.HasOne("BMSHPMS.Models.DharmaService.Info_Receipt", "Receipt")
@@ -1233,6 +1485,17 @@ namespace BMSHPMS.Migrations
                     b.Navigation("Receipt");
                 });
 
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_Longevity_del", b =>
+                {
+                    b.HasOne("BMSHPMS.Models.DharmaService.Info_Receipt_del", "Receipt_del")
+                        .WithMany("Info_Longevitys_del")
+                        .HasForeignKey("Receipt_delID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Receipt_del");
+                });
+
             modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_Memorial", b =>
                 {
                     b.HasOne("BMSHPMS.Models.DharmaService.Info_Receipt", "Receipt")
@@ -1242,6 +1505,17 @@ namespace BMSHPMS.Migrations
                         .IsRequired();
 
                     b.Navigation("Receipt");
+                });
+
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_Memorial_del", b =>
+                {
+                    b.HasOne("BMSHPMS.Models.DharmaService.Info_Receipt_del", "Receipt_del")
+                        .WithMany("Info_Memorials_del")
+                        .HasForeignKey("Receipt_delID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Receipt_del");
                 });
 
             modelBuilder.Entity("BMSHPMS.Models.DharmaService.Opt_DonationProject", b =>
@@ -1290,6 +1564,15 @@ namespace BMSHPMS.Migrations
                     b.Navigation("Info_Longevitys");
 
                     b.Navigation("Info_Memorials");
+                });
+
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_Receipt_del", b =>
+                {
+                    b.Navigation("Info_Donors_del");
+
+                    b.Navigation("Info_Longevitys_del");
+
+                    b.Navigation("Info_Memorials_del");
                 });
 
             modelBuilder.Entity("WalkingTec.Mvvm.Core.FrameworkGroup", b =>

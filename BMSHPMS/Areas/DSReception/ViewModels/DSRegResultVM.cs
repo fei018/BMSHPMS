@@ -1,4 +1,5 @@
 ﻿using BMSHPMS.Models.DharmaService;
+using System;
 using System.Collections.Generic;
 
 namespace BMSHPMS.DSReception.ViewModels
@@ -9,17 +10,29 @@ namespace BMSHPMS.DSReception.ViewModels
 
         public string ReceiptNumber { get; set; }
 
-        public List<Info_Donor> DonorInfos { get; set; } = new List<Info_Donor>();
+        /// <summary>
+        /// 收據所屬法會名
+        /// </summary>
+        public string DharmaServiceName { get; set; }
 
-        public List<Info_Longevity> LongevityInfos { get; set; } = new List<Info_Longevity>();
+        /// <summary>
+        /// 提交的法會ID
+        /// </summary>
+        public Guid? DharmaServiceID { get; set; }
 
-        public List<Info_Memorial> MemorialInfos { get; set; } = new List<Info_Memorial>();
+        //public Opt_DharmaService DharmaService { get; set; }
+
+        public List<Info_Donor> Donors { get; set; } = new List<Info_Donor>();
+
+        public List<Info_Longevity> Longevitys { get; set; } = new List<Info_Longevity>();
+
+        public List<Info_Memorial> Memorials { get; set; } = new List<Info_Memorial>();
 
         public void Sort()
         {
-            DonorInfos?.Sort((x,y)=>x.SerialCode.CompareTo(y.SerialCode));
-            LongevityInfos?.Sort((x, y) => x.SerialCode.CompareTo(y.SerialCode));
-            MemorialInfos?.Sort((x, y) => x.SerialCode.CompareTo(y.SerialCode));
+            Donors?.Sort((x,y)=>x.SerialCode.CompareTo(y.SerialCode));
+            Longevitys?.Sort((x, y) => x.SerialCode.CompareTo(y.SerialCode));
+            Memorials?.Sort((x, y) => x.SerialCode.CompareTo(y.SerialCode));
         }
     }
 }

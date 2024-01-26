@@ -13,17 +13,25 @@ namespace BMSHPMS
         #region DbSet<Models>
         public DbSet<FrameworkUser> FrameworkUsers { get; set; }
 
-        public DbSet<Info_Receipt> Info_Receipts { get; set; }
-
         public DbSet<Opt_DharmaService> Opt_DharmaServices { get; set; }
 
         public DbSet<Opt_DonationProject> Opt_DonationProjects { get; set; }
 
+        public DbSet<Info_Receipt> Info_Receipts { get; set; }
+
+        public DbSet<Info_Receipt_del> Info_Receipts_del { get; set; }
+
         public DbSet<Info_Donor> Info_Donors { get; set; }
+
+        public DbSet<Info_Donor_del> Info_Donors_del { get; set; }
 
         public DbSet<Info_Longevity> Info_Longevitys { get; set; }
 
+        public DbSet<Info_Longevity_del> Info_Longevitys_del { get; set; }
+
         public DbSet<Info_Memorial> Info_Memorials { get; set; }
+
+        public DbSet<Info_Memorial_del> Info_Memorials_del { get; set; }
         #endregion
 
 
@@ -116,6 +124,7 @@ namespace BMSHPMS
         public DataContext CreateDbContext(string[] args)
         {
             string conn = "Data Source=localhost\\SQLEXPRESS;Database=BMSHPMS_db;Integrated Security=True;";
+            //string conn = "Server=192.168.0.201\\sqlexpress;Database=BMSHPMS_db;User Id=bmshpms;Password=bmsh@1234";
 
             return new DataContext(conn, DBTypeEnum.SqlServer);
         }

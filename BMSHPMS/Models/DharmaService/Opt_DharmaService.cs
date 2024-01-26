@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WalkingTec.Mvvm.Core;
@@ -19,5 +20,7 @@ namespace BMSHPMS.Models.DharmaService
         [Required(ErrorMessage = "Validate.{0}required")]
         public string SerialCode { get; set; }
 
+
+        public List<Opt_DonationProject> Opt_DonationProjects { get; set; } = new List<Opt_DonationProject>();
     }
 }

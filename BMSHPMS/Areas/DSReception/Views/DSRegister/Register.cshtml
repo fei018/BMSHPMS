@@ -16,7 +16,7 @@
     }
 </style>
 
-<button class="layui-btn " onclick="javascript:window.location.reload();"><i class="layui-icon layui-icon-return"></i>返回</button>
+<button class="layui-btn " onclick="javascript:window.location.reload();"><i class="layui-icon layui-icon-return"></i>返回選擇法會</button>
 <br />
 
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
@@ -25,6 +25,18 @@
 
 <div style="padding: 20px; margin:0 auto; background-color:#F2F2F2;">
     <form class="layui-form" action="">
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <lable class="layui-form-label">法會:</lable>
+                    <div class="layui-input-inline">
+                        @* <input type="text" class="layui-input" readonly value="@Model.DharmaServiceName" /> *@
+                        <lable class="layui-form-label reception-lable">@Model.DharmaServiceName</lable>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="layui-row">
             <div class="layui-col-md6">
                 <div class="layui-card">
@@ -54,7 +66,7 @@
                             {
                                 <div class="layui-form-item">
                                     <div class="layui-inline">
-                                        <label class="layui-form-label">金額:@item.Sum</label>
+                                        <label class="layui-form-label">$@item.Sum<br />(@item.SerialCode)</label>
                                         <div class="layui-input-inline">
                                             <input type="number" name="@item.ID" class="layui-input" placeholder="請輸入數目">
                                         </div>
@@ -76,7 +88,7 @@
                             {
                                 <div class="layui-form-item">
                                     <div class="layui-inline">
-                                        <label class="layui-form-label">金額:@item.Sum</label>
+                                        <label class="layui-form-label">$@item.Sum<br />(@item.SerialCode)</label>
                                         <div class="layui-input-inline">
                                             <input type="number" name="@item.ID" class="layui-input" placeholder="請輸入數目">
                                         </div>
@@ -97,7 +109,7 @@
                             {
                                 <div class="layui-form-item">
                                     <div class="layui-inline">
-                                        <label class="layui-form-label">金額:@item.Sum</label>
+                                        <label class="layui-form-label">$@item.Sum<br />(@item.SerialCode)</label>
                                         <div class="layui-input-inline">
                                             <input type="number" name="@item.ID" class="layui-input" placeholder="請輸入數目">
                                         </div>
@@ -144,12 +156,12 @@
             return false; //阻止表單跳轉
         });
 
-        $('#dsRegisterReset').on('click', function (event) {
-            let url = '/DSReception/DSRegister/Register?DharmaServiceID=' + $('input[name="DharmaServiceID"]').val();
+        // $('#dsRegisterReset').on('click', function (event) {
+        //     let url = '/DSReception/DSRegister/Register?DharmaServiceID=' + $('input[name="DharmaServiceID"]').val();
 
-            $.get(url, function (data) {
-                $('#dsRegisterDiv').html(data);
-            }, 'html');
-        });
+        //     $.get(url, function (data) {
+        //         $('#dsRegisterDiv').html(data);
+        //     }, 'html');
+        // });
     });
 </script>

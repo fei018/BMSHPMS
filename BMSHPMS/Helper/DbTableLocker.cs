@@ -4,6 +4,8 @@
     {
         public static object T_Receipt => new object();
 
+        public static object T_Receipt_del => new object();
+
         public static object T_LeadDonorPlaque => new object();
 
         public static object T_LongevityPlaque => new object();

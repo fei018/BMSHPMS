@@ -36,9 +36,6 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
         [Display(Name = "法會年份")]
         public int? DharmaServiceYear { get; set; }
 
-        [Display(Name = "已刪除")]
-        public bool? ShowDeleted { get; set; }
-
         public List<ComboSelectListItem> AllDharmaServiceName { get; set; }
 
         public List<ComboSelectListItem> ShowDeletedSelection { get; set; }
@@ -46,11 +43,6 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
         protected override void InitVM()
         {
             AllDharmaServiceName = DC.Set<Opt_DharmaService>().GetSelectListItems(Wtm, x => x.ServiceName, y => y.ServiceName);
-
-            ShowDeletedSelection = new List<ComboSelectListItem>
-            {
-                new(){ Text = "已刪除", Value="true"}
-            };
         }
 
     }

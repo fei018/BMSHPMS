@@ -24,7 +24,7 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs
                 //this.MakeStandardAction("DServiceProject", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "DSManage", dialogWidth: 800),
                 //this.MakeStandardAction("DServiceProject", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
                 //this.MakeStandardAction("DServiceProject", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800),
-                this.MakeStandardAction("Opt_DharmaService", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
+                //this.MakeStandardAction("Opt_DharmaService", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
             };
         }
 

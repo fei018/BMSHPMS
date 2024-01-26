@@ -1,8 +1,8 @@
 ﻿@model DSRegResultVM
 @{
-    var donors = Model.DonorInfos;
-    var longevitys = Model.LongevityInfos;
-    var memorials = Model.MemorialInfos;
+    var donors = Model.Donors;
+    var longevitys = Model.Longevitys;
+    var memorials = Model.Memorials;
 }
 
 <style>
@@ -37,11 +37,20 @@
         </fieldset>
 
         <div class="layui-row">
-            <div class="layui-col-md12">
+            <div class="layui-col-md4">
                 <div class="layui-form-item">
                     <lable class="layui-form-label">收據號碼:</lable>
-                    <div class="layui-input-block">
+                    <div class="layui-input-inline">
                         <lable class="layui-form-label">@Model.ReceiptNumber</lable>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <lable class="layui-form-label">法會:</lable>
+                    <div class="layui-input-inline">
+                        <lable class="layui-form-label reception-lable">@Model.DharmaServiceName</lable>
                     </div>
                 </div>
             </div>
@@ -58,7 +67,7 @@
                             {
                                 <div class="layui-form-item">
                                     <div class="layui-inline">
-                                        <label class="layui-form-label">金額 @item.Sum:</label>
+                                        <label class="layui-form-label">$@item.Sum:</label>
                                         <div class="layui-input-inline">
                                             <label class="layui-form-label layui-font-red">@item.SerialCode</label>
                                         </div>
@@ -79,7 +88,7 @@
                             {
                                 <div class="layui-form-item">
                                     <div class="layui-inline">
-                                        <label class="layui-form-label">金額 @item.Sum:</label>
+                                        <label class="layui-form-label">$@item.Sum:</label>
                                         <div class="layui-input-inline">
                                             <label class="layui-form-label layui-font-red">@item.SerialCode</label>
                                         </div>
@@ -100,7 +109,7 @@
                             {
                                 <div class="layui-form-item">
                                     <div class="layui-inline">
-                                        <label class="layui-form-label">金額 @item.Sum:</label>
+                                        <label class="layui-form-label">$@item.Sum:</label>
                                         <div class="layui-input-inline">
                                             <label class="layui-form-label layui-font-red">@item.SerialCode</label>
                                         </div>
@@ -112,26 +121,18 @@
                 </div>
             }
         </div>
-    </div>
-    @* <div class="layui-row" style="margin-bottom:100px;">
-        <div class="layui-col-md6">
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button class="layui-btn" onclick="printRegResult()">打印結果</button>
+
+        <hr class="layui-border-green" />
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" onclick="receptionRegister('@Model.DharmaServiceID')" >登記新功德</button>
+                        <button class="layui-btn" onclick="javascript:window.location.reload();">返回選擇法會</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div> *@
+
+    </div>
 }
-
-
-@* <script>
-    function printRegResult(){
-        let oldbody = window.document.body.innerHTML;
-        let printObj = document.getElementById('reg-result');
-        printObj.style = "";
-        window.document.body.innerHTML = printObj.innerHTML
-        window.print();
-        window.document.body.innerHTML = oldbody;
-    }
-</script> *@

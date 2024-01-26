@@ -33,7 +33,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
             if (old != null)
             {
                 old.BenefactorName = Entity.BenefactorName;
-                old.DeceasedName = Entity.DeceasedName;
+                old.DeceasedName_1 = Entity.DeceasedName_1;
+                old.DeceasedName_2 = Entity.DeceasedName_2;
+                old.DeceasedName_3 = Entity.DeceasedName_3;
                 old.DSRemark = Entity.DSRemark;
                 old.UpdateBy = LoginUserInfo.Name;
                 old.UpdateTime = DateTime.Now;

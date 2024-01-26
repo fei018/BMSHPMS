@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OVxTt07jmxXHUXz08L5yisXQIort4G4Jzsa5jWbpsv8=",
+  "Hash": "WC5lVrqrRtAsdqKLfj1xUe1O5QTF/zuIrqinzbeBwzE=",
   "Source": "BMSHPMS",
   "BasePath": "_content/BMSHPMS",
   "Mode": "Default",
@@ -566,6 +566,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\jquery.min.js"
+    },
+    {
+      "Identity": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\js\\reception.js",
+      "SourceId": "BMSHPMS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\",
+      "BasePath": "_content/BMSHPMS",
+      "RelativePath": "js/reception.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\reception.js"
     },
     {
       "Identity": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\layui\\css\\layui.css",

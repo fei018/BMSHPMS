@@ -47,8 +47,16 @@ namespace BMSHPMS.Helper
 
                 if (value != null)
                 {
-                    p2.SetValue(t2, value);
-                }              
+                    if (value is string value2 && string.IsNullOrEmpty(value2))
+                    {
+                        continue;
+                    }
+
+                    if (p2.CanWrite)
+                    {
+                        p2.SetValue(t2, value);
+                    }
+                }
             }
 
             return t2;

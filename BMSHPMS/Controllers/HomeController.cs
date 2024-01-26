@@ -184,7 +184,6 @@ namespace BMSHPMS.Controllers
             public int subscribers_count { get; set; }
             public int open_issues_count { get; set; }
         }
-
     }
 
 }

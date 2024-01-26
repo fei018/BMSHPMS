@@ -1,0 +1,12 @@
+﻿@model BMSHPMS.DSManage.ViewModels.Info_Longevity_delVMs.Info_Longevity_delListVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+<wt:row items-per-row="ItemsPerRowEnum.Three">
+<wt:textbox field="Searcher.Name" />
+<wt:textbox field="Searcher.Sum" />
+<wt:textbox field="Searcher.SerialCode" />
+<wt:textbox field="Searcher.DSRemark" />
+</wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" url="/DSManage/Info_Longevity_del/Search"/>

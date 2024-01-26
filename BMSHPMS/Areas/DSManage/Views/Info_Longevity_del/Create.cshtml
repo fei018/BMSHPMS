@@ -1,0 +1,16 @@
+﻿@model BMSHPMS.DSManage.ViewModels.Info_Longevity_delVMs.Info_Longevity_delVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:textbox field="Entity.Name" />
+<wt:textbox field="Entity.Sum" />
+<wt:textbox field="Entity.SerialCode" />
+<wt:textbox field="Entity.DSRemark" />
+<wt:combobox field="Entity.Receipt_delID" items="AllReceipt_dels"/>
+</wt:row>
+    <wt:row align="AlignEnum.Right">
+        <wt:submitbutton />
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

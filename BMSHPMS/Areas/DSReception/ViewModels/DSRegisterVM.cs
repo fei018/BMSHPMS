@@ -28,7 +28,10 @@ namespace BMSHPMS.DSReception.ViewModels
         }
         #endregion
 
-        #region Register page       
+        #region Register page    
+        
+        public string DharmaServiceName { get; set; }
+
         public List<Opt_DonationProject> DonationProject_Donors { get; set; }
 
         public List<Opt_DonationProject> DonationProject_Longevitys { get; set; }
@@ -37,6 +40,10 @@ namespace BMSHPMS.DSReception.ViewModels
 
         public void FillDonationProjectList(Guid dsProjectID)
         {
+
+            var dharmasService= DC.Set<Opt_DharmaService>().Find(dsProjectID);
+            DharmaServiceName = dharmasService?.ServiceName;
+
             DonationProject_Donors = new List<Opt_DonationProject>();
             DonationProject_Longevitys = new List<Opt_DonationProject>();
             DonationProject_Memorials = new List<Opt_DonationProject>();
@@ -71,21 +78,28 @@ namespace BMSHPMS.DSReception.ViewModels
         {
             DSRegResultVM regResultVM = new();
 
-            string receiptNumber = form["ReceiptNumber"];
+            string receiptNumber = form["ReceiptNumber"];   // post form 收據號碼
             if (string.IsNullOrWhiteSpace(receiptNumber))
             {
                 regResultVM.Message = "收據號碼是Null.";
                 return regResultVM;
             }
 
+            Guid postDharmaServiceID = Guid.Parse(form[nameof(DharmaServiceID)]);   // post form 法會ID
+            Opt_DharmaService postDharmaService = DC.Set<Opt_DharmaService>().Find(postDharmaServiceID); // 查詢post法會項目
+
             //收據號碼已存在
-            Info_Receipt exsitReceipt = DC.Set<Info_Receipt>().Where(r => r.ReceiptNumber.Equals(receiptNumber)).FirstOrDefault();
+            Info_Receipt exsitReceipt = DC.Set<Info_Receipt>()
+                                            .Where(r => r.ReceiptNumber.Equals(receiptNumber))
+                                            .FirstOrDefault();
             if (exsitReceipt != null)
             {
-                regResultVM.DonorInfos = await   DC.Set<Info_Donor>().Where(q => q.ReceiptID == exsitReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
-                regResultVM.LongevityInfos = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == exsitReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
-                regResultVM.MemorialInfos = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == exsitReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
+                regResultVM.Donors = await DC.Set<Info_Donor>().Where(q => q.ReceiptID == exsitReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
+                regResultVM.Longevitys = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == exsitReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
+                regResultVM.Memorials = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == exsitReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
                 regResultVM.ReceiptNumber = receiptNumber;
+                regResultVM.DharmaServiceName = exsitReceipt.DharmaServiceName;
+                regResultVM.DharmaServiceID = postDharmaServiceID;
                 regResultVM.Message = "收據號碼已存在";
 
                 return regResultVM;
@@ -93,6 +107,7 @@ namespace BMSHPMS.DSReception.ViewModels
 
             List<DSRegSubmittedVM> submittedList = new();
 
+            // 解析 post form 數據
             foreach (var f in form)
             {
                 if (Guid.TryParse(f.Key, out Guid id))
@@ -120,12 +135,9 @@ namespace BMSHPMS.DSReception.ViewModels
             var newLongevityList = new List<Info_Longevity>();
             var newMemorialList = new List<Info_Memorial>();
 
-            Guid dserviceID = Guid.Parse(form[nameof(DharmaServiceID)]);
-            Opt_DharmaService dharmaService = DC.Set<Opt_DharmaService>().Find(dserviceID); // 查詢法會項目
-
             List<Opt_DonationProject> calculateUsedNumberDonationProjectList = new();
 
-            // 計算個數
+            #region // 計算使用個數
             foreach (var submittedItem in submittedList)
             {
                 var queryDonationProject = DC.Set<Opt_DonationProject>().Find(submittedItem.DonationProjectID); // 根據功德ID 查詢 功德項目
@@ -135,13 +147,15 @@ namespace BMSHPMS.DSReception.ViewModels
                 queryDonationProject.UsedNumber += submittedItem.Count;
                 calculateUsedNumberDonationProjectList.Add(queryDonationProject);
 
-                // 根據功德項目分類 計算每種個數, 寫入各自的 功德表(DSDonorInfo,DSLongevityInfo,DSMemorialInfo)
+                // 根據功德項目分類 計算每種個數, 寫入各自的 功德表(Info_Donor,Info_Longevity,Info_Memorial)
                 switch (queryDonationProject.DonationCategory)
                 {
                     case DharmaServiceSelectHelper.DonationCategory.功德主:
                         for (int i = 1; i <= submittedItem.Count; i++)
                         {
-                            string serial = dharmaService.SerialCode + queryDonationProject.SerialCode + (usedNumber + i).ToString().PadLeft(3,'0');
+                            //string serial = dharmaService.SerialCode + queryDonationProject.SerialCode + (usedNumber + i).ToString().PadLeft(4,'0');
+                            // 總編號
+                            string serial = queryDonationProject.SerialCode + (usedNumber + i).ToString().PadLeft(4, '0');
                             Info_Donor info = new()
                             {
                                 SerialCode = serial,
@@ -150,7 +164,6 @@ namespace BMSHPMS.DSReception.ViewModels
                                 CreateTime = DateTime.Now,
                                 UpdateBy = LoginUserInfo.Name,
                                 UpdateTime = DateTime.Now,
-                                IsDataValid = true,
                             };
                             newDonorList.Add(info);
                         }
@@ -159,7 +172,7 @@ namespace BMSHPMS.DSReception.ViewModels
                     case DharmaServiceSelectHelper.DonationCategory.延生位:
                         for (int i = 1; i <= submittedItem.Count; i++)
                         {
-                            string serial = dharmaService.SerialCode + queryDonationProject.SerialCode + (usedNumber + i).ToString().PadLeft(3, '0');
+                            string serial = queryDonationProject.SerialCode + (usedNumber + i).ToString().PadLeft(4, '0');
                             Info_Longevity info = new()
                             {
                                 SerialCode = serial,
@@ -168,7 +181,6 @@ namespace BMSHPMS.DSReception.ViewModels
                                 CreateTime = DateTime.Now,
                                 UpdateBy = LoginUserInfo.Name,
                                 UpdateTime = DateTime.Now,
-                                IsDataValid = true,
                             };
                             newLongevityList.Add(info);
                         }
@@ -177,7 +189,7 @@ namespace BMSHPMS.DSReception.ViewModels
                     case DharmaServiceSelectHelper.DonationCategory.附薦位:
                         for (int i = 1; i <= submittedItem.Count; i++)
                         {
-                            string serial = dharmaService.SerialCode + queryDonationProject.SerialCode + (usedNumber + i).ToString().PadLeft(3, '0');
+                            string serial = queryDonationProject.SerialCode + (usedNumber + i).ToString().PadLeft(4, '0');
                             Info_Memorial info = new()
                             {
                                 SerialCode = serial,
@@ -186,7 +198,6 @@ namespace BMSHPMS.DSReception.ViewModels
                                 CreateTime = DateTime.Now,
                                 UpdateBy = LoginUserInfo.Name,
                                 UpdateTime = DateTime.Now,
-                                IsDataValid = true,
                             };
                             newMemorialList.Add(info);
                         }
@@ -196,10 +207,12 @@ namespace BMSHPMS.DSReception.ViewModels
                         break;
                 }
             }
+            #endregion
 
-            // 更新數據庫
+            #region 更新數據庫
             Info_Receipt newReceipt;
 
+            // 使用事務
             using var transaction = DC.BeginTransaction();
             try
             {
@@ -211,18 +224,20 @@ namespace BMSHPMS.DSReception.ViewModels
                         CreateTime = DateTime.Now,
                         CreateBy = LoginUserInfo.Name,
                         ReceiptNumber = receiptNumber,
-                        DharmaServiceName = dharmaService.ServiceName,
+                        DharmaServiceName = postDharmaService.ServiceName,
                         DharmaServiceYear = DateTime.Now.Year,
                         ReceiptDate = DateTime.Now.Date,
                         UpdateBy = LoginUserInfo.Name,
                         UpdateTime = DateTime.Now,
-                        IsDataValid = true,
                     };
 
                     DC.AddEntity(receiptInfo);
                     DC.SaveChanges();
 
-                    newReceipt = DC.Set<Info_Receipt>().Where(r => r.ReceiptNumber == receiptNumber).FirstOrDefault();
+                    newReceipt = DC.Set<Info_Receipt>()
+                                    .Where(r => r.ReceiptNumber == receiptNumber)
+                                    .FirstOrDefault();
+
                     if (newReceipt == null)
                     {
                         regResultVM.Message = "新加收據後, 查詢收據是Null.";
@@ -258,23 +273,27 @@ namespace BMSHPMS.DSReception.ViewModels
 
                     DC.SaveChanges();
 
+                    // 事務寫入
                     transaction.Commit();                   
-                }               
+                }
             }
             catch (Exception ex)
             {
                 transaction.Rollback();
-                regResultVM.Message = ex.Message;               
+                regResultVM.Message = ex.Message;
                 return regResultVM;
             }
 
-            regResultVM.DonorInfos = await DC.Set<Info_Donor>().Where(q => q.ReceiptID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
-            regResultVM.LongevityInfos = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
-            regResultVM.MemorialInfos = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
+            regResultVM.Donors = await DC.Set<Info_Donor>().Where(q => q.ReceiptID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
+            regResultVM.Longevitys = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
+            regResultVM.Memorials = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
             regResultVM.ReceiptNumber = receiptNumber;
+            regResultVM.DharmaServiceName = postDharmaService.ServiceName;
+            regResultVM.DharmaServiceID = postDharmaServiceID;
             regResultVM.Message = "登記成功.";
 
             return regResultVM;
+            #endregion
         }
         #endregion
 
