@@ -12,7 +12,7 @@ namespace BMSHPMS.DSManage.Controllers
 {
     [NoLog]
     [Area("DSManage")]
-    [ActionDescription("法會收據")]
+    [ActionDescription("收據")]
     public partial class Info_ReceiptController : BaseController
     {
         #region Search

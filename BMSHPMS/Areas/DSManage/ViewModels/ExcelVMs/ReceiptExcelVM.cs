@@ -36,14 +36,14 @@ namespace BMSHPMS.DSManage.ViewModels.ExcelVMs
         [ExporterHeader(DisplayName = "備註")]
         public string DSRemark { get; set; }
 
-        [ExporterHeader(DisplayName = "資料登記人")]
-        public string CreateBy { get; set; }
+        [ExporterHeader(DisplayName = "資料更新者")]
+        public string UpdateBy { get; set; }
 
-        [ExporterHeader(DisplayName = "登記時間", Format = "yyyy-MM-dd HH:mm:ss")]
-        public DateTime? CreateTime { get; set; }
+        [ExporterHeader(DisplayName = "更新時間", Format = "yyyy-MM-dd HH:mm:ss")]
+        public DateTime? UpdateTime { get; set; }
 
-        [ExporterHeader(DisplayName = "ID")]
-        public Guid? ID { get; set; }
+        //[ExporterHeader(DisplayName = "ID")]
+        //public Guid? ID { get; set; }
 
 
         #region 收據 List 匯出 Excel 數據 byte[], 包括 功德主,延生,附薦

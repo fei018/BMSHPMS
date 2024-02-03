@@ -10,7 +10,7 @@ namespace BMSHPMS.DSManage.Controllers
 {
     [NoLog]
     [Area("DSManage")]
-    [ActionDescription("法會功德主")]
+    [ActionDescription("功德主")]
     public partial class Info_DonorController : BaseController
     {
         #region Search

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BMSHPMS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a27f64d9f2f29d9f30ffcd378a2efd53fac1292")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7bcc75966c425e4ae392be2f4f646388851072c4")]
 [assembly: System.Reflection.AssemblyProductAttribute("BMSHPMS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BMSHPMS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

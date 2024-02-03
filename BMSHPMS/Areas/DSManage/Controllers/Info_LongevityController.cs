@@ -10,7 +10,7 @@ namespace BMSHPMS.DSManage.Controllers
 {
     [NoLog]
     [Area("DSManage")]
-    [ActionDescription("法會延生位")]
+    [ActionDescription("延生位")]
     public partial class Info_LongevityController : BaseController
     {
         #region Search

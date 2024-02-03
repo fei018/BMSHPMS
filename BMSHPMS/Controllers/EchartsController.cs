@@ -28,27 +28,27 @@ namespace BMSHPMS.Controllers
             {
                 Category = "項目",
                 Series = "法會",
-                Value = dharmaServices.Count
+                Value = (double)dharmaServices?.Count
             });
 
             data.Add(new ChartData
             {
                 Category = "項目",
                 Series = "功德主",
-                Value = donations.Where(x => x.DonationCategory == DharmaServiceSelectHelper.DonationCategory.功德主).Count(),
+                Value = (double)donations.Where(x => x.DonationCategory == DharmaServiceSelectHelper.DonationCategory.功德主)?.Count(),
             });
 
             data.Add(new ChartData
             {
                 Category = "項目",
                 Series = "延生位",
-                Value = donations.Where(x => x.DonationCategory == DharmaServiceSelectHelper.DonationCategory.延生位).Count(),
+                Value = (double)donations.Where(x => x.DonationCategory == DharmaServiceSelectHelper.DonationCategory.延生位)?.Count(),
             });
             data.Add(new ChartData
             {
                 Category = "項目",
                 Series = "附薦位",
-                Value = donations.Where(x => x.DonationCategory == DharmaServiceSelectHelper.DonationCategory.附薦位).Count(),
+                Value = (double)donations.Where(x => x.DonationCategory == DharmaServiceSelectHelper.DonationCategory.附薦位)?.Count(),
             });
 
             return Json(data.ToChartData());
@@ -83,5 +83,21 @@ namespace BMSHPMS.Controllers
 
             return Json(data.ToChartData());
         }
+
+        //public async Task<IActionResult> GetDonorChart()
+        //{
+        //    var data = new List<ChartData>();
+
+        //    Dictionary<int, Info_Donor> dic_donors = new Dictionary<int, Info_Donor>();
+
+        //    var donors = await DC.Set<Info_Donor>().ToListAsync();
+
+
+
+        //    foreach (var item in donors)
+        //    {
+        //        dic_donors.Add(item.Sum,)
+        //    }
+        //}
     }
 }
