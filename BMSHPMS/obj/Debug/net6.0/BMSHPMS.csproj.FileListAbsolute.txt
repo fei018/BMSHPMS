@@ -541,7 +541,6 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Debug\net6.0\staticwebassets.pack
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Debug\net6.0\staticwebassets.build.json
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Debug\net6.0\staticwebassets.development.json
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Debug\net6.0\scopedcss\bundle\BMSHPMS.styles.css
-C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Debug\net6.0\BMSHPMS.csproj.CopyComplete
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Debug\net6.0\BMSHPMS.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Debug\net6.0\refint\BMSHPMS.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Debug\net6.0\BMSHPMS.pdb
@@ -716,3 +715,4 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\osx\native\
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\win-arm64\native\libSkiaSharp.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\win-x64\native\libSkiaSharp.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Debug\net6.0\runtimes\win-x86\native\libSkiaSharp.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Debug\net6.0\BMSHPMS.csproj.Up2Date

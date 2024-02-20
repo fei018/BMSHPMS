@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Fei\code project\Github\BMSHPMS\BMSHPMS
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/DSReport/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcRFNSZXBvcnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Info_Donor/BatchDelete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcSW5mb19Eb25vclxCYXRjaERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

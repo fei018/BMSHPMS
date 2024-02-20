@@ -232,7 +232,6 @@ namespace BMSHPMS.DSManage.Controllers
                 return FFResult().Alert(ex.GetBaseException().Message);
             }
         }
-        #endregion
 
         [ActionDescription("匯出今日")]
         public async Task<IActionResult> ExportExcelToday()
@@ -252,5 +251,7 @@ namespace BMSHPMS.DSManage.Controllers
                 //return FFResult().Alert(ex.GetBaseException().Message);
             }
         }
+        #endregion
+
     }
 }
