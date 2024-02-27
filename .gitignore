@@ -1,7 +1,7 @@
-appsettings.json
+/appsettings.json
 
-BMSHPMS/bin
+/BMSHPMS/bin
 
-publish/
+/publish
 
-BMSHPMS.Test/
+/BMSHPMS.Test
