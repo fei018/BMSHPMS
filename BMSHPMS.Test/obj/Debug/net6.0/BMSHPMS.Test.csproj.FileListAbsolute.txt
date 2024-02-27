@@ -1,8 +1,0 @@
-C:\Fei\code project\Github\BMSHPMS\BMSHPMS.Test\obj\Debug\net6.0\BMSHPMS.Test.csproj.AssemblyReference.cache
-C:\Fei\code project\Github\BMSHPMS\BMSHPMS.Test\obj\Debug\net6.0\BMSHPMS.Test.GeneratedMSBuildEditorConfig.editorconfig
-C:\Fei\code project\Github\BMSHPMS\BMSHPMS.Test\obj\Debug\net6.0\BMSHPMS.Test.AssemblyInfoInputs.cache
-C:\Fei\code project\Github\BMSHPMS\BMSHPMS.Test\obj\Debug\net6.0\BMSHPMS.Test.AssemblyInfo.cs
-C:\Fei\code project\Github\BMSHPMS\BMSHPMS.Test\obj\Debug\net6.0\BMSHPMS.Test.csproj.CoreCompileInputs.cache
-C:\Fei\code project\Github\BMSHPMS\BMSHPMS.Test\obj\Debug\net6.0\BMSHPMS.Test.MvcApplicationPartsAssemblyInfo.cs
-C:\Fei\code project\Github\BMSHPMS\BMSHPMS.Test\obj\Debug\net6.0\BMSHPMS.Test.MvcApplicationPartsAssemblyInfo.cache
-C:\Fei\code project\Github\BMSHPMS\BMSHPMS.Test\obj\Debug\net6.0\BMSHPMS.Test.sourcelink.json
