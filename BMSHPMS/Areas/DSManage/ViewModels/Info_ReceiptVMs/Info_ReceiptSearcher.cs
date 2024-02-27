@@ -38,8 +38,6 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 
         public List<ComboSelectListItem> AllDharmaServiceName { get; set; }
 
-        public List<ComboSelectListItem> ShowDeletedSelection { get; set; }
-
         protected override void InitVM()
         {
             AllDharmaServiceName = DC.Set<Opt_DharmaService>().GetSelectListItems(Wtm, x => x.ServiceName, y => y.ServiceName);

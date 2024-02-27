@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using WalkingTec.Mvvm.Core;
-using WalkingTec.Mvvm.Mvc;
 using WalkingTec.Mvvm.Core.Extensions;
-using BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs;
-using System.Threading.Tasks;
+using WalkingTec.Mvvm.Mvc;
 
 namespace BMSHPMS.DSManage.Controllers
 {
@@ -188,26 +186,26 @@ namespace BMSHPMS.DSManage.Controllers
         #endregion
 
         #region Import
-		//[ActionDescription("Sys.Import")]
-  //      public ActionResult Import()
-  //      {
-  //          var vm = Wtm.CreateVM<DSDonationProjectImportVM>();
-  //          return PartialView(vm);
-  //      }
+        //[ActionDescription("Sys.Import")]
+        //      public ActionResult Import()
+        //      {
+        //          var vm = Wtm.CreateVM<DSDonationProjectImportVM>();
+        //          return PartialView(vm);
+        //      }
 
-  //      [HttpPost]
-  //      [ActionDescription("Sys.Import")]
-  //      public ActionResult Import(DSDonationProjectImportVM vm, IFormCollection nouse)
-  //      {
-  //          if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
-  //          {
-  //              return PartialView(vm);
-  //          }
-  //          else
-  //          {
-  //              return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
-  //          }
-  //      }
+        //      [HttpPost]
+        //      [ActionDescription("Sys.Import")]
+        //      public ActionResult Import(DSDonationProjectImportVM vm, IFormCollection nouse)
+        //      {
+        //          if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
+        //          {
+        //              return PartialView(vm);
+        //          }
+        //          else
+        //          {
+        //              return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
+        //          }
+        //      }
         #endregion
 
         [ActionDescription("Sys.Export")]
@@ -217,45 +215,6 @@ namespace BMSHPMS.DSManage.Controllers
             return vm.GetExportData();
         }
 
-        #region CleanUsedNumber
 
-        [ActionDescription("清除已使用數")]
-        public IActionResult CleanUsedNumber()
-        {
-            var vm = Wtm.CreateVM<Opt_DonationProjectCleanVM>();
-            
-            return PartialView(vm);
-        }
-
-        [HttpPost]
-        [ActionDescription("清除已使用數")]
-        public async Task<IActionResult> CleanUsedNumber(Opt_DonationProjectCleanVM vm)
-        {
-            try
-            {
-                await vm.CleanUsedNumber();
-                return Json(new { code = 200, msg = "已清除" });
-            }
-            catch (Exception ex)
-            {
-                return Json(new { code = 400, msg = ex.Message });
-            }
-        }
-
-        [HttpPost]
-        [ActionDescription("清除所有已使用數")]
-        public async Task<IActionResult> CleanUsedNumberAll(Opt_DonationProjectCleanVM vm)
-        {
-            try
-            {
-                await vm.CleanUsedNumberAll();
-                return Json(new { code = 200, msg = "已清除全部" });
-            }
-            catch (Exception ex)
-            {
-                return Json(new { code = 400, msg = ex.Message });
-            }
-        }
-        #endregion
     }
 }

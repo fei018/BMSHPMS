@@ -1,5 +1,6 @@
-﻿using BMSHPMS.DSManage.ViewModels.ExcelVMs;
+﻿using BMSHPMS.Areas.DSManage.ViewModels.Common;
 using BMSHPMS.Models.DharmaService;
+using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,10 +10,8 @@ using WalkingTec.Mvvm.Core;
 
 namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
 {
-    public class ReceiptVM : BaseVM
+    public class ReceiptFuncVM : BaseVM
     {
-        public DateTime ReceiptDate { get; set; }
-
 
         public async Task<byte[]> ExportExcelByDate(DateTime date)
         {

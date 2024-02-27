@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Fei\code project\Github\BMSHPMS\BMSHPMS
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/DSReport/Index - 複製.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcRFNSZXBvcnRcSW5kZXggLSDopIfoo70uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/DSReport/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcRFNSZXBvcnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -294,16 +298,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcT3B0X0RoYXJtYVNlcnZpY2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Opt_DonationProjectClean/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcT3B0X0RvbmF0aW9uUHJvamVjdENsZWFuXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Opt_DonationProject/BatchDelete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcT3B0X0RvbmF0aW9uUHJvamVjdFxCYXRjaERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Opt_DonationProject/BatchEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcT3B0X0RvbmF0aW9uUHJvamVjdFxCYXRjaEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Opt_DonationProject/CleanUsedNumber.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcT3B0X0RvbmF0aW9uUHJvamVjdFxDbGVhblVzZWROdW1iZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Opt_DonationProject/Create.cshtml]

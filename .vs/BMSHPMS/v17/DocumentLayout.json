@@ -1,105 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Fei\\code project\\Github\\BMSHPMS\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\areas\\dsmanage\\controllers\\dsreportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\areas\\dsmanage\\controllers\\dsreportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\areas\\dsmanage\\viewmodels\\dsreportvms\\receiptvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\areas\\dsmanage\\viewmodels\\dsreportvms\\receiptvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\areas\\dsmanage\\views\\dsreport\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\areas\\dsmanage\\views\\dsreport\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\areas\\dsmanage\\viewmodels\\info_receiptvms\\info_receiptreportvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\areas\\dsmanage\\viewmodels\\info_receiptvms\\info_receiptreportvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\areas\\dsmanage\\controllers\\info_receiptcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\areas\\dsmanage\\controllers\\info_receiptcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 247,
-          "SelectedChildIndex": 3,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Info_ReceiptReportVM.cs",
-              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_ReceiptVMs\\Info_ReceiptReportVM.cs",
-              "RelativeDocumentMoniker": "BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_ReceiptVMs\\Info_ReceiptReportVM.cs",
-              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_ReceiptVMs\\Info_ReceiptReportVM.cs",
-              "RelativeToolTip": "BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_ReceiptVMs\\Info_ReceiptReportVM.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAA0wCIAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-15T06:51:51.568Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ReceiptVM.cs",
-              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\ViewModels\\DSReportVMs\\ReceiptVM.cs",
-              "RelativeDocumentMoniker": "BMSHPMS\\Areas\\DSManage\\ViewModels\\DSReportVMs\\ReceiptVM.cs",
-              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\ViewModels\\DSReportVMs\\ReceiptVM.cs",
-              "RelativeToolTip": "BMSHPMS\\Areas\\DSManage\\ViewModels\\DSReportVMs\\ReceiptVM.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAwwBMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-15T06:50:29.266Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\Views\\DSReport\\Index.cshtml",
-              "RelativeDocumentMoniker": "BMSHPMS\\Areas\\DSManage\\Views\\DSReport\\Index.cshtml",
-              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\Views\\DSReport\\Index.cshtml",
-              "RelativeToolTip": "BMSHPMS\\Areas\\DSManage\\Views\\DSReport\\Index.cshtml",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA4AAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-02-15T06:16:39.255Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DSReportController.cs",
-              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\Controllers\\DSReportController.cs",
-              "RelativeDocumentMoniker": "BMSHPMS\\Areas\\DSManage\\Controllers\\DSReportController.cs",
-              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\Controllers\\DSReportController.cs",
-              "RelativeToolTip": "BMSHPMS\\Areas\\DSManage\\Controllers\\DSReportController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAqwC4AAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-15T06:11:20.917Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Info_ReceiptController.cs",
-              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\Controllers\\Info_ReceiptController.cs",
-              "RelativeDocumentMoniker": "BMSHPMS\\Areas\\DSManage\\Controllers\\Info_ReceiptController.cs",
-              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\Controllers\\Info_ReceiptController.cs",
-              "RelativeToolTip": "BMSHPMS\\Areas\\DSManage\\Controllers\\Info_ReceiptController.cs",
-              "ViewState": "AQIAANoAAAAAAAAAAAAgwP0AAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-15T05:59:01.346Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

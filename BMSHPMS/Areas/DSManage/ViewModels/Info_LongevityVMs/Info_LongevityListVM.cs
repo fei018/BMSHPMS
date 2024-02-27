@@ -7,6 +7,7 @@ using WalkingTec.Mvvm.Core.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using BMSHPMS.Models.DharmaService;
+using BMSHPMS.DSManage.ViewModels.Common;
 
 
 namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
@@ -32,11 +33,12 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
         protected override IEnumerable<IGridColumn<Info_Longevity_View>> InitGridHeader()
         {
             return new List<GridColumn<Info_Longevity_View>>{
-                this.MakeGridHeader(x => x.ReceiptDate_view,width:150),
-                this.MakeGridHeader(x => x.ReceiptNumber_view,width:150),
-                this.MakeGridHeader(x => x.SerialCode,width:150),
-                this.MakeGridHeader(x => x.Sum,width:100),
-                this.MakeGridHeader(x => x.Name),                             
+                this.MakeGridHeader(x => x.ReceiptDate_view,width:110).SetSort(),
+                this.MakeGridHeader(x => x.DharmaServiceFullName,width:150).SetSort(),
+                this.MakeGridHeader(x => x.ReceiptNumber_view,width:120).SetSort(),
+                this.MakeGridHeader(x => x.SerialCode, width : 110).SetSort(),
+                this.MakeGridHeader(x => x.Sum,width:80).SetSort(),
+                this.MakeGridHeader(x => x.Name).SetSort(),                             
                 this.MakeGridHeader(x => x.DSRemark),               
                 this.MakeGridHeaderAction(width: 200)
             };
@@ -44,25 +46,38 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
 
         public override IOrderedQueryable<Info_Longevity_View> GetSearchQuery()
         {
-            var query = DC.Set<Info_Longevity>()
-                .CheckContain(Searcher.Name, x=>x.Name)
-                .CheckEqual(Searcher.Sum, x=>x.Sum)
-                .CheckContain(Searcher.SerialCode, x=>x.SerialCode)
-                .CheckContain(Searcher.ReceiptNumber, x=>x.Receipt.ReceiptNumber)
-                .Select(x => new Info_Longevity_View
-                {
-				    ID = x.ID,
-                    Name = x.Name,
-                    Sum = x.Sum,
-                    SerialCode = x.SerialCode,
-                    DSRemark = x.DSRemark,
-                    ReceiptNumber_view = x.Receipt.ReceiptNumber,
-                    ReceiptDate_view = x.Receipt.ReceiptDate.Value,
-                    ReceiptUpdateTime_view = x.Receipt.UpdateTime.Value,
-                })
-                .OrderByDescending(x => x.ReceiptUpdateTime_view);
+            var serial = new ListVMHelper().GetQuerySerialCodes(Searcher.SerialCode, Searcher.SerialCodeEnd);
 
-            return query;
+            var query = DC.Set<Info_Longevity>()
+                .CheckContain(Searcher.Name, x => x.Name)
+                .CheckEqual(Searcher.Sum, x => x.Sum)
+                //.CheckContain(Searcher.SerialCode, x => x.SerialCode)
+                .CheckContain(serial, x => x.SerialCode)
+                .CheckContain(Searcher.ReceiptNumber, x => x.Receipt.ReceiptNumber)
+                .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.Receipt.ReceiptDate)
+                .CheckEqual(Searcher.DharmaServiceName, x => x.Receipt.DharmaServiceName)
+                .CheckEqual(Searcher.DharmaServiceYear, x => x.Receipt.DharmaServiceYear);
+
+            //if (Searcher.ReceiptDate.HasValue)
+            //{
+            //    query = query.Where(x => DateTime.Compare(Searcher.ReceiptDate.Value.Date, x.Receipt.ReceiptDate.Value.Date) == 0);
+            //}
+
+            var query1 = query.Select(x => new Info_Longevity_View
+            {
+                ID = x.ID,
+                Name = x.Name,
+                Sum = x.Sum,
+                SerialCode = x.SerialCode,
+                DSRemark = x.DSRemark,
+                ReceiptNumber_view = x.Receipt.ReceiptNumber,
+                ReceiptDate_view = x.Receipt.ReceiptDate.Value,
+                ReceiptUpdateTime_view = x.Receipt.UpdateTime.Value,
+                DharmaServiceFullName = x.Receipt.DharmaServiceFullName,
+            })
+            .OrderByDescending(x => x.ReceiptUpdateTime_view);
+
+            return query1;
         }
 
     }
@@ -77,5 +92,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
 
         [Display(Name = "收據更新日期")]
         public DateTime ReceiptUpdateTime_view { get; set; }
+
+        [Display(Name = "法會")]
+        public string DharmaServiceFullName { get; set; }
     }
 }

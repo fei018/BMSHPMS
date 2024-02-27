@@ -7,6 +7,7 @@ using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
 using BMSHPMS.Models.DharmaService;
 using BMSHPMS.Helper;
+using BMSHPMS.Models.DharmaServiceExtention;
 
 
 namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
@@ -33,7 +34,7 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
         {
             AllDharmaService = DC.Set<Opt_DharmaService>().GetSelectListItems(Wtm, y => y.ServiceName);
 
-            AllDSDonationCategory = DharmaServiceSelectHelper.GetDonationCategoryComboSelectItems();
+            AllDSDonationCategory = DonationProjectOptions.GetCategoryComboSelectItems();
         }
 
     }

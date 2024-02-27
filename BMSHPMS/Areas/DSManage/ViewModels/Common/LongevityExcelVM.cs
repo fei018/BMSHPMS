@@ -2,7 +2,7 @@
 using Magicodes.ExporterAndImporter.Excel;
 using System;
 
-namespace BMSHPMS.DSManage.ViewModels.ExcelVMs
+namespace BMSHPMS.DSManage.ViewModels.Common
 {
     [ExcelExporter(Name = "延生")]
     public class LongevityExcelVM
@@ -22,11 +22,11 @@ namespace BMSHPMS.DSManage.ViewModels.ExcelVMs
         [ExporterHeader(DisplayName = "備註")]
         public string DSRemark { get; set; }
 
-        [ExporterHeader(DisplayName = "資料更新者")]
-        public string UpdateBy { get; set; }
+        //[ExporterHeader(DisplayName = "資料更新者")]
+        //public string UpdateBy { get; set; }
 
-        [ExporterHeader(DisplayName = "更新時間", Format = "yyyy-MM-dd HH:mm:ss")]
-        public DateTime? UpdateTime { get; set; }
+        //[ExporterHeader(DisplayName = "更新時間", Format = "yyyy-MM-dd HH:mm:ss")]
+        //public DateTime? UpdateTime { get; set; }
 
         //[ExporterHeader(DisplayName = "ID")]
         //public Guid? ID { get; set; }

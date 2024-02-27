@@ -80,11 +80,11 @@
             },
             "WalkingTec.Mvvm.Mvc": {
               "target": "Package",
-              "version": "[6.5.3, )"
+              "version": "[6.5.7, )"
             },
             "WalkingTec.Mvvm.TagHelpers.LayUI": {
               "target": "Package",
-              "version": "[6.5.3, )"
+              "version": "[6.5.7, )"
             }
           },
           "imports": [

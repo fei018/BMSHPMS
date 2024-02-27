@@ -1,0 +1,41 @@
+﻿
+<style>
+    .dsreport-section {
+        margin:20px;
+    }
+</style>
+
+<div class="dsreport-section">
+    <fieldset class="layui-elem-field" style="padding:10px;">
+        <legend>收據報表</legend>
+
+        <a href="/DSManage/DSReport/ReceiptToday" class="layui-btn layui-btn-lg">匯出今日</a>
+
+        <hr style="margin-bottom:50px;" />
+
+        <form class="layui-form" action="/DSManage/DSReport/ReceiptDate" method="get">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">選擇日期</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="ReceiptDate" id="ed49609e760545a8a4e68c834ee41690" lay-verify="required" lay-reqtext="請選擇日期" placeholder ="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        <button type="submit" class="layui-btn" lay-submit>匯出選擇日期</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <script>
+            layui.laydate.render({
+                elem: '#ed49609e760545a8a4e68c834ee41690'
+            });
+        </script>
+    </fieldset>
+</div>
+
+

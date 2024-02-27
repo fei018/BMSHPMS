@@ -11,13 +11,14 @@ namespace BMSHPMS.DSManage.Controllers
 {
     [NoLog]
     [Area("DSManage")]
-    [ActionDescription("法會報告")]
+    [ActionDescription("法會報表")]
     public class DSReportController : BaseController
     {
         [ActionDescription("Index")]
         public IActionResult Index()
         {
-            return View();
+            var vm = Wtm.CreateVM<DSReportVM>();
+            return View(vm);
         }
 
         [ActionDescription("匯出今日收據")]
@@ -40,13 +41,13 @@ namespace BMSHPMS.DSManage.Controllers
         }
 
         [ActionDescription("匯出日期收據")]
-        public async Task<IActionResult> ReceiptDate(ReceiptVM vm)
+        public async Task<IActionResult> ReceiptDate(DSReportVM vm)
         {
             try
             {
-                var result = await vm.ExportExcelByDate(vm.ReceiptDate);
+                var result = await Wtm.CreateVM<ReceiptFuncVM>().ExportExcelByDate(vm.ReceiptReportDate);
 
-                string fileName = "法會收據_" + vm.ReceiptDate.ToString("yyyy-MM-dd") + ".xlsx";
+                string fileName = "法會收據_" + vm.ReceiptReportDate.ToString("yyyy-MM-dd") + ".xlsx";
 
                 return new XlsxFileResult(bytes: result, fileName);
             }

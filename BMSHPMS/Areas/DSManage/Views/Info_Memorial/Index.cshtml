@@ -2,12 +2,18 @@
 @inject IStringLocalizer<Program> Localizer;
 
 <wt:searchpanel vm="@Model" reset-btn="true">
-    <wt:row items-per-row="ItemsPerRowEnum.Three">
-        <wt:textbox field="Searcher.ReceiptNumber" />
-        <wt:textbox field="Searcher.SerialCode" />      
+    <wt:row items-per-row="ItemsPerRowEnum.Four">
+        <wt:datetime field="Searcher.ReceiptDate" type="Date" range="true" />
+        <wt:textbox field="Searcher.ReceiptNumber" />   
         <wt:textbox field="Searcher.Sum" />            
         <wt:textbox field="Searcher.DeceasedName" />
         <wt:textbox field="Searcher.BenefactorName" />
+        <wt:datetime field="Searcher.DharmaServiceYear" type="Year" />
+        <wt:combobox field="Searcher.DharmaServiceName" items="Searcher.AllDharmaServiceName" />
+    </wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.Six">
+        <wt:textbox field="Searcher.SerialCode" placeholder="" />
+        <wt:textbox field="Searcher.SerialCodeEnd" placeholder="範圍查詢時結尾編號" />
     </wt:row>
 </wt:searchpanel>
 <wt:grid vm="@Model" url="/DSManage/Info_Memorial/Search" hidden-grid-index />

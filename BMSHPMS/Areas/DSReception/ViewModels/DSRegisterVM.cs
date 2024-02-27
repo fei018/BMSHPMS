@@ -1,6 +1,7 @@
 ﻿using BMSHPMS.Areas.DSReception.ViewModels;
 using BMSHPMS.Helper;
 using BMSHPMS.Models.DharmaService;
+using BMSHPMS.Models.DharmaServiceExtention;
 using DotLiquid;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -51,17 +52,17 @@ namespace BMSHPMS.DSReception.ViewModels
             var donations = DC.Set<Opt_DonationProject>().Where(d => d.DharmaServiceID == dsProjectID).ToList();
             foreach (var donation in donations)
             {
-                if (donation.DonationCategory == DharmaServiceSelectHelper.DonationCategory.功德主)
+                if (donation.DonationCategory == DonationProjectOptions.Category.功德主)
                 {
                     DonationProject_Donors.Add(donation);                    
                 }
 
-                if (donation.DonationCategory == DharmaServiceSelectHelper.DonationCategory.延生位)
+                if (donation.DonationCategory == DonationProjectOptions.Category.延生位)
                 {
                     DonationProject_Longevitys.Add(donation);                    
                 }
 
-                if (donation.DonationCategory == DharmaServiceSelectHelper.DonationCategory.附薦位)
+                if (donation.DonationCategory == DonationProjectOptions.Category.附薦位)
                 {
                     DonationProject_Memorials.Add(donation);                   
                 }
@@ -150,7 +151,7 @@ namespace BMSHPMS.DSReception.ViewModels
                 // 根據功德項目分類 計算每種個數, 寫入各自的 功德表(Info_Donor,Info_Longevity,Info_Memorial)
                 switch (queryDonationProject.DonationCategory)
                 {
-                    case DharmaServiceSelectHelper.DonationCategory.功德主:
+                    case DonationProjectOptions.Category.功德主:
                         for (int i = 1; i <= submittedItem.Count; i++)
                         {
                             //string serial = dharmaService.SerialCode + queryDonationProject.SerialCode + (usedNumber + i).ToString().PadLeft(4,'0');
@@ -169,7 +170,7 @@ namespace BMSHPMS.DSReception.ViewModels
                         }
                         break;
 
-                    case DharmaServiceSelectHelper.DonationCategory.延生位:
+                    case DonationProjectOptions.Category.延生位:
                         for (int i = 1; i <= submittedItem.Count; i++)
                         {
                             string serial = queryDonationProject.SerialCode + (usedNumber + i).ToString().PadLeft(4, '0');
@@ -186,7 +187,7 @@ namespace BMSHPMS.DSReception.ViewModels
                         }
                         break;
 
-                    case DharmaServiceSelectHelper.DonationCategory.附薦位:
+                    case DonationProjectOptions.Category.附薦位:
                         for (int i = 1; i <= submittedItem.Count; i++)
                         {
                             string serial = queryDonationProject.SerialCode + (usedNumber + i).ToString().PadLeft(4, '0');

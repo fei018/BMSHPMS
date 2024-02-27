@@ -1,4 +1,4 @@
-﻿using BMSHPMS.DSManage.ViewModels.ExcelVMs;
+﻿using BMSHPMS.Areas.DSManage.ViewModels.Common;
 using BMSHPMS.Models.DharmaService;
 using Microsoft.EntityFrameworkCore;
 using System;

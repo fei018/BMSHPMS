@@ -1,6 +1,6 @@
 echo publish...
-set web=\\bmshserver01\www\bmshpms
-set webconfig=\\bmshserver01\www\bmshpms\web.config
+set web=\\192.168.0.201\www\bmshpms
+set webconfig=\\192.168.0.201\www\bmshpms\web.config
 
 robocopy %web%\ %web%_old\ /Mir /NP /TEE /R:0
 

@@ -25,7 +25,7 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
                 //this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800,dialogHeight:500),
                 //this.MakeStandardAction("DSDonationProject", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800,dialogHeight:500),
                 //this.MakeStandardAction("Opt_DonationProject", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
-                this.MakeAction("Opt_DonationProject","CleanUsedNumber","清除已使用數","清除已使用數", GridActionParameterTypesEnum.NoId,"DSManage"),
+                //this.MakeAction("Opt_DonationProject","CleanUsedNumber","清除已使用數","清除已使用數", GridActionParameterTypesEnum.NoId,"DSManage"),
             };
         }
 

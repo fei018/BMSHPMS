@@ -1,20 +1,18 @@
-﻿using BMSHPMS.Models.DharmaService;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using WalkingTec.Mvvm.Core;
-using WalkingTec.Mvvm.Core.Extensions;
 
-namespace BMSHPMS.Helper
+namespace BMSHPMS.Models.DharmaServiceExtention
 {
-    public static class DharmaServiceSelectHelper
+    public class DonationProjectOptions
     {
-        public static class DonationCategory
+        public static class Category
         {
             public const string 功德主 = "功德主";
             public const string 延生位 = "延生位";
             public const string 附薦位 = "附薦位";
         }
 
-        public static List<ComboSelectListItem> GetDonationCategoryComboSelectItems()
+        public static List<ComboSelectListItem> GetCategoryComboSelectItems()
         {
             List<ComboSelectListItem> list = new()
             {
@@ -24,12 +22,6 @@ namespace BMSHPMS.Helper
             };
 
             return list;
-        }
-
-        public static void GetDharmaServiceCategoryComboSelectItems(WTMContext wtm)
-        {
-            var dc = wtm.DC;
-            dc.Set<Opt_DharmaService>().GetSelectListItems(wtm, x => x.ServiceName, y=>y.ServiceName);
         }
     }
 }

@@ -25,16 +25,16 @@ namespace BMSHPMS.Models.DharmaService
         //[Required(ErrorMessage = "Validate.{0}required")]
         public string BenefactorName { get; set; }
 
-        [Display(Name = "附薦宗親名及稱呼_1")]
-        [Comment("附薦宗親名及稱呼_1")]
+        [Display(Name = "附薦宗親名及稱呼1")]
+        [Comment("附薦宗親名及稱呼1")]
         public string DeceasedName_1 { get; set; }
 
-        [Display(Name = "附薦宗親名及稱呼_2")]
-        [Comment("附薦宗親名及稱呼_2")]
+        [Display(Name = "附薦宗親名及稱呼2")]
+        [Comment("附薦宗親名及稱呼2")]
         public string DeceasedName_2 { get; set; }
 
-        [Display(Name = "附薦宗親名及稱呼_3")]
-        [Comment("附薦宗親名及稱呼_3")]
+        [Display(Name = "附薦宗親名及稱呼3")]
+        [Comment("附薦宗親名及稱呼3")]
         public string DeceasedName_3 { get; set; }
 
         [Display(Name = "金額")]

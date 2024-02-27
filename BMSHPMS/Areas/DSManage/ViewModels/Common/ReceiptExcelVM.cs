@@ -6,8 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using BMSHPMS.DSManage.ViewModels.Common;
 
-namespace BMSHPMS.DSManage.ViewModels.ExcelVMs
+namespace BMSHPMS.Areas.DSManage.ViewModels.Common
 {
     [ExcelExporter(Name = "收據")]
     public class ReceiptExcelVM
@@ -17,6 +20,9 @@ namespace BMSHPMS.DSManage.ViewModels.ExcelVMs
 
         [ExporterHeader(DisplayName = "收據日期", Format = "yyyy-MM-dd")]
         public DateTime? ReceiptDate { get; set; }
+
+        [ExporterHeader(DisplayName = "法會年份")]
+        public int? DharmaServiceYear { get; set; }
 
         [ExporterHeader(DisplayName = "法會名")]
         public string DharmaServiceName { get; set; }
@@ -36,11 +42,11 @@ namespace BMSHPMS.DSManage.ViewModels.ExcelVMs
         [ExporterHeader(DisplayName = "備註")]
         public string DSRemark { get; set; }
 
-        [ExporterHeader(DisplayName = "資料更新者")]
-        public string UpdateBy { get; set; }
+        //[ExporterHeader(DisplayName = "資料更新者")]
+        //public string UpdateBy { get; set; }
 
-        [ExporterHeader(DisplayName = "更新時間", Format = "yyyy-MM-dd HH:mm:ss")]
-        public DateTime? UpdateTime { get; set; }
+        //[ExporterHeader(DisplayName = "更新時間", Format = "yyyy-MM-dd HH:mm:ss")]
+        //public DateTime? UpdateTime { get; set; }
 
         //[ExporterHeader(DisplayName = "ID")]
         //public Guid? ID { get; set; }
@@ -86,7 +92,7 @@ namespace BMSHPMS.DSManage.ViewModels.ExcelVMs
                 }
             }
 
-            allReceiptExcelVMs =  allReceiptExcelVMs.OrderBy(x => x.ReceiptDate).ThenBy(x => x.ReceiptNumber).ToList();
+            allReceiptExcelVMs = allReceiptExcelVMs.OrderBy(x => x.ReceiptDate).ThenBy(x => x.ReceiptNumber).ToList();
             allDonorExcelVMs = allDonorExcelVMs.OrderBy(x => x.Sum).ThenBy(x => x.SerialCode).ToList();
             allLongevityExcelVMs = allLongevityExcelVMs.OrderBy(x => x.Sum).ThenBy(x => x.SerialCode).ToList();
             allMemoryExcelVMs = allMemoryExcelVMs.OrderBy(x => x.Sum).ThenBy(x => x.SerialCode).ToList();

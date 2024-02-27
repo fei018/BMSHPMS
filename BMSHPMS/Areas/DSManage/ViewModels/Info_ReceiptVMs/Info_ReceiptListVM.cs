@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Query.Internal;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using BMSHPMS.Helper;
-using BMSHPMS.DSManage.ViewModels.ExcelVMs;
+using BMSHPMS.Areas.DSManage.ViewModels.Common;
 
 
 
@@ -41,15 +41,14 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
         {
             return new List<GridColumn<Info_Receipt_View>>{
                 this.MakeGridHeader(x => x.ReceiptDate,width:150).SetSort(),
-                this.MakeGridHeader(x => x.ReceiptNumber,width:150).SetSort(),
+                this.MakeGridHeader(x => x.ReceiptNumber,width:150).SetSort(),                
+                this.MakeGridHeader(x => x.DharmaServiceFullName,width:150).SetSort(),
                 this.MakeGridHeader(x => x.Sum,width:150).SetSort(),
-                this.MakeGridHeader(x => x.DharmaServiceYear,width:120).SetSort(),
-                this.MakeGridHeader(x => x.DharmaServiceName),
-                this.MakeGridHeader(x => x.ReceiptOwn),
-                this.MakeGridHeader(x => x.ContactName),
-                this.MakeGridHeader(x => x.ContactPhone),
-                this.MakeGridHeader(x => x.DSRemark),
-                this.MakeGridHeaderAction(width: 200)
+                this.MakeGridHeader(x => x.ReceiptOwn).SetSort(),
+                this.MakeGridHeader(x => x.ContactName).SetSort(),
+                this.MakeGridHeader(x => x.ContactPhone).SetSort(),
+                this.MakeGridHeader(x => x.DSRemark).SetSort(),
+                this.MakeGridHeaderAction(width: 200).SetSort()
             };
         }
 
@@ -61,12 +60,13 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                             .CheckContain(Searcher.ContactName, x => x.ContactName)
                             .CheckContain(Searcher.ContactPhone, x => x.ContactPhone)
                             .CheckEqual(Searcher.Sum, x => x.Sum)
-                            .CheckEqual(Searcher.DharmaServiceName, x => x.DharmaServiceName);
+                            .CheckEqual(Searcher.DharmaServiceName, x => x.DharmaServiceName)
+                            .CheckEqual(Searcher.DharmaServiceYear, x => x.DharmaServiceYear);
 
-            if (Searcher.DharmaServiceYear.HasValue)
-            {
-                query = query.Where(x => x.DharmaServiceYear.HasValue && x.DharmaServiceYear.Value.Equals(Searcher.DharmaServiceYear.Value));
-            }
+            //if (Searcher.DharmaServiceYear.HasValue)
+            //{
+            //    query = query.Where(x => x.DharmaServiceYear.HasValue && x.DharmaServiceYear.Value.Equals(Searcher.DharmaServiceYear.Value));
+            //}
 
             if (Searcher.ReceiptDate.HasValue)
             {
@@ -83,8 +83,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 Sum = x.Sum,
                 DSRemark = x.DSRemark,
                 ReceiptDate = x.ReceiptDate,
-                DharmaServiceName = x.DharmaServiceName,
-                DharmaServiceYear = x.DharmaServiceYear,
+                DharmaServiceFullName = x.DharmaServiceFullName,
                 UpdateTime = x.UpdateTime,
                 CreateBy = x.CreateBy,
                 CreateTime = x.CreateTime,
@@ -129,7 +128,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
     #region public class Info_Receipt_View : Info_Receipt
     public class Info_Receipt_View : Info_Receipt
     {
-
+        [Display(Name = "法會")]
+        public new string DharmaServiceFullName { get; set; }
     }
     #endregion
 

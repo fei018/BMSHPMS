@@ -63,6 +63,10 @@ namespace BMSHPMS.Models.DharmaService
         //public string ChequeNumber { get; set; }
         //==========
 
+        [NotMapped]
+        [Display(Name = "法會")]
+        public string DharmaServiceFullName => DharmaServiceYear.ToString() + " " + DharmaServiceName;
+
 
         public List<Info_Donor> Info_Donors { get; set; } = new List<Info_Donor>();
 

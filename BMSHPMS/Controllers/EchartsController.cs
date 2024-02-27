@@ -1,5 +1,6 @@
 ﻿using BMSHPMS.Helper;
 using BMSHPMS.Models.DharmaService;
+using BMSHPMS.Models.DharmaServiceExtention;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -35,20 +36,20 @@ namespace BMSHPMS.Controllers
             {
                 Category = "項目",
                 Series = "功德主",
-                Value = (double)donations.Where(x => x.DonationCategory == DharmaServiceSelectHelper.DonationCategory.功德主)?.Count(),
+                Value = (double)donations.Where(x => x.DonationCategory == DonationProjectOptions.Category.功德主)?.Count(),
             });
 
             data.Add(new ChartData
             {
                 Category = "項目",
                 Series = "延生位",
-                Value = (double)donations.Where(x => x.DonationCategory == DharmaServiceSelectHelper.DonationCategory.延生位)?.Count(),
+                Value = (double)donations.Where(x => x.DonationCategory == DonationProjectOptions.Category.延生位)?.Count(),
             });
             data.Add(new ChartData
             {
                 Category = "項目",
                 Series = "附薦位",
-                Value = (double)donations.Where(x => x.DonationCategory == DharmaServiceSelectHelper.DonationCategory.附薦位)?.Count(),
+                Value = (double)donations.Where(x => x.DonationCategory == DonationProjectOptions.Category.附薦位)?.Count(),
             });
 
             return Json(data.ToChartData());
