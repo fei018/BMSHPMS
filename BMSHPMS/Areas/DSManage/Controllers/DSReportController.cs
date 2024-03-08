@@ -26,7 +26,7 @@ namespace BMSHPMS.DSManage.Controllers
         {
             try
             {
-                var vm = Wtm.CreateVM<Info_ReceiptReportVM>();
+                var vm = Wtm.CreateVM<ReceiptFuncVM>();
                 var result = await vm.ExportExcelByToday();
 
                 string fileName = "法會收據_" + DateTime.Today.ToString("yyyy-MM-dd") + ".xlsx";

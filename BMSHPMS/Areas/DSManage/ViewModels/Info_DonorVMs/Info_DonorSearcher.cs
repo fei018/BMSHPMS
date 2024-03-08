@@ -14,7 +14,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
     {
         [Display(Name = "延生位姓名")]
         public String LongevityName { get; set; }
-        [Display(Name = "附薦宗親名及稱呼")]
+        [Display(Name = "附薦名稱")]
         public String DeceasedName { get; set; }
         [Display(Name = "陽居姓名")]
         public String BenefactorName { get; set; }

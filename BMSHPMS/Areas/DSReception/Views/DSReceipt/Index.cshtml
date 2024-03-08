@@ -1,0 +1,18 @@
+﻿@model BMSHPMS.DSReception.ViewModels.DSReceiptVM
+
+<div>
+    <blockquote class="layui-elem-quote">
+        如功德數目登記錯誤，需要作廢收據，請在這裡作廢指定收據登記記錄
+    </blockquote>
+    <br />
+    <wt:form vm="@Model">
+        <wt:row items-per-row="ItemsPerRowEnum.Four">
+            <wt:textbox field="ReceiptNumber"/>
+        </wt:row>
+        <wt:row align="AlignEnum.Left">
+            <wt:linkbutton target="ButtonTargetEnum.Layer" window-title="收據詳細" text="搜索" url="/DSReception/DSReceipt/Search" post-current-form="true" window-height="400" window-width="800"/>
+        </wt:row>
+    </wt:form>
+   
+</div>
+

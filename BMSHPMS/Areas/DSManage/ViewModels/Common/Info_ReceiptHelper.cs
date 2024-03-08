@@ -1,39 +1,39 @@
-﻿using BMSHPMS.Models.DharmaService;
-using Fluid.Ast.BinaryExpressions;
+﻿using BMSHPMS.Helper;
+using BMSHPMS.Models.DharmaService;
 using System;
+using System.Linq;
 using System.Linq.Dynamic.Core;
 using WalkingTec.Mvvm.Core;
-using System.Linq;
 
-namespace BMSHPMS.Helper
+namespace BMSHPMS.DSManage.ViewModels.Common
 {
-    public class DataContextHelper
+    public class Info_ReceiptHelper
     {
-        public static T2 CopyNewProperties<T1, T2>(in T1 t1)
-        {
-            T2 t2 = Activator.CreateInstance<T2>();
+        //public static T2 CopyNewProperties<T1, T2>(in T1 t1)
+        //{
+        //    T2 t2 = Activator.CreateInstance<T2>();
 
-            var props = t2.GetType().GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-            foreach (var p2 in props)
-            {
-                var value = t1.GetPropertyValue(p2.Name);
+        //    var props = t2.GetType().GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+        //    foreach (var p2 in props)
+        //    {
+        //        var value = t1.GetPropertyValue(p2.Name);
 
-                if (value != null)
-                {
-                    if (value is string value2 && string.IsNullOrEmpty(value2))
-                    {
-                        continue;
-                    }
+        //        if (value != null)
+        //        {
+        //            if (value is string value2 && string.IsNullOrEmpty(value2))
+        //            {
+        //                continue;
+        //            }
 
-                    if (p2.CanWrite)
-                    {
-                        p2.SetValue(t2, value);
-                    }
-                }
-            }
+        //            if (p2.CanWrite)
+        //            {
+        //                p2.SetValue(t2, value);
+        //            }
+        //        }
+        //    }
 
-            return t2;
-        }
+        //    return t2;
+        //}
 
         public static void ReceiptMoveToDeleteTable(WTMContext wtm, Guid receiptID)
         {
@@ -46,7 +46,7 @@ namespace BMSHPMS.Helper
                 throw new Exception("Info_Receipt 查詢 receiptID 為Null: " + receiptID);
             }
 
-            var r_del = CopyNewProperties<Info_Receipt, Info_Receipt_del>(oldReceipt);
+            var r_del = ToolsHelper.CreateInstanceUseProperties<Info_Receipt, Info_Receipt_del>(oldReceipt);
 
             r_del.ID = Guid.NewGuid();
 
@@ -67,7 +67,7 @@ namespace BMSHPMS.Helper
                 {
                     foreach (var item in donors)
                     {
-                        var d = CopyNewProperties<Info_Donor, Info_Donor_del>(item);
+                        var d = ToolsHelper.CreateInstanceUseProperties<Info_Donor, Info_Donor_del>(item);
                         d.ID = Guid.NewGuid();
                         d.Receipt_delID = r_del2.ID;
                         dc.Set<Info_Donor_del>().Add(d);
@@ -80,7 +80,7 @@ namespace BMSHPMS.Helper
                 {
                     foreach (var item in longevitys)
                     {
-                        var d = CopyNewProperties<Info_Longevity, Info_Longevity_del>(item);
+                        var d = ToolsHelper.CreateInstanceUseProperties<Info_Longevity, Info_Longevity_del>(item);
                         d.ID = Guid.NewGuid();
                         d.Receipt_delID = r_del2.ID;
                         dc.Set<Info_Longevity_del>().Add(d);
@@ -93,7 +93,7 @@ namespace BMSHPMS.Helper
                 {
                     foreach (var item in memorials)
                     {
-                        var d = CopyNewProperties<Info_Memorial, Info_Memorial_del>(item);
+                        var d = ToolsHelper.CreateInstanceUseProperties<Info_Memorial, Info_Memorial_del>(item);
                         d.ID = Guid.NewGuid();
                         d.Receipt_delID = r_del2.ID;
                         dc.Set<Info_Memorial_del>().Add(d);

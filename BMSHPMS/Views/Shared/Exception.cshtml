@@ -35,11 +35,11 @@
     <body>
     <div class="main">
         <div class="btn">
-            <button class="layui-btn " onclick="window.history.go(-1);"><i class="layui-icon layui-icon-return"></i>返回</button>
+            <button class="layui-btn " onclick="window.close();"><i class="layui-icon layui-icon-close"></i>關閉</button>
         </div>
 
         <div class="error">
-            <p style="color:red">異常錯誤頁面:</p>
+            <p style="color:red">異常錯誤:</p>
             <hr />
             <p>@Model?.GetBaseException()?.Message</p>
         </div>

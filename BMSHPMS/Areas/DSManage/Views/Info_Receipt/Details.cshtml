@@ -1,5 +1,5 @@
 ﻿@model BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs.Info_ReceiptVM
-@inject IStringLocalizer<Program> Localizer;
+@* @inject IStringLocalizer<Program> Localizer; *@
 @{
     var donors = Model.DonorInfos;
     var longevitys = Model.LongevityInfos;
@@ -15,12 +15,19 @@
         <wt:display field="Entity.Sum" />
         <wt:display field="Entity.ReceiptOwn" />
         <wt:display field="Entity.ContactName" />
-        <wt:display field="Entity.ContactPhone" />      
-        <wt:display field="Entity.CreateBy" />
+        <wt:display field="Entity.ContactPhone" />
     </wt:row>
     <wt:row>
         <wt:display field="Entity.DSRemark" />
     </wt:row>
+    <hr />
+    <wt:row items-per-row="ItemsPerRowEnum.Two">
+        <wt:display field="Entity.CreateBy" Label-Text="登記人" />
+        <wt:display field="Entity.CreateTime" Label-Text="登記時間" />
+        <wt:display field="Entity.UpdateBy" />
+        <wt:display field="Entity.UpdateTime" />
+    </wt:row>
+    <br />
 
     @if (donors != null && donors.Count > 0)
     {

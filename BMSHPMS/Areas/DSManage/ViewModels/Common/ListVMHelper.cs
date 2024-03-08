@@ -4,8 +4,17 @@ using System.Linq;
 
 namespace BMSHPMS.DSManage.ViewModels.Common
 {
+    /// <summary>
+    /// ListVM 幫助類
+    /// </summary>
     public class ListVMHelper
     {
+        /// <summary>
+        /// 範圍查詢編號，返回連續編號
+        /// </summary>
+        /// <param name="serialStart"></param>
+        /// <param name="serialEnd"></param>
+        /// <returns></returns>
         public List<string> GetQuerySerialCodes(string serialStart, string serialEnd)
         {
             List<string> list = new List<string>();

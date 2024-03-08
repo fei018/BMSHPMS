@@ -1,4 +1,4 @@
-﻿using BMSHPMS.Helper;
+﻿using BMSHPMS.DSManage.ViewModels.Common;
 using BMSHPMS.Models.DharmaService;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -65,45 +65,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 
         public override void DoDelete()
         {
-            //var dc = DC as DataContext;
-
-            //if (Entity.IsDataValid)
-            //{
-            //    //Entity.IsDataValid = false;
-            //    //Entity.UpdateBy = LoginUserInfo.Name;
-            //    //Entity.UpdateTime = DateTime.Now;
-            //    //DC.UpdateProperty(Entity, x => x.IsDataValid);
-            //    //DC.UpdateProperty(Entity, x => x.UpdateBy);
-            //    //DC.UpdateProperty(Entity, x => x.UpdateTime);
-
-            //    dc.FakeDeleteEntity(Entity, Wtm);
-
-            //    // 功德主 標記刪除
-            //    DC.Set<Info_Donor>().Where(x => x.ReceiptID == Entity.ID).ToList().ForEach(x =>
-            //    {
-            //        dc.FakeDeleteEntity(x, Wtm);
-            //    });
-
-            //    // 延生 標記刪除
-            //    DC.Set<Info_Longevity>().Where(x => x.ReceiptID == Entity.ID).ToList().ForEach(x =>
-            //    {
-            //        dc.FakeDeleteEntity(x, Wtm);
-            //    });
-
-            //    // 附薦 標記刪除
-            //    DC.Set<Info_Memorial>().Where(x => x.ReceiptID == Entity.ID).ToList().ForEach(x =>
-            //    {
-            //        dc.FakeDeleteEntity(x, Wtm);
-            //    });
-            //}
-            //else
-            //{
-            //    DC.DeleteEntity(Entity);
-            //}
-
-            //DC.SaveChanges();
-
-            DataContextHelper.ReceiptMoveToDeleteTable(Wtm, Entity.ID);
+            Info_ReceiptHelper.ReceiptMoveToDeleteTable(Wtm, Entity.ID);
         }
 
         public async Task InitialDetails()

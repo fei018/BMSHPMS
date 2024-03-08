@@ -233,24 +233,24 @@ namespace BMSHPMS.DSManage.Controllers
             }
         }
 
-        [ActionDescription("匯出今日")]
-        public async Task<IActionResult> ExportExcelToday()
-        {
-            try
-            {
-                var vm = Wtm.CreateVM<Info_ReceiptReportVM>();
-                var result = await vm.ExportExcelByToday();
+        //[ActionDescription("匯出今日")]
+        //public async Task<IActionResult> ExportExcelToday()
+        //{
+        //    try
+        //    {
+        //        var vm = Wtm.CreateVM<Info_ReceiptReportVM>();
+        //        var result = await vm.ExportExcelByToday();
 
-                string fileName = "法會收據_" + DateTime.Today.ToString("yyyy-MM-dd") + ".xlsx";
+        //        string fileName = "法會收據_" + DateTime.Today.ToString("yyyy-MM-dd") + ".xlsx";
 
-                return new XlsxFileResult(bytes: result, fileName);
-            }
-            catch (Exception ex)
-            {
-                return PartialView("Exception", ex);
-                //return FFResult().Alert(ex.GetBaseException().Message);
-            }
-        }
+        //        return new XlsxFileResult(bytes: result, fileName);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return PartialView("Exception", ex);
+        //        //return FFResult().Alert(ex.GetBaseException().Message);
+        //    }
+        //}
         #endregion
 
     }

@@ -1,10 +1,7 @@
 ﻿using BMSHPMS.DSReception.ViewModels;
-using BMSHPMS.Helper;
-using BMSHPMS.Models.DharmaService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Mvc;
@@ -13,7 +10,7 @@ namespace BMSHPMS.Areas.DSReception.Controllers
 {
     [NoLog]
     [Area("DSReception")]
-    [ActionDescription("功德登記")]
+    [ActionDescription("功德數目登記")]
     public class DSRegisterController : BaseController
     {
         [ActionDescription("Index")]

@@ -67,26 +67,26 @@ namespace BMSHPMS.Areas.DSManage.ViewModels.Common
 
             foreach (var receipt in receipts)
             {
-                var reVM = ToolsHelper.CreateNewObjectUseProperties<Info_Receipt, ReceiptExcelVM>(receipt);
+                var reVM = ToolsHelper.CreateInstanceUseProperties<Info_Receipt, ReceiptExcelVM>(receipt);
                 allReceiptExcelVMs.Add(reVM);
 
                 foreach (var item in receipt.Info_Donors)
                 {
-                    var vm = ToolsHelper.CreateNewObjectUseProperties<Info_Donor, DonorExcelVM>(item);
+                    var vm = ToolsHelper.CreateInstanceUseProperties<Info_Donor, DonorExcelVM>(item);
                     vm.ReceiptNumber = receipt.ReceiptNumber;
                     allDonorExcelVMs.Add(vm);
                 }
 
                 foreach (var item in receipt.Info_Longevitys)
                 {
-                    var vm = ToolsHelper.CreateNewObjectUseProperties<Info_Longevity, LongevityExcelVM>(item);
+                    var vm = ToolsHelper.CreateInstanceUseProperties<Info_Longevity, LongevityExcelVM>(item);
                     vm.ReceiptNumber = receipt.ReceiptNumber;
                     allLongevityExcelVMs.Add(vm);
                 }
 
                 foreach (var item in receipt.Info_Memorials)
                 {
-                    var vm = ToolsHelper.CreateNewObjectUseProperties<Info_Memorial, MemorialExcelVM>(item);
+                    var vm = ToolsHelper.CreateInstanceUseProperties<Info_Memorial, MemorialExcelVM>(item);
                     vm.ReceiptNumber = receipt.ReceiptNumber;
                     allMemoryExcelVMs.Add(vm);
                 }

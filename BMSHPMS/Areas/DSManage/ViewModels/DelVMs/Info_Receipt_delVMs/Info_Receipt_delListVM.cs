@@ -69,7 +69,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_Receipt_delVMs
                     Sum = x.Sum,
                     DSRemark = x.DSRemark,
                 })
-                .OrderBy(x => x.ID);
+                .OrderByDescending(x => x.ReceiptDate);
             return query;
         }
 

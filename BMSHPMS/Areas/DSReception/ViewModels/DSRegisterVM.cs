@@ -1,12 +1,8 @@
-﻿using BMSHPMS.Areas.DSReception.ViewModels;
-using BMSHPMS.Helper;
+﻿using BMSHPMS.Helper;
 using BMSHPMS.Models.DharmaService;
 using BMSHPMS.Models.DharmaServiceExtention;
-using DotLiquid;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using NPOI.SS.Formula.Functions;
-using NPOI.SS.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +26,7 @@ namespace BMSHPMS.DSReception.ViewModels
         #endregion
 
         #region Register page    
-        
+
         public string DharmaServiceName { get; set; }
 
         public List<Opt_DonationProject> DonationProject_Donors { get; set; }
@@ -42,7 +38,7 @@ namespace BMSHPMS.DSReception.ViewModels
         public void FillDonationProjectList(Guid dsProjectID)
         {
 
-            var dharmasService= DC.Set<Opt_DharmaService>().Find(dsProjectID);
+            var dharmasService = DC.Set<Opt_DharmaService>().Find(dsProjectID);
             DharmaServiceName = dharmasService?.ServiceName;
 
             DonationProject_Donors = new List<Opt_DonationProject>();
@@ -54,17 +50,17 @@ namespace BMSHPMS.DSReception.ViewModels
             {
                 if (donation.DonationCategory == DonationProjectOptions.Category.功德主)
                 {
-                    DonationProject_Donors.Add(donation);                    
+                    DonationProject_Donors.Add(donation);
                 }
 
                 if (donation.DonationCategory == DonationProjectOptions.Category.延生位)
                 {
-                    DonationProject_Longevitys.Add(donation);                    
+                    DonationProject_Longevitys.Add(donation);
                 }
 
                 if (donation.DonationCategory == DonationProjectOptions.Category.附薦位)
                 {
-                    DonationProject_Memorials.Add(donation);                   
+                    DonationProject_Memorials.Add(donation);
                 }
             }
 
@@ -91,7 +87,7 @@ namespace BMSHPMS.DSReception.ViewModels
 
             //收據號碼已存在
             Info_Receipt exsitReceipt = DC.Set<Info_Receipt>()
-                                            .Where(r => r.ReceiptNumber.Equals(receiptNumber))
+                                            .Where(r => r.ReceiptNumber.ToUpper() == receiptNumber.ToUpper())
                                             .FirstOrDefault();
             if (exsitReceipt != null)
             {
@@ -217,6 +213,8 @@ namespace BMSHPMS.DSReception.ViewModels
             using var transaction = DC.BeginTransaction();
             try
             {
+                int newReceiptSum = 0;
+
                 // 添加新收據
                 lock (DbTableLocker.T_Receipt)
                 {
@@ -250,6 +248,11 @@ namespace BMSHPMS.DSReception.ViewModels
                     {
                         info.ReceiptID = newReceipt.ID;
                         DC.AddEntity(info);
+
+                        if (info.Sum.HasValue)
+                        {
+                            newReceiptSum += info.Sum.Value;
+                        }
                     });
 
                     // 添加新延生
@@ -257,6 +260,11 @@ namespace BMSHPMS.DSReception.ViewModels
                     {
                         info.ReceiptID = newReceipt.ID;
                         DC.AddEntity(info);
+
+                        if (info.Sum.HasValue)
+                        {
+                            newReceiptSum += info.Sum.Value;
+                        }
                     });
 
                     // 添加新附薦
@@ -264,6 +272,11 @@ namespace BMSHPMS.DSReception.ViewModels
                     {
                         info.ReceiptID = newReceipt.ID;
                         DC.AddEntity(info);
+
+                        if (info.Sum.HasValue)
+                        {
+                            newReceiptSum += info.Sum.Value;
+                        }
                     });
 
                     // 功德項目更新已使用數
@@ -272,10 +285,14 @@ namespace BMSHPMS.DSReception.ViewModels
                         DC.UpdateEntity(donation);
                     });
 
+                    //更新收據金額
+                    newReceipt.Sum = newReceiptSum;
+                    DC.UpdateProperty(newReceipt, x => x.Sum);
+
                     DC.SaveChanges();
 
-                    // 事務寫入
-                    transaction.Commit();                   
+                    // 事務寫入數據庫
+                    transaction.Commit();
                 }
             }
             catch (Exception ex)

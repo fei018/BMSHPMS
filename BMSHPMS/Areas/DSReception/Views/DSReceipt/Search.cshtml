@@ -1,0 +1,43 @@
+﻿@model BMSHPMS.DSReception.ViewModels.DSReceiptVM
+
+<div>
+    <wt:form vm="@Model">
+        <wt:row items-per-row="ItemsPerRowEnum.Four">
+            <wt:display field="Receipt.ReceiptNumber" />
+            <wt:display field="Receipt.DharmaServiceName" />
+        </wt:row>
+        <wt:row items-per-row="ItemsPerRowEnum.Four">
+            @if (Model.Donors.Count > 0)
+            {
+                for (int i = 0; i < Model.Donors.Count; i++)
+                {
+                    <wt:display field="Donors[i].SerialCode" />
+                }
+            }
+        </wt:row>
+        <wt:row items-per-row="ItemsPerRowEnum.Four">
+            @if (Model.Longevitys.Count > 0)
+            {
+                for (int i = 0; i < Model.Longevitys.Count; i++)
+                {
+                    <wt:display field="Longevitys[i].SerialCode" />
+                }
+            }
+        </wt:row>
+        <wt:row items-per-row="ItemsPerRowEnum.Four">
+            @if (Model.Memorials.Count > 0)
+            {
+                for (int i = 0; i < Model.Memorials.Count; i++)
+                {
+                    <wt:display field="Memorials[i].SerialCode" />
+                }
+            }
+        </wt:row>
+        <wt:row align="AlignEnum.Right">
+            <wt:linkbutton target="ButtonTargetEnum.self" window-title="結果" text="作廢" url="/DSReception/DSReceipt/Delete" post-current-form="true" />
+            <wt:closebutton />
+        </wt:row>
+        <wt:hidden field="Receipt.ID" />
+        <wt:hidden field="Receipt.ReceiptNumber" />
+    </wt:form>
+</div>

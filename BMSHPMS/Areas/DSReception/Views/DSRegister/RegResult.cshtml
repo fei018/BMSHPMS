@@ -33,7 +33,7 @@
 {
     <div class="reg-result" id="reg-result">
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-            <legend>功德項目登記結果</legend>
+            <legend>功德牌位數目登記結果</legend>
         </fieldset>
 
         <div class="layui-row">
@@ -128,7 +128,7 @@
                 <div class="layui-form-item">
                     <div class="layui-input-block">
                         <button class="layui-btn" onclick="receptionRegister('@Model.DharmaServiceID')" >登記新功德</button>
-                        <button class="layui-btn" onclick="javascript:window.location.reload();">返回選擇法會</button>
+                        <button class="layui-btn" onclick="javascript:layui.index.render();">返回選擇法會</button>
                     </div>
                 </div>
             </div>

@@ -334,6 +334,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSReception/Views/DSReceipt/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNSZWNlcHRpb25cVmlld3NcRFNSZWNlaXB0XERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSReception/Views/DSReceipt/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNSZWNlcHRpb25cVmlld3NcRFNSZWNlaXB0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSReception/Views/DSReceipt/Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNSZWNlcHRpb25cVmlld3NcRFNSZWNlaXB0XFNlYXJjaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSReception/Views/DSRegister/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNSZWNlcHRpb25cVmlld3NcRFNSZWdpc3RlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -576,6 +588,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Views/Shared/Exception.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEV4Y2VwdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Views/Shared/Exception2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEV4Y2VwdGlvbjIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Views/Shared/_Layout.cshtml]

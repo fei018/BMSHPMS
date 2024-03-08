@@ -1,5 +1,4 @@
-﻿using NPOI.Util.Collections;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
@@ -36,7 +35,7 @@ namespace BMSHPMS.Helper
         /// <typeparam name="T2">out New VM</typeparam>
         /// <param name="t1"></param>
         /// <returns></returns>
-        public static T2 CreateNewObjectUseProperties<T1,T2>(in T1 t1)
+        public static T2 CreateInstanceUseProperties<T1, T2>(in T1 t1)
         {
             T2 t2 = Activator.CreateInstance<T2>();
 

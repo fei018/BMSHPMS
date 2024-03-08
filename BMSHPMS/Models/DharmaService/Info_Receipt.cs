@@ -31,7 +31,7 @@ namespace BMSHPMS.Models.DharmaService
 
         [Display(Name = "法會名")]
         [Comment("法會名")]
-        [Required(ErrorMessage = "Validate.{0}required")]
+        //[Required(ErrorMessage = "Validate.{0}required")]
         public string DharmaServiceName { get; set; }
 
         [Display(Name = "收據人姓名")]

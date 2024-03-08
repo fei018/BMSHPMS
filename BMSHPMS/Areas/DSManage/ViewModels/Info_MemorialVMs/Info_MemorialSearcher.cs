@@ -1,11 +1,9 @@
-﻿using System;
+﻿using BMSHPMS.Models.DharmaService;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
-using BMSHPMS.Models.DharmaService;
 
 
 namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
@@ -21,7 +19,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
         [Display(Name = "陽居姓名")]
         public String BenefactorName { get; set; }
 
-        [Display(Name = "附薦宗親名及稱呼")]
+        [Display(Name = "附薦名稱")]
         public String DeceasedName { get; set; }
 
         [Display(Name = "金額")]

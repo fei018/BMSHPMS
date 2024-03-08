@@ -1,12 +1,18 @@
 ﻿@model BMSHPMS.DSManage.ViewModels.Opt_DonationProjectCleanVMs.Opt_DonationProjectCleanVM
 
-<div style="padding:20px;">
+<div style="padding:20px;font-size:16px;">
+    <blockquote class="layui-elem-quote">
+        相關的法會完全結束登記後，請記得做編號計數歸零動作, 或下一次相關法會開始登記前做編號計數歸零動作。<br /><br />
+        注意：相關法會登記其間 不能做此動作。
+    </blockquote>
+    <hr /><br />
+
     @foreach (var item in Model.DSUsedNumberCountVMs)
     {
         <form onsubmit="return aea386b7e8ed4509a443f96e81471d6e(this);">
             <div class="layui-form-item">
                 <label class="layui-form-label reception-lable">@item.DharmaServiceName</label>
-                <label class="layui-form-label reception-lable">編號總計數 @item.UsedNumberCount</label>
+                <label class="layui-form-label reception-lable">編號總計數: @item.UsedNumberCount</label>
                 <div class="layui-input-block">
                     <button class="layui-btn" type="submit">功德編號歸零</button>
                 </div>
@@ -40,7 +46,7 @@
     </script>
     <br />
     <hr />
-    <br />
+   @*  <br />
     <form>
         <div class="layui-form-item">
             <label class="layui-form-label reception-lable">全部功德編號歸零</label>
@@ -74,7 +80,7 @@
 
     <br />
     <hr />
-    <br />
+    <br /> *@
     @* <div class="layui-row " style="width:100%;text-align:right">
         <button class="layui-btn" id="a0f9fa09bde84b1bba3c1197b6f0ebee" lay-filter="a0f9fa09bde84b1bba3c1197b6f0ebeefilter">關閉</button>
         <script>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BMSHPMS.Areas.DSReception.ViewModels
+namespace BMSHPMS.DSReception.ViewModels
 {
     public class DSRegSubmittedVM
     {

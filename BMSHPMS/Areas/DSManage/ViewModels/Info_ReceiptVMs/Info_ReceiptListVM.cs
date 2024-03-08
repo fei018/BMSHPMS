@@ -1,18 +1,13 @@
-﻿using System;
+﻿using BMSHPMS.Areas.DSManage.ViewModels.Common;
+using BMSHPMS.Models.DharmaService;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using BMSHPMS.Models.DharmaService;
-using NetBox.Extensions;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
-using BMSHPMS.Helper;
-using BMSHPMS.Areas.DSManage.ViewModels.Common;
 
 
 
@@ -25,8 +20,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
             return new List<GridAction>
             {
                 //this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800,dialogHeight:400),
-                this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800, dialogHeight : 400),
-                this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800, dialogHeight : 600),
+                this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800, dialogHeight : 600),
+                this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 1000, dialogHeight : 800),
                 this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800, dialogHeight : 400),               
                 //this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "DSManage", dialogWidth: 800),
                 //this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
@@ -41,7 +36,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
         {
             return new List<GridColumn<Info_Receipt_View>>{
                 this.MakeGridHeader(x => x.ReceiptDate,width:150).SetSort(),
-                this.MakeGridHeader(x => x.ReceiptNumber,width:150).SetSort(),                
+                this.MakeGridHeader(x => x.ReceiptNumber,width:150).SetSort(),
                 this.MakeGridHeader(x => x.DharmaServiceFullName,width:150).SetSort(),
                 this.MakeGridHeader(x => x.Sum,width:150).SetSort(),
                 this.MakeGridHeader(x => x.ReceiptOwn).SetSort(),

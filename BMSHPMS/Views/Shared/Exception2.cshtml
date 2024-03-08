@@ -1,0 +1,28 @@
+﻿@model Exception
+
+<style>
+    .main {
+        padding: 50px;
+    }
+
+        .main .btn {
+            margin-bottom: 50px;
+        }
+
+        .main .error {
+            font-size: 16px;
+            color:red;
+        }
+</style>
+<div class="main">
+    <div class="btn">
+        @* <button class="layui-btn " onclick="window.history.go(-1);"><i class="layui-icon layui-icon-return"></i>返回</button> *@
+        <wt:closebutton />
+    </div>
+
+    <div class="error">
+        <p>異常錯誤:</p>
+        <hr />
+        <p>@Model?.GetBaseException()?.Message</p>
+    </div>
+</div>
