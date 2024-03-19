@@ -26,6 +26,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                 //this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
                 //this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
+                this.MakeAction("Info_Longevity","ExportExcelTemplate","匯出Excel範本","匯出Excel範本", GridActionParameterTypesEnum.MultiIds,"DSManage",dialogWidth:800,dialogHeight:600),
             };
         }
 
@@ -74,8 +75,10 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                 ReceiptDate_view = x.Receipt.ReceiptDate.Value,
                 ReceiptUpdateTime_view = x.Receipt.UpdateTime.Value,
                 DharmaServiceFullName = x.Receipt.DharmaServiceFullName,
+                UpdateTime = x.UpdateTime,
             })
-            .OrderByDescending(x => x.ReceiptUpdateTime_view);
+            .OrderBy(x=>x.SerialCode)
+            .OrderByDescending(x => x.UpdateTime);
 
             return query1;
         }

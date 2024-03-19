@@ -39,6 +39,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 old.DeceasedName_3 = Entity.DeceasedName_3;
                 old.LongevityName = Entity.LongevityName;
                 old.DSRemark = Entity.DSRemark;
+                if(Entity.Sum.HasValue) old.Sum = Entity.Sum.Value;
+
                 old.UpdateBy = LoginUserInfo.Name;
                 old.UpdateTime = DateTime.Now;
                 DC.UpdateEntity(old);

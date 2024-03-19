@@ -1,5 +1,7 @@
 ﻿using BMSHPMS.Models.DharmaService;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +38,11 @@ namespace BMSHPMS.Helper
         }
         #endregion
 
-
+        #region MyRegion
+        public static IWebHostEnvironment GetWebHostEnvironment(this WTMContext context)
+        {
+            return context.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
+        }
+        #endregion
     }
 }

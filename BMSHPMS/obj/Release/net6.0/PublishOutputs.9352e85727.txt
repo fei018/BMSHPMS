@@ -268,17 +268,16 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\BMSHPMS
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\zh\BMSHPMS.resources.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\en\BMSHPMS.resources.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Aliyun.OSS.Core.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Aspose.Cells.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\AutoMapper.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\BouncyCastle.Cryptography.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Collections.Pooled.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\DistributedLock.Core.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\DistributedLock.FileSystem.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\DotLiquid.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Microsoft.SqlServer.Types.dll
-C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NPOI.OOXML.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NPOI.dll
-C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NPOI.OpenXml4Net.dll
-C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NPOI.OpenXmlFormats.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\DynamicExpresso.Core.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\EFCore.BulkExtensions.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Elsa.dll
@@ -302,6 +301,7 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Elsa.Se
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Elsa.Server.Core.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\EntityFrameworkCore.SqlServer.HierarchyId.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\EntityFrameworkCore.SqlServer.HierarchyId.Abstractions.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Enums.NET.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Esprima.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Fare.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Fluid.dll
@@ -313,6 +313,7 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Magicod
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Magicodes.IE.Excel.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Magicodes.IE.Excel.AspNetCore.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\MailKit.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\MathNet.Numerics.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\MediatR.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\MediatR.Contracts.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\MessagePack.dll
@@ -422,6 +423,10 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NodaTim
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NodaTime.Serialization.SystemTextJson.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Npgsql.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NPOI.Core.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NPOI.OOXML.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NPOI.OpenXml4Net.dll
+C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NPOI.OpenXmlFormats.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NuGet.Common.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NuGet.Configuration.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\PubTmp\Out\NuGet.DependencyResolver.Core.dll

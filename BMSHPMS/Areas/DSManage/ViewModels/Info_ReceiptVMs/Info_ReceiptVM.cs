@@ -45,14 +45,14 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
             if (old != null)
             {
                 if (Entity.DharmaServiceYear.HasValue) old.DharmaServiceYear = Entity.DharmaServiceYear;
-                if (!string.IsNullOrEmpty(Entity.DharmaServiceName)) old.DharmaServiceName = Entity.DharmaServiceName;
-                if (!string.IsNullOrEmpty(Entity.ReceiptNumber)) old.ReceiptNumber = Entity.ReceiptNumber;
+                old.DharmaServiceName = Entity.DharmaServiceName;
+                old.ReceiptNumber = Entity.ReceiptNumber;
                 if (Entity.Sum.HasValue) old.Sum = Entity.Sum;
-                if (!string.IsNullOrEmpty(Entity.ReceiptOwn)) old.ReceiptOwn = Entity.ReceiptOwn;
-                if (!string.IsNullOrEmpty(Entity.ContactName)) old.ContactName = Entity.ContactName;
-                if (!string.IsNullOrEmpty(Entity.ContactPhone)) old.ContactPhone = Entity.ContactPhone;
+                old.ReceiptOwn = Entity.ReceiptOwn;
+                old.ContactName = Entity.ContactName;
+                old.ContactPhone = Entity.ContactPhone;
                 if (Entity.ReceiptDate.HasValue) old.ReceiptDate = Entity.ReceiptDate;
-                if (!string.IsNullOrEmpty(Entity.DSRemark)) old.DSRemark = Entity.DSRemark;
+                old.DSRemark = Entity.DSRemark;
 
                 old.UpdateBy = LoginUserInfo.Name;
                 old.UpdateTime = DateTime.Now;

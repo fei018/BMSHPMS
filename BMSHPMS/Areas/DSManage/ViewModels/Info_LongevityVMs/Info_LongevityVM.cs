@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
 using BMSHPMS.Models.DharmaService;
+using NetTopologySuite.Index.IntervalRTree;
 
 
 namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
@@ -33,8 +34,11 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
             var old = DC.Set<Info_Longevity>().Find(Entity.ID);
             if (old != null)
             {
+                
                 old.Name = Entity.Name;
                 old.DSRemark = Entity.DSRemark;
+                if (Entity.Sum.HasValue) old.Sum = Entity.Sum.Value;
+
                 old.UpdateBy = LoginUserInfo.Name;
                 old.UpdateTime = DateTime.Now;
                 DC.UpdateEntity(old);

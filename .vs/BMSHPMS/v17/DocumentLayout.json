@@ -3,32 +3,8 @@
   "WorkspaceRootPath": "C:\\Fei\\code project\\Github\\BMSHPMS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\views\\shared\\exception.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\views\\shared\\exception.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\views\\shared\\exception2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\views\\shared\\exception2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\areas\\dsmanage\\views\\dsreport\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\areas\\dsmanage\\views\\dsreport\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\areas\\dsreception\\controllers\\dsreceiptcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\areas\\dsreception\\controllers\\dsreceiptcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\areas\\dsreception\\viewmodels\\dsreceiptvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\areas\\dsreception\\viewmodels\\dsreceiptvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\areas\\dsreception\\views\\dsreceipt\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\areas\\dsreception\\views\\dsreceipt\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\areas\\dsreception\\views\\dsreceipt\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\areas\\dsreception\\views\\dsreceipt\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\areas\\dsmanage\\viewmodels\\info_longevityvms\\info_longevitylistvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\areas\\dsmanage\\viewmodels\\info_longevityvms\\info_longevitylistvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,92 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Exception.cshtml",
-              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Views\\Shared\\Exception.cshtml",
-              "RelativeDocumentMoniker": "BMSHPMS\\Views\\Shared\\Exception.cshtml",
-              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Views\\Shared\\Exception.cshtml",
-              "RelativeToolTip": "BMSHPMS\\Views\\Shared\\Exception.cshtml",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAACUAAABmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-04T03:41:35.593Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\Views\\DSReport\\Index.cshtml",
-              "RelativeDocumentMoniker": "BMSHPMS\\Areas\\DSManage\\Views\\DSReport\\Index.cshtml",
-              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\Views\\DSReport\\Index.cshtml",
-              "RelativeToolTip": "BMSHPMS\\Areas\\DSManage\\Views\\DSReport\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-04T03:39:23.023Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Exception2.cshtml",
-              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Views\\Shared\\Exception2.cshtml",
-              "RelativeDocumentMoniker": "BMSHPMS\\Views\\Shared\\Exception2.cshtml",
-              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Views\\Shared\\Exception2.cshtml",
-              "RelativeToolTip": "BMSHPMS\\Views\\Shared\\Exception2.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-02T01:27:34.177Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Search.cshtml",
-              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSReception\\Views\\DSReceipt\\Search.cshtml",
-              "RelativeDocumentMoniker": "BMSHPMS\\Areas\\DSReception\\Views\\DSReceipt\\Search.cshtml",
-              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSReception\\Views\\DSReceipt\\Search.cshtml",
-              "RelativeToolTip": "BMSHPMS\\Areas\\DSReception\\Views\\DSReceipt\\Search.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAA4AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-02-29T07:54:05.132Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSReception\\Views\\DSReceipt\\Index.cshtml",
-              "RelativeDocumentMoniker": "BMSHPMS\\Areas\\DSReception\\Views\\DSReceipt\\Index.cshtml",
-              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSReception\\Views\\DSReceipt\\Index.cshtml",
-              "RelativeToolTip": "BMSHPMS\\Areas\\DSReception\\Views\\DSReceipt\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAC5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-02-29T05:48:52.989Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DSReceiptVM.cs",
-              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSReception\\ViewModels\\DSReceiptVM.cs",
-              "RelativeDocumentMoniker": "BMSHPMS\\Areas\\DSReception\\ViewModels\\DSReceiptVM.cs",
-              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSReception\\ViewModels\\DSReceiptVM.cs",
-              "RelativeToolTip": "BMSHPMS\\Areas\\DSReception\\ViewModels\\DSReceiptVM.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAMBAwA8AAAAjAAAA",
+              "Title": "Info_LongevityListVM.cs",
+              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_LongevityVMs\\Info_LongevityListVM.cs",
+              "RelativeDocumentMoniker": "BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_LongevityVMs\\Info_LongevityListVM.cs",
+              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_LongevityVMs\\Info_LongevityListVM.cs",
+              "RelativeToolTip": "BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_LongevityVMs\\Info_LongevityListVM.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAowFAAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T06:57:14.813Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DSReceiptController.cs",
-              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSReception\\Controllers\\DSReceiptController.cs",
-              "RelativeDocumentMoniker": "BMSHPMS\\Areas\\DSReception\\Controllers\\DSReceiptController.cs",
-              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSReception\\Controllers\\DSReceiptController.cs",
-              "RelativeToolTip": "BMSHPMS\\Areas\\DSReception\\Controllers\\DSReceiptController.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAIwCsAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T05:34:06.523Z",
+              "WhenOpened": "2024-03-19T09:56:45.013Z",
               "EditorCaption": ""
             }
           ]

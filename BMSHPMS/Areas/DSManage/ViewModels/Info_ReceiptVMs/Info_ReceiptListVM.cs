@@ -27,7 +27,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 //this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
                 //this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
-                this.MakeAction("Info_Receipt","ExportExcelToday","匯出今日","匯出今日收據", GridActionParameterTypesEnum.NoId,"DSManage").SetIsDownload(),
+                //this.MakeAction("Info_Receipt","ExportExcelToday","匯出今日","匯出今日收據", GridActionParameterTypesEnum.NoId,"DSManage").SetIsDownload(),
             };
         }
 

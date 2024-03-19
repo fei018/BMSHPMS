@@ -1,6 +1,18 @@
 {
   "Files": [
     {
+      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\ExcelTemplate\\Longevity_20cell_205x254mm_RedPaper.xlsx",
+      "PackagePath": "staticwebassets\\ExcelTemplate\\Longevity_20cell_205x254mm_RedPaper.xlsx"
+    },
+    {
+      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\ExcelTemplate\\Longevity_Big5cell_154x255m_RedPaper.xlsx",
+      "PackagePath": "staticwebassets\\ExcelTemplate\\Longevity_Big5cell_154x255m_RedPaper.xlsx"
+    },
+    {
+      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\ExcelTemplate\\Longevity_small5cell_210x130mm_redpaper.xlsx",
+      "PackagePath": "staticwebassets\\ExcelTemplate\\Longevity_small5cell_210x130mm_redpaper.xlsx"
+    },
+    {
       "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\echarts\\chalk.js",
       "PackagePath": "staticwebassets\\echarts\\chalk.js"
     },

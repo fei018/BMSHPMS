@@ -18,10 +18,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Fei\code project\Github\BMSHPMS\BMSHPMS
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/DSReport/Index - 複製.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcRFNSZXBvcnRcSW5kZXggLSDopIfoo70uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/DSReport/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcRFNSZXBvcnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -108,6 +104,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Info_Longevity/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcSW5mb19Mb25nZXZpdHlcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Info_Longevity/ExportExcelTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcSW5mb19Mb25nZXZpdHlcRXhwb3J0RXhjZWxUZW1wbGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Info_Longevity/Index.cshtml]
@@ -232,10 +232,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Info_Receipt/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcSW5mb19SZWNlaXB0XEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Info_Receipt/ShowDeleted.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNNYW5hZ2VcVmlld3NcSW5mb19SZWNlaXB0XFNob3dEZWxldGVkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSManage/Views/Info_Receipt_del/BatchDelete.cshtml]

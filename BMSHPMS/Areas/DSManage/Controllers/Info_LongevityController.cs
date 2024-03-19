@@ -5,6 +5,8 @@ using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Mvc;
 using WalkingTec.Mvvm.Core.Extensions;
 using BMSHPMS.DSManage.ViewModels.Info_LongevityVMs;
+using Magicodes.ExporterAndImporter.Excel.AspNetCore;
+using System.Threading.Tasks;
 
 namespace BMSHPMS.DSManage.Controllers
 {
@@ -187,34 +189,74 @@ namespace BMSHPMS.DSManage.Controllers
         #endregion
 
         #region Import
-		//[ActionDescription("Sys.Import")]
-  //      public ActionResult Import()
-  //      {
-  //          var vm = Wtm.CreateVM<DSLongevityInfoImportVM>();
-  //          return PartialView(vm);
-  //      }
+        //[ActionDescription("Sys.Import")]
+        //      public ActionResult Import()
+        //      {
+        //          var vm = Wtm.CreateVM<DSLongevityInfoImportVM>();
+        //          return PartialView(vm);
+        //      }
 
-  //      [HttpPost]
-  //      [ActionDescription("Sys.Import")]
-  //      public ActionResult Import(DSLongevityInfoImportVM vm, IFormCollection nouse)
-  //      {
-  //          if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
-  //          {
-  //              return PartialView(vm);
-  //          }
-  //          else
-  //          {
-  //              return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
-  //          }
-  //      }
+        //      [HttpPost]
+        //      [ActionDescription("Sys.Import")]
+        //      public ActionResult Import(DSLongevityInfoImportVM vm, IFormCollection nouse)
+        //      {
+        //          if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
+        //          {
+        //              return PartialView(vm);
+        //          }
+        //          else
+        //          {
+        //              return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
+        //          }
+        //      }
         #endregion
 
+        #region Sys.Export
         [ActionDescription("Sys.Export")]
         [HttpPost]
         public IActionResult ExportExcel(Info_LongevityListVM vm)
         {
             return vm.GetExportData();
         }
+        #endregion
 
+
+        [ActionDescription("匯出Excel範本")]
+        [HttpPost]
+        public IActionResult ExportExcelTemplate(Info_LongevityListVM vm)
+        {
+            try
+            {
+                var tplVM = Wtm.CreateVM<LongevityExcelTplVM>();
+
+                string key = Guid.NewGuid().ToString();
+                tplVM.WtmCacheKey = key;
+
+                Wtm.Cache.Add(key, vm.Ids);
+
+                return PartialView(tplVM);
+            }
+            catch (Exception ex)
+            {
+                return PartialView("Exception2", ex);
+            }
+        }
+
+        [ActionDescription("匯出Excel範本2")]
+        [HttpPost]
+        public async Task<IActionResult> ExportExcelTemplate2(LongevityExcelTplVM vm)
+        {
+            try
+            {
+                var result = await vm.Export();
+                string fileName = "延生範本_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+                //return new XlsxFileResult(bytes: result, fileName);
+                return File(result, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+            }
+            catch (Exception ex)
+            {
+                return View("Exception", ex);
+            }
+        }
     }
 }
