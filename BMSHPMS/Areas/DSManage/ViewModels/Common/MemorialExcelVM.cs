@@ -1,7 +1,12 @@
-﻿using Magicodes.ExporterAndImporter.Core;
+﻿using BMSHPMS.DSManage.ViewModels.Info_MemorialVMs;
+using BMSHPMS.Helper;
+using Magicodes.ExporterAndImporter.Core;
 using Magicodes.ExporterAndImporter.Excel;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BMSHPMS.DSManage.ViewModels.Common
 {
@@ -10,6 +15,12 @@ namespace BMSHPMS.DSManage.ViewModels.Common
     {
         [ExporterHeader(DisplayName = "收據號碼")]
         public string ReceiptNumber { get; set; }
+
+        [ExporterHeader(DisplayName = "收據日期", Format = "yyyy-MM-dd")]
+        public DateTime ReceiptDate { get; set; }
+
+        [ExporterHeader(DisplayName = "法會")]
+        public string DharmaServiceFullName { get; set; }
 
         [ExporterHeader(DisplayName = "附薦編號")]
         public string SerialCode { get; set; }
@@ -43,5 +54,24 @@ namespace BMSHPMS.DSManage.ViewModels.Common
 
         //[ExporterHeader(DisplayName = "ID")]
         //public Guid? ID { get; set; }
+
+        public static async Task<byte[]> ExportExcelAsBytes(List<Info_Memorial_View> list)
+        {
+            List<MemorialExcelVM> newlist = new();
+
+            foreach (var item in list)
+            {
+                var vm = ToolsHelper.CreateInstanceUseProperties<Info_Memorial_View, MemorialExcelVM>(item);
+
+                newlist.Add(vm);
+            }
+
+            newlist = newlist.OrderBy(x => x.Sum).ThenBy(x => x.SerialCode).ToList();
+
+            var exporter = new ExcelExporter();
+            var result = await exporter.Append(newlist).ExportAppendDataAsByteArray();
+
+            return result;
+        }
     }
 }

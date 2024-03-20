@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Fei\\code project\\Github\\BMSHPMS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\areas\\dsmanage\\viewmodels\\info_longevityvms\\info_longevitylistvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\areas\\dsmanage\\viewmodels\\info_longevityvms\\info_longevitylistvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\areas\\dsmanage\\viewmodels\\info_longevityvms\\longevityexceltplvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\areas\\dsmanage\\viewmodels\\info_longevityvms\\longevityexceltplvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|c:\\fei\\code project\\github\\bmshpms\\bmshpms\\areas\\dsmanage\\controllers\\info_longevitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9CADD47-630E-4F19-B454-B4C07B803A70}|BMSHPMS\\BMSHPMS.csproj|solutionrelative:bmshpms\\areas\\dsmanage\\controllers\\info_longevitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Info_LongevityListVM.cs",
-              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_LongevityVMs\\Info_LongevityListVM.cs",
-              "RelativeDocumentMoniker": "BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_LongevityVMs\\Info_LongevityListVM.cs",
-              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_LongevityVMs\\Info_LongevityListVM.cs",
-              "RelativeToolTip": "BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_LongevityVMs\\Info_LongevityListVM.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAowFAAAAAMAAAA",
+              "Title": "LongevityExcelTplVM.cs",
+              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_LongevityVMs\\LongevityExcelTplVM.cs",
+              "RelativeDocumentMoniker": "BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_LongevityVMs\\LongevityExcelTplVM.cs",
+              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_LongevityVMs\\LongevityExcelTplVM.cs",
+              "RelativeToolTip": "BMSHPMS\\Areas\\DSManage\\ViewModels\\Info_LongevityVMs\\LongevityExcelTplVM.cs",
+              "ViewState": "AQIAACsAAAAAAAAAAAAiwEUAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-19T09:56:45.013Z",
+              "WhenOpened": "2024-03-20T09:40:43.149Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Info_LongevityController.cs",
+              "DocumentMoniker": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\Controllers\\Info_LongevityController.cs",
+              "RelativeDocumentMoniker": "BMSHPMS\\Areas\\DSManage\\Controllers\\Info_LongevityController.cs",
+              "ToolTip": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\Areas\\DSManage\\Controllers\\Info_LongevityController.cs",
+              "RelativeToolTip": "BMSHPMS\\Areas\\DSManage\\Controllers\\Info_LongevityController.cs",
+              "ViewState": "AQIAAOQAAAAAAAAAAAA8wAABAACMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T09:39:56.038Z",
               "EditorCaption": ""
             }
           ]

@@ -4,13 +4,10 @@ using Magicodes.ExporterAndImporter.Core;
 using Magicodes.ExporterAndImporter.Excel;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using BMSHPMS.DSManage.ViewModels.Common;
+using System.Threading.Tasks;
 
-namespace BMSHPMS.Areas.DSManage.ViewModels.Common
+namespace BMSHPMS.DSManage.ViewModels.Common
 {
     [ExcelExporter(Name = "收據")]
     public class ReceiptExcelVM

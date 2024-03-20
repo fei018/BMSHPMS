@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "HCASQBDtN5SoV/uXk3mdhNpPefITDTeAQc+uFkOroOWSAEfTNoqPHA0cTzP2aUdPKjD++hlUkH7gyyX0cYMP9A==",
+  "dgSpecHash": "t1hftxUSLXZCgu4nABIoKZEQjl9w1kxtdZKjFeGvLio3TXzcY+WLjx8+v47XSUCcBxB7cFSDNbOYdZKVUhq0oQ==",
   "success": true,
   "projectFilePath": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\BMSHPMS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fei\\.nuget\\packages\\aliyun.oss.sdk.netcore\\2.13.0\\aliyun.oss.sdk.netcore.2.13.0.nupkg.sha512",
-    "C:\\Users\\fei\\.nuget\\packages\\aspose.cells\\23.9.0\\aspose.cells.23.9.0.nupkg.sha512",
     "C:\\Users\\fei\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\fei\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\fei\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",

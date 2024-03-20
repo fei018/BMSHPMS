@@ -33,11 +33,11 @@ namespace BMSHPMS.DSManage.ViewModels.Common
             try
             {
                 int index = serialStart.ToList().FindLastIndex(x => char.IsLetter(x));
-                string serialStartLetter = serialStart[..(index + 1)];
-                int serialStartNum = int.Parse(serialStart[(index + 1)..]);
+                string serialStartLetter = serialStart.Substring(0, index + 1); //serialStart[..(index + 1)];
+                int serialStartNum = int.Parse(serialStart.Substring(index + 1)); //int.Parse(serialStart[(index + 1)..]);
 
                 index = serialEnd.ToList().FindLastIndex(x => char.IsLetter(x));
-                string serialEndLetter = serialEnd[..(index + 1)];
+                //string serialEndLetter = serialEnd[..(index + 1)];
                 int serialEndNum = int.Parse(serialEnd[(index + 1)..]);
 
                 if (serialStartNum >= serialEndNum)

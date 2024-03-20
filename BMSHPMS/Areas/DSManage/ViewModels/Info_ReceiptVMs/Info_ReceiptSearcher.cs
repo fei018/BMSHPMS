@@ -15,6 +15,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
         [Display(Name = "收據號碼")]
         public String ReceiptNumber { get; set; }
 
+        //[Display(Name = "收據號碼2")]
+        //public string ReceiptNumberEnd { get; set; }
+
         [Display(Name = "收據人姓名")]
         public String ReceiptOwn { get; set; }
 

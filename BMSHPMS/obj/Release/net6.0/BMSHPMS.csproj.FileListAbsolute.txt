@@ -716,7 +716,6 @@ C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Release\net6.0\runtimes\win-arm64
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Release\net6.0\runtimes\win-x64\native\libSkiaSharp.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Release\net6.0\runtimes\win-x86\native\libSkiaSharp.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\obj\Release\net6.0\BMSHPMS.csproj.Up2Date
-C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Release\net6.0\Aspose.Cells.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Release\net6.0\BouncyCastle.Cryptography.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Release\net6.0\Enums.NET.dll
 C:\Fei\code project\Github\BMSHPMS\BMSHPMS\bin\Release\net6.0\MathNet.Numerics.dll

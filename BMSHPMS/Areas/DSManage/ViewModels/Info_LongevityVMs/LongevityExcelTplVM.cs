@@ -27,6 +27,16 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
         /// </summary>
         public List<PrintExcelTplPost> TplList { get; set; }
 
+        /// <summary>
+        /// 文件下載名
+        /// </summary>
+        public string DownloadFileName { get; set; }
+
+        /// <summary>
+        /// 匯出excel result as byte[]
+        /// </summary>
+        public byte[] ExcelResult { get; set; }
+
         public LongevityExcelTplVM()
         {
             TplList = LongevityTemplateContext.TplPostList;
@@ -37,7 +47,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
 
         }
 
-        public async Task<byte[]> Export()
+        public async Task<LongevityExcelTplVM> Export()
         {
             List<string> ids = Wtm.Cache.Get<List<string>>(WtmCacheKey);
             Wtm.Cache.Remove(WtmCacheKey);
@@ -55,6 +65,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
             }
 
             var list = DC.Set<Info_Longevity>().CheckIDs(ids).OrderBy(x => x.SerialCode).ToList();
+
+            string filename = list.FirstOrDefault().SerialCode + "_" + list.LastOrDefault().SerialCode;
+            DownloadFileName = "延生_" + filename + ".xlsx";
 
             byte[] result = null;
 
@@ -76,7 +89,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                     throw new Exception("範本switch case key 匹配不到.");
             }
 
-            return result;
+            ExcelResult = result;
+
+            return this;
         }
 
 

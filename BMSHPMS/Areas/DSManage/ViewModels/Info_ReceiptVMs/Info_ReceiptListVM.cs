@@ -1,4 +1,4 @@
-﻿using BMSHPMS.Areas.DSManage.ViewModels.Common;
+﻿using BMSHPMS.DSManage.ViewModels.Common;
 using BMSHPMS.Models.DharmaService;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -83,8 +83,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 CreateBy = x.CreateBy,
                 CreateTime = x.CreateTime,
             })
-            .OrderByDescending(x => x.UpdateTime)
-            .ThenByDescending(x => x.ReceiptNumber);
+            .OrderByDescending(x => x.ReceiptDate)
+            .ThenBy(x => x.ReceiptNumber);
 
             return query1;
         }

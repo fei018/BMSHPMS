@@ -1,6 +1,5 @@
-﻿using BMSHPMS.Areas.DSManage.ViewModels.Common;
+﻿using BMSHPMS.DSManage.ViewModels.Common;
 using BMSHPMS.Models.DharmaService;
-using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

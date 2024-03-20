@@ -15,24 +15,6 @@
           }
         }
       },
-      "Aspose.Cells/23.9.0": {
-        "type": "package",
-        "dependencies": {
-          "SkiaSharp": "2.88.3",
-          "System.Security.Cryptography.Pkcs": "6.0.3",
-          "System.Text.Encoding.CodePages": "4.7.0"
-        },
-        "compile": {
-          "lib/net6.0/Aspose.Cells.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/Aspose.Cells.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "AutoMapper/12.0.0": {
         "type": "package",
         "dependencies": {
@@ -7253,7 +7235,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Aspose.Cells": "23.9.0",
           "Elsa.Designer.Components.Web": "2.12.0",
           "Magicodes.IE.Excel.AspNetCore": "2.7.4.5",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "6.0.25",
@@ -7287,36 +7268,6 @@
         "lib/netstandard2.0/Aliyun.OSS.Core.dll",
         "lib/netstandard2.0/Aliyun.OSS.Core.pdb",
         "lib/netstandard2.0/Aliyun.OSS.Core.xml"
-      ]
-    },
-    "Aspose.Cells/23.9.0": {
-      "sha512": "3y5ojtUEw/W5s+/ZUNtN0n622903Pu5uREoRT/DJ6w5Js1TDJ+AACUCkeE8brbKptPRtOsH5zNU88mxwsBf+ZA==",
-      "type": "package",
-      "path": "aspose.cells/23.9.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Help/Aspose.Cells For .NET Documentation.chm",
-        "Help/Aspose.Cells.GridJs for .NETSTANDARD Documentation.chm",
-        "License/Aspose_End-User-License-Agreement.txt",
-        "License/thirdpartylicenses.Aspose.Cells.for.NET.pdf",
-        "aspose.cells.23.9.0.nupkg.sha512",
-        "aspose.cells.nuspec",
-        "images/aspose_cells-for-net.png",
-        "lib/net40-client/Aspose.Cells.dll",
-        "lib/net40-client/Aspose.Cells.xml",
-        "lib/net40/Aspose.Cells.dll",
-        "lib/net40/Aspose.Cells.xml",
-        "lib/net6.0-windows7.0/Aspose.Cells.dll",
-        "lib/net6.0-windows7.0/Aspose.Cells.xml",
-        "lib/net6.0/Aspose.Cells.dll",
-        "lib/net6.0/Aspose.Cells.xml",
-        "lib/net7.0-windows7.0/Aspose.Cells.dll",
-        "lib/net7.0-windows7.0/Aspose.Cells.xml",
-        "lib/net7.0/Aspose.Cells.dll",
-        "lib/net7.0/Aspose.Cells.xml",
-        "lib/netstandard2.0/Aspose.Cells.dll",
-        "lib/netstandard2.0/Aspose.Cells.xml"
       ]
     },
     "AutoMapper/12.0.0": {

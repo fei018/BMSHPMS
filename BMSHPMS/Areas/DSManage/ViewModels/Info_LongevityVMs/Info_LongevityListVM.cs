@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using BMSHPMS.Models.DharmaService;
 using BMSHPMS.DSManage.ViewModels.Common;
+using System.Linq.Dynamic.Core;
 
 
 namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
@@ -34,9 +35,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
         protected override IEnumerable<IGridColumn<Info_Longevity_View>> InitGridHeader()
         {
             return new List<GridColumn<Info_Longevity_View>>{
-                this.MakeGridHeader(x => x.ReceiptDate_view,width:110).SetSort(),
+                this.MakeGridHeader(x => x.ReceiptDate,width:110).SetSort(),
                 this.MakeGridHeader(x => x.DharmaServiceFullName,width:150).SetSort(),
-                this.MakeGridHeader(x => x.ReceiptNumber_view,width:120).SetSort(),
+                this.MakeGridHeader(x => x.ReceiptNumber,width:120).SetSort(),
                 this.MakeGridHeader(x => x.SerialCode, width : 110).SetSort(),
                 this.MakeGridHeader(x => x.Sum,width:80).SetSort(),
                 this.MakeGridHeader(x => x.Name).SetSort(),                             
@@ -71,30 +72,54 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                 Sum = x.Sum,
                 SerialCode = x.SerialCode,
                 DSRemark = x.DSRemark,
-                ReceiptNumber_view = x.Receipt.ReceiptNumber,
-                ReceiptDate_view = x.Receipt.ReceiptDate.Value,
-                ReceiptUpdateTime_view = x.Receipt.UpdateTime.Value,
+                ReceiptNumber = x.Receipt.ReceiptNumber,
+                ReceiptDate = x.Receipt.ReceiptDate.Value,
+                ReceiptUpdateTime = x.Receipt.UpdateTime.Value,
                 DharmaServiceFullName = x.Receipt.DharmaServiceFullName,
                 UpdateTime = x.UpdateTime,
+                ReceiptID = x.ReceiptID,
             })
-            .OrderBy(x=>x.SerialCode)
-            .OrderByDescending(x => x.UpdateTime);
+            .OrderByDescending(x=>x.ReceiptDate)
+            .ThenBy(x => x.SerialCode);
 
             return query1;
         }
 
+        #region public async Task<byte[]> ExportExcel()
+        public async Task<byte[]> ExportExcel()
+        {
+            List<Info_Longevity_View> list;
+
+
+            if (this.Ids == null || this.Ids.Count <= 0)
+            {
+                list = await GetSearchQuery().ToListAsync();
+            }
+            else
+            {
+                list = await GetSearchQuery().CheckIDs(Ids).ToListAsync();
+            }
+
+            if (list == null || list.Count <= 0)
+            {
+                throw new Exception("查詢數據是空.");
+            }
+
+            return await LongevityExcelVM.ExportExcelAsBytes(list);
+        }
+        #endregion
     }
 
     public class Info_Longevity_View : Info_Longevity{
 
         [Display(Name = "收據號碼")]
-        public String ReceiptNumber_view { get; set; }
+        public String ReceiptNumber { get; set; }
 
         [Display(Name = "收據日期")]
-        public DateTime ReceiptDate_view { get; set; }
+        public DateTime ReceiptDate { get; set; }
 
         [Display(Name = "收據更新日期")]
-        public DateTime ReceiptUpdateTime_view { get; set; }
+        public DateTime ReceiptUpdateTime { get; set; }
 
         [Display(Name = "法會")]
         public string DharmaServiceFullName { get; set; }

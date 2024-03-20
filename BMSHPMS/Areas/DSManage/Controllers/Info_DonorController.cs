@@ -5,6 +5,7 @@ using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Mvc;
 using WalkingTec.Mvvm.Core.Extensions;
 using BMSHPMS.DSManage.ViewModels.Info_DonorVMs;
+using System.Threading.Tasks;
 
 namespace BMSHPMS.DSManage.Controllers
 {
@@ -211,9 +212,13 @@ namespace BMSHPMS.DSManage.Controllers
 
         [ActionDescription("Sys.Export")]
         [HttpPost]
-        public IActionResult ExportExcel(Info_DonorListVM vm)
+        public async Task<IActionResult> ExportExcel(Info_DonorListVM vm)
         {
-            return vm.GetExportData();
+            //return vm.GetExportData();
+            var result = await vm.ExportExcel();
+            string fileName = "功德主_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+
+            return File(result, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
 
     }

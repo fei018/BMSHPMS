@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BMSHPMS.DSManage.ViewModels.Info_LongevityVMs;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using WalkingTec.Mvvm.Core;
-using WalkingTec.Mvvm.Mvc;
-using WalkingTec.Mvvm.Core.Extensions;
-using BMSHPMS.DSManage.ViewModels.Info_LongevityVMs;
-using Magicodes.ExporterAndImporter.Excel.AspNetCore;
 using System.Threading.Tasks;
+using WalkingTec.Mvvm.Core;
+using WalkingTec.Mvvm.Core.Extensions;
+using WalkingTec.Mvvm.Mvc;
 
 namespace BMSHPMS.DSManage.Controllers
 {
@@ -214,9 +213,13 @@ namespace BMSHPMS.DSManage.Controllers
         #region Sys.Export
         [ActionDescription("Sys.Export")]
         [HttpPost]
-        public IActionResult ExportExcel(Info_LongevityListVM vm)
+        public async Task<IActionResult> ExportExcel(Info_LongevityListVM vm)
         {
-            return vm.GetExportData();
+            //return vm.GetExportData();
+            var result = await vm.ExportExcel();
+            string fileName = "延生_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+
+            return File(result, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
         #endregion
 
@@ -249,9 +252,9 @@ namespace BMSHPMS.DSManage.Controllers
             try
             {
                 var result = await vm.Export();
-                string fileName = "延生範本_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+                //string fileName = "延生範本_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
                 //return new XlsxFileResult(bytes: result, fileName);
-                return File(result, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+                return File(result.ExcelResult, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", result.DownloadFileName);
             }
             catch (Exception ex)
             {
