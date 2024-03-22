@@ -1,14 +1,13 @@
-﻿using System;
+﻿using BMSHPMS.DSManage.ViewModels.Common;
+using BMSHPMS.Models.DharmaService;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using BMSHPMS.Models.DharmaService;
-using BMSHPMS.DSManage.ViewModels.Common;
-using BMSHPMS.DSManage.ViewModels.Info_LongevityVMs;
 
 
 namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
@@ -27,6 +26,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                 //this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
                 //this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
+                this.MakeAction("Info_Memorial","ExportExcelTemplate","匯出Excel範本","匯出Excel範本", GridActionParameterTypesEnum.MultiIds,"DSManage",dialogWidth:800,dialogHeight:600),
             };
         }
 

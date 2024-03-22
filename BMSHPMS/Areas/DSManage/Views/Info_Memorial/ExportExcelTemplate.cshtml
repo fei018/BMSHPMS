@@ -1,0 +1,21 @@
+﻿@model BMSHPMS.DSManage.ViewModels.Info_MemorialVMs.MemorialExcelTplVM
+
+<div style="padding:20px;">
+@if (Model.TplList != null)
+    {
+        foreach (var item in Model.TplList)
+        {
+            <wt:row items-per-row="ItemsPerRowEnum.One">
+                <wt:form vm="@Model" url="/DSManage/Info_Memorial/ExportExcelTemplate2" old-post="true" target="_blank">
+                    <wt:submitbutton text="@item.PaperDisplayName" />
+
+                    <wt:hidden field="WtmCacheKey" />
+                    <wt:hidden field="TemplateKey" default-value="@item.Key" />
+                </wt:form>
+            </wt:row>
+        }
+    }else
+    {
+        <p>MemorialExcelTplVM.TplList is null.</p>
+    }
+</div>

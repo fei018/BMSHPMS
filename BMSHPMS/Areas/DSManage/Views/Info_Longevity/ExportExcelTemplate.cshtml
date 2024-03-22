@@ -1,15 +1,22 @@
 ﻿@model BMSHPMS.DSManage.ViewModels.Info_LongevityVMs.LongevityExcelTplVM
 
 <div style="padding:20px;">
-@foreach (var item in Model.TplList)
-{
-    <wt:row items-per-row="ItemsPerRowEnum.One" >
-        <wt:form vm="@Model" url="/DSManage/Info_Longevity/ExportExcelTemplate2" old-post="true" target="_blank">
-            <wt:submitbutton text="@item.PaperDisplayName" />
+@if (Model.TplList != null)
+    {
+        foreach (var item in Model.TplList)
+        {
+            <wt:row items-per-row="ItemsPerRowEnum.One">
+                <wt:form vm="@Model" url="/DSManage/Info_Longevity/ExportExcelTemplate2" old-post="true" target="_blank">
+                    <wt:submitbutton text="@item.PaperDisplayName" />
 
-            <wt:hidden field="WtmCacheKey" />
-            <wt:hidden field="TemplateKey" default-value="@item.Key" />
-        </wt:form>     
-    </wt:row>
-}
+                    <wt:hidden field="WtmCacheKey" />
+                    <wt:hidden field="TemplateKey" default-value="@item.Key" />
+                </wt:form>
+            </wt:row>
+        }
+    }
+    else
+    {
+        <p>LongevityExcelTplVM.TplList is null.</p>
+    }
 </div>

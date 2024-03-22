@@ -39,13 +39,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
 
         public LongevityExcelTplVM()
         {
-            TplList = LongevityTemplateContext.TplPostList;
+            TplList = PrintExcelTplContext.LongevityTplPostList;
         }
 
-        protected override void InitVM()
-        {
-
-        }
 
         public async Task<LongevityExcelTplVM> Export()
         {
@@ -57,39 +53,35 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                 throw new ArgumentNullException("IDs");
             }
 
-            PrintExcelTplPost tpl = TplList.SingleOrDefault(x => x.Key == TemplateKey);
+            PrintExcelTplPost post = TplList.SingleOrDefault(x => x.Key == TemplateKey);
 
-            if (tpl == null || !File.Exists(tpl.FilePath))
+            if (post == null || !File.Exists(post.FilePath))
             {
-                throw new Exception("DonationTemplate is null or FilePath not exist.");
+                throw new Exception("PrintExcelTplPost is null or FilePath not exist.");
             }
 
             var list = DC.Set<Info_Longevity>().CheckIDs(ids).OrderBy(x => x.SerialCode).ToList();
 
             string filename = list.FirstOrDefault().SerialCode + "_" + list.LastOrDefault().SerialCode;
-            DownloadFileName = "延生_" + filename + ".xlsx";
+            DownloadFileName = "延生_" + filename + ".xlsx";       
 
-            byte[] result = null;
-
-            switch (tpl.Key)
+            switch (post.Key)
             {
-                case "e37b7d2266ad4e329ff6770b960589a1":
-                    result = await LongevityTpl_20cell_205x254mm_RedPaper.Export(list, tpl);
+                case PrintExcelTplContext.延生20格205x254mm紅紙100元:
+                    ExcelResult = await PrintExcelTplPost.Export<Longevity_20Seat_205x254mm,Info_Longevity>(list, post);
                     break;
 
-                case "e47f5c2e676847249af65c1d924d2349":
-                    result = await LongevityTpl_20cell_205x254mm_RedPaper.Export(list, tpl);
+                case PrintExcelTplContext.延生小5蓮210x130mm紅紙300元500元:
+                    ExcelResult = await PrintExcelTplPost.Export<Longevity_20Seat_205x254mm, Info_Longevity>(list, post);
                     break;
 
-                case "d02daa2668b3456d8763301d981fa250":
-                    result = await LongevityTpl_20cell_205x254mm_RedPaper.Export(list, tpl);
+                case PrintExcelTplContext.延生大5蓮154x255mm紅紙300元500元:
+                    ExcelResult = await PrintExcelTplPost.Export<Longevity_20Seat_205x254mm, Info_Longevity>(list, post);
                     break;
 
                 default:
-                    throw new Exception("範本switch case key 匹配不到.");
+                    throw new Exception("PrintExcelTplPost switch key not found: " + post.PaperDisplayName);
             }
-
-            ExcelResult = result;
 
             return this;
         }

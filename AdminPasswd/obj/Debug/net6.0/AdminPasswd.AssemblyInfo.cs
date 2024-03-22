@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdminPasswd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0048e8b6e6003477e67c008ef1af0de4ccc98ab")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5522517e9997b83157530ae0f96c520d8a3f2ed9")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdminPasswd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdminPasswd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

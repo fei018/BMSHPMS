@@ -223,7 +223,7 @@ namespace BMSHPMS.DSManage.Controllers
         }
         #endregion
 
-
+        #region 匯出Excel範本
         [ActionDescription("匯出Excel範本")]
         [HttpPost]
         public IActionResult ExportExcelTemplate(Info_LongevityListVM vm)
@@ -261,5 +261,7 @@ namespace BMSHPMS.DSManage.Controllers
                 return View("Exception", ex);
             }
         }
+        #endregion
+
     }
 }

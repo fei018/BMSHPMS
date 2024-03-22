@@ -696,9 +696,13 @@ C:\Fei\code project\Github\BMSHPMS\AdminPasswd\obj\Debug\net6.0\AdminPasswd.Asse
 C:\Fei\code project\Github\BMSHPMS\AdminPasswd\obj\Debug\net6.0\AdminPasswd.AssemblyInfo.cs
 C:\Fei\code project\Github\BMSHPMS\AdminPasswd\obj\Debug\net6.0\AdminPasswd.csproj.CoreCompileInputs.cache
 C:\Fei\code project\Github\BMSHPMS\AdminPasswd\obj\Debug\net6.0\AdminPasswd.sourcelink.json
-C:\Fei\code project\Github\BMSHPMS\AdminPasswd\obj\Debug\net6.0\AdminPasswd.csproj.CopyComplete
 C:\Fei\code project\Github\BMSHPMS\AdminPasswd\obj\Debug\net6.0\AdminPasswd.dll
 C:\Fei\code project\Github\BMSHPMS\AdminPasswd\obj\Debug\net6.0\refint\AdminPasswd.dll
 C:\Fei\code project\Github\BMSHPMS\AdminPasswd\obj\Debug\net6.0\AdminPasswd.pdb
 C:\Fei\code project\Github\BMSHPMS\AdminPasswd\obj\Debug\net6.0\AdminPasswd.genruntimeconfig.cache
 C:\Fei\code project\Github\BMSHPMS\AdminPasswd\obj\Debug\net6.0\ref\AdminPasswd.dll
+C:\Fei\code project\Github\BMSHPMS\AdminPasswd\bin\Debug\net6.0\BouncyCastle.Cryptography.dll
+C:\Fei\code project\Github\BMSHPMS\AdminPasswd\bin\Debug\net6.0\Enums.NET.dll
+C:\Fei\code project\Github\BMSHPMS\AdminPasswd\bin\Debug\net6.0\MathNet.Numerics.dll
+C:\Fei\code project\Github\BMSHPMS\AdminPasswd\bin\Debug\net6.0\NPOI.Core.dll
+C:\Fei\code project\Github\BMSHPMS\AdminPasswd\obj\Debug\net6.0\AdminPas.150A96CC.Up2Date

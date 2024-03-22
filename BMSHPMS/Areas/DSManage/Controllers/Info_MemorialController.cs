@@ -6,6 +6,7 @@ using WalkingTec.Mvvm.Mvc;
 using WalkingTec.Mvvm.Core.Extensions;
 using BMSHPMS.DSManage.ViewModels.Info_MemorialVMs;
 using System.Threading.Tasks;
+using BMSHPMS.DSManage.ViewModels.Info_LongevityVMs;
 
 namespace BMSHPMS.DSManage.Controllers
 {
@@ -188,7 +189,7 @@ namespace BMSHPMS.DSManage.Controllers
         #endregion
 
         #region Import
-		//[ActionDescription("Sys.Import")]
+        //[ActionDescription("Sys.Import")]
         //public ActionResult Import()
         //{
         //    var vm = Wtm.CreateVM<DSMemorialInfoImportVM>();
@@ -210,6 +211,7 @@ namespace BMSHPMS.DSManage.Controllers
         //}
         #endregion
 
+        #region Sys.Export
         [ActionDescription("Sys.Export")]
         [HttpPost]
         public async Task<IActionResult> ExportExcel(Info_MemorialListVM vm)
@@ -220,6 +222,44 @@ namespace BMSHPMS.DSManage.Controllers
 
             return File(result, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
+        #endregion
 
+        #region 匯出Excel範本
+        [ActionDescription("匯出Excel範本")]
+        [HttpPost]
+        public IActionResult ExportExcelTemplate(Info_MemorialListVM vm)
+        {
+            try
+            {
+                var tplVM = Wtm.CreateVM<MemorialExcelTplVM>();
+
+                string key = Guid.NewGuid().ToString();
+                tplVM.WtmCacheKey = key;
+
+                Wtm.Cache.Add(key, vm.Ids);
+
+                return PartialView(tplVM);
+            }
+            catch (Exception ex)
+            {
+                return PartialView("Exception2", ex);
+            }
+        }
+
+        [ActionDescription("匯出Excel範本2")]
+        [HttpPost]
+        public async Task<IActionResult> ExportExcelTemplate2(MemorialExcelTplVM vm)
+        {
+            try
+            {
+                var result = await vm.Export();
+                return File(result.ExcelResult, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", result.DownloadFileName);
+            }
+            catch (Exception ex)
+            {
+                return View("Exception", ex);
+            }
+        }
+        #endregion
     }
 }
