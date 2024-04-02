@@ -44,13 +44,13 @@ namespace BMSHPMS.DSManage.Controllers
         [ActionDescription("Sys.Create")]
         public ActionResult Create()
         {
-            var vm = Wtm.CreateVM<Info_LongevityVM>();
+            var vm = Wtm.CreateVM<InfoLongevityCreateVM>();
             return PartialView(vm);
         }
 
         [HttpPost]
         [ActionDescription("Sys.Create")]
-        public ActionResult Create(Info_LongevityVM vm)
+        public ActionResult Create(InfoLongevityCreateVM vm)
         {
             if (!ModelState.IsValid)
             {
@@ -58,10 +58,12 @@ namespace BMSHPMS.DSManage.Controllers
             }
             else
             {
-                vm.DoAdd();
+                var vm2 = Wtm.CreateVM<Info_LongevityVM>();
+                vm2.CreateVMEntity = vm;
+
+                vm2.DoAdd();
                 if (!ModelState.IsValid)
                 {
-                    vm.DoReInit();
                     return PartialView(vm);
                 }
                 else

@@ -1,0 +1,17 @@
+﻿@model BMSHPMS.DSReception.ViewModels.RegRollbackVM
+
+<div style="padding:30px;">
+    <wt:quote >
+        只能撤銷最近一次登記記錄
+    </wt:quote>
+    <wt:form vm="@Model">
+        <wt:row items-per-row="ItemsPerRowEnum.Four">
+            <wt:textbox field="ReceiptNumber" />
+        </wt:row>
+        <wt:row align="AlignEnum.Left">
+            <wt:linkbutton target=" ButtonTargetEnum.Layer" text="提交" url="/DSReception/RegRollback/Rollback"
+            post-current-form="true" window-title="撤銷功德登記" Window-Width="600" window-height="400"
+            confirm-txt="確定要撤銷?" />
+        </wt:row>
+    </wt:form>
+</div>

@@ -72,7 +72,15 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                     ExcelResult = await PrintExcelTplPost.Export<Memorial_10SeatSmall_140x420mm, Info_Memorial>(list, post);
                     break;
 
-                case PrintExcelTplContext.附薦大10蓮位181x490mm100元:
+                case PrintExcelTplContext.附薦大10蓮位100元:
+                    ExcelResult = await PrintExcelTplPost.Export<Memorial_10SeatSmall_140x420mm, Info_Memorial>(list, post);
+                    break;
+
+                case PrintExcelTplContext.附薦5蓮位善字牌位:
+                    list.ForEach(x =>
+                    {
+                        x.BenefactorName = $"陽上：{x.BenefactorName}拜荐";
+                    });
                     ExcelResult = await PrintExcelTplPost.Export<Memorial_10SeatSmall_140x420mm, Info_Memorial>(list, post);
                     break;
 

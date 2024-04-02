@@ -1,0 +1,21 @@
+﻿@model BMSHPMS.DSReception.ViewModels.RegRollbackVM
+
+<div style="padding:20px;">
+    <div style="font-size:16px;">
+        @if (Model.Succed)
+        {
+            <p>@Model.Msg</p>
+        }
+        else
+        {
+            <p>@Model.Error</p>    
+        }        
+    </div>
+    <br />
+    <p>輸入的收據號碼: @Model.ReceiptNumber</p>
+    <p>最後一次登記的收據號碼: @Model.LastReceiptNumber</p>
+    <br />
+    <div>
+        <wt:closebutton />
+    </div>
+</div>

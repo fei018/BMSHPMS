@@ -16,6 +16,9 @@ namespace BMSHPMS.DSManage.ViewModels.Common.TplPrintExcel
 
         public string FilePath { get; set; }
 
+        /// <summary>
+        /// 每頁蓮位數
+        /// </summary>
         public int SeatCount { get; set; }
 
         #region 匯出Excel範本數據
@@ -31,16 +34,18 @@ namespace BMSHPMS.DSManage.ViewModels.Common.TplPrintExcel
         {
             IExportFileByTemplate exporter = new ExcelExporter();
 
+            // 只有一頁excel數據的情況
             if (list.Count <= post.SeatCount)
             {
                 var tpl = Activator.CreateInstance(typeof(T1), list);
                 return await exporter.ExportBytesByTemplate(tpl, post.FilePath);
             }
 
+            // 放置 每頁excel數據 的 list
             List<byte[]> tpls = new();
 
-            int zs = list.Count / post.SeatCount;
-            int ys = list.Count % post.SeatCount;
+            int zs = list.Count / post.SeatCount; // 算出 頁數
+            int ys = list.Count % post.SeatCount; // 算出最後一頁的 蓮位數
 
             int index = 0;
             for (int i = 0; i < zs; i++)

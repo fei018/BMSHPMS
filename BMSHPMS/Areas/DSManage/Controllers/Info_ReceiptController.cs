@@ -166,27 +166,27 @@ namespace BMSHPMS.DSManage.Controllers
         #endregion
 
         #region BatchDelete
-        //[HttpPost]
-        //[ActionDescription("Sys.BatchDelete")]
-        //public ActionResult BatchDelete(string[] IDs)
-        //{
-        //    var vm = Wtm.CreateVM<DSReceiptInfoBatchVM>(Ids: IDs);
-        //    return PartialView(vm);
-        //}
+        [HttpPost]
+        [ActionDescription("Sys.BatchDelete")]
+        public ActionResult BatchDelete(string[] IDs)
+        {
+            var vm = Wtm.CreateVM<InfoReceiptBatchVM>(Ids: IDs);
+            return PartialView(vm);
+        }
 
-        //[HttpPost]
-        //[ActionDescription("Sys.BatchDelete")]
-        //public ActionResult DoBatchDelete(DSReceiptInfoBatchVM vm, IFormCollection nouse)
-        //{
-        //    if (!ModelState.IsValid || !vm.DoBatchDelete())
-        //    {
-        //        return PartialView("BatchDelete",vm);
-        //    }
-        //    else
-        //    {
-        //        return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.BatchDeleteSuccess", vm.Ids.Length]);
-        //    }
-        //}
+        [HttpPost]
+        [ActionDescription("Sys.BatchDelete")]
+        public ActionResult DoBatchDelete(InfoReceiptBatchVM vm, IFormCollection nouse)
+        {
+            if (!ModelState.IsValid || !vm.DoBatchDelete())
+            {
+                return PartialView("BatchDelete", vm);
+            }
+            else
+            {
+                return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.BatchDeleteSuccess", vm.Ids.Length]);
+            }
+        }
         #endregion
 
         #region Import

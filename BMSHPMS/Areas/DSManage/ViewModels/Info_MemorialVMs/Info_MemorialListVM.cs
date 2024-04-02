@@ -18,7 +18,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
         {
             return new List<GridAction>
             {
-                //this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
+                this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800,dialogHeight:600),
                 this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800,dialogHeight:500),
                 this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800,dialogHeight:500),              
@@ -53,7 +53,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
             var serial = new ListVMHelper().GetQuerySerialCodes(Searcher.SerialCode, Searcher.SerialCodeEnd);
 
             var query = DC.Set<Info_Memorial>()
-                .CheckContain(serial, x => x.SerialCode)
+                .AsNoTracking()
                 .CheckContain(Searcher.BenefactorName, x => x.BenefactorName)
                 .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_1)
                 .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_2)
@@ -63,6 +63,17 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                 .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.Receipt.ReceiptDate)
                 .CheckEqual(Searcher.DharmaServiceName, x => x.Receipt.DharmaServiceName)
                 .CheckEqual(Searcher.DharmaServiceYear, x => x.Receipt.DharmaServiceYear);
+
+            // serials
+            var serials = new ListVMHelper().GetQuerySerialCodes(Searcher.SerialCode, Searcher.SerialCodeEnd);
+            if (serials.Count == 1)
+            {
+                query = query.CheckContain(serials[0], x => x.SerialCode);
+            }
+            else
+            {
+                query = query.CheckContain(serials, x => x.SerialCode);
+            }
 
             var query1 = query.Select(x => new Info_Memorial_View
             {

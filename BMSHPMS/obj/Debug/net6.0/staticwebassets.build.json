@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YKRYaQ7lrTYSVqsJd+g1VsZwBIckxzdGrbgkbzehO7U=",
+  "Hash": "VlEj3TYpBUC1aiBqpeEDFPNhla915e+5QpNAF6Krw/E=",
   "Source": "BMSHPMS",
   "BasePath": "_content/BMSHPMS",
   "Mode": "Default",
@@ -264,6 +264,25 @@
       "OriginalItemSpec": "wwwroot\\ExcelTemplate\\Longevity_small5cell_210x130mm_redpaper.xlsx"
     },
     {
+      "Identity": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\ExcelTemplate\\Memorial_10Seat_100.xlsx",
+      "SourceId": "BMSHPMS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\",
+      "BasePath": "_content/BMSHPMS",
+      "RelativePath": "ExcelTemplate/Memorial_10Seat_100.xlsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ExcelTemplate\\Memorial_10Seat_100.xlsx"
+    },
+    {
       "Identity": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\ExcelTemplate\\Memorial_10SeatBig_181x490mm.xlsx",
       "SourceId": "BMSHPMS",
       "SourceType": "Discovered",
@@ -300,6 +319,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\ExcelTemplate\\Memorial_10SeatSmall_140x420mm.xlsx"
+    },
+    {
+      "Identity": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\ExcelTemplate\\Memorial_5Seat_Kind.xlsx",
+      "SourceId": "BMSHPMS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\",
+      "BasePath": "_content/BMSHPMS",
+      "RelativePath": "ExcelTemplate/Memorial_5Seat_Kind.xlsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ExcelTemplate\\Memorial_5Seat_Kind.xlsx"
     },
     {
       "Identity": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\favicon.ico",

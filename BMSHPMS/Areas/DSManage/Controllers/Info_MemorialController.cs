@@ -7,6 +7,7 @@ using WalkingTec.Mvvm.Core.Extensions;
 using BMSHPMS.DSManage.ViewModels.Info_MemorialVMs;
 using System.Threading.Tasks;
 using BMSHPMS.DSManage.ViewModels.Info_LongevityVMs;
+using BMSHPMS.Models.DharmaService;
 
 namespace BMSHPMS.DSManage.Controllers
 {
@@ -45,13 +46,13 @@ namespace BMSHPMS.DSManage.Controllers
         [ActionDescription("Sys.Create")]
         public ActionResult Create()
         {
-            var vm = Wtm.CreateVM<Info_MemorialVM>();
+            var vm = Wtm.CreateVM<InfoMemorialCreateVM>();
             return PartialView(vm);
         }
 
         [HttpPost]
         [ActionDescription("Sys.Create")]
-        public ActionResult Create(Info_MemorialVM vm)
+        public ActionResult Create(InfoMemorialCreateVM vm)
         {
             if (!ModelState.IsValid)
             {
@@ -59,7 +60,10 @@ namespace BMSHPMS.DSManage.Controllers
             }
             else
             {
-                vm.DoAdd();
+                var vm2 = Wtm.CreateVM<Info_MemorialVM>();
+                vm2.CreateVMEntity = vm;
+
+                vm2.DoAdd();
                 if (!ModelState.IsValid)
                 {
                     vm.DoReInit();

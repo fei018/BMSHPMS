@@ -19,7 +19,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
         {
             return new List<GridAction>
             {
-                //this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
+                this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800,dialogHeight:600),
                 this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800,dialogHeight:500),
                 this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800,dialogHeight:500),
@@ -50,21 +50,30 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
         }
 
         public override IOrderedQueryable<Info_Donor_View> GetSearchQuery()
-        {
-            var serial = new ListVMHelper().GetQuerySerialCodes(Searcher.SerialCode, Searcher.SerialCodeEnd);
-
+        {          
             var query = DC.Set<Info_Donor>()
+                .AsNoTracking()
                 .CheckContain(Searcher.LongevityName, x => x.LongevityName)
                 .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_1)
                 .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_2)
                 .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_3)
                 .CheckContain(Searcher.BenefactorName, x => x.BenefactorName)
-                .CheckEqual(Searcher.Sum, x => x.Sum)
-                .CheckContain(serial, x => x.SerialCode)
+                .CheckEqual(Searcher.Sum, x => x.Sum)              
                 .CheckContain(Searcher.ReceiptNumber, x => x.Receipt.ReceiptNumber)
                 .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.Receipt.ReceiptDate)
                 .CheckEqual(Searcher.DharmaServiceName, x => x.Receipt.DharmaServiceName)
                 .CheckEqual(Searcher.DharmaServiceYear, x => x.Receipt.DharmaServiceYear);
+
+            // serials
+            var serials = new ListVMHelper().GetQuerySerialCodes(Searcher.SerialCode, Searcher.SerialCodeEnd);
+            if (serials.Count == 1)
+            {
+                query = query.CheckContain(serials.ElementAt(0), x => x.SerialCode);
+            }
+            else
+            {
+                query = query.CheckContain(serials, x => x.SerialCode);
+            }
 
             var query1 = query.Select(x => new Info_Donor_View
             {

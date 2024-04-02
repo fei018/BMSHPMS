@@ -44,13 +44,13 @@ namespace BMSHPMS.DSManage.Controllers
         [ActionDescription("Sys.Create")]
         public ActionResult Create()
         {
-            var vm = Wtm.CreateVM<Info_DonorVM>();
+            var vm = Wtm.CreateVM<InfoDonorCreateVM>();
             return PartialView(vm);
         }
 
         [HttpPost]
         [ActionDescription("Sys.Create")]
-        public ActionResult Create(Info_DonorVM vm)
+        public ActionResult Create(InfoDonorCreateVM vm)
         {
             if (!ModelState.IsValid)
             {
@@ -58,7 +58,10 @@ namespace BMSHPMS.DSManage.Controllers
             }
             else
             {
-                vm.DoAdd();
+                var vm2 = Wtm.CreateVM<Info_DonorVM>();
+                vm2.CreateVMEntity = vm;
+
+                vm2.DoAdd();
                 if (!ModelState.IsValid)
                 {
                     vm.DoReInit();
@@ -188,28 +191,29 @@ namespace BMSHPMS.DSManage.Controllers
         #endregion
 
         #region Import
-		//[ActionDescription("Sys.Import")]
-  //      public ActionResult Import()
-  //      {
-  //          var vm = Wtm.CreateVM<DSDonorInfoImportVM>();
-  //          return PartialView(vm);
-  //      }
+        //[ActionDescription("Sys.Import")]
+        //      public ActionResult Import()
+        //      {
+        //          var vm = Wtm.CreateVM<DSDonorInfoImportVM>();
+        //          return PartialView(vm);
+        //      }
 
-  //      [HttpPost]
-  //      [ActionDescription("Sys.Import")]
-  //      public ActionResult Import(DSDonorInfoImportVM vm, IFormCollection nouse)
-  //      {
-  //          if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
-  //          {
-  //              return PartialView(vm);
-  //          }
-  //          else
-  //          {
-  //              return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
-  //          }
-  //      }
+        //      [HttpPost]
+        //      [ActionDescription("Sys.Import")]
+        //      public ActionResult Import(DSDonorInfoImportVM vm, IFormCollection nouse)
+        //      {
+        //          if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
+        //          {
+        //              return PartialView(vm);
+        //          }
+        //          else
+        //          {
+        //              return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
+        //          }
+        //      }
         #endregion
 
+        #region Sys.Export
         [ActionDescription("Sys.Export")]
         [HttpPost]
         public async Task<IActionResult> ExportExcel(Info_DonorListVM vm)
@@ -220,6 +224,8 @@ namespace BMSHPMS.DSManage.Controllers
 
             return File(result, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
+        #endregion
+
 
     }
 }

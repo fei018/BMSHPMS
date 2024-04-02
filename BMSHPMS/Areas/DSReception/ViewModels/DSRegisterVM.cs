@@ -132,14 +132,19 @@ namespace BMSHPMS.DSReception.ViewModels
             var newLongevityList = new List<Info_Longevity>();
             var newMemorialList = new List<Info_Memorial>();
 
+            // 用來計數功德使用數
             List<Opt_DonationProject> calculateUsedNumberDonationProjectList = new();
+
+            // 記錄回退信息
+            List<Reg_RollbackInfo> rollbackInfos = new List<Reg_RollbackInfo>();
 
             #region // 計算使用個數
             foreach (var submittedItem in submittedList)
             {
                 var queryDonationProject = DC.Set<Opt_DonationProject>().Find(submittedItem.DonationProjectID); // 根據功德ID 查詢 功德項目
 
-                int usedNumber = queryDonationProject.UsedNumber; // 已使用數目
+                int usedNumber = queryDonationProject.UsedNumber; // 功德種類的已使用數目
+                rollbackInfos.Add(new Reg_RollbackInfo { PreUsedNumber = usedNumber, DonationProjectID = queryDonationProject.ID, LastReceiptNumber = receiptNumber });
 
                 queryDonationProject.UsedNumber += submittedItem.Count;
                 calculateUsedNumberDonationProjectList.Add(queryDonationProject);
@@ -282,12 +287,22 @@ namespace BMSHPMS.DSReception.ViewModels
                     // 功德項目更新已使用數
                     calculateUsedNumberDonationProjectList.ForEach(donation =>
                     {
-                        DC.UpdateEntity(donation);
+                        //DC.UpdateEntity(donation);
+                        DC.UpdateProperty(donation, x => x.UsedNumber);
                     });
 
                     //更新收據金額
                     newReceipt.Sum = newReceiptSum;
                     DC.UpdateProperty(newReceipt, x => x.Sum);
+
+                    //DC.SaveChanges();
+
+                    // 刪除舊 RollbackInfo
+                    DC.Set<Reg_RollbackInfo>().ToList().ForEach(x => DC.DeleteEntity(x));
+                    DC.SaveChanges();
+                    // 新增 RollbackInfo
+                    rollbackInfos.ForEach(x => DC.AddEntity(x));
+
 
                     DC.SaveChanges();
 

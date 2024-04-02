@@ -16,7 +16,9 @@ namespace BMSHPMS.DSManage.ViewModels.Common.TplPrintExcel
         #region 附薦範本key
         public const string 附薦小10蓮位140x420mm100元 = "fb66bbd9420c460aa76cf4f5bee048ad";
 
-        public const string 附薦大10蓮位181x490mm100元 = "e86a36ec3b6246f1933e72cbb9030bf1";
+        public const string 附薦大10蓮位100元 = "e86a36ec3b6246f1933e72cbb9030bf1";
+
+        public const string 附薦5蓮位善字牌位 = "b87312a99e10402b9b22549b01fc1d95";
         #endregion
 
         public static List<PrintExcelTplPost> LongevityTplPostList { get; private set; }
@@ -67,11 +69,18 @@ namespace BMSHPMS.DSManage.ViewModels.Common.TplPrintExcel
                 },
                 new PrintExcelTplPost()
                 {
-                    Key = 附薦大10蓮位181x490mm100元,
-                    PaperDisplayName = "附薦 10蓮位(大) 181x490mm" ,
-                    FilePath = Path.Combine(excelTplPath,"Memorial_10SeatBig_181x490mm.xlsx"),
+                    Key = 附薦大10蓮位100元,
+                    PaperDisplayName = "附薦 10蓮位(大) (100元)" ,
+                    FilePath = Path.Combine(excelTplPath,"Memorial_10Seat_100.xlsx"),
                     SeatCount=10,
                 },
+                new PrintExcelTplPost()
+                {
+                    Key = 附薦5蓮位善字牌位,
+                    PaperDisplayName = "附薦 5蓮位 善字牌位",
+                    FilePath = Path.Combine(excelTplPath,"Memorial_5Seat_Kind.xlsx"),
+                    SeatCount = 5
+                }
             };
             #endregion
         }

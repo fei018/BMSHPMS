@@ -19,7 +19,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
         {
             return new List<GridAction>
             {
-                //this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
+                this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800, dialogHeight : 600),
                 this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800, dialogHeight : 400),               
@@ -51,14 +51,25 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
             var serial = new ListVMHelper().GetQuerySerialCodes(Searcher.SerialCode, Searcher.SerialCodeEnd);
 
             var query = DC.Set<Info_Longevity>()
+                .AsNoTracking()
                 .CheckContain(Searcher.Name, x => x.Name)
                 .CheckEqual(Searcher.Sum, x => x.Sum)
                 //.CheckContain(Searcher.SerialCode, x => x.SerialCode)
-                .CheckContain(serial, x => x.SerialCode)
                 .CheckContain(Searcher.ReceiptNumber, x => x.Receipt.ReceiptNumber)
                 .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.Receipt.ReceiptDate)
                 .CheckEqual(Searcher.DharmaServiceName, x => x.Receipt.DharmaServiceName)
                 .CheckEqual(Searcher.DharmaServiceYear, x => x.Receipt.DharmaServiceYear);
+
+            // serials
+            var serials = new ListVMHelper().GetQuerySerialCodes(Searcher.SerialCode, Searcher.SerialCodeEnd);
+            if (serials.Count == 1)
+            {
+                query = query.CheckContain(serials.ElementAt(0), x => x.SerialCode);
+            }
+            else
+            {
+                query = query.CheckContain(serials, x => x.SerialCode);
+            }
 
             //if (Searcher.ReceiptDate.HasValue)
             //{

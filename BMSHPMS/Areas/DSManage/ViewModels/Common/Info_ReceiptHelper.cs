@@ -1,5 +1,6 @@
 ﻿using BMSHPMS.Helper;
 using BMSHPMS.Models.DharmaService;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Dynamic.Core;
@@ -39,7 +40,7 @@ namespace BMSHPMS.DSManage.ViewModels.Common
         {
             var dc = wtm.DC;
 
-            var oldReceipt = dc.Set<Info_Receipt>().Find(receiptID);
+            var oldReceipt = dc.Set<Info_Receipt>().AsNoTracking().Where(x=>x.ID == receiptID).FirstOrDefault();
 
             if (oldReceipt == null)
             {

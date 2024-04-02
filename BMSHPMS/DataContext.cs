@@ -32,6 +32,8 @@ namespace BMSHPMS
         public DbSet<Info_Memorial> Info_Memorials { get; set; }
 
         public DbSet<Info_Memorial_del> Info_Memorials_del { get; set; }
+
+        public DbSet<Reg_RollbackInfo> Reg_RollbackInfos { get; set; }
         #endregion
 
 

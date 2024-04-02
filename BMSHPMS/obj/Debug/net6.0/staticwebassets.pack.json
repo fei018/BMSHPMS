@@ -21,6 +21,14 @@
       "PackagePath": "staticwebassets\\ExcelTemplate\\Memorial_10SeatSmall_140x420mm.xlsx"
     },
     {
+      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\ExcelTemplate\\Memorial_10Seat_100.xlsx",
+      "PackagePath": "staticwebassets\\ExcelTemplate\\Memorial_10Seat_100.xlsx"
+    },
+    {
+      "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\ExcelTemplate\\Memorial_5Seat_Kind.xlsx",
+      "PackagePath": "staticwebassets\\ExcelTemplate\\Memorial_5Seat_Kind.xlsx"
+    },
+    {
       "Id": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\echarts\\chalk.js",
       "PackagePath": "staticwebassets\\echarts\\chalk.js"
     },

@@ -24,7 +24,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 1000, dialogHeight : 800),
                 this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800, dialogHeight : 400),               
                 //this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "DSManage", dialogWidth: 800),
-                //this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
+                this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
                 //this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
                 //this.MakeAction("Info_Receipt","ExportExcelToday","匯出今日","匯出今日收據", GridActionParameterTypesEnum.NoId,"DSManage").SetIsDownload(),
@@ -99,7 +99,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
             }
             else
             {
-                receiptList = DC.Set<Info_Receipt>().CheckIDs(this.Ids).ToList();
+                receiptList = DC.Set<Info_Receipt>().AsNoTracking().CheckIDs(this.Ids).ToList();
             }
 
             if (receiptList == null || receiptList.Count <= 0)
@@ -109,9 +109,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 
             foreach (var r in receiptList)
             {
-                r.Info_Donors = DC.Set<Info_Donor>().Where(x => x.ReceiptID == r.ID).ToList();
-                r.Info_Longevitys = DC.Set<Info_Longevity>().Where(x => x.ReceiptID == r.ID).ToList();
-                r.Info_Memorials = DC.Set<Info_Memorial>().Where(x => x.ReceiptID == r.ID).ToList();
+                r.Info_Donors = DC.Set<Info_Donor>().AsNoTracking().Where(x => x.ReceiptID == r.ID).ToList();
+                r.Info_Longevitys = DC.Set<Info_Longevity>().AsNoTracking().Where(x => x.ReceiptID == r.ID).ToList();
+                r.Info_Memorials = DC.Set<Info_Memorial>().AsNoTracking().Where(x => x.ReceiptID == r.ID).ToList();
             }
 
             return await ReceiptExcelVM.ExportExcelAsBytes(receiptList);

@@ -358,6 +358,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNSZWNlcHRpb25cVmlld3NcRFNSZWdpc3RlclxSZWdSZXN1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSReception/Views/RegRollback/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNSZWNlcHRpb25cVmlld3NcUmVnUm9sbGJhY2tcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSReception/Views/RegRollback/Rollback.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNSZWNlcHRpb25cVmlld3NcUmVnUm9sbGJhY2tcUm9sbGJhY2suY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Fei/code project/Github/BMSHPMS/BMSHPMS/Areas/DSReception/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRFNSZWNlcHRpb25cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

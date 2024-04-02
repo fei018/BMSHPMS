@@ -45,15 +45,15 @@ namespace BMSHPMS.Migrations
 
                     b.Property<string>("DeceasedName_1")
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("附薦宗親名及稱呼_1");
+                        .HasComment("附薦名稱_1");
 
                     b.Property<string>("DeceasedName_2")
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("附薦宗親名及稱呼_2");
+                        .HasComment("附薦名稱_2");
 
                     b.Property<string>("DeceasedName_3")
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("附薦宗親名及稱呼_3");
+                        .HasComment("附薦名稱_3");
 
                     b.Property<string>("LongevityName")
                         .HasColumnType("nvarchar(max)")
@@ -109,15 +109,15 @@ namespace BMSHPMS.Migrations
 
                     b.Property<string>("DeceasedName_1")
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("附薦宗親名及稱呼_1");
+                        .HasComment("附薦名稱_1");
 
                     b.Property<string>("DeceasedName_2")
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("附薦宗親名及稱呼_2");
+                        .HasComment("附薦名稱_2");
 
                     b.Property<string>("DeceasedName_3")
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("附薦宗親名及稱呼_3");
+                        .HasComment("附薦名稱_3");
 
                     b.Property<string>("LongevityName")
                         .HasColumnType("nvarchar(max)")
@@ -269,15 +269,15 @@ namespace BMSHPMS.Migrations
 
                     b.Property<string>("DeceasedName_1")
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("附薦宗親名及稱呼_1");
+                        .HasComment("附薦名稱_1");
 
                     b.Property<string>("DeceasedName_2")
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("附薦宗親名及稱呼_2");
+                        .HasComment("附薦名稱_2");
 
                     b.Property<string>("DeceasedName_3")
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("附薦宗親名及稱呼_3");
+                        .HasComment("附薦名稱_3");
 
                     b.Property<Guid?>("ReceiptID")
                         .IsRequired()
@@ -329,19 +329,15 @@ namespace BMSHPMS.Migrations
 
                     b.Property<string>("DeceasedName_1")
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("附薦宗親名及稱呼_1");
+                        .HasComment("附薦名稱_1");
 
                     b.Property<string>("DeceasedName_2")
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("附薦宗親名及稱呼_2");
+                        .HasComment("附薦名稱_2");
 
                     b.Property<string>("DeceasedName_3")
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("附薦宗親名及稱呼_3");
-
-                    b.Property<bool>("IsDataValid")
-                        .HasColumnType("bit")
-                        .HasComment("數據有效");
+                        .HasComment("附薦名稱_3");
 
                     b.Property<Guid?>("Receipt_delID")
                         .IsRequired()
@@ -396,7 +392,6 @@ namespace BMSHPMS.Migrations
                         .HasComment("備註");
 
                     b.Property<string>("DharmaServiceName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasComment("法會名");
 
@@ -577,13 +572,36 @@ namespace BMSHPMS.Migrations
 
                     b.Property<int>("UsedNumber")
                         .HasColumnType("int")
-                        .HasComment("已使用數");
+                        .HasComment("編號已計數");
 
                     b.HasKey("ID");
 
                     b.HasIndex("DharmaServiceID");
 
                     b.ToTable("Opt_DonationProject");
+                });
+
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.Reg_RollbackInfo", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("DonationProjectID")
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("功德ID");
+
+                    b.Property<string>("LastReceiptNumber")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("收據號碼");
+
+                    b.Property<int?>("PreUsedNumber")
+                        .HasColumnType("int")
+                        .HasComment("功德已使用數");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Reg_RollbackInfo");
                 });
 
             modelBuilder.Entity("WalkingTec.Mvvm.Core.ActionLog", b =>
@@ -1521,7 +1539,7 @@ namespace BMSHPMS.Migrations
             modelBuilder.Entity("BMSHPMS.Models.DharmaService.Opt_DonationProject", b =>
                 {
                     b.HasOne("BMSHPMS.Models.DharmaService.Opt_DharmaService", "DharmaService")
-                        .WithMany()
+                        .WithMany("Opt_DonationProjects")
                         .HasForeignKey("DharmaServiceID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1573,6 +1591,11 @@ namespace BMSHPMS.Migrations
                     b.Navigation("Info_Longevitys_del");
 
                     b.Navigation("Info_Memorials_del");
+                });
+
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.Opt_DharmaService", b =>
+                {
+                    b.Navigation("Opt_DonationProjects");
                 });
 
             modelBuilder.Entity("WalkingTec.Mvvm.Core.FrameworkGroup", b =>
