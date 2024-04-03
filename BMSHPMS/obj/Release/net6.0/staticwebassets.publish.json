@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VvIm8jw82CIdedMn5CMfFL5xAJ9K0Mm5ucY+FaCZNLw=",
+  "Hash": "XP80paWVZHgJoI83eG1HcQdrHFNGAgyouUwOv26ycPY=",
   "Source": "BMSHPMS",
   "BasePath": "_content/BMSHPMS",
   "Mode": "Default",
@@ -262,6 +262,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\ExcelTemplate\\Longevity_small5cell_210x130mm_redpaper.xlsx"
+    },
+    {
+      "Identity": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\ExcelTemplate\\Memorial_10Seat_100.xlsx",
+      "SourceId": "BMSHPMS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\",
+      "BasePath": "_content/BMSHPMS",
+      "RelativePath": "ExcelTemplate/Memorial_10Seat_100.xlsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ExcelTemplate\\Memorial_10Seat_100.xlsx"
     },
     {
       "Identity": "C:\\Fei\\code project\\Github\\BMSHPMS\\BMSHPMS\\wwwroot\\ExcelTemplate\\Memorial_10SeatBig_181x490mm.xlsx",
