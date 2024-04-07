@@ -10,7 +10,7 @@ namespace BMSHPMS.DSReception.ViewModels
 {
     public class PrintSerialVM : BaseVM
     {
-        public string ReceiptNumber { get; set; }
+        public Info_Receipt Receipt { get; set; }
 
         public List<Info_Donor> Donors { get; set; }
 
@@ -20,25 +20,25 @@ namespace BMSHPMS.DSReception.ViewModels
 
 
 
-        public async Task GetSerials()
+        public async Task GetSerials(string receiptNumber)
         {
             Donors = new List<Info_Donor>();
             Longevitys = new List<Info_Longevity>();
             Memorials = new List<Info_Memorial>();
 
-            Info_Receipt exsitReceipt = DC.Set<Info_Receipt>()
-                                            .Where(r => r.ReceiptNumber == ReceiptNumber)
+            Receipt = DC.Set<Info_Receipt>()
+                                            .Where(r => r.ReceiptNumber == receiptNumber)
                                             .FirstOrDefault();
 
-            if (exsitReceipt != null)
+            if (Receipt != null)
             {
-                Donors = await DC.Set<Info_Donor>().Where(q => q.ReceiptID == exsitReceipt.ID).OrderBy(q => q.Sum).ThenBy(x => x.SerialCode).ToListAsync();
-                Longevitys = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == exsitReceipt.ID).OrderBy(q => q.Sum).ThenBy(x => x.SerialCode).ToListAsync();
-                Memorials = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == exsitReceipt.ID).OrderBy(q => q.Sum).ThenBy(x => x.SerialCode).ToListAsync();
+                Donors = await DC.Set<Info_Donor>().Where(q => q.ReceiptID == Receipt.ID).OrderBy(q => q.Sum).ThenBy(x => x.SerialCode).ToListAsync();
+                Longevitys = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == Receipt.ID).OrderBy(q => q.Sum).ThenBy(x => x.SerialCode).ToListAsync();
+                Memorials = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == Receipt.ID).OrderBy(q => q.Sum).ThenBy(x => x.SerialCode).ToListAsync();
             }
             else
             {
-                throw new Exception("收據號碼查詢為Null: " + ReceiptNumber);
+                throw new Exception("收據號碼查詢為Null: " + receiptNumber);
             }
         }
     }
