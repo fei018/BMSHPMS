@@ -1,7 +1,6 @@
 /appsettings.json
-
-/BMSHPMS/bin
-
+bin/
+obj/
 /publish
-
 /BMSHPMS.Test
+/.vs/
