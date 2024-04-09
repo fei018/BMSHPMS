@@ -237,6 +237,7 @@ namespace BMSHPMS.DSManage.Controllers
                 string key = Guid.NewGuid().ToString();
                 tplVM.WtmCacheKey = key;
 
+                // 緩存 提交的 Entity Ids
                 Wtm.Cache.Add(key, vm.Ids);
 
                 return PartialView(tplVM);
@@ -254,9 +255,8 @@ namespace BMSHPMS.DSManage.Controllers
             try
             {
                 var result = await vm.Export();
-                //string fileName = "延生範本_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
-                //return new XlsxFileResult(bytes: result, fileName);
-                return File(result.ExcelResult, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", result.DownloadFileName);
+
+                return result;
             }
             catch (Exception ex)
             {

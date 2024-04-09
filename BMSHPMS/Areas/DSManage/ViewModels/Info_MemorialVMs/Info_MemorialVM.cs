@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using WalkingTec.Mvvm.Core;
-using WalkingTec.Mvvm.Core.Extensions;
+﻿using BMSHPMS.Helper;
 using BMSHPMS.Models.DharmaService;
 using Microsoft.EntityFrameworkCore;
-using BMSHPMS.DSManage.ViewModels.Info_LongevityVMs;
-using BMSHPMS.Helper;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using WalkingTec.Mvvm.Core;
 
 
 namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
@@ -29,7 +25,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
 
         public override void DoAdd()
         {
-            CreateVMEntity.TrimAsString();
+            CreateVMEntity.ReceiptNumber?.Trim();
+            CreateVMEntity.SerialCode?.Trim();
 
             var receipt = DC.Set<Info_Receipt>().Include(x => x.Info_Memorials).AsNoTracking().Where(x => x.ReceiptNumber.ToLower() == CreateVMEntity.ReceiptNumber.ToLower()).FirstOrDefault();
 
@@ -83,7 +80,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                 old.DeceasedName_2 = Entity.DeceasedName_2;
                 old.DeceasedName_3 = Entity.DeceasedName_3;
                 old.DSRemark = Entity.DSRemark;
-                if(Entity.Sum.HasValue) old.Sum = Entity.Sum.Value;
+                if (Entity.Sum.HasValue) old.Sum = Entity.Sum.Value;
 
                 old.UpdateBy = LoginUserInfo.Name;
                 old.UpdateTime = DateTime.Now;

@@ -1,26 +1,15 @@
 ﻿using Magicodes.ExporterAndImporter.Core;
 using Magicodes.ExporterAndImporter.Excel;
 using NPOI.XSSF.UserModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using System;
 
 namespace BMSHPMS.DSManage.ViewModels.Common.TplPrintExcel
 {
-    public class PrintExcelTplPost
+    public class PrintPlaqueExcelHelper
     {
-        public string Key { get; set; }
-
-        public string PaperDisplayName { get; set; }
-
-        public string FilePath { get; set; }
-
-        /// <summary>
-        /// 每頁蓮位數
-        /// </summary>
-        public int SeatCount { get; set; }
-
         #region 匯出Excel範本數據
         /// <summary>
         /// 匯出Excel範本數據<br/>T1: Excel範本的類型<br/>T2: 填充數據的集合類型
@@ -30,7 +19,7 @@ namespace BMSHPMS.DSManage.ViewModels.Common.TplPrintExcel
         /// <param name="list"></param>
         /// <param name="post"></param>
         /// <returns></returns>
-        public static async Task<byte[]> Export<T1, T2>(List<T2> list, PrintExcelTplPost post)
+        public static async Task<byte[]> Export<T1, T2>(List<T2> list, PrintPlaqueTplPost post)
         {
             IExportFileByTemplate exporter = new ExcelExporter();
 

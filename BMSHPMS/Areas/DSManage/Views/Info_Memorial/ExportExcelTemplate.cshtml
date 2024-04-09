@@ -7,7 +7,7 @@
         {
             <wt:row items-per-row="ItemsPerRowEnum.One">
                 <wt:form vm="@Model" url="/DSManage/Info_Memorial/ExportExcelTemplate2" old-post="true" target="_blank">
-                    <wt:submitbutton text="@item.PaperDisplayName" />
+                    <wt:submitbutton text="@item.ButtonDisplayName" />
 
                     <wt:hidden field="WtmCacheKey" />
                     <wt:hidden field="TemplateKey" default-value="@item.Key" />
@@ -18,4 +18,8 @@
     {
         <p>MemorialExcelTplVM.TplList is null.</p>
     }
+    <hr />
+    <wt:row align="AlignEnum.Right">
+        <wt:closebutton />
+    </wt:row>
 </div>

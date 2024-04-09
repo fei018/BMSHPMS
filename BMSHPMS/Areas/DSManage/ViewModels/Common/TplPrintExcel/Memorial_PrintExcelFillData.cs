@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace BMSHPMS.DSManage.ViewModels.Common.TplPrintExcel
 {
-    public class Memorial_10SeatSmall_140x420mm
+    public class Memorial_PrintExcelFillData
     {
         #region string
         public string ADece1 { get; set; }
@@ -69,7 +69,7 @@ namespace BMSHPMS.DSManage.ViewModels.Common.TplPrintExcel
         public string JSerial { get; set; }
         #endregion
 
-        public Memorial_10SeatSmall_140x420mm(List<Info_Memorial> list)
+        public Memorial_PrintExcelFillData(List<Info_Memorial> list)
         {
             #region 填充數據
             ABene1 = list.ElementAtOrDefault(0) != null ? list[0].BenefactorName : "";

@@ -1,13 +1,14 @@
 ﻿using BMSHPMS.DSManage.ViewModels.Common.TplPrintExcel;
-using BMSHPMS.DSManage.ViewModels.Info_LongevityVMs;
 using BMSHPMS.Models.DharmaService;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
-using WalkingTec.Mvvm.Core;
-using System.Linq;
-using WalkingTec.Mvvm.Core.Extensions;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using WalkingTec.Mvvm.Core;
+using WalkingTec.Mvvm.Core.Extensions;
 
 namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
 {
@@ -26,7 +27,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
         /// <summary>
         /// 提交頁面的顯示按鈕數據list
         /// </summary>
-        public List<PrintExcelTplPost> TplList { get; set; }
+        public List<PrintPlaqueTplPost> TplList { get; set; }
 
         /// <summary>
         /// 文件下載名
@@ -36,7 +37,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
         /// <summary>
         /// 匯出excel result as byte[]
         /// </summary>
-        public byte[] ExcelResult { get; set; }
+        public byte[] ResultAsBytes { get; set; }
+
+        public string Mimetype { get; set; }
 
         public MemorialExcelTplVM()
         {
@@ -44,7 +47,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
         }
 
 
-        public async Task<MemorialExcelTplVM> Export()
+        public async Task<FileContentResult> Export()
         {
             List<string> ids = Wtm.Cache.Get<List<string>>(WtmCacheKey);
             Wtm.Cache.Remove(WtmCacheKey);
@@ -54,26 +57,30 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                 throw new ArgumentNullException("IDs");
             }
 
-            PrintExcelTplPost post = TplList.SingleOrDefault(x => x.Key == TemplateKey);
+            PrintPlaqueTplPost post = TplList.Where(x => x.Key == TemplateKey).FirstOrDefault();
 
             if (post == null || !File.Exists(post.FilePath))
             {
                 throw new Exception("PrintExcelTplPost is null or FilePath not exist.");
             }
 
-            var list = DC.Set<Info_Memorial>().CheckIDs(ids).OrderBy(x => x.SerialCode).ToList();
+            var list = DC.Set<Info_Memorial>().AsNoTracking().CheckIDs(ids).OrderBy(x => x.SerialCode).ToList();
 
-            string filename = list.FirstOrDefault().SerialCode + "_" + list.LastOrDefault().SerialCode;
-            DownloadFileName = "附薦_" + filename + ".xlsx";
+
+            string fileExtension;
 
             switch (post.Key)
             {
-                case PrintExcelTplContext.附薦小10蓮位140x420mm100元:
-                    ExcelResult = await PrintExcelTplPost.Export<Memorial_10SeatSmall_140x420mm, Info_Memorial>(list, post);
+                case PrintExcelTplContext.附薦小10蓮位140x420:
+                    ResultAsBytes = await PrintPlaqueExcelHelper.Export<Memorial_PrintExcelFillData, Info_Memorial>(list, post);
+                    fileExtension = ".xlsx";
+                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
 
-                case PrintExcelTplContext.附薦大10蓮位100元:
-                    ExcelResult = await PrintExcelTplPost.Export<Memorial_10SeatSmall_140x420mm, Info_Memorial>(list, post);
+                case PrintExcelTplContext.附薦大10蓮位181x490:
+                    ResultAsBytes = await PrintPlaqueExcelHelper.Export<Memorial_PrintExcelFillData, Info_Memorial>(list, post);
+                    fileExtension = ".xlsx";
+                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
 
                 case PrintExcelTplContext.附薦5蓮位善字牌位:
@@ -81,14 +88,24 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                     {
                         x.BenefactorName = $"陽上：{x.BenefactorName}拜荐";
                     });
-                    ExcelResult = await PrintExcelTplPost.Export<Memorial_10SeatSmall_140x420mm, Info_Memorial>(list, post);
+                    ResultAsBytes = await PrintPlaqueExcelHelper.Export<Memorial_PrintExcelFillData, Info_Memorial>(list, post);
+                    fileExtension = ".xlsx";
+                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
 
                 default:
-                    throw new Exception("PrintExcelTplPost switch key not found: " + post.PaperDisplayName);
+                    throw new Exception(nameof(PrintPlaqueTplPost) + " switch key not found: " + post.ButtonDisplayName);
             }
 
-            return this;
+            string filename = list.FirstOrDefault().SerialCode + "_" + list.LastOrDefault().SerialCode;
+            DownloadFileName = "附薦_" + filename + fileExtension;
+
+            FileContentResult fileContentResult = new(ResultAsBytes, Mimetype)
+            {
+                FileDownloadName = DownloadFileName
+            };
+
+            return fileContentResult;
         }
 
     }

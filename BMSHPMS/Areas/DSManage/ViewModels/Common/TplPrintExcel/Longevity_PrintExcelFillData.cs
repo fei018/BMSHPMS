@@ -7,7 +7,7 @@ namespace BMSHPMS.DSManage.ViewModels.Common.TplPrintExcel
     /// <summary>
     /// 延生 20格 205x254mm 紅紙 (100元)
     /// </summary>
-    public class Longevity_20Seat_205x254mm
+    public class Longevity_PrintExcelFillData
     {
         #region string
         public string Name1 { get; set; }
@@ -53,7 +53,7 @@ namespace BMSHPMS.DSManage.ViewModels.Common.TplPrintExcel
         public string Serial20 { get; set; }
         #endregion
 
-        public Longevity_20Seat_205x254mm(List<Info_Longevity> list)
+        public Longevity_PrintExcelFillData(List<Info_Longevity> list)
         {
             #region 填充數據
             Name1 = list.ElementAtOrDefault(0) != null ? list[0].Name : "增福延壽";

@@ -25,7 +25,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
 
         public override void DoAdd()
         {
-            CreateVMEntity.TrimAsString();
+            CreateVMEntity.ReceiptNumber?.Trim();
+            CreateVMEntity.SerialCode?.Trim();
 
             var receipt = DC.Set<Info_Receipt>().Include(x => x.Info_Donors).AsNoTracking().Where(x => x.ReceiptNumber.ToLower() == CreateVMEntity.ReceiptNumber.ToLower()).FirstOrDefault();
 

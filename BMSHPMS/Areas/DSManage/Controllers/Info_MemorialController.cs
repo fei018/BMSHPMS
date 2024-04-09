@@ -257,7 +257,7 @@ namespace BMSHPMS.DSManage.Controllers
             try
             {
                 var result = await vm.Export();
-                return File(result.ExcelResult, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", result.DownloadFileName);
+                return result;
             }
             catch (Exception ex)
             {

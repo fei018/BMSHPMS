@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using WalkingTec.Mvvm.Core;
-using WalkingTec.Mvvm.Core.Extensions;
+﻿using BMSHPMS.Helper;
 using BMSHPMS.Models.DharmaService;
-using NetTopologySuite.Index.IntervalRTree;
 using Microsoft.EntityFrameworkCore;
-using BMSHPMS.Helper;
-using static System.Net.WebRequestMethods;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using WalkingTec.Mvvm.Core;
 
 
 namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
 {
     public partial class Info_LongevityVM : BaseCRUDVM<Info_Longevity>
     {
-       
+
         public InfoLongevityCreateVM CreateVMEntity { get; set; }
 
         public Info_LongevityVM()
         {
             SetInclude(x => x.Receipt);
-            
+
         }
 
         protected override void InitVM()
@@ -31,7 +26,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
 
         public override void DoAdd()
         {
-            CreateVMEntity.TrimAsString();
+            CreateVMEntity.ReceiptNumber?.Trim();
+            CreateVMEntity.SerialCode?.Trim();
 
             var receipt = DC.Set<Info_Receipt>().Include(x => x.Info_Longevitys).AsNoTracking().Where(x => x.ReceiptNumber.ToLower() == CreateVMEntity.ReceiptNumber.ToLower()).FirstOrDefault();
 
@@ -48,7 +44,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                 {
                     MSD.AddModelError("延生編號已存在", "延生編號已存在");
                     return;
-                }               
+                }
             }
 
             var newEntity = new Info_Longevity
@@ -66,7 +62,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
             };
 
             lock (DbTableLocker.T_Longevity)
-            {                
+            {
                 DC.Set<Info_Longevity>().Add(newEntity);
                 DC.SaveChanges();
             }
@@ -77,7 +73,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
             var old = DC.Set<Info_Longevity>().Find(Entity.ID);
             if (old != null)
             {
-                
+
                 old.Name = Entity.Name;
                 old.DSRemark = Entity.DSRemark;
                 if (Entity.Sum.HasValue) old.Sum = Entity.Sum.Value;
