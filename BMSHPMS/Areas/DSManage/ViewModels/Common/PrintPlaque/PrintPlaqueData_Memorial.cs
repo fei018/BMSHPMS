@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BMSHPMS.DSManage.ViewModels.Common.TplPrintExcel
+namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
 {
-    public class Memorial_PrintExcelFillData
+    public class PrintPlaqueData_Memorial
     {
         #region string
         public string ADece1 { get; set; }
@@ -69,7 +69,7 @@ namespace BMSHPMS.DSManage.ViewModels.Common.TplPrintExcel
         public string JSerial { get; set; }
         #endregion
 
-        public Memorial_PrintExcelFillData(List<Info_Memorial> list)
+        public PrintPlaqueData_Memorial(List<Info_Memorial> list)
         {
             #region 填充數據
             ABene1 = list.ElementAtOrDefault(0) != null ? list[0].BenefactorName : "";
@@ -133,71 +133,5 @@ namespace BMSHPMS.DSManage.ViewModels.Common.TplPrintExcel
             JSerial = list.ElementAtOrDefault(9) != null ? list[9].SerialCode : "";
             #endregion
         }
-
-        //private static async Task<byte[]> ExportExcel(List<Info_Memorial> list, PrintExcelTplPost post)
-        //{
-        //    if (list.Count > post.SeatCount)
-        //    {
-        //        throw new System.Exception($"數據超出{post.SeatCount}個");
-        //    }
-
-        //    MemorialExcelTemplate tpl = new(list);
-
-        //    IExportFileByTemplate exporter = new ExcelExporter();
-        //    return await exporter.ExportBytesByTemplate(tpl, post.FilePath);
-        //}
-
-        //public static async Task<byte[]> Export(List<Info_Memorial> list, PrintExcelTplPost post)
-        //{
-        //    if (list.Count <= post.SeatCount)
-        //    {
-        //        return await ExportExcel(list, post);
-        //    }
-
-        //    List<byte[]> tpls = new();
-
-        //    int zs = list.Count / post.SeatCount;
-        //    int ys = list.Count % post.SeatCount;
-
-        //    int index = 0;
-        //    for (int i = 0; i < zs; i++)
-        //    {
-        //        var tmp = await ExportExcel(list.GetRange(index, post.SeatCount), post);
-        //        tpls.Add(tmp);
-        //        index += post.SeatCount;
-        //    }
-
-        //    if (ys > 0)
-        //    {
-        //        var tmp2 = await ExportExcel(list.GetRange(index, ys), post);
-        //        tpls.Add(tmp2);
-        //    }
-
-        //    XSSFWorkbook mergeWorkBook = new();
-        //    MemoryStream mergeMS = new();
-
-        //    try
-        //    {
-        //        for (int i = 0; i < tpls.Count; i++)
-        //        {
-        //            using MemoryStream ms = new(tpls[i]);
-        //            using XSSFWorkbook tmpWorkBook = new(ms);
-        //            XSSFSheet tmpSheet = tmpWorkBook.GetSheetAt(0) as XSSFSheet;
-        //            tmpSheet.CopyTo(mergeWorkBook, "Sheet" + i, true, true);
-        //        }
-
-        //        mergeWorkBook.Write(mergeMS);
-        //        return mergeMS.ToArray();
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        mergeWorkBook.Close();
-        //        mergeMS.Close();
-        //    }
-        //}
     }
 }

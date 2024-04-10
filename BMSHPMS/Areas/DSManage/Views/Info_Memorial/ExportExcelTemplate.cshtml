@@ -1,22 +1,22 @@
-﻿@model BMSHPMS.DSManage.ViewModels.Info_MemorialVMs.MemorialExcelTplVM
+﻿@model BMSHPMS.DSManage.ViewModels.Info_MemorialVMs.PrintPlaqueMemorialVM
 
 <div style="padding:20px;">
-@if (Model.TplList != null)
+    @if (PrintPlaqueContext.Memorial_PrintPlaquePostList != null)
     {
-        foreach (var item in Model.TplList)
+        foreach (var item in PrintPlaqueContext.Memorial_PrintPlaquePostList)
         {
             <wt:row items-per-row="ItemsPerRowEnum.One">
                 <wt:form vm="@Model" url="/DSManage/Info_Memorial/ExportExcelTemplate2" old-post="true" target="_blank">
                     <wt:submitbutton text="@item.ButtonDisplayName" />
 
                     <wt:hidden field="WtmCacheKey" />
-                    <wt:hidden field="TemplateKey" default-value="@item.Key" />
+                    <wt:hidden field="PrintPlaquePostKey" default-value="@item.Key" />
                 </wt:form>
             </wt:row>
         }
     }else
     {
-        <p>MemorialExcelTplVM.TplList is null.</p>
+        <p>@nameof(PrintPlaqueContext.Memorial_PrintPlaquePostList) is null.</p>
     }
     <hr />
     <wt:row align="AlignEnum.Right">

@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BMSHPMS.DSManage.ViewModels.Info_DonorVMs;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using WalkingTec.Mvvm.Core;
-using WalkingTec.Mvvm.Mvc;
-using WalkingTec.Mvvm.Core.Extensions;
-using BMSHPMS.DSManage.ViewModels.Info_DonorVMs;
 using System.Threading.Tasks;
+using WalkingTec.Mvvm.Core;
+using WalkingTec.Mvvm.Core.Extensions;
+using WalkingTec.Mvvm.Mvc;
 
 namespace BMSHPMS.DSManage.Controllers
 {
@@ -226,6 +226,45 @@ namespace BMSHPMS.DSManage.Controllers
         }
         #endregion
 
+        #region 匯出Excel範本
+        [ActionDescription("匯出Excel範本")]
+        [HttpPost]
+        public IActionResult ExportExcelTemplate(Info_DonorListVM vm)
+        {
+            try
+            {
+                var tplVM = Wtm.CreateVM<PrintPlaqueDonorVM>();
 
+                string key = Guid.NewGuid().ToString();
+                tplVM.WtmCacheKey = key;
+
+                // 緩存 提交的 Entity Ids
+                Wtm.Cache.Add(key, vm.Ids);
+
+                return PartialView(tplVM);
+            }
+            catch (Exception ex)
+            {
+                return PartialView("Exception2", ex);
+            }
+        }
+
+        [ActionDescription("匯出Excel範本2")]
+        [HttpPost]
+        public async Task<IActionResult> ExportExcelTemplate2(PrintPlaqueDonorVM vm)
+        {
+            try
+            {
+                var result = await vm.Export();
+
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return View("Exception", ex);
+            }
+        }
+        #endregion
     }
 }

@@ -232,7 +232,7 @@ namespace BMSHPMS.DSManage.Controllers
         {
             try
             {
-                var tplVM = Wtm.CreateVM<LongevityExcelTplVM>();
+                var tplVM = Wtm.CreateVM<PrintPlaqueLongevityVM>();
 
                 string key = Guid.NewGuid().ToString();
                 tplVM.WtmCacheKey = key;
@@ -250,11 +250,12 @@ namespace BMSHPMS.DSManage.Controllers
 
         [ActionDescription("匯出Excel範本2")]
         [HttpPost]
-        public async Task<IActionResult> ExportExcelTemplate2(LongevityExcelTplVM vm)
+        public async Task<IActionResult> ExportExcelTemplate2(PrintPlaqueLongevityVM vm)
         {
             try
             {
                 var result = await vm.Export();
+
 
                 return result;
             }

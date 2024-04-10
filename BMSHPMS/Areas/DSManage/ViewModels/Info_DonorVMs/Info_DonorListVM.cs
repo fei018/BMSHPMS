@@ -27,6 +27,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 //this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
                 //this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
+                this.MakeAction("Info_Donor","ExportExcelTemplate","匯出Excel範本","匯出Excel範本", GridActionParameterTypesEnum.MultiIds,"DSManage",dialogWidth:800,dialogHeight:600),
             };
         }
 

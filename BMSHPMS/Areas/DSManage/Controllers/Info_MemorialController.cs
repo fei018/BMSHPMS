@@ -1,13 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BMSHPMS.DSManage.ViewModels.Info_MemorialVMs;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using WalkingTec.Mvvm.Core;
-using WalkingTec.Mvvm.Mvc;
-using WalkingTec.Mvvm.Core.Extensions;
-using BMSHPMS.DSManage.ViewModels.Info_MemorialVMs;
 using System.Threading.Tasks;
-using BMSHPMS.DSManage.ViewModels.Info_LongevityVMs;
-using BMSHPMS.Models.DharmaService;
+using WalkingTec.Mvvm.Core;
+using WalkingTec.Mvvm.Core.Extensions;
+using WalkingTec.Mvvm.Mvc;
 
 namespace BMSHPMS.DSManage.Controllers
 {
@@ -235,7 +233,7 @@ namespace BMSHPMS.DSManage.Controllers
         {
             try
             {
-                var tplVM = Wtm.CreateVM<MemorialExcelTplVM>();
+                var tplVM = Wtm.CreateVM<PrintPlaqueMemorialVM>();
 
                 string key = Guid.NewGuid().ToString();
                 tplVM.WtmCacheKey = key;
@@ -252,7 +250,7 @@ namespace BMSHPMS.DSManage.Controllers
 
         [ActionDescription("匯出Excel範本2")]
         [HttpPost]
-        public async Task<IActionResult> ExportExcelTemplate2(MemorialExcelTplVM vm)
+        public async Task<IActionResult> ExportExcelTemplate2(PrintPlaqueMemorialVM vm)
         {
             try
             {
