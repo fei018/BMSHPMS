@@ -57,74 +57,64 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
 
             if (!File.Exists(post.FilePath))
             {
-                throw new Exception("FilePath not exist.");
+                throw new Exception(Path.GetFileName(post.FilePath) + " not exist.");
             }
 
             var models = DC.Set<Info_Longevity>().AsNoTracking().CheckIDs(ids).OrderBy(x => x.SerialCode).ToList();
 
-            //if (post.PlaqueType == PlaqueTypeEnum.延生 && post.FileType == FileTypeEnum.Excel)
-            //{
-            //    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
-            //    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-            //    DownloadFileName = "延生_" + models.FirstOrDefault()?.SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
-            //}
-
-            //if (post.PlaqueType == PlaqueTypeEnum.延生 && post.FileType == FileTypeEnum.Word)
-            //{
-            //    ResultBytes = await PrintPlaqueHelper.ExportByteAsWord<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
-            //    Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-            //    DownloadFileName = "延生_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".docx";
-            //}
+            string fileExtension;
 
             #region switch
             switch (post.Key)
             {
                 case PrintPlaqueContext.延生20格205x254mm紅紙:
-                    ResultAsBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(list, post);
+                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
                     fileExtension = ".xlsx";
                     Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
 
                 case PrintPlaqueContext.延生小5蓮210x130mm紅紙:
-                    ResultAsBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(list, post);
+                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
                     fileExtension = ".xlsx";
                     Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
 
                 case PrintPlaqueContext.延生大5蓮154x255mm紅紙:
-                    ResultAsBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(list, post);
+                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
                     fileExtension = ".xlsx";
                     Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
 
-                case PrintPlaqueContext.延生4蓮位小紅筒A4紙:
-                    ResultAsBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(list, post);
+                case PrintPlaqueContext.延生4蓮位小紅筒A4紅紙:
+                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
                     fileExtension = ".xlsx";
                     Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
 
-                case PrintPlaqueContext.延生1蓮位小紅筒紅紙:
-                    ResultAsBytes = await PrintPlaqueHelper.ExportByteAsWord<PrintPlaqueData_Longevity, Info_Longevity>(list, post);
-                    fileExtension = ".docx";
-                    Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-                    break;
+                //case PrintPlaqueContext.延生1蓮位小紅筒紅紙:
+                //    ResultBytes = await PrintPlaqueHelper.ExportByteAsWord<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
+                //    fileExtension = ".docx";
+                //    Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                //    break;
 
-                case PrintPlaqueContext.延生1蓮位中紅筒紅紙:
-                    ResultAsBytes = await PrintPlaqueHelper.ExportByteAsWord<PrintPlaqueData_Longevity, Info_Longevity>(list, post);
-                    fileExtension = ".docx";
-                    Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-                    break;
+                //case PrintPlaqueContext.延生1蓮位中紅筒紅紙:
+                //    ResultBytes = await PrintPlaqueHelper.ExportByteAsWord<PrintPlaqueData_Longevity, Info_Longevity>(list, post);
+                //    fileExtension = ".docx";
+                //    Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                //    break;
 
-                case PrintPlaqueContext.延生1蓮位大紅筒紅紙:
-                    ResultAsBytes = await PrintPlaqueHelper.ExportByteAsWord<PrintPlaqueData_Longevity, Info_Longevity>(list, post);
-                    fileExtension = ".docx";
-                    Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-                    break;
+                //case PrintPlaqueContext.延生1蓮位大紅筒紅紙:
+                //    ResultBytes = await PrintPlaqueHelper.ExportByteAsWord<PrintPlaqueData_Longevity, Info_Longevity>(list, post);
+                //    fileExtension = ".docx";
+                //    Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                //    break;
 
                 default:
                     throw new Exception(nameof(PrintPlaquePost) + " switch key not found: " + post.ButtonDisplayName);
             }
             #endregion
+
+            DownloadFileName = "延生_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + fileExtension;
 
             FileContentResult fileContentResult = new(ResultBytes, Mimetype)
             {

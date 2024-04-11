@@ -28,6 +28,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                 //this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
                 this.MakeAction("Info_Longevity","ExportExcelTemplate","匯出Excel範本","匯出Excel範本", GridActionParameterTypesEnum.MultiIds,"DSManage",dialogWidth:800,dialogHeight:600),
+                
             };
         }
 
@@ -42,7 +43,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                 this.MakeGridHeader(x => x.Sum,width:80).SetSort(),
                 this.MakeGridHeader(x => x.Name).SetSort(),                             
                 this.MakeGridHeader(x => x.DSRemark),               
-                this.MakeGridHeaderAction(width: 200)
+                this.MakeGridHeaderAction(width: 200),
             };
         }
 

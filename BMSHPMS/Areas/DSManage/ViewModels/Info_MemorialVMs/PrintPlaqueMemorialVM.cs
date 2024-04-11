@@ -56,21 +56,34 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
 
             if (!File.Exists(post.FilePath))
             {
-                throw new Exception("FilePath not exist.");
+                throw new Exception(Path.GetFileName(post.FilePath) + " not exist.");
             }
 
             var models = DC.Set<Info_Memorial>().AsNoTracking().CheckIDs(ids).OrderBy(x => x.SerialCode).ToList();
 
-            if (post.PlaqueType == PlaqueTypeEnum.附薦 && post.FileType == FileTypeEnum.Excel)
+            switch (post.Key)
             {
-                ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
-                Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                DownloadFileName = "附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
-            }
+                case PrintPlaqueContext.附薦小10蓮位140x420黃紙:
+                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
+                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    DownloadFileName = "附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
+                    break;
 
-            if (ResultBytes == Array.Empty<byte>())
-            {
-                throw new Exception();
+                case PrintPlaqueContext.附薦大10蓮位181x490黃紙:
+                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
+                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    DownloadFileName = "附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
+                    break;
+
+                case PrintPlaqueContext.附薦5蓮位善字牌位A4紙:
+                    models.ForEach(x => x.BenefactorName = $"陽上：{x.BenefactorName}拜荐");
+                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
+                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    DownloadFileName = "附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
+                    break;
+
+                default:
+                    throw new Exception(nameof(PrintPlaquePost) + " switch key not found: " + post.ButtonDisplayName);
             }
 
             FileContentResult fileContentResult = new(ResultBytes, Mimetype)
