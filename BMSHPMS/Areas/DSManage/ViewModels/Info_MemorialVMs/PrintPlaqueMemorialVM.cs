@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
@@ -60,6 +61,28 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
             }
 
             var models = DC.Set<Info_Memorial>().AsNoTracking().CheckIDs(ids).OrderBy(x => x.SerialCode).ToList();
+            foreach (var item in models)
+            {
+                string tmp = null;
+
+                if (!string.IsNullOrEmpty(item.DeceasedName_1))
+                {
+                    tmp += item.DeceasedName_1 + "\n";
+                }
+
+                if (!string.IsNullOrEmpty(item.DeceasedName_2))
+                {
+                    tmp += item.DeceasedName_2 + "\n";
+                }
+
+                if (!string.IsNullOrEmpty(item.DeceasedName_3))
+                {
+                    tmp += item.DeceasedName_3 + "\n";
+                }
+
+                int length = tmp.LastIndexOf("\n");
+                item.DeceasedName_1 = tmp.Substring(0, length);
+            }
 
             switch (post.Key)
             {
