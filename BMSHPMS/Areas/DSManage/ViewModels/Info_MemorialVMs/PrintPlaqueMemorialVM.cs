@@ -65,17 +65,17 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
             {
                 string tmp = null;
 
-                if (!string.IsNullOrEmpty(item.DeceasedName_1))
+                if (!string.IsNullOrWhiteSpace(item.DeceasedName_1))
                 {
                     tmp += item.DeceasedName_1 + "\n";
                 }
 
-                if (!string.IsNullOrEmpty(item.DeceasedName_2))
+                if (!string.IsNullOrWhiteSpace(item.DeceasedName_2))
                 {
                     tmp += item.DeceasedName_2 + "\n";
                 }
 
-                if (!string.IsNullOrEmpty(item.DeceasedName_3))
+                if (!string.IsNullOrWhiteSpace(item.DeceasedName_3))
                 {
                     tmp += item.DeceasedName_3 + "\n";
                 }

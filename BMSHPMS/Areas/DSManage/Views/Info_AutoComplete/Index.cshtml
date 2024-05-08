@@ -1,0 +1,9 @@
+﻿@model BMSHPMS.DSManage.ViewModels.Info_AutoCompleteVMs.Info_AutoCompleteListVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+<wt:row items-per-row="ItemsPerRowEnum.Three">
+<wt:textbox field="Searcher.Content" />
+</wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" url="/DSManage/Info_AutoComplete/Search"/>
