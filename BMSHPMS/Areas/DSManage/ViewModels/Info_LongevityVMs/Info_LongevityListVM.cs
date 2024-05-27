@@ -40,7 +40,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                 this.MakeGridHeader(x => x.DharmaServiceFullName,width:150).SetSort(),
                 this.MakeGridHeader(x => x.ReceiptNumber,width:120).SetSort(),
                 this.MakeGridHeader(x => x.SerialCode, width : 110).SetSort(),
-                this.MakeGridHeader(x => x.Sum,width:80).SetSort(),
+                this.MakeGridHeader(x => x.Sum,width:80).SetSort().SetShowTotal(),
                 this.MakeGridHeader(x => x.Name).SetSort(),                             
                 this.MakeGridHeader(x => x.DSRemark),               
                 this.MakeGridHeaderAction(width: 200),

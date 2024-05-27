@@ -23,9 +23,6 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 
         public List<ComboSelectListItem> AllOpt_DharmaServiceName { get; set; }
 
-        [Display(Name = "總金額")]
-        public int TotalSum { get; set; }
-
 
         public Info_ReceiptVM()
         {
@@ -77,5 +74,43 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
             LongevityInfos = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
             MemorialInfos = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
         }
+
+        #region GetCalculateSum
+        /// <summary>
+        /// 計算收據縂金額
+        /// </summary>
+        /// <param name="receiptID"></param>
+        /// <returns></returns>
+        public int GetCalculateSum(Guid receiptID)
+        {
+            var donors = DC.Set<Info_Donor>().AsNoTracking().Where(x => x.ReceiptID == receiptID).Select(x => x.Sum).ToList();
+            var mems = DC.Set<Info_Memorial>().AsNoTracking().Where(x => x.ReceiptID == receiptID).Select(x => x.Sum).ToList();
+            var longs = DC.Set<Info_Longevity>().AsNoTracking().Where(x => x.ReceiptID == receiptID).Select(x => x.Sum).ToList();
+
+            int sum = 0;
+            foreach (var item in donors)
+            {
+                if (item.HasValue)
+                {
+                    sum += item.Value;
+                }
+            }
+            foreach (var item in mems)
+            {
+                if (item.HasValue)
+                {
+                    sum += item.Value;
+                }
+            }
+            foreach (var item in longs)
+            {
+                if (item.HasValue)
+                {
+                    sum += item.Value;
+                }
+            }
+            return sum;
+        }
+        #endregion
     }
 }

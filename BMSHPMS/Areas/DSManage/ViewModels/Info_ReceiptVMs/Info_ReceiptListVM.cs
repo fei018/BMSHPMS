@@ -38,13 +38,20 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 this.MakeGridHeader(x => x.ReceiptDate,width:150).SetSort(),
                 this.MakeGridHeader(x => x.ReceiptNumber,width:150).SetSort(),
                 this.MakeGridHeader(x => x.DharmaServiceFullName,width:150).SetSort(),
-                //this.MakeGridHeader(x => x.Sum,width:150).SetSort(),
+                this.MakeGridHeader(x => x.CalculateSum,width:150).SetFormat(CalculateSumFormat).SetSort().SetShowTotal(),
                 this.MakeGridHeader(x => x.ReceiptOwn).SetSort(),
                 this.MakeGridHeader(x => x.ContactName).SetSort(),
                 this.MakeGridHeader(x => x.ContactPhone).SetSort(),
                 this.MakeGridHeader(x => x.DSRemark).SetSort(),
                 this.MakeGridHeaderAction(width: 200).SetSort()
             };
+        }
+
+        private string CalculateSumFormat(Info_Receipt_View receipt, object val)
+        {
+            var vm = Wtm.CreateVM<Info_ReceiptVM>();
+            var sum = vm.GetCalculateSum(receipt.ID);
+            return sum.ToString();
         }
 
         public override IOrderedQueryable<Info_Receipt_View> GetSearchQuery()
@@ -128,8 +135,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
         [Display(Name = "法會")]
         public new string DharmaServiceFullName { get; set; }
 
-        //[Display(Name = "總金額")]
-        //public int TotalSum { get; set; }
+        [Display(Name = "金額")]
+        public int CalculateSum { get; set; }
     }
     #endregion
 

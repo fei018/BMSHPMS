@@ -1,5 +1,5 @@
-﻿@model BMSHPMS.DSManage.ViewModels.Info_DonorVMs.Info_DonorListVM
-@inject IStringLocalizer<Program> Localizer;
+﻿@using BMSHPMS.DSManage.ViewModels.Common
+@model BMSHPMS.DSManage.ViewModels.Info_DonorVMs.Info_DonorListVM
 
 <wt:searchpanel vm="@Model" reset-btn="true">
     <wt:row items-per-row="ItemsPerRowEnum.Four">
@@ -14,7 +14,7 @@
     </wt:row>
     <wt:row items-per-row="ItemsPerRowEnum.Four">
         <wt:textbox field="Searcher.SerialCode" placeholder="" />
-        <wt:textbox field="Searcher.SerialCodeEnd" placeholder="範圍查詢時結尾編號,最大1000個" />
+        <wt:textbox field="Searcher.SerialCodeEnd" placeholder="@ListVMHelper.MaxNumberString" />
     </wt:row>
 </wt:searchpanel>
-<wt:grid vm="@Model" url="/DSManage/Info_Donor/Search" hidden-grid-index />
+<wt:grid vm="@Model" url="/DSManage/Info_Donor/Search" hidden-grid-index limit="50" limits="new int[]{50,100,200,500,1000,10000}" />

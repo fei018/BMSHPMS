@@ -39,7 +39,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 this.MakeGridHeader(x => x.DharmaServiceFullName,width:150).SetSort(),
                 this.MakeGridHeader(x => x.ReceiptNumber,width:120).SetSort(),
                 this.MakeGridHeader(x => x.SerialCode,width:120).SetSort(),
-                this.MakeGridHeader(x => x.Sum,width:80).SetSort(),
+                this.MakeGridHeader(x => x.Sum,width:80).SetSort().SetShowTotal(),
                 this.MakeGridHeader(x => x.LongevityName, width : 120).SetSort(),
                 this.MakeGridHeader(x => x.DeceasedName_1, width : 170).SetSort(),
                 this.MakeGridHeader(x => x.DeceasedName_2, width : 170).SetSort(),

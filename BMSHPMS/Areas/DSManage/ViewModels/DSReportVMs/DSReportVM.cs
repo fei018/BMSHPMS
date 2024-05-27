@@ -7,5 +7,9 @@ namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
     {
         public DateTime ReceiptReportDate { get; set; }
 
+        public DateRange ReceiptDateRange { get; set; }
+
+       
+
     }
 }

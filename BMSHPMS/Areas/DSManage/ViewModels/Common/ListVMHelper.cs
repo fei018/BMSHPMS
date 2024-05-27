@@ -9,8 +9,12 @@ namespace BMSHPMS.DSManage.ViewModels.Common
     /// </summary>
     public class ListVMHelper
     {
+        public const int MaxNumber = 10000;
+
+        public static string MaxNumberString => $"範圍結尾編號,最大{MaxNumber}個";
+
         /// <summary>
-        /// 範圍查詢編號，返回連續編號
+        /// 範圍查詢編號，返回連續編號, 最多連續10000個
         /// </summary>
         /// <param name="serialStart"></param>
         /// <param name="serialEnd"></param>
@@ -48,9 +52,9 @@ namespace BMSHPMS.DSManage.ViewModels.Common
 
                 int diff = serialEndNum - serialStartNum;
 
-                if (diff > 1000)
+                if (diff > MaxNumber)
                 {
-                    diff = 1000;
+                    diff = MaxNumber;
                 }
 
                 list.Add(serialStart);
