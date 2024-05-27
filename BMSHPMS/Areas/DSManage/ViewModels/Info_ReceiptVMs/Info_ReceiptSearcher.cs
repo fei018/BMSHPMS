@@ -27,11 +27,11 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
         [Display(Name = "聯絡人電話")]
         public String ContactPhone { get; set; }
 
-        [Display(Name = "金額")]
-        public Int32? Sum { get; set; }
+        //[Display(Name = "金額")]
+        //public Int32? Sum { get; set; }
 
         [Display(Name = "收據日期")]
-        public DateTime? ReceiptDate { get; set; }
+        public DateRange ReceiptDate { get; set; }
 
         [Display(Name = "法會項目")]
         public string DharmaServiceName { get; set; }

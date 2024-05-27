@@ -24,7 +24,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                 this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800, dialogHeight : 400),               
                 //this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "DSManage", dialogWidth: 800),
-                //this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
+                this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
                 //this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
                 this.MakeAction("Info_Longevity","ExportExcelTemplate","匯出Excel範本","匯出Excel範本", GridActionParameterTypesEnum.MultiIds,"DSManage",dialogWidth:800,dialogHeight:600),
@@ -52,14 +52,14 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
             var serial = new ListVMHelper().GetQuerySerialCodes(Searcher.SerialCode, Searcher.SerialCodeEnd);
 
             var query = DC.Set<Info_Longevity>()
-                .AsNoTracking()
-                .CheckContain(Searcher.Name, x => x.Name)
-                .CheckEqual(Searcher.Sum, x => x.Sum)
-                //.CheckContain(Searcher.SerialCode, x => x.SerialCode)
-                .CheckContain(Searcher.ReceiptNumber, x => x.Receipt.ReceiptNumber)
-                .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.Receipt.ReceiptDate)
-                .CheckEqual(Searcher.DharmaServiceName, x => x.Receipt.DharmaServiceName)
-                .CheckEqual(Searcher.DharmaServiceYear, x => x.Receipt.DharmaServiceYear);
+                        .AsNoTracking()
+                        .CheckContain(Searcher.Name, x => x.Name)
+                        .CheckEqual(Searcher.Sum, x => x.Sum)
+                        //.CheckContain(Searcher.SerialCode, x => x.SerialCode)
+                        .CheckContain(Searcher.ReceiptNumber, x => x.Receipt.ReceiptNumber)
+                        .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.Receipt.ReceiptDate)
+                        .CheckEqual(Searcher.DharmaServiceName, x => x.Receipt.DharmaServiceName)
+                        .CheckEqual(Searcher.DharmaServiceYear, x => x.Receipt.DharmaServiceYear);
 
             // serials
             var serials = new ListVMHelper().GetQuerySerialCodes(Searcher.SerialCode, Searcher.SerialCodeEnd);

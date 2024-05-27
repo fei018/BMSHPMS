@@ -38,7 +38,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 this.MakeGridHeader(x => x.ReceiptDate,width:150).SetSort(),
                 this.MakeGridHeader(x => x.ReceiptNumber,width:150).SetSort(),
                 this.MakeGridHeader(x => x.DharmaServiceFullName,width:150).SetSort(),
-                this.MakeGridHeader(x => x.Sum,width:150).SetSort(),
+                //this.MakeGridHeader(x => x.Sum,width:150).SetSort(),
                 this.MakeGridHeader(x => x.ReceiptOwn).SetSort(),
                 this.MakeGridHeader(x => x.ContactName).SetSort(),
                 this.MakeGridHeader(x => x.ContactPhone).SetSort(),
@@ -50,23 +50,25 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
         public override IOrderedQueryable<Info_Receipt_View> GetSearchQuery()
         {
             var query = DC.Set<Info_Receipt>()
+                            .AsNoTracking()
                             .CheckContain(Searcher.ReceiptNumber, x => x.ReceiptNumber)
                             .CheckContain(Searcher.ReceiptOwn, x => x.ReceiptOwn)
                             .CheckContain(Searcher.ContactName, x => x.ContactName)
                             .CheckContain(Searcher.ContactPhone, x => x.ContactPhone)
-                            .CheckEqual(Searcher.Sum, x => x.Sum)
+                            //.CheckEqual(Searcher.Sum, x => x.Sum)
                             .CheckEqual(Searcher.DharmaServiceName, x => x.DharmaServiceName)
-                            .CheckEqual(Searcher.DharmaServiceYear, x => x.DharmaServiceYear);
+                            .CheckEqual(Searcher.DharmaServiceYear, x => x.DharmaServiceYear)
+                            .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.ReceiptDate);
 
             //if (Searcher.DharmaServiceYear.HasValue)
             //{
             //    query = query.Where(x => x.DharmaServiceYear.HasValue && x.DharmaServiceYear.Value.Equals(Searcher.DharmaServiceYear.Value));
             //}
 
-            if (Searcher.ReceiptDate.HasValue)
-            {
-                query = query.Where(x => DateTime.Compare(Searcher.ReceiptDate.Value.Date, x.ReceiptDate.Value.Date) == 0);
-            }
+            //if (Searcher.ReceiptDate.HasValue)
+            //{
+            //    query = query.Where(x => DateTime.Compare(Searcher.ReceiptDate.Value.Date, x.ReceiptDate.Value.Date) == 0);
+            //}
 
             var query1 = query.Select(x => new Info_Receipt_View
             {
@@ -125,6 +127,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
     {
         [Display(Name = "法會")]
         public new string DharmaServiceFullName { get; set; }
+
+        //[Display(Name = "總金額")]
+        //public int TotalSum { get; set; }
     }
     #endregion
 

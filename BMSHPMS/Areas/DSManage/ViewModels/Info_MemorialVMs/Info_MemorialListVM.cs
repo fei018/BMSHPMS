@@ -23,7 +23,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                 this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800,dialogHeight:500),
                 this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800,dialogHeight:500),              
                 //this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "DSManage", dialogWidth: 800),
-                //this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
+                this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
                 //this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
                 this.MakeAction("Info_Memorial","ExportExcelTemplate","匯出Excel範本","匯出Excel範本", GridActionParameterTypesEnum.MultiIds,"DSManage",dialogWidth:800,dialogHeight:600),

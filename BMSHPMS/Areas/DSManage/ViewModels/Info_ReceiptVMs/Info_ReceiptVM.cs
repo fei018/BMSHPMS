@@ -3,6 +3,7 @@ using BMSHPMS.Models.DharmaService;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
@@ -22,6 +23,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 
         public List<ComboSelectListItem> AllOpt_DharmaServiceName { get; set; }
 
+        [Display(Name = "總金額")]
+        public int TotalSum { get; set; }
 
 
         public Info_ReceiptVM()

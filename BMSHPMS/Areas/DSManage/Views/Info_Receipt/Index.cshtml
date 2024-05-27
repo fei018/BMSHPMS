@@ -6,11 +6,11 @@
         <wt:datetime field="Searcher.DharmaServiceYear" type="Year"/>
         <wt:combobox field="Searcher.DharmaServiceName" items="Searcher.AllDharmaServiceName" />
         <wt:textbox field="Searcher.ReceiptNumber" />
-        <wt:textbox field="Searcher.Sum" />
+        @*<wt:textbox field="Searcher.Sum" /> *@
         <wt:textbox field="Searcher.ReceiptOwn" />
         <wt:textbox field="Searcher.ContactName" />
         <wt:textbox field="Searcher.ContactPhone" />
-        <wt:datetime field="Searcher.ReceiptDate" type="Date"/>
+        <wt:datetime field="Searcher.ReceiptDate" type="Date" range="false"/>
     </wt:row>
 </wt:searchpanel>
 <wt:grid vm="@Model" url="/DSManage/Info_Receipt/Search" hidden-grid-index /> @* limits="new int[]{10,20,50,80,100,150,200,1000}" *@
