@@ -1,42 +1,36 @@
-﻿@model BMSHPMS.DSManage.ViewModels.DSReportVMs.DSReportVM
+﻿@model BMSHPMS.DSManage.ViewModels.DSReportVMs.ReceiptReportListVM
+@{
+    string searchId = "wtform_" + Guid.NewGuid().ToString("N");
 
-<style>
-    .dsreport-section {
-        margin:20px;
+    string url = "/dsmanage/dsreport/downloadDSReportExcel";
+}
+
+<script>
+    function downloadDSReportExcel() {
+        var data = ff.GetSearchFormData('@searchId','@nameof(Model.Searcher)');
+
+        $.post('@url', data, function (html) {
+            layui.layer.open(
+                {
+                    type: 1,
+                    title: '下載',
+                    area: ['400px', '400px'],
+                    content: html
+                }
+            );
+        }, 'html');
     }
-</style>
+</script>
 
-<div class="dsreport-section">
-    <fieldset class="layui-elem-field" style="padding:10px;">
-        <legend>收據報表</legend>
+<wt:searchpanel vm="@Model" reset-btn="true" id="@searchId" >
+    <wt:row items-per-row="ItemsPerRowEnum.Three">
+        <wt:datetime field="Searcher.ReceiptDate" type="Date" range="true" />
+        <wt:datetime field="Searcher.DharmaServiceYear" type="Year" />
+        <wt:combobox field="Searcher.DharmaServiceName" items="Searcher.AllDharmaServiceName" />
+    </wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" url="/DSManage/dsreport/Search" search-panel-id="@searchId" />
 
-        <a href="/DSManage/DSReport/ReceiptToday" class="layui-btn layui-btn-lg" target="_blank">匯出今日</a>
 
-        <hr style="margin-bottom:50px;" />
-
-        <form class="layui-form" action="/DSManage/DSReport/ReceiptDate" method="get" target="_blank">
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">選擇日期</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="ReceiptReportDate" id="ed49609e760545a8a4e68c834ee41690" lay-verify="required" lay-reqtext="請選擇日期" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-
-                <div class="layui-inline">
-                    <div class="layui-input-inline">
-                        <button type="submit" class="layui-btn" lay-submit>匯出選擇日期</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-
-        <script>
-            layui.laydate.render({
-                elem: '#ed49609e760545a8a4e68c834ee41690'
-            });
-        </script>
-    </fieldset>
-</div>
 
 

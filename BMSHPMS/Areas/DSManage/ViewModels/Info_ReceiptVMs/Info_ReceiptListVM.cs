@@ -98,6 +98,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
             return query1;
         }
 
+        #region ExportExcel()
         public async Task<byte[]> ExportExcel()
         {
             List<Info_Receipt> receiptList;
@@ -125,6 +126,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 
             return await ReceiptExcelVM.ExportExcelAsBytes(receiptList);
         }
+        #endregion
 
     }
 

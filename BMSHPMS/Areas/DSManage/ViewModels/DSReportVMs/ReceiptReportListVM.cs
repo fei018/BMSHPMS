@@ -1,24 +1,50 @@
-﻿using BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs;
+﻿using BMSHPMS.Areas.DSManage.ViewModels.DSReportVMs;
+using BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs;
+using BMSHPMS.Helper;
 using BMSHPMS.Models.DharmaService;
+using BMSHPMS.Models.DharmaServiceExtention;
+using Magicodes.ExporterAndImporter.Core;
+using Magicodes.ExporterAndImporter.Excel;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
 
 namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
 {
-    public class ReceiptReportListVM : BaseVM
+    public class ReceiptReportListVM : BasePagedListVM<ProjectCategoryVM, ReceiptReportSearcher>
     {
-        public Info_ReceiptSearcher Searcher { get; set; }
+
+        protected override void InitVM()
+        {
+            NeedPage = false;
+        }
 
         /// <summary>
         /// 功德項目歸類
         /// </summary>
-        public Dictionary<string, ProjectCategoryVM> ProjectCategoryDic { get; set; } = new();
+        private Dictionary<string, ProjectCategoryVM> _ProjectCategoryDic { get; set; } = new();
+
+        private List<ProjectCategoryVM> _AllProjects { get; } = new();
+
+        #region InitGridAction
+        protected override List<GridAction> InitGridAction()
+        {
+            return new List<GridAction>
+            {
+                this.MakeAction("DSReport","ExportReportExcel","匯出報表","匯出報表", GridActionParameterTypesEnum.NoId,"DSManage").SetOnClickScript("downloadDSReportExcel"),
+            };
+        }
+
+        #endregion
 
         #region GetSearchQuery
-        public List<Info_Receipt_View> GetSearchQuery()
+        public override IOrderedQueryable<ProjectCategoryVM> GetSearchQuery()
         {
             var query = DC.Set<Info_Receipt>()
                             .AsNoTracking()
@@ -36,6 +62,11 @@ namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
                             .OrderBy(x => x.ID);
 
             var list = query.ToList();
+
+            if (list == null || list.Count <= 0)
+            {
+                return null;
+            }
 
             foreach (var receipt in list)
             {
@@ -76,11 +107,13 @@ namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
 
                         var pro = new ProjectCategoryVM()
                         {
-                            ProjectName = "功德主",
-                            ProjectSum = item.Sum.Value.ToString(),
+                            ProjectName = DonationProjectOptions.Category.功德主,
+                            ProjectSum = item.Sum.Value,
                         };
-                        ProjectCategoryDic.TryAdd(pro.Key, pro);
-                    }                   
+                        _ProjectCategoryDic.TryAdd(pro.Key, pro);
+
+                        _AllProjects.Add(pro);
+                    }
                 }
 
                 foreach (var item in receipt.Info_Memorials)
@@ -91,10 +124,12 @@ namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
 
                         var pro = new ProjectCategoryVM()
                         {
-                            ProjectName = "附薦",
-                            ProjectSum = item.Sum.Value.ToString(),
+                            ProjectName = DonationProjectOptions.Category.附薦位,
+                            ProjectSum = item.Sum.Value,
                         };
-                        ProjectCategoryDic.TryAdd(pro.Key, pro);
+                        _ProjectCategoryDic.TryAdd(pro.Key, pro);
+
+                        _AllProjects.Add(pro);
                     }
                 }
 
@@ -106,25 +141,122 @@ namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
 
                         var pro = new ProjectCategoryVM()
                         {
-                            ProjectName = "延生",
-                            ProjectSum = item.Sum.Value.ToString(),
+                            ProjectName = DonationProjectOptions.Category.延生位,
+                            ProjectSum = item.Sum.Value,
                         };
-                        ProjectCategoryDic.TryAdd(pro.Key, pro);
+                        _ProjectCategoryDic.TryAdd(pro.Key, pro);
+                        _AllProjects.Add(pro);
                     }
                 }
 
                 receipt.CalculateSum = sum;
             }
 
-            return list;
+            foreach (var category in _ProjectCategoryDic)
+            {
+                var categoryList = _AllProjects.Where(x => x.Key == category.Key).ToList();
+
+                category.Value.ProjectCount = categoryList.Count;
+
+                category.Value.ProjectTotalSum = categoryList.Sum(x => x.ProjectSum);
+            }
+
+            // 繼續嘗試添加數據庫的功德項目，補齊 projectcount=0 的情況
+            var projectsInDb = GetProjectCategoriesFromDatabase();
+            foreach (var category in projectsInDb)
+            {
+                _ProjectCategoryDic.TryAdd(category.Key,category);
+            }
+
+            return _ProjectCategoryDic.Values.AsQueryable()
+                        .OrderBy(x=>x.ProjectName)
+                        .ThenBy(x=>x.ProjectSum);
         }
         #endregion
 
-
-        public void GenReport()
+        #region InitGridHeader
+        protected override IEnumerable<IGridColumn<ProjectCategoryVM>> InitGridHeader()
         {
-            var receipts = GetSearchQuery();
-      
+            return new List<GridColumn<ProjectCategoryVM>>{
+                this.MakeGridHeader(x => x.ProjectName),
+                this.MakeGridHeader(x => x.ProjectSum),
+                this.MakeGridHeader(x => x.ProjectCount),
+                this.MakeGridHeader(x => x.ProjectTotalSum).SetShowTotal(),
+            };
         }
+        #endregion
+
+        #region GetProjectCategoriesFromDatabase
+        public List<ProjectCategoryVM> GetProjectCategoriesFromDatabase()
+        {
+            var result = new List<ProjectCategoryVM>();
+
+            var ds = DC.Set<Opt_DharmaService>().AsNoTracking()
+                                        .Include(x => x.Opt_DonationProjects)
+                                        .CheckContain(Searcher.DharmaServiceName, x => x.ServiceName)
+                                        .OrderBy(x => x.ID)
+                                        .FirstOrDefault();
+
+            var projects = ds?.Opt_DonationProjects;
+
+            if (projects == null || projects.Count <= 0)
+            {
+                return result;
+            }
+
+            foreach (var item in projects)
+            {
+                result.Add(new ProjectCategoryVM
+                {
+                    ProjectName = item.DonationCategory,
+                    ProjectSum = item.Sum ?? 0,
+                });
+            }
+
+            return result;
+        }
+        #endregion
+
+        #region ExportReportExcel
+
+        
+        public byte[] ExportReportExcelAsBytes(out string fileName)
+        {
+            var vm = new ReceipReportExportVM();
+
+            vm.ServiceName = $"{Searcher.DharmaServiceYear.Value}_{Searcher.DharmaServiceName}";
+
+            fileName = $"{vm.ServiceName}_報表.xlsx";
+
+            var list = GetSearchQuery().ToList();
+            int sum = 0;
+            foreach (var item in list)
+            {
+                sum += item.ProjectTotalSum;
+            }
+
+            vm.AllTotalSum = sum.ToString();
+
+            string wwwpath = Wtm.GetWebHostEnvironment().WebRootPath;
+            string tpl = Path.Combine(wwwpath, "ExcelTemplate", "DSReport.xlsx");
+
+            IExportFileByTemplate exporter = new ExcelExporter();
+
+            return exporter.ExportBytesByTemplate(vm, tpl).Result;
+        }
+
+        public string GetReportExcelId()
+        {
+            var id = Guid.NewGuid().ToString();
+            var data = ExportReportExcelAsBytes(out string filename);
+            var vm = new ReceiptReportDownloadExcelVM() {
+                Key = id,
+                Data = data,
+                FileName = filename,
+            };
+            Wtm.Cache.Add(id, vm, new DistributedCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(30)));
+            return id;
+        }
+        #endregion
     }
 }
