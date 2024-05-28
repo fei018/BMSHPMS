@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
 
@@ -46,6 +45,13 @@ namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
         #region GetSearchQuery
         public override IOrderedQueryable<ProjectCategoryVM> GetSearchQuery()
         {
+            if (string.IsNullOrEmpty(Searcher.DharmaServiceName) ||
+                !Searcher.DharmaServiceYear.HasValue ||
+                string.IsNullOrEmpty(Searcher.ReceiptDate?.Value))
+            {
+                throw new Exception("查詢條件不足");
+            }
+
             var query = DC.Set<Info_Receipt>()
                             .AsNoTracking()
                             .CheckEqual(Searcher.DharmaServiceName, x => x.DharmaServiceName)
@@ -165,12 +171,12 @@ namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
             var projectsInDb = GetProjectCategoriesFromDatabase();
             foreach (var category in projectsInDb)
             {
-                _ProjectCategoryDic.TryAdd(category.Key,category);
+                _ProjectCategoryDic.TryAdd(category.Key, category);
             }
 
             return _ProjectCategoryDic.Values.AsQueryable()
-                        .OrderBy(x=>x.ProjectName)
-                        .ThenBy(x=>x.ProjectSum);
+                        .OrderBy(x => x.ProjectName)
+                        .ThenBy(x => x.ProjectSum);
         }
         #endregion
 
@@ -219,16 +225,18 @@ namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
 
         #region ExportReportExcel
 
-        
+
         public byte[] ExportReportExcelAsBytes(out string fileName)
         {
+            var list = GetSearchQuery().ToList();
+
             var vm = new ReceipReportExportVM();
 
-            vm.ServiceName = $"{Searcher.DharmaServiceYear.Value}_{Searcher.DharmaServiceName}";
+            vm.ServiceName = $"{Searcher.DharmaServiceYear.Value}年{Searcher.DharmaServiceName}";
+            vm.Date = Searcher.ReceiptDate?.Value;
 
             fileName = $"{vm.ServiceName}_報表.xlsx";
 
-            var list = GetSearchQuery().ToList();
             int sum = 0;
             foreach (var item in list)
             {
@@ -236,6 +244,7 @@ namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
             }
 
             vm.AllTotalSum = sum.ToString();
+            vm.Projects = list;
 
             string wwwpath = Wtm.GetWebHostEnvironment().WebRootPath;
             string tpl = Path.Combine(wwwpath, "ExcelTemplate", "DSReport.xlsx");
@@ -249,7 +258,8 @@ namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
         {
             var id = Guid.NewGuid().ToString();
             var data = ExportReportExcelAsBytes(out string filename);
-            var vm = new ReceiptReportDownloadExcelVM() {
+            var vm = new ReceiptReportDownloadExcelVM()
+            {
                 Key = id,
                 Data = data,
                 FileName = filename,

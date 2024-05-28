@@ -5,6 +5,8 @@ namespace BMSHPMS.Areas.DSManage.ViewModels.DSReportVMs
 {
     public class ReceipReportExportVM
     {
+        public string Date {  get; set; }
+
         public string ServiceName {  get; set; }
 
         public string AllTotalSum { get; set; }

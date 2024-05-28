@@ -9,16 +9,21 @@
     function downloadDSReportExcel() {
         var data = ff.GetSearchFormData('@searchId','@nameof(Model.Searcher)');
 
-        $.post('@url', data, function (html) {
+        var loadindex = layui.layer.load(1);
+
+        $.post('@url', data, function (text) {
+
+            layui.layer.close(loadindex);
+
             layui.layer.open(
                 {
                     type: 1,
                     title: '下載',
-                    area: ['400px', '400px'],
-                    content: html
+                    area: ['400px', '300px'],
+                    content: text
                 }
             );
-        }, 'html');
+        }, 'text');
     }
 </script>
 
@@ -29,7 +34,7 @@
         <wt:combobox field="Searcher.DharmaServiceName" items="Searcher.AllDharmaServiceName" />
     </wt:row>
 </wt:searchpanel>
-<wt:grid vm="@Model" url="/DSManage/dsreport/Search" search-panel-id="@searchId" />
+<wt:grid vm="@Model" url="/DSManage/dsreport/Search" search-panel-id="@searchId" hidden-grid-index/>
 
 
 
