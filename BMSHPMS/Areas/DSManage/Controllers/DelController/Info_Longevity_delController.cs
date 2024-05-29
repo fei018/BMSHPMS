@@ -8,6 +8,7 @@ using BMSHPMS.DSManage.ViewModels.Info_Longevity_delVMs;
 
 namespace BMSHPMS.DSManage.Controllers
 {
+    [NoLog]
     [Area("DSManage")]
     [ActionDescription("廢棄延生")]
     public partial class Info_Longevity_delController : BaseController

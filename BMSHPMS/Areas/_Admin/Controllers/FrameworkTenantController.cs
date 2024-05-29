@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
+using System.Linq;
 using WalkingTec.Mvvm.Core;
-using WalkingTec.Mvvm.Mvc;
 using WalkingTec.Mvvm.Core.Extensions;
 using WalkingTec.Mvvm.Mvc.Admin.ViewModels.FrameworkTenantVMs;
-using System.Linq;
 
 namespace WalkingTec.Mvvm.Mvc.Admin.Controllers
 {
@@ -18,7 +16,7 @@ namespace WalkingTec.Mvvm.Mvc.Admin.Controllers
         [ActionDescription("Sys.Search")]
         public ActionResult Index()
         {
-            if(CanUseTenant() == false)
+            if (CanUseTenant() == false)
             {
                 return Content(Localizer["_Admin.TenantNotAllowed"]);
             }
@@ -198,7 +196,7 @@ namespace WalkingTec.Mvvm.Mvc.Admin.Controllers
             }
             if (!ModelState.IsValid || !vm.DoBatchEdit())
             {
-                return PartialView("BatchEdit",vm);
+                return PartialView("BatchEdit", vm);
             }
             else
             {
@@ -230,7 +228,7 @@ namespace WalkingTec.Mvvm.Mvc.Admin.Controllers
             }
             if (!ModelState.IsValid || !vm.DoBatchDelete())
             {
-                return PartialView("BatchDelete",vm);
+                return PartialView("BatchDelete", vm);
             }
             else
             {
@@ -241,7 +239,7 @@ namespace WalkingTec.Mvvm.Mvc.Admin.Controllers
         #endregion
 
         #region Import
-		[ActionDescription("Sys.Import")]
+        [ActionDescription("Sys.Import")]
         public ActionResult Import()
         {
             if (CanUseTenant() == false)
@@ -284,7 +282,7 @@ namespace WalkingTec.Mvvm.Mvc.Admin.Controllers
 
         private bool CanUseTenant()
         {
-            if(Wtm.LoginUserInfo != null && (Wtm.LoginUserInfo.CurrentTenant == null || Wtm.GlobaInfo.AllTenant.Any(x=>x.TCode == Wtm.LoginUserInfo.CurrentTenant && x.Enabled==true && x.EnableSub == true)))
+            if (Wtm.LoginUserInfo != null && (Wtm.LoginUserInfo.CurrentTenant == null || Wtm.GlobaInfo.AllTenant.Any(x => x.TCode == Wtm.LoginUserInfo.CurrentTenant && x.Enabled == true && x.EnableSub == true)))
             {
                 return true;
             }

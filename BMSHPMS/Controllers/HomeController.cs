@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Org.BouncyCastle.Math.EC.Multiplier;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Auth;
 using WalkingTec.Mvvm.Core.Extensions;
@@ -18,6 +17,7 @@ using WalkingTec.Mvvm.Mvc;
 
 namespace BMSHPMS.Controllers
 {
+    [NoLog]
     public class HomeController : BaseController
     {
         [AllRights]
@@ -33,6 +33,7 @@ namespace BMSHPMS.Controllers
             ViewData["title"] = "BMSH";
             return View();
         }
+
 
         [AllowAnonymous]
         public IActionResult PIndex()
@@ -71,7 +72,7 @@ namespace BMSHPMS.Controllers
                 data.Add(new ChartData
                 {
                     Category = "Actions",
-                    Value = controllers.SelectMany(x=>x.Actions).Count(),
+                    Value = controllers.SelectMany(x => x.Actions).Count(),
                     Series = area?.AreaName ?? "Default"
                 });
             }
@@ -103,7 +104,7 @@ namespace BMSHPMS.Controllers
                     Value = m.GetProperties().Count(),
                     Category = m.GetPropertyDisplayName(),
                     Series = "Model"
-                }) ;
+                });
             }
             var rv = data.ToChartData();
             return Json(rv);

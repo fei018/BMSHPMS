@@ -8,6 +8,7 @@ using BMSHPMS.DSManage.ViewModels.Info_Receipt_delVMs;
 
 namespace BMSHPMS.DSManage.Controllers
 {
+    [NoLog]
     [Area("DSManage")]
     [ActionDescription("廢棄收據")]
     public partial class Info_Receipt_delController : BaseController

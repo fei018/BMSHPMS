@@ -8,6 +8,7 @@ using BMSHPMS.DSManage.ViewModels.Info_Donor_delVMs;
 
 namespace BMSHPMS.DSManage.Controllers
 {
+    [NoLog]
     [Area("DSManage")]
     [ActionDescription("廢棄功德主")]
     public partial class Info_Donor_delController : BaseController

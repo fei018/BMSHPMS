@@ -8,6 +8,7 @@ using BMSHPMS.DSManage.ViewModels.Info_Memorial_delVMs;
 
 namespace BMSHPMS.DSManage.Controllers
 {
+    [NoLog]
     [Area("DSManage")]
     [ActionDescription("廢棄附薦")]
     public partial class Info_Memorial_delController : BaseController

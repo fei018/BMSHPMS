@@ -12,6 +12,7 @@ using DotLiquid.Util;
 
 namespace BMSHPMS.DSManage.Controllers
 {
+    [NoLog]
     [Area("DSManage")]
     [ActionDescription("數據自動補全")]
     [AllRights]

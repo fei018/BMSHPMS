@@ -56,7 +56,7 @@ namespace BMSHPMS.DSManage.Controllers
             {
                 var vm = Wtm.CreateVM<ReceiptReportListVM>();
                 vm.Searcher = searcher;
-                var id = vm.GetReportExcelId();
+                var id = vm.GetReportExcelCacheKey();
 
                 return PartialView("DownloadDSReportExcel", id);
             }

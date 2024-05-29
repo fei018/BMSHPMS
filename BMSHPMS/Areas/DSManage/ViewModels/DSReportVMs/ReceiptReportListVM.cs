@@ -36,10 +36,22 @@ namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
         {
             return new List<GridAction>
             {
-                this.MakeAction("DSReport","ExportReportExcel","匯出報表","匯出報表", GridActionParameterTypesEnum.NoId,"DSManage").SetOnClickScript("downloadDSReportExcel"),
+                this.MakeAction("DSReport","DownloadDSReportExcel","匯出報表","匯出報表", GridActionParameterTypesEnum.NoId,"DSManage").SetOnClickScript("downloadDSReportExcel"),
             };
         }
 
+        #endregion
+
+        #region InitGridHeader
+        protected override IEnumerable<IGridColumn<ProjectCategoryVM>> InitGridHeader()
+        {
+            return new List<GridColumn<ProjectCategoryVM>>{
+                this.MakeGridHeader(x => x.ProjectName),
+                this.MakeGridHeader(x => x.ProjectSum),
+                this.MakeGridHeader(x => x.ProjectCount),
+                this.MakeGridHeader(x => x.ProjectTotalSum).SetShowTotal(),
+            };
+        }
         #endregion
 
         #region GetSearchQuery
@@ -180,18 +192,6 @@ namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
         }
         #endregion
 
-        #region InitGridHeader
-        protected override IEnumerable<IGridColumn<ProjectCategoryVM>> InitGridHeader()
-        {
-            return new List<GridColumn<ProjectCategoryVM>>{
-                this.MakeGridHeader(x => x.ProjectName),
-                this.MakeGridHeader(x => x.ProjectSum),
-                this.MakeGridHeader(x => x.ProjectCount),
-                this.MakeGridHeader(x => x.ProjectTotalSum).SetShowTotal(),
-            };
-        }
-        #endregion
-
         #region GetProjectCategoriesFromDatabase
         public List<ProjectCategoryVM> GetProjectCategoriesFromDatabase()
         {
@@ -254,18 +254,22 @@ namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
             return exporter.ExportBytesByTemplate(vm, tpl).Result;
         }
 
-        public string GetReportExcelId()
+        /// <summary>
+        /// 獲取 報表excel 緩存 key
+        /// </summary>
+        /// <returns></returns>
+        public string GetReportExcelCacheKey()
         {
-            var id = Guid.NewGuid().ToString();
+            var key = Guid.NewGuid().ToString();
             var data = ExportReportExcelAsBytes(out string filename);
             var vm = new ReceiptReportDownloadExcelVM()
             {
-                Key = id,
+                Key = key,
                 Data = data,
                 FileName = filename,
             };
-            Wtm.Cache.Add(id, vm, new DistributedCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(30)));
-            return id;
+            Wtm.Cache.Add(key, vm, new DistributedCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(30)));
+            return key;
         }
         #endregion
     }
