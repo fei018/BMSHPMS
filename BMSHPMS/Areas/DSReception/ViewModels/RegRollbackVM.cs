@@ -1,6 +1,5 @@
 ﻿using BMSHPMS.Helper;
 using BMSHPMS.Models.DharmaService;
-using NPOI.SS.UserModel;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,16 +11,22 @@ namespace BMSHPMS.DSReception.ViewModels
 {
     public class RegRollbackVM : BaseVM
     {
-        public string Error {  get; set; }
+        public string Error { get; set; }
 
         public string Msg { get; set; }
 
         public bool Succed { get; set; } = false;
 
-        [Required(ErrorMessage="收據號碼必填")]
+        /// <summary>
+        /// 提交上來的收據號碼
+        /// </summary>
+        [Required(ErrorMessage = "收據號碼必填")]
         [Display(Name = "收據號碼")]
         public string ReceiptNumber { get; set; }
 
+        /// <summary>
+        /// 最近一次登記收據號
+        /// </summary>
         public string LastReceiptNumber { get; set; }
 
         public void Rollback()
@@ -39,7 +44,7 @@ namespace BMSHPMS.DSReception.ViewModels
                     }
 
                     LastReceiptNumber = rollbackList[0].LastReceiptNumber;
-                    if (LastReceiptNumber != ReceiptNumber)
+                    if (LastReceiptNumber != ReceiptNumber) // 對比最近記錄的一次收據號碼 和 提交上來收據號碼
                     {
                         Error = "輸入的收據號碼不是最近一次登記";
                         return;
@@ -74,7 +79,7 @@ namespace BMSHPMS.DSReception.ViewModels
                 {
                     transaction.Rollback();
                     Error = ex.Message;
-                }              
+                }
             }
         }
     }

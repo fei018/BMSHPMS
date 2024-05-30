@@ -63,9 +63,5 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
             DC.SaveChanges();
         }
 
-        public void CleanUsedNumber()
-        {
-
-        }
     }
 }
