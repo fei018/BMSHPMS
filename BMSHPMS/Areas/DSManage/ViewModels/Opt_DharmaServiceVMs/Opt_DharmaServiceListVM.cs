@@ -49,7 +49,7 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs
                     ServiceName = x.ServiceName,
                     SerialCode = x.SerialCode,
                 })
-                .OrderBy(x => x.ID);
+                .OrderBy(x => x.SerialCode);
             return query;
         }
 

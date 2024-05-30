@@ -1,0 +1,13 @@
+﻿@model BMSHPMS.CommonManage.ViewModels.DabeiDonorVMs.DabeiDonorVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:display field="Entity.Name" />
+<wt:display field="Entity.Sum" />
+<wt:display field="Entity.Receipt.ContactName" />
+</wt:row>
+    <wt:row align="AlignEnum.Right">
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

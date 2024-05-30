@@ -1,4 +1,5 @@
-﻿using BMSHPMS.Models.DharmaService;
+﻿using BMSHPMS.Models.DabeiDharmaService;
+using BMSHPMS.Models.DharmaService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using System;
@@ -36,6 +37,10 @@ namespace BMSHPMS
         public DbSet<Reg_RollbackInfo> Reg_RollbackInfos { get; set; }
 
         public DbSet<Info_AutoComplete> Info_AutoCompletes { get; set; }
+
+        public DbSet<DabeiReceipt> DabeiReceipts { get; set; }
+
+        public DbSet<DabeiDonor> DabeiDonors { get; set; }
         #endregion
 
 

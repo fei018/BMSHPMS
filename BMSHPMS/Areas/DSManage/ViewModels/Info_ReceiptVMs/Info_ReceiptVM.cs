@@ -23,6 +23,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 
         public List<ComboSelectListItem> AllOpt_DharmaServiceName { get; set; }
 
+        [Display(Name ="總金額")]
+        public int? TotalSum { get; set; }
 
         public Info_ReceiptVM()
         {
@@ -73,6 +75,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
             DonorInfos = await DC.Set<Info_Donor>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
             LongevityInfos = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
             MemorialInfos = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
+
+            TotalSum = GetCalculateSum(Entity.ID);
         }
 
         #region GetCalculateSum

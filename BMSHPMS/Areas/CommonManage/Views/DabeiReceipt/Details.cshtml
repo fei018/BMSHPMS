@@ -1,0 +1,12 @@
+﻿@model BMSHPMS.CommonManage.ViewModels.DabeiReceiptVMs.DabeiReceiptVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:display field="Entity.ContactName" />
+<wt:display field="Entity.Phone" />
+</wt:row>
+    <wt:row align="AlignEnum.Right">
+        <wt:closebutton />
+    </wt:row>
+</wt:form>
