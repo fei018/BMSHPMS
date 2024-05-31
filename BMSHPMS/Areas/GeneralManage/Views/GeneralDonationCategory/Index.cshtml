@@ -1,0 +1,9 @@
+﻿@model BMSHPMS.GeneralManage.ViewModels.GeneralDonationCategoryVMs.GeneralDonationCategoryListVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+<wt:row items-per-row="ItemsPerRowEnum.Three">
+<wt:textbox field="Searcher.CategoryName" />
+</wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" url="/GeneralManage/GeneralDonationCategory/Search"/>

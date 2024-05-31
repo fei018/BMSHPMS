@@ -1,0 +1,18 @@
+﻿@model BMSHPMS.GeneralManage.ViewModels.GeneralReceiptVMs.GeneralReceiptVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:textbox field="Entity.ReceiptNumber" />
+<wt:textbox field="Entity.ReceiptDate" />
+<wt:textbox field="Entity.ContactName" />
+<wt:textbox field="Entity.Phone" />
+<wt:textbox field="Entity.DonationCategory" />
+<wt:textbox field="Entity.GeneralRemark" />
+</wt:row>
+    <wt:hidden field="Entity.ID" />
+    <wt:row align="AlignEnum.Right">
+        <wt:submitbutton />
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

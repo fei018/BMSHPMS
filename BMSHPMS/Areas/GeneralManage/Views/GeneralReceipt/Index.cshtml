@@ -1,0 +1,13 @@
+﻿@model BMSHPMS.GeneralManage.ViewModels.GeneralReceiptVMs.GeneralReceiptListVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+<wt:row items-per-row="ItemsPerRowEnum.Three">
+<wt:textbox field="Searcher.ReceiptNumber" />
+<wt:textbox field="Searcher.ReceiptDate" />
+<wt:textbox field="Searcher.ContactName" />
+<wt:textbox field="Searcher.Phone" />
+<wt:textbox field="Searcher.DonationCategory" />
+</wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" url="/GeneralManage/GeneralReceipt/Search"/>

@@ -35,6 +35,10 @@ namespace BMSHPMS.DSReception.ViewModels
 
         public List<Opt_DonationProject> DonationProject_Memorials { get; set; }
 
+        /// <summary>
+        /// 填充顯示登記頁面的數據
+        /// </summary>
+        /// <param name="dsProjectID"></param>
         public void FillDonationProjectList(Guid dsProjectID)
         {
 
@@ -75,7 +79,10 @@ namespace BMSHPMS.DSReception.ViewModels
         {
             DSRegResultVM regResultVM = new();
 
-            string receiptNumber = form["ReceiptNumber"];   // post form 收據號碼
+            // 提交的 收據號碼
+            string receiptNumber = form["ReceiptNumber"];
+            receiptNumber = receiptNumber?.Trim();
+
             if (string.IsNullOrWhiteSpace(receiptNumber))
             {
                 regResultVM.Message = "收據號碼是Null.";
@@ -214,6 +221,14 @@ namespace BMSHPMS.DSReception.ViewModels
             #region 更新數據庫
             Info_Receipt newReceipt;
 
+            string contactPhone = null;
+            try
+            {
+                contactPhone = form["ContactPhone"];
+                contactPhone = contactPhone?.Trim();
+            }
+            catch (Exception) { }
+
             // 使用事務
             using var transaction = DC.BeginTransaction();
             try
@@ -233,13 +248,14 @@ namespace BMSHPMS.DSReception.ViewModels
                         ReceiptDate = DateTime.Now.Date,
                         UpdateBy = LoginUserInfo.Name,
                         UpdateTime = DateTime.Now,
+                        ContactPhone = contactPhone,
                     };
 
                     DC.AddEntity(receiptInfo);
                     DC.SaveChanges();
 
                     newReceipt = DC.Set<Info_Receipt>()
-                                    .Where(r => r.ReceiptNumber == receiptNumber)
+                                    .Where(r => r.ReceiptNumber.ToLower() == receiptNumber.ToLower())
                                     .FirstOrDefault();
 
                     if (newReceipt == null)

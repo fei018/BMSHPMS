@@ -26,13 +26,7 @@
 <div style="padding: 20px; margin:0 auto; background-color:#F2F2F2;">
     <form class="layui-form" action="">
         <div class="layui-row">
-            <div class="layui-col-md3">
-                @* <div class="layui-form-item">
-                    <lable class="layui-form-label layui-font-red ">法會:</lable>
-                    <div class="layui-input-inline">
-                        <lable class="layui-form-label reception-lable layui-font-red">@Model.DharmaServiceName</lable>
-                    </div>
-                </div> *@
+            <div class="layui-col-md6">
                  <div class="layui-panel" style="text-align:center;font-size:18px;">
                     <div style="font-size:18px;color:red;padding:20px;">@Model.DharmaServiceName</div>
                  </div>   
@@ -50,12 +44,19 @@
                                 <div class="layui-input-inline">
                                     <input type="text" name="ReceiptNumber" lay-verify="required" lay-reqtext="請輸入收據號碼" required class="layui-input" placeholder="請輸入收據號碼">
                                 </div>
-                                @* <div class="layui-form-mid layui-word-aux">辅助文字</div> *@
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">電話號碼</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="ContactPhone" class="layui-input" placeholder="請輸入電話號碼" >
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
         <hr class="layui-border-green" />
         <div class="layui-row layui-col-space10">
@@ -158,13 +159,5 @@
             }
             return false; //阻止表單跳轉
         });
-
-        // $('#dsRegisterReset').on('click', function (event) {
-        //     let url = '/DSReception/DSRegister/Register?DharmaServiceID=' + $('input[name="DharmaServiceID"]').val();
-
-        //     $.get(url, function (data) {
-        //         $('#dsRegisterDiv').html(data);
-        //     }, 'html');
-        // });
     });
 </script>

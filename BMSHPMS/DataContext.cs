@@ -1,4 +1,4 @@
-﻿using BMSHPMS.Models.DabeiDharmaService;
+﻿using BMSHPMS.Models.GeneralDharmaService;
 using BMSHPMS.Models.DharmaService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -38,9 +38,11 @@ namespace BMSHPMS
 
         public DbSet<Info_AutoComplete> Info_AutoCompletes { get; set; }
 
-        public DbSet<DabeiReceipt> DabeiReceipts { get; set; }
+        public DbSet<GeneralReceipt> GeneralReceipts { get; set; }
 
-        public DbSet<DabeiDonor> DabeiDonors { get; set; }
+        public DbSet<GeneralDonor> GeneralDonors { get; set; }
+
+        public DbSet<GeneralDonationCategory> GeneralDonationProjects { get; set; }
         #endregion
 
 
