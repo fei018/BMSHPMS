@@ -1,5 +1,6 @@
 ﻿using BMSHPMS.Models.GeneralDharmaService;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
@@ -25,7 +26,30 @@ namespace BMSHPMS.GeneralManage.ViewModels.GeneralReceiptVMs
 
         public override void DoAdd()
         {
-            base.DoAdd();
+            using var trans = DC.BeginTransaction();
+
+            try
+            {
+                var id = Guid.NewGuid();
+                Entity.ID = id;
+                DC.AddEntity(Entity);
+
+                foreach (var item in DonorList)
+                {
+                    item.ReceiptId = id;
+                    DC.AddEntity(item);
+                }
+
+                DC.SaveChanges();
+
+                trans.Commit();
+            }
+            catch (Exception)
+            {
+                trans.Rollback();
+                throw;
+            }
+            
         }
 
         public override void DoEdit(bool updateAllFields = false)

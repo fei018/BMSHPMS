@@ -17,13 +17,13 @@ namespace BMSHPMS.GeneralManage.ViewModels.GeneralReceiptVMs
         {
             return new List<GridAction>
             {
-                this.MakeStandardAction("GeneralReceipt", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"GeneralManage", dialogWidth: 800),
+                this.MakeStandardAction("GeneralReceipt", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"GeneralManage", dialogWidth: 800).SetMax(),
                 this.MakeStandardAction("GeneralReceipt", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "GeneralManage", dialogWidth: 800),
                 this.MakeStandardAction("GeneralReceipt", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "GeneralManage", dialogWidth: 800),
                 this.MakeStandardAction("GeneralReceipt", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "GeneralManage", dialogWidth: 800),
-                this.MakeStandardAction("GeneralReceipt", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "GeneralManage", dialogWidth: 800),
+                //this.MakeStandardAction("GeneralReceipt", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "GeneralManage", dialogWidth: 800),
                 this.MakeStandardAction("GeneralReceipt", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "GeneralManage", dialogWidth: 800),
-                this.MakeStandardAction("GeneralReceipt", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "GeneralManage", dialogWidth: 800),
+                //this.MakeStandardAction("GeneralReceipt", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "GeneralManage", dialogWidth: 800),
                 this.MakeStandardAction("GeneralReceipt", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "GeneralManage"),
             };
         }
@@ -32,11 +32,12 @@ namespace BMSHPMS.GeneralManage.ViewModels.GeneralReceiptVMs
         protected override IEnumerable<IGridColumn<GeneralReceipt_View>> InitGridHeader()
         {
             return new List<GridColumn<GeneralReceipt_View>>{
-                this.MakeGridHeader(x => x.ReceiptNumber),
                 this.MakeGridHeader(x => x.ReceiptDate),
+                this.MakeGridHeader(x => x.ReceiptNumber),
+                this.MakeGridHeader(x => x.DonationCategory),
+                this.MakeGridHeader(x=>x.CalculateSum).SetFormat((entity,value)=>{ return DC.Set<GeneralDonor>().CheckID(entity.ID,x=>x.ReceiptId).Select(x=>x.Sum).Sum()?.ToString(); }).SetShowTotal(),
                 this.MakeGridHeader(x => x.ContactName),
                 this.MakeGridHeader(x => x.Phone),
-                this.MakeGridHeader(x => x.DonationCategory),
                 this.MakeGridHeader(x => x.GeneralRemark),
                 this.MakeGridHeaderAction(width: 200)
             };
@@ -60,7 +61,7 @@ namespace BMSHPMS.GeneralManage.ViewModels.GeneralReceiptVMs
                         DonationCategory = x.DonationCategory,
                         GeneralRemark = x.GeneralRemark,
                     })
-                    .OrderBy(x => x.ID);
+                    .OrderByDescending(x => x.ReceiptDate);
             return query;
         }
 
@@ -68,5 +69,7 @@ namespace BMSHPMS.GeneralManage.ViewModels.GeneralReceiptVMs
 
     public class GeneralReceipt_View : GeneralReceipt{
 
+        [Display(Name ="核算金額")]
+        public string CalculateSum { get; set; }
     }
 }

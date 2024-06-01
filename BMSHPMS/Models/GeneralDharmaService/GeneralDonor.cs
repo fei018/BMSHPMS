@@ -20,6 +20,16 @@ namespace BMSHPMS.Models.GeneralDharmaService
         [Display(Name = "備註")]
         public string GeneralRemark { get; set; }
 
+        [Display(Name = "自定欄1")]
+        public string CustomCol1 { get; set; }
+
+        [Display(Name = "自定欄2")]
+        public string CustomCol2 { get; set; }
+
+        [Display(Name = "自定欄3")]
+        public string CustomCol3 { get; set; }
+
+
         public Guid? ReceiptId { get; set; }
 
         public GeneralReceipt Receipt { get; set; }

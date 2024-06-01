@@ -28,6 +28,7 @@ namespace BMSHPMS.Models.GeneralDharmaService
         public string Phone {  get; set; }
 
         [Display(Name = "功德類別")]
+        [Required(ErrorMessage = "{0}必填")]
         public string DonationCategory { get; set; }
 
         [Display(Name ="備註")]
