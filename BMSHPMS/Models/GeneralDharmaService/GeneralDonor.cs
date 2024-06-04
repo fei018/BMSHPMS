@@ -20,13 +20,13 @@ namespace BMSHPMS.Models.GeneralDharmaService
         [Display(Name = "備註")]
         public string GeneralRemark { get; set; }
 
-        [Display(Name = "自定欄1")]
+        [Display(Name = "自訂欄1")]
         public string CustomCol1 { get; set; }
 
-        [Display(Name = "自定欄2")]
+        [Display(Name = "自訂欄2")]
         public string CustomCol2 { get; set; }
 
-        [Display(Name = "自定欄3")]
+        [Display(Name = "自訂欄3")]
         public string CustomCol3 { get; set; }
 
 

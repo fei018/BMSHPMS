@@ -42,35 +42,35 @@ namespace BMSHPMS.DSManage.Controllers
         #endregion
 
         #region Create
-        [ActionDescription("Sys.Create")]
-        public ActionResult Create()
-        {
-            var vm = Wtm.CreateVM<Info_ReceiptVM>();
-            return PartialView(vm);
-        }
+        //[ActionDescription("Sys.Create")]
+        //public ActionResult Create()
+        //{
+        //    var vm = Wtm.CreateVM<Info_ReceiptVM>();
+        //    return PartialView(vm);
+        //}
 
-        [HttpPost]
-        [ActionDescription("Sys.Create")]
-        public ActionResult Create(Info_ReceiptVM vm)
-        {
-            if (!ModelState.IsValid)
-            {
-                return PartialView(vm);
-            }
-            else
-            {
-                vm.DoAdd();
-                if (!ModelState.IsValid)
-                {
-                    vm.DoReInit();
-                    return PartialView(vm);
-                }
-                else
-                {
-                    return FFResult().CloseDialog().RefreshGrid();
-                }
-            }
-        }
+        //[HttpPost]
+        //[ActionDescription("Sys.Create")]
+        //public ActionResult Create(Info_ReceiptVM vm)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return PartialView(vm);
+        //    }
+        //    else
+        //    {
+        //        vm.DoAdd();
+        //        if (!ModelState.IsValid)
+        //        {
+        //            vm.DoReInit();
+        //            return PartialView(vm);
+        //        }
+        //        else
+        //        {
+        //            return FFResult().CloseDialog().RefreshGrid();
+        //        }
+        //    }
+        //}
         #endregion
 
         #region Edit
@@ -142,27 +142,27 @@ namespace BMSHPMS.DSManage.Controllers
         #endregion
 
         #region BatchEdit
-        [HttpPost]
-        [ActionDescription("Sys.BatchEdit")]
-        public ActionResult BatchEdit(string[] IDs)
-        {
-            var vm = Wtm.CreateVM<InfoReceiptBatchVM>(Ids: IDs);
-            return PartialView(vm);
-        }
+        //[HttpPost]
+        //[ActionDescription("Sys.BatchEdit")]
+        //public ActionResult BatchEdit(string[] IDs)
+        //{
+        //    var vm = Wtm.CreateVM<InfoReceiptBatchVM>(Ids: IDs);
+        //    return PartialView(vm);
+        //}
 
-        [HttpPost]
-        [ActionDescription("Sys.BatchEdit")]
-        public ActionResult DoBatchEdit(InfoReceiptBatchVM vm, IFormCollection nouse)
-        {
-            if (!ModelState.IsValid || !vm.DoBatchEdit())
-            {
-                return PartialView("BatchEdit", vm);
-            }
-            else
-            {
-                return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.BatchEditSuccess", vm.Ids.Length]);
-            }
-        }
+        //[HttpPost]
+        //[ActionDescription("Sys.BatchEdit")]
+        //public ActionResult DoBatchEdit(InfoReceiptBatchVM vm, IFormCollection nouse)
+        //{
+        //    if (!ModelState.IsValid || !vm.DoBatchEdit())
+        //    {
+        //        return PartialView("BatchEdit", vm);
+        //    }
+        //    else
+        //    {
+        //        return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.BatchEditSuccess", vm.Ids.Length]);
+        //    }
+        //}
         #endregion
 
         #region BatchDelete

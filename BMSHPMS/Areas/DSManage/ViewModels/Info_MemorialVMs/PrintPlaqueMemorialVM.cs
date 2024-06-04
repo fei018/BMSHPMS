@@ -80,8 +80,15 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                     tmp += item.DeceasedName_3 + "\n";
                 }
 
-                int length = tmp.LastIndexOf("\n");
-                item.DeceasedName_1 = tmp.Substring(0, length);
+                //int length = tmp.LastIndexOf("\n");
+                //item.DeceasedName_1 = tmp.Substring(0, length);
+
+                if (string.IsNullOrEmpty(tmp))
+                {
+                    throw new Exception($"附薦編號:{item.SerialCode}, 沒有可用的附薦名稱.");
+                }
+
+                item.DeceasedName_1 = tmp.TrimEnd('\n');
             }
 
             switch (post.Key)
@@ -98,12 +105,12 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                     DownloadFileName = "附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
                     break;
 
-                case PrintPlaqueContext.附薦5蓮位善字牌位A4紙:
-                    models.ForEach(x => x.BenefactorName = $"陽上：{x.BenefactorName}拜荐");
-                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
-                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                    DownloadFileName = "附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
-                    break;
+                //case PrintPlaqueContext.附薦5蓮位善字牌位A4紙:
+                //    models.ForEach(x => x.BenefactorName = $"陽上：{x.BenefactorName}拜荐");
+                //    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
+                //    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                //    DownloadFileName = "附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
+                //    break;
 
                 default:
                     throw new Exception(nameof(PrintPlaquePost) + " switch key not found: " + post.ButtonDisplayName);

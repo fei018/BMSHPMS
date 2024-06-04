@@ -1,5 +1,4 @@
 ﻿@model BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs.Info_ReceiptVM
-@* @inject IStringLocalizer<Program> Localizer; *@
 @{
     var donors = Model.DonorInfos;
     var longevitys = Model.LongevityInfos;
@@ -34,97 +33,39 @@
         <wt:fieldset title="功德主" style="border-color:gray">
             @foreach (var item in donors)
             {
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.SerialCode)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.SerialCode</label>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.Sum)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.Sum</label>
-                        </div>
-                    </div>
-                </div>             
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.LongevityName)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.LongevityName</label>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DeceasedName_1)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.DeceasedName_1</label>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DeceasedName_2)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.DeceasedName_2</label>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DeceasedName_3)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.DeceasedName_3</label>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.BenefactorName)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.BenefactorName</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DSRemark)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.DSRemark</label>
-                        </div>
-                    </div>
-                </div>
+                <wt:row items-per-row="ItemsPerRowEnum.Four">
+                    <wt:display field="@item.SerialCode" />
+                    <wt:display field="@item.Sum" />
+                </wt:row>
+                <wt:row items-per-row="ItemsPerRowEnum.One">
+                    <wt:display field="@item.LongevityName" />
+                    <wt:display field="@item.DeceasedName_1" />
+                    <wt:display field="@item.DeceasedName_2" />
+                    <wt:display field="@item.DeceasedName_3" />
+                    <wt:display field="@item.BenefactorName" />
+                </wt:row>
+                <wt:row items-per-row="ItemsPerRowEnum.One">
+                    <wt:display field="@item.DSRemark" />
+                </wt:row>
                 <hr />
             }
         </wt:fieldset>
     }
     @if (longevitys != null && longevitys.Count > 0)
     {
-        <wt:fieldset title="延生位" style="border-color:gray">
+        <wt:fieldset title="延生位" style="border-color:gray">          
             @foreach (var item in longevitys)
             {
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.SerialCode)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.SerialCode</label>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.Sum)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.Sum</label>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.Name)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.Name</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DSRemark)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.DSRemark</label>
-                        </div>
-                    </div>
-                </div>
+                <wt:row items-per-row="ItemsPerRowEnum.Four">
+                    <wt:display field="@item.SerialCode" />
+                    <wt:display field="@item.Sum" />
+                </wt:row>
+                <wt:row items-per-row="ItemsPerRowEnum.One">
+                    <wt:display field="@item.Name" />
+                </wt:row>
+                <wt:row items-per-row="ItemsPerRowEnum.One">
+                    <wt:display field="@item.DSRemark" />
+                </wt:row>
                 <hr />
             }
         </wt:fieldset>
@@ -134,52 +75,19 @@
         <wt:fieldset title="附薦位" style="border-color:gray">
             @foreach (var item in memorials)
             {
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.SerialCode)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.SerialCode</label>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.Sum)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.Sum</label>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DeceasedName_1)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.DeceasedName_1</label>
-                        </div>
-                    </div>
-                     <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DeceasedName_2)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.DeceasedName_2</label>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DeceasedName_3)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.DeceasedName_3</label>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.BenefactorName)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.BenefactorName</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DSRemark)</label>
-                        <div class="layui-input-inline">
-                            <label class="layui-form-label">@item.DSRemark</label>
-                        </div>
-                    </div>
-                </div>
+                <wt:row items-per-row="ItemsPerRowEnum.Four">
+                    <wt:display field="@item.SerialCode" />
+                    <wt:display field="@item.Sum" />
+                </wt:row>
+                <wt:row items-per-row="ItemsPerRowEnum.One">
+                    <wt:display field="@item.DeceasedName_1" />
+                    <wt:display field="@item.DeceasedName_2" />
+                    <wt:display field="@item.DeceasedName_3" />
+                    <wt:display field="@item.BenefactorName" />
+                </wt:row>
+                <wt:row items-per-row="ItemsPerRowEnum.One">
+                    <wt:display field="@item.DSRemark" />
+                </wt:row>
                 <hr />
             }
         </wt:fieldset>

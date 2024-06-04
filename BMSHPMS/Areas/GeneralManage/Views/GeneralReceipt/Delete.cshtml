@@ -2,18 +2,18 @@
 @inject IStringLocalizer<Program> Localizer;
 
 <wt:form vm="@Model">
-	<wt:quote>@Localizer["Sys.DeleteConfirm"]</wt:quote>
-<wt:row items-per-row="ItemsPerRowEnum.Two">
-<wt:display field="Entity.ReceiptNumber" />
-<wt:display field="Entity.ReceiptDate" />
-<wt:display field="Entity.ContactName" />
-<wt:display field="Entity.Phone" />
-<wt:display field="Entity.DonationCategory" />
-<wt:display field="Entity.GeneralRemark" />
-</wt:row>
+    <wt:quote>@Localizer["Sys.DeleteConfirm"]</wt:quote>
+    <wt:row items-per-row="ItemsPerRowEnum.Two">
+        <wt:display field="Entity.ReceiptNumber" />
+        <wt:display field="Entity.ReceiptDate" />
+        <wt:display field="Entity.DonationCategory" />
+        <wt:display field="Entity.ContactName" />
+        <wt:display field="Entity.Phone" />
+        <wt:display field="Entity.GeneralRemark" />
+    </wt:row>
     <wt:hidden field="Entity.ID" />
     <wt:row align="AlignEnum.Right">
-        <wt:submitbutton theme=" ButtonThemeEnum.Warm" text="@Localizer["Sys.Delete"]"/>
+        <wt:submitbutton theme=" ButtonThemeEnum.Warm" text="@Localizer["Sys.Delete"]" />
         <wt:closebutton />
     </wt:row>
 </wt:form>

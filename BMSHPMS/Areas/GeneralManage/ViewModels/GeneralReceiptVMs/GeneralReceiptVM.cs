@@ -13,15 +13,16 @@ namespace BMSHPMS.GeneralManage.ViewModels.GeneralReceiptVMs
 
         public List<GeneralDonor> DonorList { get; set; } = new();
 
-        public List<ComboSelectListItem> DonationCategory { get; set; }
+        public List<ComboSelectListItem> DonationCategorySelectItems { get; set; }
 
         public GeneralReceiptVM()
         {
+            SetInclude(x => x.DonorList);
         }
 
         protected override void InitVM()
         {
-            DonationCategory = DC.Set<GeneralDonationCategory>().AsNoTracking().GetSelectListItems(Wtm, x => x.CategoryName, y => y.CategoryName);
+            DonationCategorySelectItems = DC.Set<GeneralDonationCategory>().AsNoTracking().GetSelectListItems(Wtm, x => x.CategoryName, y => y.CategoryName);
         }
 
         public override void DoAdd()
@@ -41,7 +42,6 @@ namespace BMSHPMS.GeneralManage.ViewModels.GeneralReceiptVMs
                 }
 
                 DC.SaveChanges();
-
                 trans.Commit();
             }
             catch (Exception)
@@ -54,8 +54,34 @@ namespace BMSHPMS.GeneralManage.ViewModels.GeneralReceiptVMs
 
         public override void DoEdit(bool updateAllFields = false)
         {
-            base.DoEdit(updateAllFields);
+            using var trans = DC.BeginTransaction();
 
+            try
+            {
+                DC.UpdateProperty(Entity,x=>x.ReceiptNumber);
+                DC.UpdateProperty(Entity, x => x.ReceiptDate);
+                DC.UpdateProperty(Entity, x => x.ContactName);
+                DC.UpdateProperty(Entity, x => x.Phone);
+                DC.UpdateProperty(Entity, x => x.DonationCategory);
+
+                foreach (var item in DonorList)
+                {
+                    DC.UpdateProperty(item,x=>x.Name);
+                    DC.UpdateProperty(item, x => x.Sum);
+                    DC.UpdateProperty(item, x => x.CustomCol1);
+                    DC.UpdateProperty(item, x => x.CustomCol2);
+                    DC.UpdateProperty(item, x => x.CustomCol3);
+                    DC.UpdateProperty(item, x => x.GeneralRemark);
+                }
+
+                DC.SaveChanges();
+                trans.Commit();
+            }
+            catch (Exception)
+            {
+                trans.Rollback();
+                throw;
+            }
         }
 
         public override void DoDelete()

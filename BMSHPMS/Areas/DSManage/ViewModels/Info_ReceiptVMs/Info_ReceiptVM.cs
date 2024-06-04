@@ -23,7 +23,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 
         public List<ComboSelectListItem> AllOpt_DharmaServiceName { get; set; }
 
-        [Display(Name ="總金額")]
+        [Display(Name = "總金額")]
         public int? TotalSum { get; set; }
 
         public Info_ReceiptVM()
@@ -46,6 +46,23 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
             var old = DC.Set<Info_Receipt>().Find(Entity.ID);
             if (old != null)
             {
+                // 檢查提交的 收據號碼 是否改變， 如有改變， 檢查 數據庫中是否已存在 提交的 收據號碼
+                if (Entity.ReceiptNumber.ToUpper() != old.ReceiptNumber.ToUpper())
+                {
+                    var receiptList = DC.Set<Info_Receipt>().Where(x => x.ReceiptNumber.ToUpper() == Entity.ReceiptNumber.ToUpper()).ToList();
+                    if (receiptList != null && receiptList.Count > 0)
+                    {
+                        foreach (var receipt in receiptList)
+                        {
+                            if (receipt.ID != Entity.ID)
+                            {
+                                MSD.AddModelError("ReceiptNumber", $"收據號碼:{Entity.ReceiptNumber}已存在數據庫中.提交的收據ID:{Entity.ID},已存在的收據ID:{receipt.ID}");
+                                return;
+                            }
+                        }
+                    }
+                }
+
                 if (Entity.DharmaServiceYear.HasValue) old.DharmaServiceYear = Entity.DharmaServiceYear;
                 old.DharmaServiceName = Entity.DharmaServiceName;
                 old.ReceiptNumber = Entity.ReceiptNumber;
@@ -61,6 +78,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 old.ReceiptDate = Entity.ReceiptDate;
 
                 DC.UpdateEntity(old);
+
                 DC.SaveChanges();
             }
         }

@@ -21,9 +21,9 @@ namespace BMSHPMS.GeneralManage.ViewModels.GeneralDonorVMs
                 this.MakeStandardAction("GeneralDonor", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "GeneralManage", dialogWidth: 800),
                 this.MakeStandardAction("GeneralDonor", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "GeneralManage", dialogWidth: 800),
                 this.MakeStandardAction("GeneralDonor", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "GeneralManage", dialogWidth: 800),
-                this.MakeStandardAction("GeneralDonor", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "GeneralManage", dialogWidth: 800),
+                //this.MakeStandardAction("GeneralDonor", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "GeneralManage", dialogWidth: 800),
                 this.MakeStandardAction("GeneralDonor", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "GeneralManage", dialogWidth: 800),
-                this.MakeStandardAction("GeneralDonor", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "GeneralManage", dialogWidth: 800),
+                //this.MakeStandardAction("GeneralDonor", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "GeneralManage", dialogWidth: 800),
                 this.MakeStandardAction("GeneralDonor", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "GeneralManage"),
             };
         }
@@ -32,10 +32,11 @@ namespace BMSHPMS.GeneralManage.ViewModels.GeneralDonorVMs
         protected override IEnumerable<IGridColumn<GeneralDonor_View>> InitGridHeader()
         {
             return new List<GridColumn<GeneralDonor_View>>{
+                this.MakeGridHeader(x => x.ReceiptNumber_view),
+                this.MakeGridHeader(x=>x.ReceiptDate_view),
                 this.MakeGridHeader(x => x.Name),
                 this.MakeGridHeader(x => x.Sum),
                 this.MakeGridHeader(x => x.GeneralRemark),
-                this.MakeGridHeader(x => x.ReceiptNumber_view),
                 this.MakeGridHeaderAction(width: 200)
             };
         }
@@ -53,8 +54,9 @@ namespace BMSHPMS.GeneralManage.ViewModels.GeneralDonorVMs
                     Sum = x.Sum,
                     GeneralRemark = x.GeneralRemark,
                     ReceiptNumber_view = x.Receipt.ReceiptNumber,
+                    ReceiptDate_view = x.Receipt.ReceiptDate,
                 })
-                .OrderBy(x => x.ID);
+                .OrderByDescending(x => x.ReceiptDate_view);
             return query;
         }
 
@@ -64,5 +66,7 @@ namespace BMSHPMS.GeneralManage.ViewModels.GeneralDonorVMs
         [Display(Name = "收據號碼")]
         public String ReceiptNumber_view { get; set; }
 
+        [Display(Name = "收據日期")]
+        public DateTime? ReceiptDate_view { get; set; }
     }
 }

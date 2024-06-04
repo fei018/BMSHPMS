@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BMSHPMS.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240531120927_AddGeneralModel")]
+    [Migration("20240604023832_AddGeneralModel")]
     partial class AddGeneralModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -628,6 +628,7 @@ namespace BMSHPMS.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CategoryName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -647,6 +648,15 @@ namespace BMSHPMS.Migrations
 
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CustomCol1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomCol2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomCol3")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GeneralRemark")
                         .HasColumnType("nvarchar(max)");
@@ -693,6 +703,7 @@ namespace BMSHPMS.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DonationCategory")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GeneralRemark")

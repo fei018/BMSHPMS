@@ -1,0 +1,190 @@
+﻿@model BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs.Info_ReceiptVM
+@* @inject IStringLocalizer<Program> Localizer; *@
+@{
+    var donors = Model.DonorInfos;
+    var longevitys = Model.LongevityInfos;
+    var memorials = Model.MemorialInfos;
+}
+
+<wt:form vm="@Model" style="font-size:14px;">
+    <wt:row items-per-row="ItemsPerRowEnum.Two">      
+        <wt:display field="Entity.DharmaServiceYear" />
+        <wt:display field="Entity.DharmaServiceName" />
+        <wt:display field="Entity.ReceiptDate"/>
+        <wt:display field="Entity.ReceiptNumber" />    
+        <wt:display field="TotalSum" />
+        <wt:display field="Entity.ReceiptOwn" />
+        <wt:display field="Entity.ContactName" />
+        <wt:display field="Entity.ContactPhone" />
+    </wt:row>
+    <wt:row>
+        <wt:display field="Entity.DSRemark" />
+    </wt:row>
+    <hr />
+    <wt:row items-per-row="ItemsPerRowEnum.Two">
+        <wt:display field="Entity.CreateBy" Label-Text="登記人" />
+        <wt:display field="Entity.CreateTime" Label-Text="登記時間" />
+        <wt:display field="Entity.UpdateBy" />
+        <wt:display field="Entity.UpdateTime" />
+    </wt:row>
+    <br />
+
+    @if (donors != null && donors.Count > 0)
+    {
+        <wt:fieldset title="功德主" style="border-color:gray">
+            @foreach (var item in donors)
+            {
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.SerialCode)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.SerialCode</label>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.Sum)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.Sum</label>
+                        </div>
+                    </div>
+                </div>             
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.LongevityName)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.LongevityName</label>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DeceasedName_1)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.DeceasedName_1</label>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DeceasedName_2)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.DeceasedName_2</label>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DeceasedName_3)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.DeceasedName_3</label>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.BenefactorName)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.BenefactorName</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DSRemark)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.DSRemark</label>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+            }
+        </wt:fieldset>
+    }
+    @if (longevitys != null && longevitys.Count > 0)
+    {
+        <wt:fieldset title="延生位" style="border-color:gray">
+            @foreach (var item in longevitys)
+            {
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.SerialCode)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.SerialCode</label>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.Sum)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.Sum</label>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.Name)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.Name</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DSRemark)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.DSRemark</label>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+            }
+        </wt:fieldset>
+    }
+    @if (memorials != null && memorials.Count > 0)
+    {
+        <wt:fieldset title="附薦位" style="border-color:gray">
+            @foreach (var item in memorials)
+            {
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.SerialCode)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.SerialCode</label>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.Sum)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.Sum</label>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DeceasedName_1)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.DeceasedName_1</label>
+                        </div>
+                    </div>
+                     <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DeceasedName_2)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.DeceasedName_2</label>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DeceasedName_3)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.DeceasedName_3</label>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.BenefactorName)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.BenefactorName</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">@ToolsHelper.GetDisplayName(() => item.DSRemark)</label>
+                        <div class="layui-input-inline">
+                            <label class="layui-form-label">@item.DSRemark</label>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+            }
+        </wt:fieldset>
+    }
+    <wt:row align="AlignEnum.Right">
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

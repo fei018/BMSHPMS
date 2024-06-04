@@ -92,11 +92,11 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 #region 附薦 case
 
                 case PrintPlaqueContext.附薦5蓮位善字牌位A4紙:
-                    //models.ForEach(x => x.BenefactorName = $"陽上：{x.BenefactorName}拜荐");
-                    //ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
-                    //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                    //DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
-                    //break;
+                    models.ForEach(x => x.BenefactorName = $"陽上：{x.BenefactorName}拜荐");
+                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
+                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
+                    break;
                 #endregion
 
                 default:

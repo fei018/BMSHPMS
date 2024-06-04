@@ -19,7 +19,7 @@ namespace BMSHPMS.Migrations
                     Sum = table.Column<int>(type: "int", nullable: true),
                     ContactName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DonationCategory = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DonationCategory = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GeneralRemark = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreateBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
@@ -36,7 +36,7 @@ namespace BMSHPMS.Migrations
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -51,6 +51,9 @@ namespace BMSHPMS.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Sum = table.Column<int>(type: "int", nullable: false),
                     GeneralRemark = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CustomCol1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CustomCol2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CustomCol3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ReceiptId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreateBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),

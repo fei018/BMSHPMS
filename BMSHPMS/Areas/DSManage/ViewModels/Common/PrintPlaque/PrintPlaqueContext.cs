@@ -40,7 +40,7 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
         {
             string excelTplPath = Path.Combine(wwwPath, "excelTemplate");
 
-            #region LongevityTplPostList
+            #region 延生模版資料
             Longevity_PrintPlaquePostList = new()
             {
                 new PrintPlaquePost()
@@ -83,7 +83,7 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
             };
             #endregion
 
-            #region MemorialTplPostList
+            #region 附薦模版資料
             Memorial_PrintPlaquePostList = new()
             {
                 new PrintPlaquePost()
@@ -104,19 +104,10 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
                     FileType = FileTypeEnum.Excel,
                     PlaqueType = PlaqueTypeEnum.附薦,
                 },
-                new PrintPlaquePost()
-                {
-                    Key = 附薦5蓮位善字牌位A4紙,
-                    ButtonDisplayName = nameof(附薦5蓮位善字牌位A4紙),
-                    FilePath = Path.Combine(excelTplPath,"Memorial_5Seat_Kind.xlsx"),
-                    SeatCount = 5,
-                    FileType = FileTypeEnum.Excel,
-                    PlaqueType = PlaqueTypeEnum.附薦,
-                }
             };
             #endregion
 
-            #region Donor_PrintPlaquePostList
+            #region 功德主模版資料
             Donor_PrintPlaquePostList = new()
             {
                 new PrintPlaquePost()
@@ -145,7 +136,16 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
                     SeatCount = 1,
                     FileType = FileTypeEnum.Word,
                     PlaqueType = PlaqueTypeEnum.延生
-                }
+                },
+                new PrintPlaquePost()
+                {
+                    Key = 附薦5蓮位善字牌位A4紙,
+                    ButtonDisplayName = nameof(附薦5蓮位善字牌位A4紙),
+                    FilePath = Path.Combine(excelTplPath,"Memorial_5Seat_Kind.xlsx"),
+                    SeatCount = 5,
+                    FileType = FileTypeEnum.Excel,
+                    PlaqueType = PlaqueTypeEnum.附薦,
+                },
             };
             #endregion
         }

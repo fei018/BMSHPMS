@@ -138,27 +138,27 @@ namespace BMSHPMS.Controllers
         #endregion
 
         #region BatchEdit
-        [HttpPost]
-        [ActionDescription("Sys.BatchEdit")]
-        public ActionResult BatchEdit(string[] IDs)
-        {
-            var vm = Wtm.CreateVM<GeneralDonorBatchVM>(Ids: IDs);
-            return PartialView(vm);
-        }
+        //[HttpPost]
+        //[ActionDescription("Sys.BatchEdit")]
+        //public ActionResult BatchEdit(string[] IDs)
+        //{
+        //    var vm = Wtm.CreateVM<GeneralDonorBatchVM>(Ids: IDs);
+        //    return PartialView(vm);
+        //}
 
-        [HttpPost]
-        [ActionDescription("Sys.BatchEdit")]
-        public ActionResult DoBatchEdit(GeneralDonorBatchVM vm, IFormCollection nouse)
-        {
-            if (!ModelState.IsValid || !vm.DoBatchEdit())
-            {
-                return PartialView("BatchEdit",vm);
-            }
-            else
-            {
-                return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.BatchEditSuccess", vm.Ids.Length]);
-            }
-        }
+        //[HttpPost]
+        //[ActionDescription("Sys.BatchEdit")]
+        //public ActionResult DoBatchEdit(GeneralDonorBatchVM vm, IFormCollection nouse)
+        //{
+        //    if (!ModelState.IsValid || !vm.DoBatchEdit())
+        //    {
+        //        return PartialView("BatchEdit",vm);
+        //    }
+        //    else
+        //    {
+        //        return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.BatchEditSuccess", vm.Ids.Length]);
+        //    }
+        //}
         #endregion
 
         #region BatchDelete
@@ -186,34 +186,37 @@ namespace BMSHPMS.Controllers
         #endregion
 
         #region Import
-		[ActionDescription("Sys.Import")]
-        public ActionResult Import()
-        {
-            var vm = Wtm.CreateVM<GeneralDonorImportVM>();
-            return PartialView(vm);
-        }
+        //[ActionDescription("Sys.Import")]
+        //public ActionResult Import()
+        //{
+        //    var vm = Wtm.CreateVM<GeneralDonorImportVM>();
+        //    return PartialView(vm);
+        //}
 
-        [HttpPost]
-        [ActionDescription("Sys.Import")]
-        public ActionResult Import(GeneralDonorImportVM vm, IFormCollection nouse)
-        {
-            if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
-            {
-                return PartialView(vm);
-            }
-            else
-            {
-                return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
-            }
-        }
+        //[HttpPost]
+        //[ActionDescription("Sys.Import")]
+        //public ActionResult Import(GeneralDonorImportVM vm, IFormCollection nouse)
+        //{
+        //    if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
+        //    {
+        //        return PartialView(vm);
+        //    }
+        //    else
+        //    {
+        //        return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
+        //    }
+        //}
         #endregion
 
+        #region Export
         [ActionDescription("Sys.Export")]
         [HttpPost]
         public IActionResult ExportExcel(GeneralDonorListVM vm)
         {
             return vm.GetExportData();
         }
+        #endregion
+
 
     }
 }

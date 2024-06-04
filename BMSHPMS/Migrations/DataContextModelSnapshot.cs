@@ -626,6 +626,7 @@ namespace BMSHPMS.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CategoryName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -645,6 +646,15 @@ namespace BMSHPMS.Migrations
 
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CustomCol1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomCol2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomCol3")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GeneralRemark")
                         .HasColumnType("nvarchar(max)");
@@ -691,6 +701,7 @@ namespace BMSHPMS.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DonationCategory")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GeneralRemark")

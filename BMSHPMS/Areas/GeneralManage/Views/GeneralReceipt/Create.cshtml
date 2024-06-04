@@ -9,22 +9,13 @@
     table tr >td div {
         margin:5px;
     }
-
-    table {
-        margin-left: 20px;
-        width:100%;
-    }
-
-    #btnAddNew {
-        margin-left: 20px;
-    }
 </style>
 
 <wt:form vm="@Model">
-    <wt:row items-per-row="ItemsPerRowEnum.Six">
+    <wt:row items-per-row="ItemsPerRowEnum.Three">
         <wt:textbox field="Entity.ReceiptNumber" />
         <wt:datetime field="Entity.ReceiptDate" type="Date" range="false" />
-        <wt:combobox field="Entity.DonationCategory" items="DonationCategory" />
+        <wt:combobox field="Entity.DonationCategory" items="DonationCategorySelectItems" />
         <wt:textbox field="Entity.ContactName" />
         <wt:textbox field="Entity.Phone" />   
     </wt:row>
@@ -32,57 +23,59 @@
         <wt:textbox field="Entity.GeneralRemark" />
     </wt:row>
     <hr />
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <td>功德芳名</td>
-                    <td>金額(元)</td>
-                    <td>自定欄1</td>
-                    <td>自定欄2</td>
-                    <td>自定欄3</td>
-                    <td>備註</td>
-                </tr>
-            </thead>
-            <tbody id="tbbody">
-                <tr>
-                    <td>
-                        <div class="layui-form-item">
-                            <input class="layui-input" name="donorList[0].Name" type="text" lay-verify="required" lay-reqtext="必填項" />
-                        </div>
-                    </td>
-                    <td>
-                        <div class="layui-form-item">
-                            <input class="layui-input" name="donorList[0].Sum" type="text" lay-verify="required" lay-reqtext="必填項" />
-                        </div>
-                    </td>
-                    <td>
-                        <div class="layui-form-item">
-                            <input class="layui-input" name="donorList[0].CustomCol1" type="text" />
-                        </div>
-                    </td>
-                    <td>
-                        <div class="layui-form-item">
-                            <input class="layui-input" name="donorList[0].CustomCol2" type="text" />
-                        </div>
-                    </td>
-                    <td>
-                        <div class="layui-form-item">
-                            <input class="layui-input" name="donorList[0].CustomCol3" type="text" />
-                        </div>
-                    </td>
-                    <td>
-                        <div class="layui-form-item">
-                            <input class="layui-input" name="donorList[0].GeneralRemark" type="text" />
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <hr />
-    <div>
-        <button type="button" id="btnAddNew" class="layui-btn">新增功德芳名</button>
+    <div style="margin-left:20px;">
+        <div>
+            <table style="width:100%;">
+                <thead>
+                    <tr>
+                        <td>功德芳名</td>
+                        <td>金額(元)</td>
+                        <td>自訂欄1</td>
+                        <td>自訂欄2</td>
+                        <td>自訂欄3</td>
+                        <td>備註</td>
+                    </tr>
+                </thead>
+                <tbody id="tbbody">
+                    <tr>
+                        <td>
+                            <div class="layui-form-item">
+                                <input class="layui-input" name="donorList[0].Name" type="text" lay-verify="required" lay-reqtext="必填項" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="layui-form-item">
+                                <input class="layui-input" name="donorList[0].Sum" type="number" lay-verify="required" lay-reqtext="必填項" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="layui-form-item">
+                                <input class="layui-input" name="donorList[0].CustomCol1" type="text" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="layui-form-item">
+                                <input class="layui-input" name="donorList[0].CustomCol2" type="text" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="layui-form-item">
+                                <input class="layui-input" name="donorList[0].CustomCol3" type="text" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="layui-form-item">
+                                <input class="layui-input" name="donorList[0].GeneralRemark" type="text" />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr />
+        <div>
+            <button type="button" id="btnAddNew" class="layui-btn">新增功德芳名</button>
+        </div>
     </div>
     <hr />
     <wt:row align="AlignEnum.Right">
@@ -103,7 +96,7 @@
                                     </td>
                                     <td>
                                         <div class="layui-form-item">
-                                             <input class="layui-input" name="donorList[${count}].Sum" type="text" lay-verify="required" lay-reqtext="必填項"/>
+                                                 <input class="layui-input" name="donorList[${count}].Sum" type="number" lay-verify="required" lay-reqtext="必填項"/>
                                         </div>
                                     </td>
                                     <td>
