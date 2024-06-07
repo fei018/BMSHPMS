@@ -1,14 +1,11 @@
-﻿using BMSHPMS.Models.DharmaService;
-using Magicodes.ExporterAndImporter.Core;
+﻿using Magicodes.ExporterAndImporter.Core;
 using Magicodes.ExporterAndImporter.Excel;
 using NPOI.XSSF.UserModel;
 using Spire.Doc;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
-using WalkingTec.Mvvm.Core;
 
 namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
 {

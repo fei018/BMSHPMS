@@ -33,11 +33,17 @@ namespace BMSHPMS.GeneralManage.ViewModels.GeneralReceiptVMs
             {
                 var id = Guid.NewGuid();
                 Entity.ID = id;
+                Entity.CreateBy = LoginUserInfo.Name;
+                Entity.CreateTime = DateTime.Now;
+
                 DC.AddEntity(Entity);
 
                 foreach (var item in DonorList)
                 {
                     item.ReceiptId = id;
+                    item.CreateTime = DateTime.Now;
+                    item.CreateBy = LoginUserInfo.Name;
+
                     DC.AddEntity(item);
                 }
 
@@ -58,15 +64,26 @@ namespace BMSHPMS.GeneralManage.ViewModels.GeneralReceiptVMs
 
             try
             {
-                DC.UpdateProperty(Entity,x=>x.ReceiptNumber);
+                Entity.UpdateBy = LoginUserInfo.Name;
+                Entity.UpdateTime = DateTime.Now;
+
+                DC.UpdateProperty(Entity, x => x.UpdateBy);
+                DC.UpdateProperty(Entity, x => x.UpdateTime);
+                DC.UpdateProperty(Entity, x => x.ReceiptNumber);
                 DC.UpdateProperty(Entity, x => x.ReceiptDate);
                 DC.UpdateProperty(Entity, x => x.ContactName);
                 DC.UpdateProperty(Entity, x => x.Phone);
                 DC.UpdateProperty(Entity, x => x.DonationCategory);
+                DC.UpdateProperty(Entity, x => x.GeneralRemark);
 
                 foreach (var item in DonorList)
                 {
-                    DC.UpdateProperty(item,x=>x.Name);
+                    item.UpdateBy = LoginUserInfo.Name;
+                    item.UpdateTime = DateTime.Now;
+
+                    DC.UpdateProperty(item, x => x.UpdateBy);
+                    DC.UpdateProperty(item, x => x.UpdateTime);
+                    DC.UpdateProperty(item, x => x.Name);
                     DC.UpdateProperty(item, x => x.Sum);
                     DC.UpdateProperty(item, x => x.CustomCol1);
                     DC.UpdateProperty(item, x => x.CustomCol2);
