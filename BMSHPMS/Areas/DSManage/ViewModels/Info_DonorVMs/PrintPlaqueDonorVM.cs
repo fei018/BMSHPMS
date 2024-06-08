@@ -63,9 +63,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 throw new Exception(Path.GetFileName(post.FilePath) + " not exist.");
             }
 
-            #region switch
             List<Info_Donor> models = await DC.Set<Info_Donor>().AsNoTracking().CheckIDs(ids).OrderBy(x => x.SerialCode).ToListAsync();
 
+            #region switch
             switch (post.Key)
             {
                 #region 延生 case
@@ -92,11 +92,27 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 #region 附薦 case
 
                 case PrintPlaqueContext.附薦5蓮位善字牌位A4紙:
-                    models.ForEach(x => x.BenefactorName = $"陽上：{x.BenefactorName}拜荐");
+                    ProcessDeceasedName(ref models);
+                    //models.ForEach(x => x.BenefactorName = $"陽上：{x.BenefactorName}拜荐");
                     ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
                     Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
                     break;
+
+                case PrintPlaqueContext.附薦3蓮位萬字牌位A4紙:
+                    ProcessDeceasedName(ref models);
+                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
+                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
+                    break;
+
+                case PrintPlaqueContext.附薦2蓮位全字牌位A4紙:
+                    ProcessDeceasedName(ref models);
+                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
+                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
+                    break;
+
                 #endregion
 
                 default:
@@ -111,6 +127,38 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
             };
 
             return fileContentResult;
+        }
+        #endregion
+
+        #region 處理附薦名
+        private void ProcessDeceasedName(ref List<Info_Donor> models)
+        {
+            foreach (var item in models)
+            {
+                string tmp = null;
+
+                if (!string.IsNullOrWhiteSpace(item.DeceasedName_1))
+                {
+                    tmp += item.DeceasedName_1 + "\n";
+                }
+
+                if (!string.IsNullOrWhiteSpace(item.DeceasedName_2))
+                {
+                    tmp += item.DeceasedName_2 + "\n";
+                }
+
+                if (!string.IsNullOrWhiteSpace(item.DeceasedName_3))
+                {
+                    tmp += item.DeceasedName_3 + "\n";
+                }
+
+                if (string.IsNullOrEmpty(tmp))
+                {
+                    throw new Exception($"附薦編號:{item.SerialCode}, 沒有可用的附薦名稱.");
+                }
+
+                item.DeceasedName_1 = tmp.TrimEnd('\n');
+            }
         }
         #endregion
     }

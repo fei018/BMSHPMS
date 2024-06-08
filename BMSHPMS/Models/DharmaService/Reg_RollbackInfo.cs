@@ -24,6 +24,9 @@ namespace BMSHPMS.Models.DharmaService
         [Comment("功德已使用數")]
         public int? PreUsedNumber { get; set; }
 
+        /// <summary>
+        /// 最後一次登記的收據號碼
+        /// </summary>
         [Display(Name = "收據號碼")]
         [Comment("收據號碼")]
         public string LastReceiptNumber { get; set; }

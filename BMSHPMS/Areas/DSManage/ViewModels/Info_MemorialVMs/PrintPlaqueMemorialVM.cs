@@ -61,6 +61,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
             }
 
             var models = DC.Set<Info_Memorial>().AsNoTracking().CheckIDs(ids).OrderBy(x => x.SerialCode).ToList();
+
             foreach (var item in models)
             {
                 string tmp = null;

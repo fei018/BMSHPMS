@@ -150,7 +150,10 @@ namespace BMSHPMS.DSReception.ViewModels
             {
                 var queryDonationProject = DC.Set<Opt_DonationProject>().Find(submittedItem.DonationProjectID); // 根據功德ID 查詢 功德項目
 
-                int usedNumber = queryDonationProject.UsedNumber; // 功德種類的已使用數目
+                // 功德種類的當前已使用數目
+                int usedNumber = queryDonationProject.UsedNumber;
+                
+                // rollback 回退表中，記錄功德上一次的已使用數
                 rollbackInfos.Add(new Reg_RollbackInfo { PreUsedNumber = usedNumber, DonationProjectID = queryDonationProject.ID, LastReceiptNumber = receiptNumber });
 
                 queryDonationProject.UsedNumber += submittedItem.Count;
