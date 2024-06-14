@@ -148,8 +148,8 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
 
             await Task.Run(() =>
             {
-                using FileStream fileStream = new FileStream(templateFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                using Document doc = new Document();
+                using FileStream fileStream = new FileStream(templateFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+                using Document doc = new();
                 doc.LoadFromStream(fileStream, FileFormat.Docx);
 
                 Type type = data.GetType();

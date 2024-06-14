@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BMSHPMS.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240604023832_AddGeneralModel")]
-    partial class AddGeneralModel
+    [Migration("20240614075413_ReceiptAddDSId")]
+    partial class ReceiptAddDSId
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,6 +56,12 @@ namespace BMSHPMS.Migrations
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("DProjectSerial")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("DProjectSerialNumber")
+                        .HasColumnType("int");
+
                     b.Property<string>("DSRemark")
                         .HasColumnType("nvarchar(max)")
                         .HasComment("備註");
@@ -71,6 +77,9 @@ namespace BMSHPMS.Migrations
                     b.Property<string>("DeceasedName_3")
                         .HasColumnType("nvarchar(max)")
                         .HasComment("附薦名稱_3");
+
+                    b.Property<Guid?>("DonationProjectId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("LongevityName")
                         .HasColumnType("nvarchar(max)")
@@ -180,9 +189,18 @@ namespace BMSHPMS.Migrations
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("DProjectSerial")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("DProjectSerialNumber")
+                        .HasColumnType("int");
+
                     b.Property<string>("DSRemark")
                         .HasColumnType("nvarchar(max)")
                         .HasComment("備註");
+
+                    b.Property<Guid?>("DonationProjectId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)")
@@ -280,6 +298,12 @@ namespace BMSHPMS.Migrations
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("DProjectSerial")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("DProjectSerialNumber")
+                        .HasColumnType("int");
+
                     b.Property<string>("DSRemark")
                         .HasColumnType("nvarchar(max)")
                         .HasComment("備註");
@@ -295,6 +319,9 @@ namespace BMSHPMS.Migrations
                     b.Property<string>("DeceasedName_3")
                         .HasColumnType("nvarchar(max)")
                         .HasComment("附薦名稱_3");
+
+                    b.Property<Guid?>("DonationProjectId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("ReceiptID")
                         .IsRequired()
@@ -407,6 +434,9 @@ namespace BMSHPMS.Migrations
                     b.Property<string>("DSRemark")
                         .HasColumnType("nvarchar(max)")
                         .HasComment("備註");
+
+                    b.Property<Guid?>("DharmaServiceId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("DharmaServiceName")
                         .HasColumnType("nvarchar(max)")
@@ -619,120 +649,6 @@ namespace BMSHPMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Reg_RollbackInfo");
-                });
-
-            modelBuilder.Entity("BMSHPMS.Models.GeneralDharmaService.GeneralDonationCategory", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Opt_GeneralDonationCategory");
-                });
-
-            modelBuilder.Entity("BMSHPMS.Models.GeneralDharmaService.GeneralDonor", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreateBy")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime?>("CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CustomCol1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CustomCol2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CustomCol3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GeneralRemark")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("ReceiptId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int?>("Sum")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("UpdateBy")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime?>("UpdateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("ReceiptId");
-
-                    b.ToTable("Info_GeneralDonor");
-                });
-
-            modelBuilder.Entity("BMSHPMS.Models.GeneralDharmaService.GeneralReceipt", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ContactName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreateBy")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime?>("CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DonationCategory")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GeneralRemark")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ReceiptDate")
-                        .IsRequired()
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ReceiptNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Sum")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UpdateBy")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime?>("UpdateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Info_GeneralReceipt");
                 });
 
             modelBuilder.Entity("WalkingTec.Mvvm.Core.ActionLog", b =>
@@ -1678,15 +1594,6 @@ namespace BMSHPMS.Migrations
                     b.Navigation("DharmaService");
                 });
 
-            modelBuilder.Entity("BMSHPMS.Models.GeneralDharmaService.GeneralDonor", b =>
-                {
-                    b.HasOne("BMSHPMS.Models.GeneralDharmaService.GeneralReceipt", "Receipt")
-                        .WithMany("DonorList")
-                        .HasForeignKey("ReceiptId");
-
-                    b.Navigation("Receipt");
-                });
-
             modelBuilder.Entity("WalkingTec.Mvvm.Core.FrameworkGroup", b =>
                 {
                     b.HasOne("WalkingTec.Mvvm.Core.FrameworkGroup", "Parent")
@@ -1736,11 +1643,6 @@ namespace BMSHPMS.Migrations
             modelBuilder.Entity("BMSHPMS.Models.DharmaService.Opt_DharmaService", b =>
                 {
                     b.Navigation("Opt_DonationProjects");
-                });
-
-            modelBuilder.Entity("BMSHPMS.Models.GeneralDharmaService.GeneralReceipt", b =>
-                {
-                    b.Navigation("DonorList");
                 });
 
             modelBuilder.Entity("WalkingTec.Mvvm.Core.FrameworkGroup", b =>

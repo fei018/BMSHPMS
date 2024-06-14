@@ -58,8 +58,7 @@ namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
         public override IOrderedQueryable<ProjectCategoryVM> GetSearchQuery()
         {
             if (string.IsNullOrEmpty(Searcher.DharmaServiceName) ||
-                !Searcher.DharmaServiceYear.HasValue ||
-                string.IsNullOrEmpty(Searcher.ReceiptDate?.Value))
+                !Searcher.DharmaServiceYear.HasValue)
             {
                 throw new Exception("查詢條件不足");
             }
@@ -179,7 +178,7 @@ namespace BMSHPMS.DSManage.ViewModels.DSReportVMs
                 category.Value.ProjectTotalSum = categoryList.Sum(x => x.ProjectSum);
             }
 
-            // 繼續嘗試添加數據庫的功德項目，補齊 projectcount=0 的情況
+            // 繼續嘗試添加 來自 數據庫的功德項目，補齊 法會功德項目 有 0 的情況 出現
             var projectsInDb = GetProjectCategoriesFromDatabase();
             foreach (var category in projectsInDb)
             {

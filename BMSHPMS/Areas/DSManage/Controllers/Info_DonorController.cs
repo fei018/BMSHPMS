@@ -69,9 +69,18 @@ namespace BMSHPMS.DSManage.Controllers
                 }
                 else
                 {
-                    return FFResult().CloseDialog().RefreshGrid();
+                    //return FFResult().CloseDialog().RefreshGrid();
+                    return FFResult().CloseDialog().RefreshGrid().Alert($"功德主編號:{vm2.CreateVMEntity.SerialCode}",title: "新增成功");
                 }
             }
+        }
+
+        [ActionDescription("Sys.Create")]
+        public IActionResult GetDonationSelectListByDharmaServiceID(string id)
+        {
+            var vm = Wtm.CreateVM<InfoDonorCreateVM>();
+            var list = vm.GetDonationByDharmaServiceID(id);
+            return JsonMore(list);
         }
         #endregion
 

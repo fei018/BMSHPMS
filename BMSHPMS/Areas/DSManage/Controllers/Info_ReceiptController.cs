@@ -37,8 +37,7 @@ namespace BMSHPMS.DSManage.Controllers
             {
                 return vm.GetError();
             }
-        }
-
+        }  
         #endregion
 
         #region Create
@@ -253,5 +252,21 @@ namespace BMSHPMS.DSManage.Controllers
         //}
         #endregion
 
+        #region FillDonationData
+        [ActionDescription("填寫數據")]
+        public IActionResult FillDonationData(string id)
+        {
+            var vm = Wtm.CreateVM<Info_ReceiptVM>(id);
+            return PartialView(vm);
+        }
+
+        [ActionDescription("填寫數據")]
+        public IActionResult FillDonationDataRefresh(string id)
+        {
+            var vm = Wtm.CreateVM<Info_ReceiptVM>(id);
+            vm.InitFillDonationData();
+            return PartialView(vm);
+        }
+        #endregion
     }
 }

@@ -15,11 +15,11 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
     public partial class Info_ReceiptVM : BaseCRUDVM<Info_Receipt>
     {
 
-        public List<Info_Donor> DonorInfos { get; set; }
+        public List<Info_Donor> DonorInfos { get; set; } = new();
 
-        public List<Info_Longevity> LongevityInfos { get; set; }
+        public List<Info_Longevity> LongevityInfos { get; set; } = new();
 
-        public List<Info_Memorial> MemorialInfos { get; set; }
+        public List<Info_Memorial> MemorialInfos { get; set; } = new();
 
         public List<ComboSelectListItem> AllOpt_DharmaServiceName { get; set; }
 
@@ -132,6 +132,40 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 }
             }
             return sum;
+        }
+        #endregion
+
+        #region FillData ListVM
+        public FillData_DonorListVM FillData_DonorListVM { get; set; }
+        public FillData_MemorialListVM FillData_MemorialListVM { get; set; }
+        public FillData_LongevityListVM FillData_LongevityListVM { get; set; }
+
+        public void InitFillDonationData()
+        {
+            DonorInfos = DC.Set<Info_Donor>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToList();
+            LongevityInfos = DC.Set<Info_Longevity>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToList();
+            MemorialInfos = DC.Set<Info_Memorial>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToList();
+
+            if (DonorInfos.Count > 0)
+            {
+                FillData_DonorListVM = new FillData_DonorListVM();
+                FillData_DonorListVM.Searcher.ReceiptID = Entity.ID;
+                FillData_DonorListVM.CopyContext(this);
+            }
+
+            if (MemorialInfos.Count > 0)
+            {
+                FillData_MemorialListVM = new FillData_MemorialListVM();
+                FillData_MemorialListVM.Searcher.ReceiptID = Entity.ID;
+                FillData_MemorialListVM.CopyContext(this);
+            }
+
+            if (LongevityInfos.Count > 0)
+            {
+                FillData_LongevityListVM = new FillData_LongevityListVM();
+                FillData_LongevityListVM.Searcher.ReceiptID = Entity.ID;
+                FillData_LongevityListVM.CopyContext(this);
+            }
         }
         #endregion
     }

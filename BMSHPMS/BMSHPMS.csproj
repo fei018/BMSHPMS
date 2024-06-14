@@ -68,6 +68,9 @@
 
 
   <ItemGroup>
+    <Folder Include="Areas\CommonManage\Controllers\" />
+    <Folder Include="Areas\CommonManage\Views\" />
+    <Folder Include="Areas\CommonManage\ViewModels\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 
@@ -75,7 +78,7 @@
 
 
   <ItemGroup>
-    <Content Update="Areas\DSManage\Views\Info_Receipt\Details - 複製.cshtml">
+    <Content Update="Areas\DSManage\Views\Info_Donor\Create - 複製.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

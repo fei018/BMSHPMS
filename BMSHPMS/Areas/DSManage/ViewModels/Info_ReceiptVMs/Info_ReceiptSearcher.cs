@@ -13,10 +13,10 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
     public partial class Info_ReceiptSearcher : BaseSearcher
     {
         [Display(Name = "收據號碼")]
-        public String ReceiptNumber { get; set; }
+        public string ReceiptNumber { get; set; }
 
-        //[Display(Name = "收據號碼2")]
-        //public string ReceiptNumberEnd { get; set; }
+        [Display(Name = "備註")]
+        public string DSRemark { get; set; }
 
         [Display(Name = "收據人姓名")]
         public String ReceiptOwn { get; set; }

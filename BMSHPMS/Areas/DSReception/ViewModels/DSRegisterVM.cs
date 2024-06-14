@@ -145,7 +145,7 @@ namespace BMSHPMS.DSReception.ViewModels
             // 記錄回退信息
             List<Reg_RollbackInfo> rollbackInfos = new List<Reg_RollbackInfo>();
 
-            #region // 計算使用個數
+            #region // 計算提交的每種功德的使用個數
             foreach (var submittedItem in submittedList)
             {
                 var queryDonationProject = DC.Set<Opt_DonationProject>().Find(submittedItem.DonationProjectID); // 根據功德ID 查詢 功德項目
@@ -156,7 +156,7 @@ namespace BMSHPMS.DSReception.ViewModels
                 // rollback 回退表中，記錄功德上一次的已使用數
                 rollbackInfos.Add(new Reg_RollbackInfo { PreUsedNumber = usedNumber, DonationProjectID = queryDonationProject.ID, LastReceiptNumber = receiptNumber });
 
-                queryDonationProject.UsedNumber += submittedItem.Count;
+                queryDonationProject.UsedNumber += submittedItem.Count; // 當前使用數 + 提交的功德個數 = 已使用數
                 calculateUsedNumberDonationProjectList.Add(queryDonationProject);
 
                 // 根據功德項目分類 計算每種個數, 寫入各自的 功德表(Info_Donor,Info_Longevity,Info_Memorial)
@@ -165,9 +165,9 @@ namespace BMSHPMS.DSReception.ViewModels
                     case DonationProjectOptions.Category.功德主:
                         for (int i = 1; i <= submittedItem.Count; i++)
                         {
-                            //string serial = dharmaService.SerialCode + queryDonationProject.SerialCode + (usedNumber + i).ToString().PadLeft(4,'0');
+                            int nextNumber = usedNumber + i;
                             // 總編號
-                            string serial = queryDonationProject.SerialCode + (usedNumber + i).ToString().PadLeft(4, '0');
+                            string serial = queryDonationProject.SerialCode + nextNumber.ToString().PadLeft(4, '0');
                             Info_Donor info = new()
                             {
                                 SerialCode = serial,
@@ -176,6 +176,9 @@ namespace BMSHPMS.DSReception.ViewModels
                                 CreateTime = DateTime.Now,
                                 UpdateBy = LoginUserInfo.Name,
                                 UpdateTime = DateTime.Now,
+                                DonationProjectId = queryDonationProject.ID,
+                                DProjectSerial = queryDonationProject.SerialCode,
+                                DProjectSerialNumber = nextNumber,
                             };
                             newDonorList.Add(info);
                         }
@@ -184,7 +187,8 @@ namespace BMSHPMS.DSReception.ViewModels
                     case DonationProjectOptions.Category.延生位:
                         for (int i = 1; i <= submittedItem.Count; i++)
                         {
-                            string serial = queryDonationProject.SerialCode + (usedNumber + i).ToString().PadLeft(4, '0');
+                            int nextNumber = usedNumber + i;
+                            string serial = queryDonationProject.SerialCode + nextNumber.ToString().PadLeft(4, '0');
                             Info_Longevity info = new()
                             {
                                 SerialCode = serial,
@@ -193,6 +197,9 @@ namespace BMSHPMS.DSReception.ViewModels
                                 CreateTime = DateTime.Now,
                                 UpdateBy = LoginUserInfo.Name,
                                 UpdateTime = DateTime.Now,
+                                DonationProjectId = queryDonationProject.ID,
+                                DProjectSerial = queryDonationProject.SerialCode,
+                                DProjectSerialNumber = nextNumber,
                             };
                             newLongevityList.Add(info);
                         }
@@ -201,7 +208,8 @@ namespace BMSHPMS.DSReception.ViewModels
                     case DonationProjectOptions.Category.附薦位:
                         for (int i = 1; i <= submittedItem.Count; i++)
                         {
-                            string serial = queryDonationProject.SerialCode + (usedNumber + i).ToString().PadLeft(4, '0');
+                            int nextNumber = usedNumber + i;
+                            string serial = queryDonationProject.SerialCode + nextNumber.ToString().PadLeft(4, '0');
                             Info_Memorial info = new()
                             {
                                 SerialCode = serial,
@@ -210,6 +218,9 @@ namespace BMSHPMS.DSReception.ViewModels
                                 CreateTime = DateTime.Now,
                                 UpdateBy = LoginUserInfo.Name,
                                 UpdateTime = DateTime.Now,
+                                DonationProjectId = queryDonationProject.ID,
+                                DProjectSerial = queryDonationProject.SerialCode,
+                                DProjectSerialNumber = nextNumber,
                             };
                             newMemorialList.Add(info);
                         }
@@ -236,6 +247,17 @@ namespace BMSHPMS.DSReception.ViewModels
             using var transaction = DC.BeginTransaction();
             try
             {
+                lock (DbTableLocker.T_Opt_DonationProject)
+                {
+                    // 功德項目更新已使用數
+                    calculateUsedNumberDonationProjectList.ForEach(donation =>
+                    {
+                        DC.UpdateProperty(donation, x => x.UsedNumber);
+                    });
+
+                    DC.SaveChanges();
+                }
+
                 int newReceiptSum = 0;
 
                 // 添加新收據
@@ -252,6 +274,7 @@ namespace BMSHPMS.DSReception.ViewModels
                         UpdateBy = LoginUserInfo.Name,
                         UpdateTime = DateTime.Now,
                         ContactPhone = contactPhone,
+                        DharmaServiceId = postDharmaServiceID,
                     };
 
                     DC.AddEntity(receiptInfo);
@@ -303,18 +326,10 @@ namespace BMSHPMS.DSReception.ViewModels
                         }
                     });
 
-                    // 功德項目更新已使用數
-                    calculateUsedNumberDonationProjectList.ForEach(donation =>
-                    {
-                        //DC.UpdateEntity(donation);
-                        DC.UpdateProperty(donation, x => x.UsedNumber);
-                    });
-
+                    
                     //更新收據金額
                     newReceipt.Sum = newReceiptSum;
                     DC.UpdateProperty(newReceipt, x => x.Sum);
-
-                    //DC.SaveChanges();
 
                     // 刪除舊 RollbackInfo
                     DC.Set<Reg_RollbackInfo>().ToList().ForEach(x => DC.DeleteEntity(x));

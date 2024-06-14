@@ -11,5 +11,7 @@
         public static object T_Longevity => new object();
 
         public static object T_Memorial => new object();
+
+        public static object T_Opt_DonationProject => new object();
     }
 }

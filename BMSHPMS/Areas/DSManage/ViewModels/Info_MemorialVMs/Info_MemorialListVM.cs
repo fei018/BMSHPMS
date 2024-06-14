@@ -58,9 +58,10 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                 .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_1)
                 .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_2)
                 .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_3)
+                .CheckContain(Searcher.DSRemark, x => x.DSRemark)
                 .CheckEqual(Searcher.Sum, x => x.Sum)
                 .CheckContain(Searcher.ReceiptNumber, x => x.Receipt.ReceiptNumber)
-                .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.Receipt.ReceiptDate)
+                .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.Receipt.ReceiptDate, includeMax: false)
                 .CheckEqual(Searcher.DharmaServiceName, x => x.Receipt.DharmaServiceName)
                 .CheckEqual(Searcher.DharmaServiceYear, x => x.Receipt.DharmaServiceYear);
 

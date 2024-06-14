@@ -1,4 +1,5 @@
-﻿using BMSHPMS.DSManage.ViewModels.Info_LongevityVMs;
+﻿using BMSHPMS.DSManage.ViewModels.Info_DonorVMs;
+using BMSHPMS.DSManage.ViewModels.Info_LongevityVMs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -37,7 +38,6 @@ namespace BMSHPMS.DSManage.Controllers
                 return vm.GetError();
             }
         }
-
         #endregion
 
         #region Create
@@ -68,9 +68,18 @@ namespace BMSHPMS.DSManage.Controllers
                 }
                 else
                 {
-                    return FFResult().CloseDialog().RefreshGrid();
+                    //return FFResult().CloseDialog().RefreshGrid();
+                    return FFResult().CloseDialog().RefreshGrid().Alert($"延生編號:{vm2.CreateVMEntity.SerialCode}", title: "新增成功");
                 }
             }
+        }
+
+        [ActionDescription("Sys.Create")]
+        public IActionResult GetDonationSelectListByDharmaServiceID(string id)
+        {
+            var vm = Wtm.CreateVM<InfoLongevityCreateVM>();
+            var list = vm.GetDonationByDharmaServiceID(id);
+            return JsonMore(list);
         }
         #endregion
 

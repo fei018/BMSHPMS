@@ -4,6 +4,7 @@ using BMSHPMS;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BMSHPMS.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240612080116_ModifyInfoDonationProject")]
+    partial class ModifyInfoDonationProject
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -432,9 +434,6 @@ namespace BMSHPMS.Migrations
                     b.Property<string>("DSRemark")
                         .HasColumnType("nvarchar(max)")
                         .HasComment("備註");
-
-                    b.Property<Guid?>("DharmaServiceId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("DharmaServiceName")
                         .HasColumnType("nvarchar(max)")

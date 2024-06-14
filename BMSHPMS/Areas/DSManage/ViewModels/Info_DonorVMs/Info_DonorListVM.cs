@@ -1,14 +1,13 @@
-﻿using System;
+﻿using BMSHPMS.DSManage.ViewModels.Common;
+using BMSHPMS.Models.DharmaService;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using BMSHPMS.Models.DharmaService;
-using BMSHPMS.DSManage.ViewModels.Common;
-using BMSHPMS.DSManage.ViewModels.Info_LongevityVMs;
 
 
 namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
@@ -19,7 +18,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
         {
             return new List<GridAction>
             {
-                this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
+                this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 1000),
                 this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800,dialogHeight:600),
                 this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800,dialogHeight:500),
                 this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800,dialogHeight:500),
@@ -51,7 +50,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
         }
 
         public override IOrderedQueryable<Info_Donor_View> GetSearchQuery()
-        {          
+        {
             var query = DC.Set<Info_Donor>()
                 .AsNoTracking()
                 .CheckContain(Searcher.LongevityName, x => x.LongevityName)
@@ -59,9 +58,10 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_2)
                 .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_3)
                 .CheckContain(Searcher.BenefactorName, x => x.BenefactorName)
-                .CheckEqual(Searcher.Sum, x => x.Sum)              
+                .CheckContain(Searcher.DSRemark, x => x.DSRemark)
+                .CheckEqual(Searcher.Sum, x => x.Sum)
                 .CheckContain(Searcher.ReceiptNumber, x => x.Receipt.ReceiptNumber)
-                .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.Receipt.ReceiptDate)
+                .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.Receipt.ReceiptDate, includeMax: false)
                 .CheckEqual(Searcher.DharmaServiceName, x => x.Receipt.DharmaServiceName)
                 .CheckEqual(Searcher.DharmaServiceYear, x => x.Receipt.DharmaServiceYear);
 
@@ -111,7 +111,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
             }
             else
             {
-                list = await GetSearchQuery().CheckIDs(Ids).OrderBy(x=>x.ID).ToListAsync();
+                list = await GetSearchQuery().CheckIDs(Ids).OrderBy(x => x.ID).ToListAsync();
             }
 
             if (list == null || list.Count <= 0)

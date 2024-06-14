@@ -19,6 +19,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
         {
             return new List<GridAction>
             {
+                this.MakeAction("Info_Receipt","FillDonationData","填寫","填寫資料", GridActionParameterTypesEnum.SingleId,"DSManage").SetShowInRow().SetHideOnToolBar().SetMax(),
                 //this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800,dialogHeight:400),
                 this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800, dialogHeight : 600),
                 this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 1000, dialogHeight : 800),
@@ -27,7 +28,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
                 //this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "DSManage"),
-                //this.MakeAction("Info_Receipt","ExportExcelToday","匯出今日","匯出今日收據", GridActionParameterTypesEnum.NoId,"DSManage").SetIsDownload(),
+                
             };
         }
 
@@ -37,13 +38,13 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
             return new List<GridColumn<Info_Receipt_View>>{
                 this.MakeGridHeader(x => x.ReceiptDate,width:150).SetSort(),
                 this.MakeGridHeader(x => x.ReceiptNumber,width:150).SetSort(),
-                this.MakeGridHeader(x => x.DharmaServiceFullName,width:150).SetSort(),
+                this.MakeGridHeader(x => x.DharmaServiceFullName,width:150),
                 this.MakeGridHeader(x => x.CalculateSum,width:150).SetFormat(CalculateSumFormat).SetSort().SetShowTotal(),
                 this.MakeGridHeader(x => x.ReceiptOwn).SetSort(),
                 this.MakeGridHeader(x => x.ContactName).SetSort(),
                 this.MakeGridHeader(x => x.ContactPhone).SetSort(),
                 this.MakeGridHeader(x => x.DSRemark).SetSort(),
-                this.MakeGridHeaderAction(width: 200).SetSort()
+                this.MakeGridHeaderAction(width: 250).SetSort()
             };
         }
 
@@ -65,7 +66,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                             //.CheckEqual(Searcher.Sum, x => x.Sum)
                             .CheckEqual(Searcher.DharmaServiceName, x => x.DharmaServiceName)
                             .CheckEqual(Searcher.DharmaServiceYear, x => x.DharmaServiceYear)
-                            .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.ReceiptDate);
+                            .CheckContain(Searcher.DSRemark, x => x.DSRemark)
+                            .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.ReceiptDate,includeMax:false);
 
             //if (Searcher.DharmaServiceYear.HasValue)
             //{

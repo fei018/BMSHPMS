@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WalkingTec.Mvvm.Core;
@@ -53,6 +52,9 @@ namespace BMSHPMS.Models.DharmaService
         [Display(Name = "備註")]
         [Comment("備註")]
         public string DSRemark { get; set; }
+
+        [Display(Name = "法會Id")]
+        public Guid? DharmaServiceId { get; set; }
 
         //[Display(Name = "銀行名")]
         //[Comment("銀行名")]

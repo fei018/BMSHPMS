@@ -37,6 +37,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
         [Display(Name = "法會名")]
         public string DharmaServiceName { get; set; }
 
+        [Display(Name = "備註")]
+        public string DSRemark { get; set; }
+
         public List<ComboSelectListItem> AllDharmaServiceName { get; set; }
 
         protected override void InitVM()

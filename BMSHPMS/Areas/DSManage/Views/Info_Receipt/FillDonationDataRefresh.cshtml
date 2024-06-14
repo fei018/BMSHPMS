@@ -1,0 +1,15 @@
+﻿@using BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
+@model Info_ReceiptVM
+
+@if (Model.DonorInfos.Count > 0)
+{
+    <wt:grid vm="@Model.FillData_DonorListVM" hidden-grid-index hidden-checkbox use-local-data="true" height="400"/>
+}
+@if (Model.MemorialInfos.Count > 0)
+{
+    <wt:grid vm="@Model.FillData_MemorialListVM" hidden-grid-index hidden-checkbox use-local-data="true" height="400" />
+}
+@if (Model.LongevityInfos.Count >0)
+{
+    <wt:grid vm="@Model.FillData_LongevityListVM" hidden-grid-index hidden-checkbox use-local-data="true" height="400" />
+}

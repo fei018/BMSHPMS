@@ -31,6 +31,15 @@ namespace BMSHPMS.Models.DharmaService
         [Comment("備註")]
         public string DSRemark { get; set; }
 
+        [Display(Name = "功德項目Id")]
+        public Guid? DonationProjectId { get; set; }
+
+        [Display(Name = "功德項目編號")]
+        public string DProjectSerial { get; set; }
+
+        [Display(Name = "功德項目編號號碼")]
+        public int? DProjectSerialNumber { get; set; }
+
         [Display(Name = "收據ID")]
         [Comment("收據ID")]
         [Required(ErrorMessage = "Validate.{0}required")]

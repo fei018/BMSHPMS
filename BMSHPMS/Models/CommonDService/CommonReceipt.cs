@@ -31,6 +31,6 @@ namespace BMSHPMS.Models.CommonDService
         public string DonationCategory { get; set; }
 
         [Display(Name = "備註")]
-        public string GeneralRemark { get; set; }
+        public string CRemark { get; set; }
     }
 }

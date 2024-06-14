@@ -1,6 +1,14 @@
 ﻿@model DSRegisterVM
 
-<script src="~/js/reception.js"></script>
+<script>
+    function receptionRegister(id) {
+        let url = '/DSReception/DSRegister/Register?DharmaServiceID=' + id;
+
+        $.get(url, function (data) {
+            $('#dsRegisterDiv').html(data);
+        }, 'html');
+    }
+</script>
 
 <div id="dsRegisterDiv">
     <div class="layui-btn-container" style="padding:50px;">
@@ -16,13 +24,3 @@
         }
     </div>
 </div>
-
-@* <script>
-    function receptionRegister(id) {
-        let url = '/DSReception/DSRegister/Register?DharmaServiceID=' + id;
-
-        $.get(url, function (data) {
-            $('#dsRegisterDiv').html(data);
-        }, 'html');
-    }
-</script> *@

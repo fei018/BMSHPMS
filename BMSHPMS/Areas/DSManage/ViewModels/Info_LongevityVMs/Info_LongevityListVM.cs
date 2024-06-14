@@ -19,7 +19,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
         {
             return new List<GridAction>
             {
-                this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
+                this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 1000,dialogHeight:600),
                 this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800, dialogHeight : 600),
                 this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800, dialogHeight : 400),               
@@ -55,9 +55,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                         .AsNoTracking()
                         .CheckContain(Searcher.Name, x => x.Name)
                         .CheckEqual(Searcher.Sum, x => x.Sum)
-                        //.CheckContain(Searcher.SerialCode, x => x.SerialCode)
+                        .CheckContain(Searcher.DSRemark, x => x.DSRemark)
                         .CheckContain(Searcher.ReceiptNumber, x => x.Receipt.ReceiptNumber)
-                        .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.Receipt.ReceiptDate)
+                        .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.Receipt.ReceiptDate, includeMax: false)
                         .CheckEqual(Searcher.DharmaServiceName, x => x.Receipt.DharmaServiceName)
                         .CheckEqual(Searcher.DharmaServiceYear, x => x.Receipt.DharmaServiceYear);
 
@@ -71,11 +71,6 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
             {
                 query = query.CheckContain(serials, x => x.SerialCode);
             }
-
-            //if (Searcher.ReceiptDate.HasValue)
-            //{
-            //    query = query.Where(x => DateTime.Compare(Searcher.ReceiptDate.Value.Date, x.Receipt.ReceiptDate.Value.Date) == 0);
-            //}
 
             var query1 = query.Select(x => new Info_Longevity_View
             {
