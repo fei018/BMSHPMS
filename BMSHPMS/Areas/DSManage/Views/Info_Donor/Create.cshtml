@@ -4,8 +4,8 @@
 <wt:form vm="@Model">
     <wt:row items-per-row="ItemsPerRowEnum.Three">
         <wt:textbox field="ReceiptNumber" />
-        <wt:combobox field="DharmaService" items="DharmaServiceSelectList" link-field="SumSelectDonationID" trigger-url="/dsmanage/info_donor/GetDonationSelectListByDharmaServiceID" />
-        <wt:combobox field="SumSelectDonationID" />
+        <wt:textbox field="SerialCode" />
+        <wt:textbox field="Sum" />
     </wt:row>
     <wt:row items-per-row="ItemsPerRowEnum.One">
         <wt:textbox field="DeceasedName_1" maxlength="12" search-url="/DSManage/Info_AutoComplete/GetContent" />

@@ -61,26 +61,26 @@ namespace BMSHPMS.DSManage.Controllers
                 var vm2 = Wtm.CreateVM<Info_LongevityVM>();
                 vm2.CreateVMEntity = vm;
 
-                vm2.DoAdd();
-                if (!ModelState.IsValid)
+                try
                 {
-                    return PartialView(vm);
+                    vm2.DoAdd();
+                    if (!ModelState.IsValid)
+                    {
+                        return PartialView(vm);
+                    }
+                    else
+                    {
+                        //return FFResult().CloseDialog().RefreshGrid();
+                        return FFResult().CloseDialog().RefreshGrid().Alert($"延生編號:{vm2.CreateVMEntity.SerialCode}", title: "新增成功");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    //return FFResult().CloseDialog().RefreshGrid();
-                    return FFResult().CloseDialog().RefreshGrid().Alert($"延生編號:{vm2.CreateVMEntity.SerialCode}", title: "新增成功");
+                    return FFResult().Alert(ex.GetBaseException().Message, "發生錯誤");
                 }
             }
         }
 
-        [ActionDescription("Sys.Create")]
-        public IActionResult GetDonationSelectListByDharmaServiceID(string id)
-        {
-            var vm = Wtm.CreateVM<InfoLongevityCreateVM>();
-            var list = vm.GetDonationByDharmaServiceID(id);
-            return JsonMore(list);
-        }
         #endregion
 
         #region Edit

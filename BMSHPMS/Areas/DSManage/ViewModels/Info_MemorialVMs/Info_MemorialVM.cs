@@ -1,10 +1,12 @@
 ﻿using BMSHPMS.Helper;
 using BMSHPMS.Models.DharmaService;
+using BMSHPMS.Models.DharmaServiceExtention;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using WalkingTec.Mvvm.Core;
+using WalkingTec.Mvvm.Core.Extensions;
 
 
 namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
@@ -36,13 +38,21 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                 return;
             }
 
-            // 收據的 延生集合 里的 附薦編號已存在
-            if (receipt.Info_Memorials != null)
+            var donationproject = new Opt_DonationProject();
+            if (receipt.DharmaServiceId != null)
             {
-                if (receipt.Info_Memorials.Any(x => x.SerialCode.ToLower() == CreateVMEntity.SerialCode.ToLower()))
+                donationproject = DC.Set<Opt_DonationProject>().AsNoTracking().CheckID(receipt.DharmaServiceId, x => x.DharmaServiceID).SingleOrDefault();
+            }
+            else
+            {
+                var dservice = DC.Set<Opt_DharmaService>().AsNoTracking().CheckEqual(receipt.DharmaServiceName, x => x.ServiceName).SingleOrDefault();
+                if (dservice != null)
                 {
-                    MSD.AddModelError("附薦編號已存在", "附薦編號已存在");
-                    return;
+                    donationproject = DC.Set<Opt_DonationProject>().AsNoTracking()
+                                        .CheckID(dservice.ID, x => x.DharmaServiceID)
+                                        .CheckEqual(DonationProjectOptions.Category.功德主, x => x.DonationCategory)
+                                        .CheckEqual(CreateVMEntity.Sum, x => x.Sum)
+                                        .FirstOrDefault();
                 }
             }
 
@@ -55,6 +65,10 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                 DSRemark = CreateVMEntity.DSRemark,
                 Sum = CreateVMEntity.Sum,
                 SerialCode = CreateVMEntity.SerialCode,
+
+                DonationProjectId = donationproject?.ID,
+                DProjectSerial = donationproject?.SerialCode,
+                DProjectSerialNumber = donationproject?.UsedNumber,
 
                 ReceiptID = receipt.ID,
                 CreateBy = LoginUserInfo.Name,

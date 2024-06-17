@@ -39,17 +39,23 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 return;
             }
 
-            var donationproject = DC.Set<Opt_DonationProject>().AsNoTracking().CheckID(CreateVMEntity.SumSelectDonationID, x => x.ID).SingleOrDefault();
-            if (donationproject == null)
+            var donationproject = new Opt_DonationProject();
+            if (receipt.DharmaServiceId != null)
             {
-                MSD.AddModelError("Opt_DonationProject", $"{nameof(Opt_DonationProject)}.ID:{CreateVMEntity.SumSelectDonationID} is null in database.");
-                return;
+                donationproject = DC.Set<Opt_DonationProject>().AsNoTracking().CheckID(receipt.DharmaServiceId, x => x.DharmaServiceID).SingleOrDefault();
             }
-
-            int nextNumber = donationproject.UsedNumber + 1;
-            donationproject.UsedNumber = nextNumber;
-
-            var serial = donationproject.SerialCode + nextNumber.ToString().PadLeft(4, '0');
+            else
+            {
+                var dservice = DC.Set<Opt_DharmaService>().AsNoTracking().CheckEqual(receipt.DharmaServiceName, x => x.ServiceName).SingleOrDefault();
+                if (dservice != null)
+                {
+                    donationproject = DC.Set<Opt_DonationProject>().AsNoTracking()
+                                        .CheckID(dservice.ID, x => x.DharmaServiceID)
+                                        .CheckEqual(DonationProjectOptions.Category.功德主, x => x.DonationCategory)
+                                        .CheckEqual(CreateVMEntity.Sum, x => x.Sum)
+                                        .FirstOrDefault();
+                }
+            }
 
             var newEntity = new Info_Donor
             {
@@ -59,11 +65,12 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 DeceasedName_3 = CreateVMEntity.DeceasedName_3,
                 LongevityName = CreateVMEntity.LongevityName,
                 DSRemark = CreateVMEntity.DSRemark,
-                Sum = donationproject.Sum,
-                SerialCode = serial,
-                DonationProjectId = donationproject.ID,
-                DProjectSerial = donationproject.SerialCode,
-                DProjectSerialNumber = nextNumber,
+                Sum = CreateVMEntity.Sum,
+                SerialCode = CreateVMEntity.SerialCode,
+
+                DonationProjectId = donationproject?.ID,
+                DProjectSerial = donationproject?.SerialCode,
+                DProjectSerialNumber = donationproject?.UsedNumber,
 
                 ReceiptID = receipt.ID,
                 CreateBy = LoginUserInfo.Name,
@@ -72,30 +79,10 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 UpdateTime = DateTime.Now
             };
 
-            using var dcTrans = DC.BeginTransaction();
-
-            try
+            lock (DbTableLocker.T_Donor)
             {
-                lock (DbTableLocker.T_Opt_DonationProject)
-                {
-                    DC.UpdateProperty(donationproject, x => x.UsedNumber);
-                    DC.SaveChanges();
-                }
-
-                lock (DbTableLocker.T_Donor)
-                {
-                    DC.Set<Info_Donor>().Add(newEntity);
-                    DC.SaveChanges();
-                }
-
-                dcTrans.Commit();
-
-                CreateVMEntity.SerialCode = serial;
-            }
-            catch (Exception ex)
-            {
-                dcTrans.Rollback();
-                MSD.AddModelError("BeginTransaction", "BeginTransaction: " + ex.Message);
+                DC.Set<Info_Donor>().Add(newEntity);
+                DC.SaveChanges();
             }
         }
 
@@ -148,44 +135,16 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
         [Display(Name = "陽居姓名")]
         public string BenefactorName { get; set; }
 
-        /// <summary>
-        /// 功德主 Opt_DonationProject ID
-        /// </summary>
         [Display(Name = "金額")]
         [Required(ErrorMessage = "Validate.{0}required")]
-        public Guid? SumSelectDonationID { get; set; }
+        public int? Sum { get; set; }
 
         [Display(Name = "功德主編號")]
+        [Required(ErrorMessage = "Validate.{0}required")]
         public string SerialCode { get; set; }
 
         [Display(Name = "備註")]
         public string DSRemark { get; set; }
-
-        /// <summary>
-        /// 選擇法會
-        /// </summary>
-        [Display(Name = "選擇法會")]
-        public string DharmaService { get; set; }
-
-
-        public List<ComboSelectListItem> DharmaServiceSelectList { get; set; }
-
-
-        protected override void InitVM()
-        {
-            DharmaServiceSelectList = DC.Set<Opt_DharmaService>().OrderBy(x => x.SerialCode).GetSelectListItems(Wtm, x => x.ServiceName, y => y.ID);
-        }
-
-        public dynamic GetDonationByDharmaServiceID(string id)
-        {
-            var list = DC.Set<Opt_DonationProject>().AsNoTracking()
-                                                    .CheckID(id, x => x.DharmaServiceID)
-                                                    .CheckEqual(DonationProjectOptions.Category.功德主, x => x.DonationCategory)
-                                                    .OrderBy(x => x.SerialCode)
-                                                    .Select(x => new { Text = x.Sum.ToString(), Value = x.ID })
-                                                    .ToList();
-            return list;
-        }
     }
     #endregion
 }

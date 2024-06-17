@@ -73,15 +73,5 @@
     <Folder Include="Areas\CommonManage\ViewModels\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
-
-
-
-
-  <ItemGroup>
-    <Content Update="Areas\DSManage\Views\Info_Donor\Create - 複製.cshtml">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
 </Project>
 
