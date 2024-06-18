@@ -105,6 +105,39 @@ namespace BMSHPMS.DSManage.Controllers
                     return FFResult().CloseDialog().RefreshGridRow(vm.Entity.ID);
                 }
             }
+        }       
+        #endregion
+
+        #region EditFill 收據 -> 填寫資料 -> 修改
+        [ActionDescription("填寫資料")]
+        public ActionResult EditFill(string id)
+        {
+            var vm = Wtm.CreateVM<Info_MemorialVM>(id);
+            return PartialView(vm);
+        }
+
+        [ActionDescription("填寫資料")]
+        [HttpPost]
+        [ValidateFormItemOnly]
+        public ActionResult EditFill(Info_MemorialVM vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return PartialView(vm);
+            }
+            else
+            {
+                vm.DoEdit();
+                if (!ModelState.IsValid)
+                {
+                    vm.DoReInit();
+                    return PartialView(vm);
+                }
+                else
+                {
+                    return FFResult().CloseDialog().AddCustomScript("getDSReceiptFillDonationDataGrid()");
+                }
+            }
         }
         #endregion
 

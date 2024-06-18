@@ -7,7 +7,7 @@ using WalkingTec.Mvvm.Mvc;
 namespace BMSHPMS.DSReception.Controllers
 {
     [Area("DSReception")]
-    [ActionDescription("收據補加")]
+    [ActionDescription("收據功德補加")]
     public class DSReceiptAppendController : BaseController
     {
         [ActionDescription("主頁")]
@@ -42,6 +42,8 @@ namespace BMSHPMS.DSReception.Controllers
 
                     if (!ModelState.IsValid)
                     {
+                        vm.InitAppendInfo(info.DharmaServiceID);
+                        info.DonationProjectCategoryList = vm.AppendInfo.DonationProjectCategoryList;
                         return PartialView(info);
                     }
                     else

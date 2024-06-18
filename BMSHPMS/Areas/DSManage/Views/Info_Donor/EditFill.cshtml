@@ -1,0 +1,33 @@
+﻿@model BMSHPMS.DSManage.ViewModels.Info_DonorVMs.Info_DonorVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+    <wt:row items-per-row="ItemsPerRowEnum.Three">
+        <wt:display field="Entity.Receipt.ReceiptNumber" />
+        <wt:display field="Entity.SerialCode" />
+        <wt:textbox field="Entity.Sum" />
+    </wt:row>  
+    <wt:row items-per-row="ItemsPerRowEnum.One">
+        <wt:textbox field="Entity.DeceasedName_1" maxlength="12" search-url="/DSManage/Info_AutoComplete/GetContent" />
+    </wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.One">
+        <wt:textbox field="Entity.DeceasedName_2" maxlength="12" search-url="/DSManage/Info_AutoComplete/GetContent" />
+    </wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.One">
+        <wt:textbox field="Entity.DeceasedName_3" maxlength="12" search-url="/DSManage/Info_AutoComplete/GetContent" />
+    </wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.One">
+        <wt:textbox field="Entity.BenefactorName" />
+    </wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.One">
+        <wt:textbox field="Entity.LongevityName" />
+    </wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.One">
+        <wt:textbox field="Entity.DSRemark" />
+    </wt:row>
+    <wt:hidden field="Entity.ID" />
+    <wt:row align="AlignEnum.Right">
+        <wt:submitbutton />
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

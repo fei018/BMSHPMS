@@ -261,7 +261,7 @@ namespace BMSHPMS.DSManage.Controllers
         }
 
         [ActionDescription("填寫數據")]
-        public IActionResult FillDonationDataRefresh(string id)
+        public IActionResult FillDonationDataGrid(string id)
         {
             var vm = Wtm.CreateVM<Info_ReceiptVM>(id);
             vm.InitFillDonationData();

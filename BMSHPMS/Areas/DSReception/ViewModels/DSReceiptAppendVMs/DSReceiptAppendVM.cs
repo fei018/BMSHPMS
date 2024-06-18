@@ -18,7 +18,7 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
 
         public List<Opt_DharmaService> GetDharmaServiceList()
         {
-            return DC.Set<Opt_DharmaService>().OrderBy(x => x.ID).ToList();
+            return DC.Set<Opt_DharmaService>().OrderBy(x => x.SerialCode).ToList();
         }
 
         public void InitAppendInfo(string serviceID)
@@ -145,6 +145,18 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
 
                             default:
                                 break;
+                        }
+                    }
+
+                    if (receipt.DharmaServiceId == null && !string.IsNullOrEmpty(info.DharmaServiceID))
+                    {
+                        try
+                        {
+                            receipt.DharmaServiceId = Guid.Parse(info.DharmaServiceID);
+                            DC.UpdateProperty(receipt, x => x.DharmaServiceId);
+                        }
+                        catch (Exception)
+                        {
                         }
                     }
 

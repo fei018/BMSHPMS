@@ -8,7 +8,8 @@ namespace BMSHPMS.Models.DharmaService
     [Display(Name = "自動補全數據")]
     public class Info_AutoComplete : TopBasePoco
     {
-        [Required(ErrorMessage = "數據內容")]
+        [Display(Name = "數據內容")]
+        [Required(ErrorMessage = "{0}必填")]
         public string Content { get; set; }
     }
 }

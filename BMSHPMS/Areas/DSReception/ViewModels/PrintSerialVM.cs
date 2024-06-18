@@ -18,15 +18,13 @@ namespace BMSHPMS.DSReception.ViewModels
 
         public List<Info_Memorial> Memorials { get; set; }
 
-
-
         public async Task GetSerials(string receiptNumber)
         {
             Donors = new List<Info_Donor>();
             Longevitys = new List<Info_Longevity>();
             Memorials = new List<Info_Memorial>();
 
-            Receipt = DC.Set<Info_Receipt>()
+            Receipt = DC.Set<Info_Receipt>().AsNoTracking()
                                             .Where(r => r.ReceiptNumber == receiptNumber)
                                             .FirstOrDefault();
 

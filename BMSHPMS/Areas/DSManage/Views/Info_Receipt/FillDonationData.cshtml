@@ -6,22 +6,24 @@
 }
 
 <script>
-    function fillDSReceiptDonationData() {
-        $.get('/dsmanage/info_receipt/filldonationdatarefresh?id=@receiptId', function (data) {
+    function getDSReceiptFillDonationDataGrid() {
+        $.get('/dsmanage/info_receipt/filldonationdatagrid?id=@receiptId', function (data) {
             $('#@gridID').html(data);
         }, 'html');
     }
 </script>
 
 <div style="padding:10px;">
-    <wt:row align="AlignEnum.Right">
-        <wt:button click="fillDSReceiptDonationData()" text="刷新表格資料" />
-
+    <wt:row align="AlignEnum.Right" items-per-row="ItemsPerRowEnum.Three">
+        <wt:display field="Entity.ReceiptNumber" />
+        <wt:button click="getDSReceiptFillDonationDataGrid()" text="刷新表格資料" />
+        <wt:closebutton />
+        
     </wt:row>
 </div>
 <hr />
 <div id="@gridID" style="overflow:auto;height:100%;padding:10px;">
 </div>
 <script>
-    fillDSReceiptDonationData();
+    getDSReceiptFillDonationDataGrid();
 </script>

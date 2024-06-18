@@ -19,7 +19,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
         {
             return new List<GridAction>
             {
-                this.MakeAction("Info_Receipt","FillDonationData","填寫","填寫資料", GridActionParameterTypesEnum.SingleId,"DSManage").SetShowInRow().SetHideOnToolBar().SetMax(),
+                this.MakeAction("Info_Receipt","FillDonationData","填寫","填寫資料", GridActionParameterTypesEnum.SingleId,"DSManage").SetShowInRow().SetHideOnToolBar().SetShowDialog().SetIsRedirect(),
                 //this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800,dialogHeight:400),
                 this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800, dialogHeight : 600),
                 this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 1000, dialogHeight : 800),
@@ -68,16 +68,6 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                             .CheckEqual(Searcher.DharmaServiceYear, x => x.DharmaServiceYear)
                             .CheckContain(Searcher.DSRemark, x => x.DSRemark)
                             .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.ReceiptDate,includeMax:false);
-
-            //if (Searcher.DharmaServiceYear.HasValue)
-            //{
-            //    query = query.Where(x => x.DharmaServiceYear.HasValue && x.DharmaServiceYear.Value.Equals(Searcher.DharmaServiceYear.Value));
-            //}
-
-            //if (Searcher.ReceiptDate.HasValue)
-            //{
-            //    query = query.Where(x => DateTime.Compare(Searcher.ReceiptDate.Value.Date, x.ReceiptDate.Value.Date) == 0);
-            //}
 
             var query1 = query.Select(x => new Info_Receipt_View
             {
@@ -139,7 +129,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
         [Display(Name = "法會")]
         public new string DharmaServiceFullName { get; set; }
 
-        [Display(Name = "金額")]
+        [Display(Name = "合計金額")]
         public int CalculateSum { get; set; }
     }
     #endregion
