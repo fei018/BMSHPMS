@@ -1,4 +1,6 @@
-﻿namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
+﻿using Elsa.Services.Messaging;
+
+namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
 {
     public class PrintPlaquePost
     {
@@ -21,6 +23,11 @@
         /// 每頁蓮位數
         /// </summary>
         public int SeatCount { get; set; }
+
+        /// <summary>
+        /// Excel 行號
+        /// </summary>
+        public int ExcelRowNumber { get; set; }
 
         public FileTypeEnum FileType { get; set; }
 
