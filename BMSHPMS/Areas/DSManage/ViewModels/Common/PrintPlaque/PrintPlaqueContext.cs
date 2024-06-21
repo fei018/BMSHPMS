@@ -11,7 +11,7 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
 
         public const string 延生小5蓮210x130mm紅紙 = "e47f5c2e676847249af65c1d924d2349";
 
-        public const string 延生大5蓮154x255mm紅紙 = "d02daa2668b3456d8763301d981fa250";
+        public const string 延生大5蓮160x255mm紅紙 = "d02daa2668b3456d8763301d981fa250";
 
         public const string 延生4蓮位小紅筒A4紅紙 = "d6cb22cd8fdb4810979135edaf9ae31e";
 
@@ -54,7 +54,7 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
                     FilePath = Path.Combine(excelTplPath,"Longevity_20cell_205x254mm_RedPaper.xlsx"),
                     SeatCount = 20,
                     FileType = FileTypeEnum.Excel,
-                    PlaqueType = PlaqueTypeEnum.延生
+                    PlaqueType = PlaqueTypeEnum.延生,
                 },
                 new PrintPlaquePost()
                 {
@@ -63,13 +63,13 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
                     FilePath = Path.Combine(excelTplPath,"Longevity_small5cell_210x130mm_redpaper.xlsx"),
                     SeatCount = 5,
                     FileType = FileTypeEnum.Excel,
-                    PlaqueType = PlaqueTypeEnum.延生
+                    PlaqueType = PlaqueTypeEnum.延生,
                 },
                 new PrintPlaquePost()
                 {
-                    Key = 延生大5蓮154x255mm紅紙,
-                    ButtonDisplayName = nameof(延生大5蓮154x255mm紅紙) ,
-                    FilePath = Path.Combine(excelTplPath,"Longevity_Big5cell_154x255m_RedPaper.xlsx"),
+                    Key = 延生大5蓮160x255mm紅紙,
+                    ButtonDisplayName = nameof(延生大5蓮160x255mm紅紙) ,
+                    FilePath = Path.Combine(excelTplPath,"Longevity_Big5cell_160x255mm_RedPaper.xlsx"),
                     SeatCount = 5,
                     FileType = FileTypeEnum.Excel,
                     PlaqueType = PlaqueTypeEnum.延生
@@ -114,6 +114,15 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
             #region 功德主模版資料
             Donor_PrintPlaquePostList = new()
             {
+                new PrintPlaquePost()
+                {
+                    Key = 延生4蓮位小紅筒A4紅紙,
+                    ButtonDisplayName = nameof(延生4蓮位小紅筒A4紅紙),
+                    FilePath = Path.Combine(excelTplPath,"Longevity_4Seat_SmallRedBox_A4.xlsx"),
+                    SeatCount = 4,
+                    FileType = FileTypeEnum.Excel,
+                    PlaqueType = PlaqueTypeEnum.延生
+                },
                 new PrintPlaquePost()
                 {
                     Key = 延生1蓮位小紅筒紅紙,

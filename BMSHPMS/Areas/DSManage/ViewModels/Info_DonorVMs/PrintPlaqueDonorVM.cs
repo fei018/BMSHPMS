@@ -34,10 +34,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
         /// <summary>
         /// 匯出excel result as byte[]
         /// </summary>
-        public byte[] ResultBytes { get; set; }
+        public PrintPlaqueResult ExportResult { get; set; }
 
-
-        public string Mimetype { get; set; }
         #endregion
 
         #region 返回 FileContentResult
@@ -71,21 +69,21 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 #region 延生 case
 
                 case PrintPlaqueContext.延生1蓮位小紅筒紅紙:
-                    ResultBytes = await PrintPlaqueHelper.ExportByteAsWord<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
-                    Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-                    DownloadFileName = "功德主延生_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".docx";
+                    ExportResult = await PrintPlaqueHelper.ExportWordAsByte<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
+                    //Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                    //DownloadFileName = "功德主延生_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".docx";
                     break;
 
                 case PrintPlaqueContext.延生1蓮位中紅筒紅紙:
-                    ResultBytes = await PrintPlaqueHelper.ExportByteAsWord<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
-                    Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-                    DownloadFileName = "功德主延生_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".docx";
+                    ExportResult = await PrintPlaqueHelper.ExportWordAsByte<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
+                    //Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                    //DownloadFileName = "功德主延生_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".docx";
                     break;
 
                 case PrintPlaqueContext.延生1蓮位大紅筒紅紙:
-                    ResultBytes = await PrintPlaqueHelper.ExportByteAsWord<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
-                    Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-                    DownloadFileName = "功德主延生_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".docx";
+                    ExportResult = await PrintPlaqueHelper.ExportWordAsByte<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
+                    //Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                    //DownloadFileName = "功德主延生_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".docx";
                     break;
                 #endregion
 
@@ -94,23 +92,23 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 case PrintPlaqueContext.附薦5蓮位善字牌位A4紙:
                     ProcessDeceasedName(ref models);
                     //models.ForEach(x => x.BenefactorName = $"陽上：{x.BenefactorName}拜荐");
-                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
-                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                    DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
+                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
+                    //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    //DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
                     break;
 
                 case PrintPlaqueContext.附薦3蓮位萬字牌位A4紙:
                     ProcessDeceasedName(ref models);
-                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
-                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                    DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
+                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
+                    //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    //DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
                     break;
 
                 case PrintPlaqueContext.附薦2蓮位全字牌位A4紙:
                     ProcessDeceasedName(ref models);
-                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
-                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                    DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
+                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
+                    //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    //DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
                     break;
 
                 #endregion
@@ -119,9 +117,10 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                     throw new Exception(nameof(PrintPlaquePost) + " switch key not found: " + post.ButtonDisplayName);
             }
             #endregion
-            
 
-            FileContentResult fileContentResult = new(ResultBytes, Mimetype)
+            DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ExportResult.FileExtention;
+
+            FileContentResult fileContentResult = new(ExportResult.FileBytes, ExportResult.Mimetype)
             {
                 FileDownloadName = DownloadFileName
             };

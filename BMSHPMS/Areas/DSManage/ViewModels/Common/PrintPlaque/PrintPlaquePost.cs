@@ -24,11 +24,6 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
         /// </summary>
         public int SeatCount { get; set; }
 
-        /// <summary>
-        /// Excel 行號
-        /// </summary>
-        public int ExcelRowNumber { get; set; }
-
         public FileTypeEnum FileType { get; set; }
 
         public PlaqueTypeEnum PlaqueType { get; set; }

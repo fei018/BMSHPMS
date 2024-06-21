@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
@@ -59,6 +62,29 @@ namespace BMSHPMS.Helper
             }
 
             return t2;
+        }
+        #endregion
+
+        #region public static byte[] GetZipArchive(List<byte[]> fileBytes)
+        public static byte[] GetZipArchive(List<byte[]> fileBytes)
+        {
+            byte[] result;
+
+            using (var ms = new MemoryStream())
+            {
+                using (var zip = new ZipArchive(ms, ZipArchiveMode.Create, true))
+                {
+                    for (int i = 0; i < fileBytes.Count; i++)
+                    {
+                        var entry = zip.CreateEntry(i + ".xlsx", CompressionLevel.NoCompression);
+                        using var zipStream = entry.Open();
+                        zipStream.Write(fileBytes[i], 0, fileBytes[i].Length);
+                    }
+                }
+                result = ms.ToArray(); // 這句一定要放在 using var zip = new ZipArchive(ms, ZipArchiveMode.Create, true) 外面,不然解壓會出現 unexpected end of data
+            }
+                
+            return result;
         }
         #endregion
     }

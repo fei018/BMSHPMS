@@ -32,7 +32,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
         /// <summary>
         /// 匯出excel result as byte[]
         /// </summary>
-        public byte[] ResultBytes { get; set; }
+        public PrintPlaqueResult ExportResult { get; set; }
 
 
         public string Mimetype { get; set; }
@@ -62,61 +62,43 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
 
             var models = DC.Set<Info_Longevity>().AsNoTracking().CheckIDs(ids).OrderBy(x => x.SerialCode).ToList();
 
-            string fileExtension;
+            //string fileExtension;
 
             #region switch
             switch (post.Key)
             {
                 case PrintPlaqueContext.延生20格205x254mm紅紙:
-                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
-                    fileExtension = ".xlsx";
-                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
+                    //fileExtension = ".xlsx";
+                    //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
 
                 case PrintPlaqueContext.延生小5蓮210x130mm紅紙:
-                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
-                    fileExtension = ".xlsx";
-                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
+                    //fileExtension = ".xlsx";
+                    //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
 
-                case PrintPlaqueContext.延生大5蓮154x255mm紅紙:
-                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
-                    fileExtension = ".xlsx";
-                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                case PrintPlaqueContext.延生大5蓮160x255mm紅紙:
+                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
+                    //fileExtension = ".xlsx";
+                    //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
 
                 case PrintPlaqueContext.延生4蓮位小紅筒A4紅紙:
-                    ResultBytes = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
-                    fileExtension = ".xlsx";
-                    Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
+                    //fileExtension = ".xlsx";
+                    //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
-
-                //case PrintPlaqueContext.延生1蓮位小紅筒紅紙:
-                //    ResultBytes = await PrintPlaqueHelper.ExportByteAsWord<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
-                //    fileExtension = ".docx";
-                //    Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-                //    break;
-
-                //case PrintPlaqueContext.延生1蓮位中紅筒紅紙:
-                //    ResultBytes = await PrintPlaqueHelper.ExportByteAsWord<PrintPlaqueData_Longevity, Info_Longevity>(list, post);
-                //    fileExtension = ".docx";
-                //    Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-                //    break;
-
-                //case PrintPlaqueContext.延生1蓮位大紅筒紅紙:
-                //    ResultBytes = await PrintPlaqueHelper.ExportByteAsWord<PrintPlaqueData_Longevity, Info_Longevity>(list, post);
-                //    fileExtension = ".docx";
-                //    Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-                //    break;
 
                 default:
                     throw new Exception(nameof(PrintPlaquePost) + " switch key not found: " + post.ButtonDisplayName);
             }
             #endregion
 
-            DownloadFileName = "延生_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + fileExtension;
+            DownloadFileName = "延生_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ExportResult.FileExtention;
 
-            FileContentResult fileContentResult = new(ResultBytes, Mimetype)
+            FileContentResult fileContentResult = new(ExportResult.FileBytes, ExportResult.Mimetype)
             {
                 FileDownloadName = DownloadFileName
             };
