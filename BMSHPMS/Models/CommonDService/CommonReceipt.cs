@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System;
 using WalkingTec.Mvvm.Core;
+using System.Collections.Generic;
 
 namespace BMSHPMS.Models.CommonDService
 {
@@ -28,9 +29,13 @@ namespace BMSHPMS.Models.CommonDService
 
         [Display(Name = "功德類別")]
         [Required(ErrorMessage = "{0}必填")]
-        public string DonationCategory { get; set; }
+        public ComDonCategoryEnum DonationCategory { get; set; }
 
         [Display(Name = "備註")]
         public string CRemark { get; set; }
+
+
+        public List<AnnualDabeiInfo> AnnualDabeiInfos { get; set; } = new();
+        public List<AnnualLightInfo> AnnualLightInfos { get; set; } = new();
     }
 }

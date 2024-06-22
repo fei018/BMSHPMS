@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
+using BMSHPMS.Models.CommonDService;
 
 namespace BMSHPMS
 {
@@ -38,6 +39,11 @@ namespace BMSHPMS
 
         public DbSet<Info_AutoComplete> Info_AutoCompletes { get; set; }
 
+        public DbSet<CommonReceipt> CommonReceipts { get; set; }
+
+        public DbSet<AnnualDabeiInfo> AnnualDabeiInfos { get; set; }
+
+        public DbSet<AnnualLightInfo> AnnualLightInfos { get; set; }
         #endregion
 
 

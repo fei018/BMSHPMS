@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WalkingTec.Mvvm.Core;
 
@@ -18,5 +19,8 @@ namespace BMSHPMS.Models.CommonDService
         [Required(ErrorMessage = "{0}必填")]
         public int? Sum { get; set; }
 
+        public Guid? CommonReceiptId { get; set; }
+
+        public CommonReceipt CommonReceipt { get; set; }
     }
 }

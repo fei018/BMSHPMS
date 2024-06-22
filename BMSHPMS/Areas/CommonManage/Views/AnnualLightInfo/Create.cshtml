@@ -1,0 +1,19 @@
+﻿@model BMSHPMS.CommonManage.ViewModels.AnnualLightInfoVMs.AnnualLightInfoVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:textbox field="Entity.Name" />
+<wt:textbox field="Entity.Sum" />
+<wt:textbox field="Entity.Count" />
+<wt:textbox field="Entity.WishNumber" />
+<wt:combobox field="Entity.DonateLightMode" />
+<wt:textbox field="Entity.ContactAddress" />
+<wt:textbox field="Entity.Phone" />
+<wt:combobox field="Entity.CommonReceiptId" items="AllCommonReceipts"/>
+</wt:row>
+    <wt:row align="AlignEnum.Right">
+        <wt:submitbutton />
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

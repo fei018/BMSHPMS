@@ -1,0 +1,21 @@
+﻿@model BMSHPMS.CommonManage.ViewModels.AnnualLightInfoVMs.AnnualLightInfoVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+	<wt:quote>@Localizer["Sys.DeleteConfirm"]</wt:quote>
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:display field="Entity.Name" />
+<wt:display field="Entity.Sum" />
+<wt:display field="Entity.Count" />
+<wt:display field="Entity.WishNumber" />
+<wt:display field="Entity.DonateLightMode" />
+<wt:display field="Entity.ContactAddress" />
+<wt:display field="Entity.Phone" />
+<wt:display field="Entity.CommonReceipt.ReceiptNumber" />
+</wt:row>
+    <wt:hidden field="Entity.ID" />
+    <wt:row align="AlignEnum.Right">
+        <wt:submitbutton theme=" ButtonThemeEnum.Warm" text="@Localizer["Sys.Delete"]"/>
+        <wt:closebutton />
+    </wt:row>
+</wt:form>
