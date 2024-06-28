@@ -24,6 +24,8 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectCleanVMs
             foreach (var item in DharmaServices)
             {
                 int usedNumberCount = 0;
+                
+                // 計算功德總使用數
                 DC.Set<Opt_DonationProject>().Where(x => x.DharmaServiceID == item.ID).ToList().ForEach(x => usedNumberCount += x.UsedNumber);
 
                 DSUsedNumberCountVM vm = new()

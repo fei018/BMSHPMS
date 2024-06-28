@@ -1,12 +1,10 @@
-﻿using System;
+﻿using BMSHPMS.Models.CommonDService;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using BMSHPMS.Models.CommonDService;
 
 
 namespace BMSHPMS.CommonManage.ViewModels.AnnualDabeiInfoVMs
@@ -17,13 +15,13 @@ namespace BMSHPMS.CommonManage.ViewModels.AnnualDabeiInfoVMs
         {
             return new List<GridAction>
             {
-                this.MakeStandardAction("AnnualDabeiInfo", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"CommonManage", dialogWidth: 800),
+                //this.MakeStandardAction("AnnualDabeiInfo", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"CommonManage", dialogWidth: 800),
                 this.MakeStandardAction("AnnualDabeiInfo", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "CommonManage", dialogWidth: 800),
                 this.MakeStandardAction("AnnualDabeiInfo", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "CommonManage", dialogWidth: 800),
                 this.MakeStandardAction("AnnualDabeiInfo", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "CommonManage", dialogWidth: 800),
-                this.MakeStandardAction("AnnualDabeiInfo", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "CommonManage", dialogWidth: 800),
+                //this.MakeStandardAction("AnnualDabeiInfo", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "CommonManage", dialogWidth: 800),
                 this.MakeStandardAction("AnnualDabeiInfo", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "CommonManage", dialogWidth: 800),
-                this.MakeStandardAction("AnnualDabeiInfo", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "CommonManage", dialogWidth: 800),
+                //this.MakeStandardAction("AnnualDabeiInfo", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "CommonManage", dialogWidth: 800),
                 this.MakeStandardAction("AnnualDabeiInfo", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "CommonManage"),
             };
         }
@@ -32,11 +30,10 @@ namespace BMSHPMS.CommonManage.ViewModels.AnnualDabeiInfoVMs
         protected override IEnumerable<IGridColumn<AnnualDabeiInfo_View>> InitGridHeader()
         {
             return new List<GridColumn<AnnualDabeiInfo_View>>{
-                this.MakeGridHeader(x=>x.ReceiptDate_view,width:200),
-                this.MakeGridHeader(x=>x.ReceiptNumber_view,width:200),
+                this.MakeGridHeader(x=>x.ReceiptDate_view,width:100),
+                this.MakeGridHeader(x=>x.ReceiptNumber_view,width:100),
                 this.MakeGridHeader(x => x.Name),
                 this.MakeGridHeader(x => x.Sum),
-                this.MakeGridHeader(x => x.ReceiptNumber_view),
                 this.MakeGridHeaderAction(width: 200)
             };
         }

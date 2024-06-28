@@ -9,7 +9,7 @@ using BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs;
 namespace BMSHPMS.Controllers
 {
     [Area("CommonManage")]
-    [ActionDescription("通用收據")]
+    [ActionDescription("普通收據")]
     public partial class CommonReceiptController : BaseController
     {
         #region Search
@@ -64,9 +64,20 @@ namespace BMSHPMS.Controllers
                 }
                 else
                 {
-                    return FFResult().CloseDialog().RefreshGrid();
+                    //return FFResult().CloseDialog().RefreshGrid();
+                    vm.InitDetails();
+                    return PartialView("Details", vm); ;
                 }
             }
+        }
+        #endregion
+
+        #region DonationGrid
+        public IActionResult DonationGrid(string id)
+        {
+            var vm = Wtm.CreateVM<CommonReceiptVM>(id);
+            vm.InitDonationListVM();
+            return PartialView(vm);
         }
         #endregion
 
@@ -133,6 +144,7 @@ namespace BMSHPMS.Controllers
         public ActionResult Details(string id)
         {
             var vm = Wtm.CreateVM<CommonReceiptVM>(id);
+            vm.InitDetails();
             return PartialView(vm);
         }
         #endregion
@@ -208,12 +220,15 @@ namespace BMSHPMS.Controllers
         }
         #endregion
 
+        #region Export
         [ActionDescription("Sys.Export")]
         [HttpPost]
         public IActionResult ExportExcel(CommonReceiptListVM vm)
         {
             return vm.GetExportData();
         }
+        #endregion
+
 
     }
 }

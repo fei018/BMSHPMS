@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
-using WalkingTec.Mvvm.Core.Extensions;
-using BMSHPMS.Models.CommonDService;
 
 
 namespace BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs
@@ -20,13 +16,18 @@ namespace BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs
         public String ContactName { get; set; }
         [Display(Name = "聯絡電話")]
         public String Phone { get; set; }
+
         [Display(Name = "功德類別")]
-        public ComDonCategoryEnum? DonationCategory { get; set; }
+        public string[] DonationCategory { get; set; }
+
         [Display(Name = "備註")]
         public String CRemark { get; set; }
 
+        public List<ComboSelectListItem> DonationCategorySelectItems { get; set; }
+
         protected override void InitVM()
         {
+            DonationCategorySelectItems = CommonDonateCategoryHelper.SelectItems();
         }
 
     }

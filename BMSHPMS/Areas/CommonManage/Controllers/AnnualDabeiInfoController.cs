@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BMSHPMS.CommonManage.ViewModels.AnnualDabeiInfoVMs;
+using BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using WalkingTec.Mvvm.Core;
-using WalkingTec.Mvvm.Mvc;
 using WalkingTec.Mvvm.Core.Extensions;
-using BMSHPMS.CommonManage.ViewModels.AnnualDabeiInfoVMs;
+using WalkingTec.Mvvm.Mvc;
 
 namespace BMSHPMS.Controllers
 {
@@ -40,9 +41,10 @@ namespace BMSHPMS.Controllers
 
         #region Create
         [ActionDescription("Sys.Create")]
-        public ActionResult Create()
+        public ActionResult Create(string receiptId)
         {
             var vm = Wtm.CreateVM<AnnualDabeiInfoVM>();
+            vm.Entity.CommonReceiptId = Guid.Parse(receiptId);
             return PartialView(vm);
         }
 
@@ -64,10 +66,12 @@ namespace BMSHPMS.Controllers
                 }
                 else
                 {
-                    return FFResult().CloseDialog().RefreshGrid();
+                    return FFResult().CloseDialog().RefreshGrid().AddCustomScript(CommonDonationQueryString.AddCustomScript);
                 }
             }
         }
+
+
         #endregion
 
         #region Edit
@@ -75,6 +79,7 @@ namespace BMSHPMS.Controllers
         public ActionResult Edit(string id)
         {
             var vm = Wtm.CreateVM<AnnualDabeiInfoVM>(id);
+
             return PartialView(vm);
         }
 
@@ -97,7 +102,7 @@ namespace BMSHPMS.Controllers
                 }
                 else
                 {
-                    return FFResult().CloseDialog().RefreshGridRow(vm.Entity.ID);
+                    return FFResult().CloseDialog().RefreshGridRow(vm.Entity.ID).AddCustomScript(CommonDonationQueryString.AddCustomScript);
                 }
             }
         }
@@ -108,6 +113,7 @@ namespace BMSHPMS.Controllers
         public ActionResult Delete(string id)
         {
             var vm = Wtm.CreateVM<AnnualDabeiInfoVM>(id);
+
             return PartialView(vm);
         }
 
@@ -123,7 +129,7 @@ namespace BMSHPMS.Controllers
             }
             else
             {
-                return FFResult().CloseDialog().RefreshGrid();
+                return FFResult().CloseDialog().RefreshGrid().AddCustomScript(CommonDonationQueryString.AddCustomScript);
             }
         }
         #endregion
@@ -138,27 +144,27 @@ namespace BMSHPMS.Controllers
         #endregion
 
         #region BatchEdit
-        [HttpPost]
-        [ActionDescription("Sys.BatchEdit")]
-        public ActionResult BatchEdit(string[] IDs)
-        {
-            var vm = Wtm.CreateVM<AnnualDabeiInfoBatchVM>(Ids: IDs);
-            return PartialView(vm);
-        }
+        //[HttpPost]
+        //[ActionDescription("Sys.BatchEdit")]
+        //public ActionResult BatchEdit(string[] IDs)
+        //{
+        //    var vm = Wtm.CreateVM<AnnualDabeiInfoBatchVM>(Ids: IDs);
+        //    return PartialView(vm);
+        //}
 
-        [HttpPost]
-        [ActionDescription("Sys.BatchEdit")]
-        public ActionResult DoBatchEdit(AnnualDabeiInfoBatchVM vm, IFormCollection nouse)
-        {
-            if (!ModelState.IsValid || !vm.DoBatchEdit())
-            {
-                return PartialView("BatchEdit",vm);
-            }
-            else
-            {
-                return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.BatchEditSuccess", vm.Ids.Length]);
-            }
-        }
+        //[HttpPost]
+        //[ActionDescription("Sys.BatchEdit")]
+        //public ActionResult DoBatchEdit(AnnualDabeiInfoBatchVM vm, IFormCollection nouse)
+        //{
+        //    if (!ModelState.IsValid || !vm.DoBatchEdit())
+        //    {
+        //        return PartialView("BatchEdit",vm);
+        //    }
+        //    else
+        //    {
+        //        return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.BatchEditSuccess", vm.Ids.Length]);
+        //    }
+        //}
         #endregion
 
         #region BatchDelete
@@ -176,7 +182,7 @@ namespace BMSHPMS.Controllers
         {
             if (!ModelState.IsValid || !vm.DoBatchDelete())
             {
-                return PartialView("BatchDelete",vm);
+                return PartialView("BatchDelete", vm);
             }
             else
             {
@@ -186,34 +192,37 @@ namespace BMSHPMS.Controllers
         #endregion
 
         #region Import
-		[ActionDescription("Sys.Import")]
-        public ActionResult Import()
-        {
-            var vm = Wtm.CreateVM<AnnualDabeiInfoImportVM>();
-            return PartialView(vm);
-        }
+        //[ActionDescription("Sys.Import")]
+        //      public ActionResult Import()
+        //      {
+        //          var vm = Wtm.CreateVM<AnnualDabeiInfoImportVM>();
+        //          return PartialView(vm);
+        //      }
 
-        [HttpPost]
-        [ActionDescription("Sys.Import")]
-        public ActionResult Import(AnnualDabeiInfoImportVM vm, IFormCollection nouse)
-        {
-            if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
-            {
-                return PartialView(vm);
-            }
-            else
-            {
-                return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
-            }
-        }
+        //      [HttpPost]
+        //      [ActionDescription("Sys.Import")]
+        //      public ActionResult Import(AnnualDabeiInfoImportVM vm, IFormCollection nouse)
+        //      {
+        //          if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
+        //          {
+        //              return PartialView(vm);
+        //          }
+        //          else
+        //          {
+        //              return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
+        //          }
+        //      }
         #endregion
 
+        #region Export
         [ActionDescription("Sys.Export")]
         [HttpPost]
         public IActionResult ExportExcel(AnnualDabeiInfoListVM vm)
         {
             return vm.GetExportData();
         }
+        #endregion
+
 
     }
 }

@@ -17,13 +17,13 @@ namespace BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs
         {
             return new List<GridAction>
             {
-                this.MakeStandardAction("CommonReceipt", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"CommonManage", dialogWidth: 800),
+                this.MakeStandardAction("CommonReceipt", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"CommonManage", dialogWidth: 800).SetMax(),
                 this.MakeStandardAction("CommonReceipt", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "CommonManage", dialogWidth: 800),
                 this.MakeStandardAction("CommonReceipt", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "CommonManage", dialogWidth: 800),
-                this.MakeStandardAction("CommonReceipt", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "CommonManage", dialogWidth: 800),
-                this.MakeStandardAction("CommonReceipt", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "CommonManage", dialogWidth: 800),
+                this.MakeStandardAction("CommonReceipt", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "CommonManage", dialogWidth: 800).SetMax(),
+                //this.MakeStandardAction("CommonReceipt", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "CommonManage", dialogWidth: 800),
                 this.MakeStandardAction("CommonReceipt", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "CommonManage", dialogWidth: 800),
-                this.MakeStandardAction("CommonReceipt", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "CommonManage", dialogWidth: 800),
+                //this.MakeStandardAction("CommonReceipt", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "CommonManage", dialogWidth: 800),
                 this.MakeStandardAction("CommonReceipt", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "CommonManage"),
             };
         }
@@ -45,16 +45,30 @@ namespace BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs
 
         public override IOrderedQueryable<CommonReceipt_View> GetSearchQuery()
         {
+            string donationcate = null;
+            if (Searcher.DonationCategory == null || Searcher.DonationCategory.Length == 0)
+            {
+                donationcate = null;
+            }
+            else if (Searcher.DonationCategory.Length == 1)
+            {
+                donationcate = Searcher.DonationCategory[0];
+            }
+            else if (Searcher.DonationCategory.Length >= 2)
+            {
+                donationcate = string.Join(',', Searcher.DonationCategory);
+            }
+
             var query = DC.Set<CommonReceipt>()
-                .CheckContain(Searcher.ReceiptNumber, x=>x.ReceiptNumber)
+                .CheckContain(Searcher.ReceiptNumber, x => x.ReceiptNumber)
                 .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.ReceiptDate, includeMax: false)
-                .CheckContain(Searcher.ContactName, x=>x.ContactName)
-                .CheckContain(Searcher.Phone, x=>x.Phone)
-                .CheckEqual(Searcher.DonationCategory, x=>x.DonationCategory)
-                .CheckContain(Searcher.CRemark, x=>x.CRemark)
+                .CheckContain(Searcher.ContactName, x => x.ContactName)
+                .CheckContain(Searcher.Phone, x => x.Phone)
+                //.CheckContain(donationcate, x => x.DonationCategory)
+                .CheckContain(Searcher.CRemark, x => x.CRemark)
                 .Select(x => new CommonReceipt_View
                 {
-				    ID = x.ID,
+                    ID = x.ID,
                     ReceiptNumber = x.ReceiptNumber,
                     ReceiptDate = x.ReceiptDate,
                     Sum = x.Sum,
@@ -62,9 +76,10 @@ namespace BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs
                     Phone = x.Phone,
                     DonationCategory = x.DonationCategory,
                     CRemark = x.CRemark,
-                })
-                .OrderBy(x => x.ID);
-            return query;
+                });
+
+            var query1 = query.Where(x=> ).OrderByDescending(x => x.ReceiptDate);
+            return query1;
         }
 
     }

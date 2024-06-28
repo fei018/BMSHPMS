@@ -1,0 +1,16 @@
+﻿@using BMSHPMS.Models.CommonDService
+@using BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs
+@model CommonReceiptVM
+
+@* @switch (Model.Entity.DonationCategory)
+{   
+    case CommonDonateCategoryEnum.全年大悲法會:
+        <wt:grid vm="@Model.AnnualDabeiListVM" hidden-grid-index hidden-checkbox use-local-data="true" height="400" />
+        break;
+
+    case CommonDonateCategoryEnum.全年光明燈:
+        <wt:grid vm="@Model.AnnualLightListVM" hidden-grid-index hidden-checkbox use-local-data="true" height="400" />
+        break;
+    default:
+        break;
+} *@

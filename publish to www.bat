@@ -2,7 +2,7 @@ echo publish...
 set web=\\192.168.0.201\www\bmshpms
 set webconfig=\\192.168.0.201\www\bmshpms\web.config
 
-rem robocopy %web%\ %web%_old\ /Mir /NP /TEE /R:0
+robocopy %web%\ %web%_old\ /Mir /NP /TEE /R:0
 
 echo .. >> %webconfig%
 ping 127.0.0.1 -n 5 > Nul

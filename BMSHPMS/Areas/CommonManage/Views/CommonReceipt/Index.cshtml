@@ -1,14 +1,15 @@
-﻿@model BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs.CommonReceiptListVM
+﻿@using BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs
+@model BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs.CommonReceiptListVM
 @inject IStringLocalizer<Program> Localizer;
 
 <wt:searchpanel vm="@Model" reset-btn="true">
-<wt:row items-per-row="ItemsPerRowEnum.Three">
-<wt:textbox field="Searcher.ReceiptNumber" />
-<wt:datetime field="Searcher.ReceiptDate" range="true" />
-<wt:textbox field="Searcher.ContactName" />
-<wt:textbox field="Searcher.Phone" />
-<wt:combobox field="Searcher.DonationCategory" empty-text="@Localizer["Sys.All"]" />
-<wt:textbox field="Searcher.CRemark" />
-</wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.Three">
+        <wt:textbox field="Searcher.ReceiptNumber" />
+        <wt:datetime field="Searcher.ReceiptDate" range="true" />
+        <wt:textbox field="Searcher.ContactName" />
+        <wt:textbox field="Searcher.Phone" />
+        <wt:combobox field="Searcher.DonationCategory" empty-text="@Localizer["Sys.All"]" items="Searcher.DonationCategorySelectItems"/>
+        <wt:textbox field="Searcher.CRemark" />
+    </wt:row>
 </wt:searchpanel>
-<wt:grid vm="@Model" url="/CommonManage/CommonReceipt/Search"/>
+<wt:grid vm="@Model" url="/CommonManage/CommonReceipt/Search" />

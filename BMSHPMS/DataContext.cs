@@ -66,22 +66,26 @@ namespace BMSHPMS
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         #region protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
-        //    modelBuilder.Entity<DSReceiptInfo>().HasMany(x => x.DSDonorInfos)
-        //                                        .WithOne(x => x.ReceiptInfo).HasForeignKey(x => x.ReceiptInfoID)
-        //                                        .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<DSReceiptInfo>().HasMany(x => x.DSDonorInfos)
+            //                                    .WithOne(x => x.ReceiptInfo).HasForeignKey(x => x.ReceiptInfoID)
+            //                                    .OnDelete(DeleteBehavior.Restrict);
 
-        //    modelBuilder.Entity<DSReceiptInfo>().HasMany(x => x.DSLongevityInfos)
-        //                                        .WithOne(x => x.ReceiptInfo).HasForeignKey(x => x.ReceiptInfoID)
-        //                                        .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<DSReceiptInfo>().HasMany(x => x.DSLongevityInfos)
+            //                                    .WithOne(x => x.ReceiptInfo).HasForeignKey(x => x.ReceiptInfoID)
+            //                                    .OnDelete(DeleteBehavior.Restrict);
 
-        //    modelBuilder.Entity<DSReceiptInfo>().HasMany(x => x.DSMemorialInfos)
-        //                                        .WithOne(x => x.ReceiptInfo).HasForeignKey(x => x.ReceiptInfoID)
-        //                                        .OnDelete(DeleteBehavior.Restrict);
-        //}
+            //modelBuilder.Entity<DSReceiptInfo>().HasMany(x => x.DSMemorialInfos)
+            //                                    .WithOne(x => x.ReceiptInfo).HasForeignKey(x => x.ReceiptInfoID)
+            //                                    .OnDelete(DeleteBehavior.Restrict);
+
+            //modelBuilder.Entity<CommonReceipt>()
+            //            .Property(e => e.DonationCategory)
+            //            .HasConversion(v => string.Join(',', v), v => v.Split(',', StringSplitOptions.RemoveEmptyEntries));
+        }
         #endregion
 
 

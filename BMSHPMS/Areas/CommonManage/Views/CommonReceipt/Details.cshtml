@@ -1,17 +1,40 @@
 ﻿@model BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs.CommonReceiptVM
-@inject IStringLocalizer<Program> Localizer;
+@{
+    string gridID = "comm" + Guid.NewGuid().ToString("N");
+    string receiptId = Model.Entity.ID.ToString();
+}
+
+<script>
+    function callCommonReceiptDonationGrid() {
+        try {
+            $.get('/commonmanage/commonreceipt/donationgrid/@receiptId', function (data) {
+                $('#@gridID').html(data);
+            }, 'html');
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+</script>
 
 <wt:form vm="@Model">
-<wt:row items-per-row="ItemsPerRowEnum.Two">
-<wt:display field="Entity.ReceiptNumber" />
-<wt:display field="Entity.ReceiptDate" />
-<wt:display field="Entity.Sum" />
-<wt:display field="Entity.ContactName" />
-<wt:display field="Entity.Phone" />
-<wt:display field="Entity.DonationCategory" />
-<wt:display field="Entity.CRemark" />
-</wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.Four">
+        <wt:display field="Entity.ReceiptNumber" />
+        <wt:display field="Entity.ReceiptDate" />
+        <wt:display field="Entity.Sum" />
+        <wt:display field="Entity.ContactName" />
+        <wt:display field="Entity.Phone" />
+        <wt:display field="Entity.DonationCategory" />
+        <wt:display field="Entity.CRemark" />
+    </wt:row>
     <wt:row align="AlignEnum.Right">
-        <wt:closebutton />
+        <wt:linkbutton url="@Model.DonationCreateUrl" window-title="新建功德" window-width="800" window-height="500" text="新建功德" theme="ButtonThemeEnum.Primary" />
+        <wt:button text="關閉" click="ff.CloseDialog();ff.RefreshGrid('LAY_app_body',0);" />
     </wt:row>
 </wt:form>
+
+<div id="@gridID" style="overflow:auto;height:100%;padding:10px 50px;">
+</div>
+<script>
+    callCommonReceiptDonationGrid();
+</script>

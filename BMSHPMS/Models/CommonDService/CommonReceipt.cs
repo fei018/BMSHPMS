@@ -3,10 +3,11 @@ using System.ComponentModel.DataAnnotations;
 using System;
 using WalkingTec.Mvvm.Core;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BMSHPMS.Models.CommonDService
 {
-    [Display(Name = "通用收據")]
+    [Display(Name = "普通收據")]
     [Table("Info_CommonReceipt")]
     public class CommonReceipt : BasePoco
     {
@@ -27,9 +28,8 @@ namespace BMSHPMS.Models.CommonDService
         [Display(Name = "聯絡電話")]
         public string Phone { get; set; }
 
-        [Display(Name = "功德類別")]
-        [Required(ErrorMessage = "{0}必填")]
-        public ComDonCategoryEnum DonationCategory { get; set; }
+        [Display(Name = "功德類別")]     
+        public string DonationCategory { get; set; }
 
         [Display(Name = "備註")]
         public string CRemark { get; set; }
@@ -37,5 +37,21 @@ namespace BMSHPMS.Models.CommonDService
 
         public List<AnnualDabeiInfo> AnnualDabeiInfos { get; set; } = new();
         public List<AnnualLightInfo> AnnualLightInfos { get; set; } = new();
+
+        [NotMapped] 
+        [Display(Name = "功德類別")]
+        public string[] DonationCategoryArray { get; set; }
+
+        public bool CheckDonationCategory()
+        {
+            string[] donations = DonationCategory.Split(',', StringSplitOptions.RemoveEmptyEntries);
+            foreach (var item in DonationCategoryArray)
+            {
+                if (donations.Any(x=>x.ToLower() == item.ToLower())
+                {
+
+                }
+            }
+        }
     }
 }

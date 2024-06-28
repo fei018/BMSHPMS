@@ -1,16 +1,16 @@
-﻿@model BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs.CommonReceiptVM
-@inject IStringLocalizer<Program> Localizer;
+﻿@using BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs
+@model BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs.CommonReceiptVM
 
 <wt:form vm="@Model">
-<wt:row items-per-row="ItemsPerRowEnum.Two">
-<wt:textbox field="Entity.ReceiptNumber" />
-<wt:datetime field="Entity.ReceiptDate" />
-<wt:textbox field="Entity.Sum" />
-<wt:textbox field="Entity.ContactName" />
-<wt:textbox field="Entity.Phone" />
-<wt:combobox field="Entity.DonationCategory" />
-<wt:textbox field="Entity.CRemark" />
-</wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.Four">
+        <wt:combobox field="DonationCategoryArray" items="DonationCategorySelectItems" multi-select="true" />
+        <wt:textbox field="Entity.ReceiptNumber" />
+        <wt:datetime field="Entity.ReceiptDate" />
+        <wt:textbox field="Entity.Sum" />
+        <wt:textbox field="Entity.ContactName" />
+        <wt:textbox field="Entity.Phone" />     
+        <wt:textbox field="Entity.CRemark" />
+    </wt:row>
     <wt:row align="AlignEnum.Right">
         <wt:submitbutton />
         <wt:closebutton />

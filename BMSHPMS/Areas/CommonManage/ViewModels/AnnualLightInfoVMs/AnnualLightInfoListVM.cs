@@ -1,12 +1,10 @@
-﻿using System;
+﻿using BMSHPMS.Models.CommonDService;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using BMSHPMS.Models.CommonDService;
 
 
 namespace BMSHPMS.CommonManage.ViewModels.AnnualLightInfoVMs
@@ -17,13 +15,13 @@ namespace BMSHPMS.CommonManage.ViewModels.AnnualLightInfoVMs
         {
             return new List<GridAction>
             {
-                this.MakeStandardAction("AnnualLightInfo", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"CommonManage", dialogWidth: 800),
+                //this.MakeStandardAction("AnnualLightInfo", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"CommonManage", dialogWidth: 800),
                 this.MakeStandardAction("AnnualLightInfo", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "CommonManage", dialogWidth: 800),
                 this.MakeStandardAction("AnnualLightInfo", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "CommonManage", dialogWidth: 800),
                 this.MakeStandardAction("AnnualLightInfo", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "CommonManage", dialogWidth: 800),
-                this.MakeStandardAction("AnnualLightInfo", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "CommonManage", dialogWidth: 800),
+                //this.MakeStandardAction("AnnualLightInfo", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "CommonManage", dialogWidth: 800),
                 this.MakeStandardAction("AnnualLightInfo", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "CommonManage", dialogWidth: 800),
-                this.MakeStandardAction("AnnualLightInfo", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "CommonManage", dialogWidth: 800),
+                //this.MakeStandardAction("AnnualLightInfo", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "CommonManage", dialogWidth: 800),
                 this.MakeStandardAction("AnnualLightInfo", GridActionStandardTypesEnum.ExportExcel, Localizer["Sys.Export"], "CommonManage"),
             };
         }
@@ -32,15 +30,15 @@ namespace BMSHPMS.CommonManage.ViewModels.AnnualLightInfoVMs
         protected override IEnumerable<IGridColumn<AnnualLightInfo_View>> InitGridHeader()
         {
             return new List<GridColumn<AnnualLightInfo_View>>{
-                this.MakeGridHeader(x=>x.ReceiptDate_view,width:200),
-                this.MakeGridHeader(x=>x.ReceiptNumber_view,width:200),
+                this.MakeGridHeader(x=>x.ReceiptDate_view,width:100),
+                this.MakeGridHeader(x=>x.ReceiptNumber_view,width:100),
                 this.MakeGridHeader(x => x.Name),
                 this.MakeGridHeader(x => x.Sum),
                 this.MakeGridHeader(x => x.Count),
                 this.MakeGridHeader(x => x.WishNumber),
-                this.MakeGridHeader(x => x.DonateLightMode),
-                this.MakeGridHeader(x => x.ContactAddress),
+                this.MakeGridHeader(x => x.DonateLightMode),              
                 this.MakeGridHeader(x => x.Phone),
+                this.MakeGridHeader(x => x.ContactAddress),
                 this.MakeGridHeaderAction(width: 200)
             };
         }
