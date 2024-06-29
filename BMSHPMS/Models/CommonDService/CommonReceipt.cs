@@ -47,11 +47,17 @@ namespace BMSHPMS.Models.CommonDService
             string[] donations = DonationCategory.Split(',', StringSplitOptions.RemoveEmptyEntries);
             foreach (var item in DonationCategoryArray)
             {
-                if (donations.Any(x=>x.ToLower() == item.ToLower())
+                if (donations.Any(x => x.ToLower() == item.ToLower()))
                 {
-
+                    return true;
                 }
             }
+            return false;
+        }
+
+        public string[] GetDonationCategory()
+        {
+            return DonationCategory.Split(',', StringSplitOptions.RemoveEmptyEntries);
         }
     }
 }
