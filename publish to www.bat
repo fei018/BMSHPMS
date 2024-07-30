@@ -11,6 +11,5 @@ rem del /S /Q %web%\*
 
 robocopy .\publish %web%\ /Mir /TEE /R:0 /NP
 
-copy appsettings.json \\192.168.0.201\www\bmshpms\appsettings.json /y
 
 pause

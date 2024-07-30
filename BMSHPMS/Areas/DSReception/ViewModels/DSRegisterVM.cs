@@ -236,10 +236,14 @@ namespace BMSHPMS.DSReception.ViewModels
             Info_Receipt newReceipt;
 
             string contactPhone = null;
+            string contactName = null;
             try
             {
                 contactPhone = form["ContactPhone"];
                 contactPhone = contactPhone?.Trim();
+
+                contactName = form["ContactName"];
+                contactName = contactName?.Trim();
             }
             catch (Exception) { }
 
@@ -274,6 +278,7 @@ namespace BMSHPMS.DSReception.ViewModels
                         UpdateBy = LoginUserInfo.Name,
                         UpdateTime = DateTime.Now,
                         ContactPhone = contactPhone,
+                        ContactName = contactName,
                         DharmaServiceId = postDharmaServiceID,
                     };
 
@@ -358,6 +363,7 @@ namespace BMSHPMS.DSReception.ViewModels
             regResultVM.DharmaServiceName = postDharmaService.ServiceName;
             regResultVM.DharmaServiceID = postDharmaServiceID;
             regResultVM.Message = "登記成功.";
+            regResultVM.Succed = true;
 
             return regResultVM;
             #endregion

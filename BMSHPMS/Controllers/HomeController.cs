@@ -30,7 +30,13 @@ namespace BMSHPMS.Controllers
         [AllRights]
         public IActionResult Index()
         {
-            ViewData["title"] = "BMSH";
+            ViewData["title"] = "SiteTitle";
+
+            if (Wtm.ConfigInfo.AppSettings.TryGetValue("SiteTitle",out string title))
+            {
+                ViewData["title"] = title;
+            }
+            
             return View();
         }
 

@@ -26,7 +26,7 @@
 <div style="padding: 20px; margin:0 auto; background-color:#F2F2F2;">
     <form class="layui-form" action="">
         <div class="layui-row">
-            <div class="layui-col-md6">
+            <div class="layui-col-md8">
                  <div class="layui-panel" style="text-align:center;font-size:18px;">
                     <div style="font-size:18px;color:red;padding:20px;">@Model.DharmaServiceName</div>
                  </div>   
@@ -34,7 +34,7 @@
         </div>
         <br />
         <div class="layui-row">
-            <div class="layui-col-md6">
+            <div class="layui-col-md8">
                 <div class="layui-card">
                     <div class="layui-card-header">收據</div>
                     <div class="layui-card-body">
@@ -45,7 +45,12 @@
                                     <input type="text" name="ReceiptNumber" lay-verify="required" lay-reqtext="請輸入收據號碼" required class="layui-input" placeholder="請輸入收據號碼">
                                 </div>
                             </div>
-
+                            <div class="layui-inline">
+                                <label class="layui-form-label">聯絡人</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="ContactName" class="layui-input" placeholder="請輸入聯絡人">
+                                </div>
+                            </div>
                             <div class="layui-inline">
                                 <label class="layui-form-label">電話號碼</label>
                                 <div class="layui-input-inline">
@@ -153,7 +158,8 @@
                 $.post("DSReception/DSRegister/Register", data.field, function (html) {
                     $('#dsRegisterResult').html(html);
 
-                    document.getElementById('dsRegisterResult_end').scrollIntoView();
+                    //document.getElementById('dsRegisterResult_end').scrollIntoView();
+                    document.getElementById('dsRegisterResult').scrollIntoView();
 
                 }, 'html');
             }

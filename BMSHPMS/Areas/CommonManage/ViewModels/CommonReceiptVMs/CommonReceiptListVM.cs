@@ -1,12 +1,8 @@
-﻿using System;
+﻿using BMSHPMS.Models.CommonDService;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using BMSHPMS.Models.CommonDService;
 
 
 namespace BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs
@@ -78,13 +74,14 @@ namespace BMSHPMS.CommonManage.ViewModels.CommonReceiptVMs
                     CRemark = x.CRemark,
                 });
 
-            var query1 = query.Where(x=> ).OrderByDescending(x => x.ReceiptDate);
+            var query1 = query.OrderByDescending(x => x.ReceiptDate);
             return query1;
         }
 
     }
 
-    public class CommonReceipt_View : CommonReceipt{
+    public class CommonReceipt_View : CommonReceipt
+    {
 
     }
 }

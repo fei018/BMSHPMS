@@ -6,6 +6,8 @@ namespace BMSHPMS.DSReception.ViewModels
 {
     public class DSRegResultVM
     {
+        public bool Succed { get; set; } = false;
+
         public string Message { get; set; }
 
         public string ReceiptNumber { get; set; }
