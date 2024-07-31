@@ -1,26 +1,29 @@
 ﻿@model DSRegisterVM
+@{
+    string url = "/DSReception/DSRegister/Register?DharmaServiceID=";
+}
 
 <script>
-    function receptionRegister(id) {
-        let url = '/DSReception/DSRegister/Register?DharmaServiceID=' + id;
+    function loadDSRegisterPage(id) {
+        let url = '@url' + id;
 
         $.get(url, function (data) {
-            $('#dsRegisterDiv').html(data);
+            $('#REGa804ca45d0204775b8e7b882ac90be64').replaceWith(data);
         }, 'html');
     }
 </script>
-
-<div id="dsRegisterDiv">
-    <div class="layui-btn-container" style="padding:50px;">
-        @if (Model.DharmaServices != null && Model.DharmaServices.Count > 0)
+<div class="layui-btn-container" style="padding:50px;">
+    @if (Model.DharmaServices != null && Model.DharmaServices.Count > 0)
+    {
+        @foreach (var ds in Model.DharmaServices)
         {
-            @foreach (var ds in Model.DharmaServices)
-            {
-                <button onclick="receptionRegister('@ds.ID')" class="layui-btn layui-btn-normal layui-btn-lg">@ds.ServiceName</button>
-            }
-        }else
-        {
-            <p>請新增法會項目.</p>
+            <div style="margin-bottom:20px;">
+                <wt:linkbutton text="@ds.ServiceName" target="ButtonTargetEnum.Layer" window-title="功德牌位數目登記" max="true" url="@url@ds.ID" theme="ButtonThemeEnum.Normal" size="ButtonSizeEnum.Big" />
+            </div>
         }
-    </div>
+    }
+    else
+    {
+        <p>請新增法會項目.</p>
+    }
 </div>

@@ -1,1 +1,2 @@
-﻿function callCommonReceiptDonationGrid() { }
+﻿
+function callCommonReceiptDonationGrid() { }

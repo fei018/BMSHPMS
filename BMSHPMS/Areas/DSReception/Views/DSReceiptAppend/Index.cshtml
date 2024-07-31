@@ -4,11 +4,11 @@
     string appendUrl = "/dsreception/dsreceiptappend/append";
 }
 
-<div style="padding:20px;">
+<div class="layui-btn-container" style="padding:50px;">
     @foreach (var item in dServiceList)
     {
         <div style="margin-bottom:20px;">
-            <wt:linkbutton text="@item.ServiceName" url="@appendUrl/@item.ID" target="ButtonTargetEnum.Layer" theme="ButtonThemeEnum.Normal" window-title="收據功德補加" window-height="500" window-width="800" />
+            <wt:linkbutton text="@item.ServiceName" url="@appendUrl/@item.ID" target="ButtonTargetEnum.Layer" theme="ButtonThemeEnum.Normal" window-title="收據功德補加" window-height="500" window-width="800" size="ButtonSizeEnum.Big"/>
         </div>
     }
 </div>

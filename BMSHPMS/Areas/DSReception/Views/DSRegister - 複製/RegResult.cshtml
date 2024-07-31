@@ -22,8 +22,20 @@
         }
 </style>
 
-<div>
+@if (!Model.Succed)
+{
+    <br />
+    <div style="font-size:16px; color:red;">@Model.Message</div>
+    <br />
+}
+
+@if (donors.Count > 0 || longevitys.Count > 0 || memorials.Count > 0)
+{
+    <hr />
     <div class="reg-result" id="reg-result">
+        @* <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>功德牌位數目登記結果</legend>
+        </fieldset> *@
         <div class="layui-row">
             <div class="layui-col-md4">
                 <div class="layui-panel" style="font-size:18px;">
@@ -36,15 +48,19 @@
         <br />
         <div class="layui-row">
             <div class="layui-col-md4">
-                <div class="layui-card">
-                    <div class="layui-card-header">@Model.DharmaServiceName</div>
-                    <div class="layui-card-body">
-                        <div class="layui-form-item">
-                            <lable class="layui-form-label">收據號碼:</lable>
-                            <div class="layui-input-inline">
-                                <lable class="layui-form-label">@Model.ReceiptNumber</lable>
-                            </div>
-                        </div>
+                <div class="layui-form-item">
+                    <lable class="layui-form-label">收據號碼:</lable>
+                    <div class="layui-input-inline">
+                        <lable class="layui-form-label">@Model.ReceiptNumber</lable>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <lable class="layui-form-label">法會:</lable>
+                    <div class="layui-input-inline">
+                        <lable class="layui-form-label reception-lable">@Model.DharmaServiceName</lable>
                     </div>
                 </div>
             </div>
@@ -118,22 +134,16 @@
 
         <hr class="layui-border-green" />
         <div class="layui-row">
-            <div class="layui-col-md8">
+            <div class="layui-col-md6">
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <button class="layui-btn" onclick="loadDSRegisterPage('@Model.DharmaServiceID')">新功德</button>
+                        <button class="layui-btn" onclick="receptionRegister('@Model.DharmaServiceID')" >登記新功德</button>
+                        @* <button class="layui-btn" onclick="javascript:layui.index.render();">返回選擇法會</button> *@
                         <a class="layui-btn layui-btn-primary" target="_blank" href="/DSReception/DSRegister/PrintSerial?receiptNumber=@Model.ReceiptNumber">列印</a>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md4">
-                <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button class="layui-btn" type="button" onclick="ff.CloseDialog();">關閉</button>
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
-</div>
+}

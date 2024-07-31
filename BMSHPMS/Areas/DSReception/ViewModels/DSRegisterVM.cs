@@ -77,20 +77,25 @@ namespace BMSHPMS.DSReception.ViewModels
         #region Submitted(IFormCollection form)
         public async Task<DSRegResultVM> Submitted(IFormCollection form)
         {
-            DSRegResultVM regResultVM = new();
+            Guid postDharmaServiceID = Guid.Parse(form[nameof(DharmaServiceID)]);   // post form 法會ID
+            Opt_DharmaService postDharmaService = DC.Set<Opt_DharmaService>().Find(postDharmaServiceID); // 查詢post法會項目
 
             // 提交的 收據號碼
             string receiptNumber = form["ReceiptNumber"];
             receiptNumber = receiptNumber?.Trim();
+
+            DSRegResultVM regResultVM = new()
+            {
+                DharmaServiceID = postDharmaServiceID,
+                DharmaServiceName = postDharmaService.ServiceName,
+                ReceiptNumber = receiptNumber,
+            };
 
             if (string.IsNullOrWhiteSpace(receiptNumber))
             {
                 regResultVM.Message = "收據號碼是Null.";
                 return regResultVM;
             }
-
-            Guid postDharmaServiceID = Guid.Parse(form[nameof(DharmaServiceID)]);   // post form 法會ID
-            Opt_DharmaService postDharmaService = DC.Set<Opt_DharmaService>().Find(postDharmaServiceID); // 查詢post法會項目
 
             //收據號碼已存在
             Info_Receipt exsitReceipt = DC.Set<Info_Receipt>()
@@ -101,9 +106,7 @@ namespace BMSHPMS.DSReception.ViewModels
                 regResultVM.Donors = await DC.Set<Info_Donor>().Where(q => q.ReceiptID == exsitReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
                 regResultVM.Longevitys = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == exsitReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
                 regResultVM.Memorials = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == exsitReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
-                regResultVM.ReceiptNumber = receiptNumber;
                 regResultVM.DharmaServiceName = exsitReceipt.DharmaServiceName;
-                regResultVM.DharmaServiceID = postDharmaServiceID;
                 regResultVM.Message = "收據號碼已存在";
 
                 return regResultVM;
@@ -359,9 +362,7 @@ namespace BMSHPMS.DSReception.ViewModels
             regResultVM.Donors = await DC.Set<Info_Donor>().Where(q => q.ReceiptID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
             regResultVM.Longevitys = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
             regResultVM.Memorials = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
-            regResultVM.ReceiptNumber = receiptNumber;
-            regResultVM.DharmaServiceName = postDharmaService.ServiceName;
-            regResultVM.DharmaServiceID = postDharmaServiceID;
+
             regResultVM.Message = "登記成功.";
             regResultVM.Succed = true;
 
