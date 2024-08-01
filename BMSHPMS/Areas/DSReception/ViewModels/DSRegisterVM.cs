@@ -93,7 +93,7 @@ namespace BMSHPMS.DSReception.ViewModels
 
             if (string.IsNullOrWhiteSpace(receiptNumber))
             {
-                regResultVM.Message = "收據號碼是Null.";
+                regResultVM.Message = "收據號碼是Null";
                 return regResultVM;
             }
 
@@ -138,6 +138,16 @@ namespace BMSHPMS.DSReception.ViewModels
                 return regResultVM;
             }
 
+            // 檢查提交的 Count 是否小於0
+            foreach (var item in submittedList)
+            {
+                if (item.Count < 0)
+                {
+                    regResultVM.Message = "功德項目不能小於0";
+                    return regResultVM;
+                }
+            }
+
             var newDonorList = new List<Info_Donor>();
             var newLongevityList = new List<Info_Longevity>();
             var newMemorialList = new List<Info_Memorial>();
@@ -151,6 +161,12 @@ namespace BMSHPMS.DSReception.ViewModels
             #region // 計算提交的每種功德的使用個數
             foreach (var submittedItem in submittedList)
             {
+                // 如果提交的數目小於等於0， 循環下一個
+                if (submittedItem.Count <= 0)
+                {
+                    continue;
+                }
+
                 var queryDonationProject = DC.Set<Opt_DonationProject>().Find(submittedItem.DonationProjectID); // 根據功德ID 查詢 功德項目
 
                 // 功德種類的當前已使用數目
@@ -294,7 +310,7 @@ namespace BMSHPMS.DSReception.ViewModels
 
                     if (newReceipt == null)
                     {
-                        regResultVM.Message = "新加收據後, 查詢收據是Null.";
+                        regResultVM.Message = "新加收據後, 查詢收據是Null";
                         return regResultVM;
                     }
 
@@ -363,7 +379,7 @@ namespace BMSHPMS.DSReception.ViewModels
             regResultVM.Longevitys = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
             regResultVM.Memorials = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
 
-            regResultVM.Message = "登記成功.";
+            regResultVM.Message = "登記成功";
             regResultVM.Succed = true;
 
             return regResultVM;
