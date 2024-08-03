@@ -266,11 +266,11 @@ namespace BMSHPMS.DSReception.ViewModels
             }
             catch (Exception) { }
 
-            // 使用事務
-            using var transaction = DC.BeginTransaction();
-            try
+            lock (DbTableLocker.DSDonationTransactionEvent)
             {
-                lock (DbTableLocker.T_Opt_DonationProject)
+                // 使用事務
+                using var transaction = DC.BeginTransaction();
+                try
                 {
                     // 功德項目更新已使用數
                     calculateUsedNumberDonationProjectList.ForEach(donation =>
@@ -279,13 +279,10 @@ namespace BMSHPMS.DSReception.ViewModels
                     });
 
                     DC.SaveChanges();
-                }
 
-                int newReceiptSum = 0;
+                    int newReceiptSum = 0;
 
-                // 添加新收據
-                lock (DbTableLocker.T_Receipt)
-                {
+                    // 添加新收據
                     Info_Receipt receiptInfo = new()
                     {
                         CreateTime = DateTime.Now,
@@ -350,7 +347,7 @@ namespace BMSHPMS.DSReception.ViewModels
                         }
                     });
 
-                    
+
                     //更新收據金額
                     newReceipt.Sum = newReceiptSum;
                     DC.UpdateProperty(newReceipt, x => x.Sum);
@@ -367,12 +364,12 @@ namespace BMSHPMS.DSReception.ViewModels
                     // 事務寫入數據庫
                     transaction.Commit();
                 }
-            }
-            catch (Exception ex)
-            {
-                transaction.Rollback();
-                regResultVM.Message = ex.Message;
-                return regResultVM;
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    regResultVM.Message = ex.Message;
+                    return regResultVM;
+                }
             }
 
             regResultVM.Donors = await DC.Set<Info_Donor>().Where(q => q.ReceiptID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();

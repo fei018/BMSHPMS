@@ -2,16 +2,20 @@
 
 <wt:form vm="@Model" url="/DSReception/DSReceiptAppend/Append">
     <wt:row items-per-row="ItemsPerRowEnum.One">
+        <wt:display field="DharmaServiceName" style="color:red;"/>
+    </wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.One">
         <wt:textbox field="ReceiptNumber" />
         <wt:combobox field="DonationProjectCategory" items="@Model.DonationProjectCategoryList" link-field="DonationProjectID" trigger-url="/dsreception/dsreceiptappend/GetDonationSum" />
         <wt:combobox field="DonationProjectID" />
     </wt:row>
     <wt:row items-per-row="ItemsPerRowEnum.Two">
-        <wt:textbox field="DonationProjectCount" type="number"/>
+        <wt:textbox field="DonationProjectCount" type="number" />
     </wt:row>
     <wt:hidden field="DharmaServiceID" />
+    <wt:hidden field="DharmaServiceName" />
     <wt:row align="AlignEnum.Right">
-        <wt:submitbutton confirm-txt="確定提交?"/>
+        <wt:submitbutton confirm-txt="確定提交?" />
         <wt:closebutton />
     </wt:row>
 </wt:form>

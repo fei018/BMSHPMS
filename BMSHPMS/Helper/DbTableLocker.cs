@@ -2,6 +2,8 @@
 {
     public static class DbTableLocker
     {
+        public static object DSDonationTransactionEvent => new object();
+
         public static object T_Receipt => new object();
 
         public static object T_Receipt_del => new object();

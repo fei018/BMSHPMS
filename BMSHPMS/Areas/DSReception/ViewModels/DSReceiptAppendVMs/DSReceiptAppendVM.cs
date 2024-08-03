@@ -23,10 +23,13 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
 
         public void InitAppendInfo(string serviceID)
         {
+            var ds = DC.Set<Opt_DharmaService>().CheckID(serviceID).Single();
+
             AppendInfo = new AppendInfoVM
             {
                 DharmaServiceID = serviceID,
                 DonationProjectCategoryList = DonationProjectOptions.GetCategoryComboSelectItems(),
+                DharmaServiceName = ds.ServiceName,
             };
 
             foreach (var item in AppendInfo.DonationProjectCategoryList)
@@ -52,6 +55,12 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
 
         public void DoAppend(AppendInfoVM info)
         {
+            if (!info.DonationProjectCount.HasValue || info.DonationProjectCount.Value <= 0)
+            {
+                MSD.AddModelError("DonationProjectCount", "功德數目不能小於等於0");
+                return;
+            }
+
             var receipt = DC.Set<Info_Receipt>().CheckEqual(info.ReceiptNumber, x => x.ReceiptNumber).SingleOrDefault();
             if (receipt == null)
             {
@@ -71,7 +80,7 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
 
             var serialList = new List<string>();
 
-            lock (DbTableLocker.T_Opt_DonationProject)
+            lock (DbTableLocker.DSDonationTransactionEvent)
             {
                 using var dctrans = DC.BeginTransaction();
                 try

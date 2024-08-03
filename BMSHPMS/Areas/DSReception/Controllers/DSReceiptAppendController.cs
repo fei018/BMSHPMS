@@ -48,7 +48,7 @@ namespace BMSHPMS.DSReception.Controllers
                     }
                     else
                     {
-                        return FFResult().Alert(vm.Message, "補加成功");
+                        return FFResult().Alert(vm.Message, "補加成功").CloseDialog();
                     }
                 }
             }

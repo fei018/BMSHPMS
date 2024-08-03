@@ -31,7 +31,7 @@ namespace BMSHPMS.DSReception.ViewModels
 
         public void Rollback()
         {
-            lock (DbTableLocker.T_Receipt)
+            lock (DbTableLocker.DSDonationTransactionEvent)
             {
                 using var transaction = DC.BeginTransaction();
                 try

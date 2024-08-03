@@ -6,8 +6,11 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
 {
     public class AppendInfoVM : BaseVM
     {
-        [Display(Name = "法會")]
+        [Display(Name = "法會ID")]
         public string DharmaServiceID { get; set; }
+
+        [Display(Name = "法會")]
+        public string DharmaServiceName { get; set; }
 
         [Display(Name = "收據號碼")]
         [Required(ErrorMessage = "{0}必填")]

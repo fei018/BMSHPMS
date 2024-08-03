@@ -27,10 +27,10 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
             return new List<GridColumn<Info_Memorial_View>>{
                 this.MakeGridHeader(x => x.SerialCode,width:110),
                 this.MakeGridHeader(x => x.Sum,width:80),
-                this.MakeGridHeader(x => x.DeceasedName_1,width:170),
-                this.MakeGridHeader(x => x.DeceasedName_2,width:170),
-                this.MakeGridHeader(x => x.DeceasedName_3,width:170),
-                this.MakeGridHeader(x => x.BenefactorName),
+                this.MakeGridHeader(x => x.DeceasedName_1,width:300),
+                this.MakeGridHeader(x => x.DeceasedName_2,width:300),
+                this.MakeGridHeader(x => x.DeceasedName_3,width:300),
+                this.MakeGridHeader(x => x.BenefactorName,width:200),
                 this.MakeGridHeader(x => x.DSRemark),
                 this.MakeGridHeaderAction(width: 200)
             };

@@ -4,22 +4,16 @@
     <wt:row items-per-row="ItemsPerRowEnum.Three">
         <wt:display field="Entity.Receipt.ReceiptNumber" />
         <wt:display field="Entity.SerialCode" />
-        <wt:textbox field="Entity.Sum" />
-        <wt:row>
-            <wt:textbox field="Entity.DeceasedName_1" search-url="/DSManage/Info_AutoComplete/GetContent" />
-        </wt:row>
-        <wt:row>
-            <wt:textbox field="Entity.DeceasedName_2" search-url="/DSManage/Info_AutoComplete/GetContent" />
-        </wt:row>
-        <wt:row>
-            <wt:textbox field="Entity.DeceasedName_3" search-url="/DSManage/Info_AutoComplete/GetContent" />
-        </wt:row>
-        <wt:row>
-            <wt:textbox field="Entity.BenefactorName" />
-        </wt:row>
-        <wt:row>
-            <wt:textbox field="Entity.DSRemark" />
-        </wt:row>
+        <wt:display field="Entity.Sum" />
+    </wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.One">
+        <wt:textbox field="Entity.DeceasedName_1" search-url="/DSManage/Info_AutoComplete/GetContent" />
+        <wt:textbox field="Entity.DeceasedName_2" search-url="/DSManage/Info_AutoComplete/GetContent" />
+        <wt:textbox field="Entity.DeceasedName_3" search-url="/DSManage/Info_AutoComplete/GetContent" />
+        <wt:textbox field="Entity.BenefactorName" />
+    </wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.One">
+        <wt:textbox field="Entity.DSRemark" />
     </wt:row>
     <wt:hidden field="Entity.ID" />
     <wt:row align="AlignEnum.Right">
