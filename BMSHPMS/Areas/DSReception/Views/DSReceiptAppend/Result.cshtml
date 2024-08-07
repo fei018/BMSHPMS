@@ -1,0 +1,17 @@
+﻿@model BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs.DSReceiptAppendVM
+
+<div style="padding:20px;">
+    <h3>@Model.Message</h3>
+    <wt:form vm="@Model">
+        <wt:row items-per-row="ItemsPerRowEnum.Two">
+            @foreach (var item in Model.AppendResultList)
+            {
+                <wt:display field="@item.SerialCode" hide-label="true" />
+            }
+        </wt:row>
+    </wt:form>
+    <hr />
+    <wt:row>
+        <wt:closebutton />
+    </wt:row>
+</div>

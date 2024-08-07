@@ -16,6 +16,8 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
 
         public string Message { get; set; }
 
+        public List<AppendResultVM> AppendResultList { get; set; }
+
         public List<Opt_DharmaService> GetDharmaServiceList()
         {
             return DC.Set<Opt_DharmaService>().OrderBy(x => x.SerialCode).ToList();
@@ -38,8 +40,18 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
             }
         }
 
+        /// <summary>
+        /// 獲取 功德金額 選項
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<ComboSelectListItem> GetDonationSum(string id)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                return new List<ComboSelectListItem>();
+            }
+
             var ids = id.Split('|');
             string donationCategory = ids[0];
             string serviceID = ids[1];
@@ -61,10 +73,17 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
                 return;
             }
 
+            // 檢查 收據號碼
             var receipt = DC.Set<Info_Receipt>().CheckEqual(info.ReceiptNumber, x => x.ReceiptNumber).SingleOrDefault();
             if (receipt == null)
             {
                 MSD.AddModelError("ReceiptNumber", "收據號碼:" + info.ReceiptNumber + " 不存在數據庫.");
+                return;
+            }
+
+            if (info.DharmaServiceName.ToLower() != receipt.DharmaServiceName.ToLower())
+            {
+                MSD.AddModelError("DharmaServiceName", "所選法會與收據登記法會不相符");
                 return;
             }
 
@@ -171,12 +190,17 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
 
                     dctrans.Commit();
 
+                    AppendResultList = new List<AppendResultVM>();
                     foreach (var serial in serialList)
                     {
-                        Message += (serial + ",");
+                        var vm = new AppendResultVM()
+                        {
+                            SerialCode = serial,
+                        };
+                        AppendResultList.Add(vm);
                     }
 
-                    Message?.TrimEnd(',');
+                    Message = donation.DonationCategory + ": $" + donation.Sum;
                 }
                 catch (Exception)
                 {
