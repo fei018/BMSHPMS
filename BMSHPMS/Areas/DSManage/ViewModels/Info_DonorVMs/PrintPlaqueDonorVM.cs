@@ -32,7 +32,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
         public string DownloadFileName { get; set; }
 
         /// <summary>
-        /// 匯出excel result as byte[]
+        /// 
         /// </summary>
         public PrintPlaqueResult ExportResult { get; set; }
 
@@ -63,6 +63,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
 
             List<Info_Donor> models = await DC.Set<Info_Donor>().AsNoTracking().CheckIDs(ids).OrderBy(x => x.SerialCode).ToListAsync();
 
+            string filenameprefix = "功德主_";
             #region switch
             switch (post.Key)
             {
@@ -72,18 +73,24 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                     ExportResult = await PrintPlaqueHelper.ExportWordAsByte<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
                     //DownloadFileName = "功德主延生_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".docx";
+                    filenameprefix = "功德主延生_";
                     break;
 
                 case PrintPlaqueContext.延生1蓮位中紅筒紅紙:
                     ExportResult = await PrintPlaqueHelper.ExportWordAsByte<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-                    //DownloadFileName = "功德主延生_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".docx";
+                    filenameprefix = "功德主延生_";
                     break;
 
                 case PrintPlaqueContext.延生1蓮位大紅筒紅紙:
                     ExportResult = await PrintPlaqueHelper.ExportWordAsByte<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-                    //DownloadFileName = "功德主延生_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".docx";
+                    filenameprefix = "功德主延生_";
+                    break;
+
+                case PrintPlaqueContext.延生4蓮位小紅筒A4紅紙:
+                    ExportResult = await PrintPlaqueHelper.ExportWordAsByte<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
+                    filenameprefix = "功德主延生_";
                     break;
                 #endregion
 
@@ -94,21 +101,21 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                     //models.ForEach(x => x.BenefactorName = $"陽上：{x.BenefactorName}拜荐");
                     ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                    //DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
+                    filenameprefix = "功德主附薦_";
                     break;
 
                 case PrintPlaqueContext.附薦3蓮位萬字牌位A4紙:
                     ProcessDeceasedName(ref models);
                     ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                    //DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
+                    filenameprefix = "功德主附薦_";
                     break;
 
                 case PrintPlaqueContext.附薦2蓮位全字牌位A4紙:
                     ProcessDeceasedName(ref models);
                     ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                    //DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
+                    filenameprefix = "功德主附薦_";
                     break;
 
                 #endregion
@@ -118,7 +125,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
             }
             #endregion
 
-            DownloadFileName = "功德主附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ExportResult.FileExtention;
+            DownloadFileName = filenameprefix + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ExportResult.FileExtention;
 
             FileContentResult fileContentResult = new(ExportResult.FileBytes, ExportResult.Mimetype)
             {
