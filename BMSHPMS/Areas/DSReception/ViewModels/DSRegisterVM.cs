@@ -138,12 +138,12 @@ namespace BMSHPMS.DSReception.ViewModels
                 return regResultVM;
             }
 
-            // 檢查提交的 Count 是否小於0
+            // 檢查提交的 Count 是否 <= 0
             foreach (var item in submittedList)
             {
-                if (item.Count < 0)
+                if (item.Count <= 0)
                 {
-                    regResultVM.Message = "功德項目不能小於0";
+                    regResultVM.Message = "功德項目不能小於等於0";
                     return regResultVM;
                 }
             }

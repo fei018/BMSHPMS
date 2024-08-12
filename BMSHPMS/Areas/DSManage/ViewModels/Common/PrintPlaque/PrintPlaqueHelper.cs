@@ -22,73 +22,66 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
         /// <param name="models"></param>
         /// <param name="post"></param>
         /// <returns></returns>
-        //public static async Task<byte[]> ExportByteAsExcel2<T1, T2>(List<T2> models, PrintPlaquePost post) where T1 : class where T2 : class
-        //{
-        //    IExportFileByTemplate exporter = new ExcelExporter();
+        public static async Task<PrintPlaqueResult> ExportExcel<T1, T2>(List<T2> models, PrintPlaquePost post) where T1 : class where T2 : class
+        {
+            var result = new PrintPlaqueResult();
 
-        //    // 只有一頁excel數據的情況
-        //    if (models.Count <= post.SeatCount)
-        //    {
-        //        var tpl = Activator.CreateInstance(typeof(T1), models);
-        //        return await exporter.ExportBytesByTemplate(tpl, post.FilePath);
-        //    }
+            IExportFileByTemplate exporter = new ExcelExporter();
 
-        //    // 放置 每頁excel數據 的 list
-        //    List<byte[]> excelSheetList = new();
+            // 只有一頁excel數據的情況
+            if (models.Count <= post.SeatCount)
+            {
+                var tpl = Activator.CreateInstance(typeof(T1), models);
+                result.FileBytes = await exporter.ExportBytesByTemplate(tpl, post.FilePath);
+                result.FileExtention = ".xlsx";
+                result.Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                return result;
+            }
 
-        //    int sheetPages = models.Count / post.SeatCount; // 算出 頁數
-        //    int ys = models.Count % post.SeatCount; // 算出最後一頁的 蓮位數
+            // 放置 每頁excel數據 的 list
+            List<byte[]> excelSheetList = new();
 
-        //    int index = 0;
-        //    for (int i = 0; i < sheetPages; i++)
-        //    {
-        //        List<T2> tmpList = models.GetRange(index, post.SeatCount);
-        //        var modelObj = Activator.CreateInstance(typeof(T1), tmpList);
+            int sheetPages = models.Count / post.SeatCount; // 算出 頁數
+            int ys = models.Count % post.SeatCount; // 算出最後一頁的 蓮位數
 
-        //        var bytes = await exporter.ExportBytesByTemplate(modelObj, post.FilePath);
-        //        excelSheetList.Add(bytes);
-        //        index += post.SeatCount;
-        //    }
+            int index = 0;
+            for (int i = 0; i < sheetPages; i++)
+            {
+                List<T2> tmpList = models.GetRange(index, post.SeatCount);
+                var modelObj = Activator.CreateInstance(typeof(T1), tmpList);
 
-        //    if (ys > 0)
-        //    {
-        //        List<T2> tmpList = models.GetRange(index, ys);
-        //        var tpl = Activator.CreateInstance(typeof(T1), tmpList);
+                var bytes = await exporter.ExportBytesByTemplate(modelObj, post.FilePath);
+                excelSheetList.Add(bytes);
+                index += post.SeatCount;
+            }
 
-        //        var bytes = await exporter.ExportBytesByTemplate(tpl, post.FilePath);
-        //        excelSheetList.Add(bytes);
-        //    }
+            if (ys > 0)
+            {
+                List<T2> tmpList = models.GetRange(index, ys);
+                var tpl = Activator.CreateInstance(typeof(T1), tmpList);
 
-        //    XSSFWorkbook mergeWorkBook = new();
-        //    MemoryStream mergeMS = new();
+                var bytes = await exporter.ExportBytesByTemplate(tpl, post.FilePath);
+                excelSheetList.Add(bytes);
+            }
 
-        //    try
-        //    {
-        //        for (int i = 0; i < excelSheetList.Count; i++)
-        //        {
-        //            using MemoryStream ms = new(excelSheetList[i]);
-        //            using XSSFWorkbook tmpWorkBook = new(ms);
-        //            XSSFSheet tmpSheet = tmpWorkBook.GetSheetAt(0) as XSSFSheet;
-        //            tmpSheet.CopyTo(mergeWorkBook, "Sheet" + i, true, true);
-        //        }
+            result.FileBytes = ToolsHelper.GetZipArchive(excelSheetList);
+            result.FileExtention = ".zip";
+            result.Mimetype = "application/zip";
 
-        //        mergeWorkBook.Write(mergeMS);
-        //        return mergeMS.ToArray();
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        mergeWorkBook.Close();
-        //        mergeMS.Close();
-        //    }
-        //}
+            return result;
+        }
         #endregion
 
         #region 匯出 Word 範本
-        public static async Task<PrintPlaqueResult> ExportWordAsByte<T1, T2>(List<T2> models, PrintPlaquePost post)
+        /// <summary>
+        /// 匯出 word
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="models"></param>
+        /// <param name="post"></param>
+        /// <returns></returns>
+        public static async Task<PrintPlaqueResult> ExportWord<T1, T2>(List<T2> models, PrintPlaquePost post)
         {
             var result = new PrintPlaqueResult();
 
@@ -147,7 +140,7 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
             return result;
         }
 
-        public async static Task<byte[]> ExportWordByTemplate(object data, string templateFilePath)
+        private async static Task<byte[]> ExportWordByTemplate(object data, string templateFilePath)
         {
             if (!File.Exists(templateFilePath))
             {
@@ -359,54 +352,69 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
         /// <param name="models"></param>
         /// <param name="post"></param>
         /// <returns></returns>
-        public static async Task<PrintPlaqueResult> ExportByteAsExcel<T1, T2>(List<T2> models, PrintPlaquePost post) where T1 : class where T2 : class
-        {
-            var result = new PrintPlaqueResult();
+        //public static async Task<byte[]> ExportByteAsExcel2<T1, T2>(List<T2> models, PrintPlaquePost post) where T1 : class where T2 : class
+        //{
+        //    IExportFileByTemplate exporter = new ExcelExporter();
 
-            IExportFileByTemplate exporter = new ExcelExporter();
+        //    // 只有一頁excel數據的情況
+        //    if (models.Count <= post.SeatCount)
+        //    {
+        //        var tpl = Activator.CreateInstance(typeof(T1), models);
+        //        return await exporter.ExportBytesByTemplate(tpl, post.FilePath);
+        //    }
 
-            // 只有一頁excel數據的情況
-            if (models.Count <= post.SeatCount)
-            {
-                var tpl = Activator.CreateInstance(typeof(T1), models);
-                result.FileBytes = await exporter.ExportBytesByTemplate(tpl, post.FilePath);
-                result.FileExtention = ".xlsx";
-                result.Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                return result;
-            }
+        //    // 放置 每頁excel數據 的 list
+        //    List<byte[]> excelSheetList = new();
 
-            // 放置 每頁excel數據 的 list
-            List<byte[]> excelSheetList = new();
+        //    int sheetPages = models.Count / post.SeatCount; // 算出 頁數
+        //    int ys = models.Count % post.SeatCount; // 算出最後一頁的 蓮位數
 
-            int sheetPages = models.Count / post.SeatCount; // 算出 頁數
-            int ys = models.Count % post.SeatCount; // 算出最後一頁的 蓮位數
+        //    int index = 0;
+        //    for (int i = 0; i < sheetPages; i++)
+        //    {
+        //        List<T2> tmpList = models.GetRange(index, post.SeatCount);
+        //        var modelObj = Activator.CreateInstance(typeof(T1), tmpList);
 
-            int index = 0;
-            for (int i = 0; i < sheetPages; i++)
-            {
-                List<T2> tmpList = models.GetRange(index, post.SeatCount);
-                var modelObj = Activator.CreateInstance(typeof(T1), tmpList);
+        //        var bytes = await exporter.ExportBytesByTemplate(modelObj, post.FilePath);
+        //        excelSheetList.Add(bytes);
+        //        index += post.SeatCount;
+        //    }
 
-                var bytes = await exporter.ExportBytesByTemplate(modelObj, post.FilePath);
-                excelSheetList.Add(bytes);
-                index += post.SeatCount;
-            }
+        //    if (ys > 0)
+        //    {
+        //        List<T2> tmpList = models.GetRange(index, ys);
+        //        var tpl = Activator.CreateInstance(typeof(T1), tmpList);
 
-            if (ys > 0)
-            {
-                List<T2> tmpList = models.GetRange(index, ys);
-                var tpl = Activator.CreateInstance(typeof(T1), tmpList);
+        //        var bytes = await exporter.ExportBytesByTemplate(tpl, post.FilePath);
+        //        excelSheetList.Add(bytes);
+        //    }
 
-                var bytes = await exporter.ExportBytesByTemplate(tpl, post.FilePath);
-                excelSheetList.Add(bytes);
-            }
+        //    XSSFWorkbook mergeWorkBook = new();
+        //    MemoryStream mergeMS = new();
 
-            result.FileBytes = ToolsHelper.GetZipArchive(excelSheetList);
-            result.FileExtention = ".zip";
-            result.Mimetype = "application/zip";
+        //    try
+        //    {
+        //        for (int i = 0; i < excelSheetList.Count; i++)
+        //        {
+        //            using MemoryStream ms = new(excelSheetList[i]);
+        //            using XSSFWorkbook tmpWorkBook = new(ms);
+        //            XSSFSheet tmpSheet = tmpWorkBook.GetSheetAt(0) as XSSFSheet;
+        //            tmpSheet.CopyTo(mergeWorkBook, "Sheet" + i, true, true);
+        //        }
 
-            return result;
-        }
+        //        mergeWorkBook.Write(mergeMS);
+        //        return mergeMS.ToArray();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        mergeWorkBook.Close();
+        //        mergeMS.Close();
+        //    }
+        //}
         #endregion
     }
 }

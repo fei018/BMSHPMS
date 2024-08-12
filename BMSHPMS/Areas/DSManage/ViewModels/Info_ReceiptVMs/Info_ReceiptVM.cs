@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
 
@@ -88,11 +87,12 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
             Info_ReceiptHelper.ReceiptMoveToDeleteTable(Wtm, Entity.ID);
         }
 
-        public async Task InitialDetails()
+        public void InitialDetails()
         {
-            DonorInfos = await DC.Set<Info_Donor>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
-            LongevityInfos = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
-            MemorialInfos = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
+            //DonorInfos = await DC.Set<Info_Donor>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
+            //LongevityInfos = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
+            //MemorialInfos = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
+            InitListVM(ReceiptPageMode.Detials);
 
             TotalSum = GetCalculateSum(Entity.ID);
         }
@@ -140,7 +140,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
         public FillData_MemorialListVM FillData_MemorialListVM { get; set; }
         public FillData_LongevityListVM FillData_LongevityListVM { get; set; }
 
-        public void InitFillDonationData()
+        public void InitListVM(ReceiptPageMode pageMode)
         {
             DonorInfos = DC.Set<Info_Donor>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToList();
             LongevityInfos = DC.Set<Info_Longevity>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToList();
@@ -148,21 +148,21 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 
             if (DonorInfos.Count > 0)
             {
-                FillData_DonorListVM = new FillData_DonorListVM();
+                FillData_DonorListVM = new FillData_DonorListVM() { PageMode = pageMode };
                 FillData_DonorListVM.Searcher.ReceiptID = Entity.ID;
                 FillData_DonorListVM.CopyContext(this);
             }
 
             if (MemorialInfos.Count > 0)
             {
-                FillData_MemorialListVM = new FillData_MemorialListVM();
+                FillData_MemorialListVM = new FillData_MemorialListVM() { PageMode = pageMode };
                 FillData_MemorialListVM.Searcher.ReceiptID = Entity.ID;
                 FillData_MemorialListVM.CopyContext(this);
             }
 
             if (LongevityInfos.Count > 0)
             {
-                FillData_LongevityListVM = new FillData_LongevityListVM();
+                FillData_LongevityListVM = new FillData_LongevityListVM() { PageMode = pageMode };
                 FillData_LongevityListVM.Searcher.ReceiptID = Entity.ID;
                 FillData_LongevityListVM.CopyContext(this);
             }

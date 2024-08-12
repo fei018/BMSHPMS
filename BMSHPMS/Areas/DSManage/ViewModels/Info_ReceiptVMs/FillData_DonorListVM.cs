@@ -1,5 +1,4 @@
 ﻿using BMSHPMS.DSManage.ViewModels.Info_DonorVMs;
-using BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs;
 using BMSHPMS.Models.DharmaService;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -11,16 +10,40 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 {
     public class FillData_DonorListVM : BasePagedListVM<Info_Donor_View, ReceiptListVMSearcher>
     {
+        public ReceiptPageMode PageMode { get; set; }
+
         protected override List<GridAction> InitGridAction()
         {
-            return new List<GridAction>
+            List<GridAction> actions;
+
+            switch (PageMode)
             {
-                //this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
-                //this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800,dialogHeight:600),
-                //this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800,dialogHeight:500),
-                //this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800,dialogHeight:500),
-                this.MakeAction("Info_Donor","EditFill","修改","修改", GridActionParameterTypesEnum.SingleId,"DSManage",dialogWidth: 800,dialogHeight:600).SetShowInRow().SetHideOnToolBar(),
-            };
+                case ReceiptPageMode.Detials:
+                    actions = new List<GridAction>()
+                    {
+                        this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800, dialogHeight: 500)
+                    };
+                    break;
+
+                case ReceiptPageMode.FillData:
+                    actions = new List<GridAction>
+                    {
+                        this.MakeAction("Info_Donor","EditFill","修改","修改", GridActionParameterTypesEnum.SingleId,"DSManage",dialogWidth: 800,dialogHeight:600).SetShowInRow().SetHideOnToolBar(),
+                    };
+                    break;
+
+                default:
+                    actions = new List<GridAction>
+                    {
+                        this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
+                        this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800,dialogHeight:600),
+                        this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800,dialogHeight:500),
+                        this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800,dialogHeight:500),
+                    };
+                    break;
+            }
+
+            return actions;
         }
 
         protected override IEnumerable<IGridColumn<Info_Donor_View>> InitGridHeader()

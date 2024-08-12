@@ -10,17 +10,34 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 {
     public class FillData_LongevityListVM : BasePagedListVM<Info_Longevity_View, ReceiptListVMSearcher>
     {
+        public ReceiptPageMode PageMode { get; set; }
+
         protected override List<GridAction> InitGridAction()
         {
-            return new List<GridAction>
+            switch (PageMode)
             {
-                //this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
-                //this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800, dialogHeight : 600),
-                //this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800),
-                //this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800, dialogHeight : 400),
-                this.MakeAction("Info_Longevity","EditFill","修改","修改", GridActionParameterTypesEnum.SingleId,"DSManage",dialogWidth: 800,dialogHeight:600).SetShowInRow().SetHideOnToolBar(),
+                case ReceiptPageMode.Detials:
+                    return new List<GridAction>
+                    {
+                        this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800),
 
-            };
+                    };
+
+                case ReceiptPageMode.FillData:
+                    return new List<GridAction>
+                    {
+                        this.MakeAction("Info_Longevity","EditFill","修改","修改", GridActionParameterTypesEnum.SingleId,"DSManage",dialogWidth: 800,dialogHeight:600).SetShowInRow().SetHideOnToolBar(),
+                    };
+
+                default:
+                    return new List<GridAction>
+                    {
+                        this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
+                        this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800, dialogHeight : 600),
+                        this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800),
+                        this.MakeStandardAction("Info_Longevity", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800, dialogHeight : 400),
+                    };
+            }
         }
 
 

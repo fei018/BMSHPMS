@@ -6,6 +6,13 @@
 }
 
 <wt:form vm="@Model" style="font-size:14px;">
+    <wt:row items-per-row="ItemsPerRowEnum.Two">
+        <wt:display field="Entity.CreateBy" Label-Text="登記人" />
+        <wt:display field="Entity.CreateTime" Label-Text="登記時間" />
+        <wt:display field="Entity.UpdateBy" />
+        <wt:display field="Entity.UpdateTime" />
+    </wt:row>
+    <hr />
     <wt:row items-per-row="ItemsPerRowEnum.Two">      
         <wt:display field="Entity.DharmaServiceYear" />
         <wt:display field="Entity.DharmaServiceName" />
@@ -19,80 +26,22 @@
     <wt:row>
         <wt:display field="Entity.DSRemark" />
     </wt:row>
-    <hr />
-    <wt:row items-per-row="ItemsPerRowEnum.Two">
-        <wt:display field="Entity.CreateBy" Label-Text="登記人" />
-        <wt:display field="Entity.CreateTime" Label-Text="登記時間" />
-        <wt:display field="Entity.UpdateBy" />
-        <wt:display field="Entity.UpdateTime" />
-    </wt:row>
-    <br />
-
-    @if (donors != null && donors.Count > 0)
-    {
-        <wt:fieldset title="功德主" style="border-color:gray">
-            @foreach (var item in donors)
-            {
-                <wt:row items-per-row="ItemsPerRowEnum.Four">
-                    <wt:display field="@item.SerialCode" />
-                    <wt:display field="@item.Sum" />
-                </wt:row>
-                <wt:row items-per-row="ItemsPerRowEnum.One">
-                    <wt:display field="@item.LongevityName" />
-                    <wt:display field="@item.DeceasedName_1" />
-                    <wt:display field="@item.DeceasedName_2" />
-                    <wt:display field="@item.DeceasedName_3" />
-                    <wt:display field="@item.BenefactorName" />
-                </wt:row>
-                <wt:row items-per-row="ItemsPerRowEnum.One">
-                    <wt:display field="@item.DSRemark" />
-                </wt:row>
-                <hr />
-            }
-        </wt:fieldset>
-    }
-    @if (longevitys != null && longevitys.Count > 0)
-    {
-        <wt:fieldset title="延生位" style="border-color:gray">          
-            @foreach (var item in longevitys)
-            {
-                <wt:row items-per-row="ItemsPerRowEnum.Four">
-                    <wt:display field="@item.SerialCode" />
-                    <wt:display field="@item.Sum" />
-                </wt:row>
-                <wt:row items-per-row="ItemsPerRowEnum.One">
-                    <wt:display field="@item.Name" />
-                </wt:row>
-                <wt:row items-per-row="ItemsPerRowEnum.One">
-                    <wt:display field="@item.DSRemark" />
-                </wt:row>
-                <hr />
-            }
-        </wt:fieldset>
-    }
-    @if (memorials != null && memorials.Count > 0)
-    {
-        <wt:fieldset title="附薦位" style="border-color:gray">
-            @foreach (var item in memorials)
-            {
-                <wt:row items-per-row="ItemsPerRowEnum.Four">
-                    <wt:display field="@item.SerialCode" />
-                    <wt:display field="@item.Sum" />
-                </wt:row>
-                <wt:row items-per-row="ItemsPerRowEnum.One">
-                    <wt:display field="@item.DeceasedName_1" />
-                    <wt:display field="@item.DeceasedName_2" />
-                    <wt:display field="@item.DeceasedName_3" />
-                    <wt:display field="@item.BenefactorName" />
-                </wt:row>
-                <wt:row items-per-row="ItemsPerRowEnum.One">
-                    <wt:display field="@item.DSRemark" />
-                </wt:row>
-                <hr />
-            }
-        </wt:fieldset>
-    }
+    <hr />   
     <wt:row align="AlignEnum.Right">
         <wt:closebutton />
     </wt:row>
 </wt:form>
+@if (Model.DonorInfos.Count > 0)
+{
+    <wt:grid vm="@Model.FillData_DonorListVM" hidden-checkbox use-local-data="true" height="400" />
+    <hr />
+}
+@if (Model.MemorialInfos.Count > 0)
+{
+    <wt:grid vm="@Model.FillData_MemorialListVM" hidden-checkbox use-local-data="true" height="400" />
+    <hr />
+}
+@if (Model.LongevityInfos.Count > 0)
+{
+    <wt:grid vm="@Model.FillData_LongevityListVM" hidden-checkbox use-local-data="true" height="400" />
+}

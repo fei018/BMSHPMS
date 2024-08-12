@@ -70,26 +70,30 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 #region 延生 case
 
                 case PrintPlaqueContext.延生1蓮位小紅筒紅紙:
-                    ExportResult = await PrintPlaqueHelper.ExportWordAsByte<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
+                    CheckLongevityName(models);
+                    ExportResult = await PrintPlaqueHelper.ExportWord<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
                     //DownloadFileName = "功德主延生_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".docx";
                     filenameprefix = "功德主延生_";
                     break;
 
                 case PrintPlaqueContext.延生1蓮位中紅筒紅紙:
-                    ExportResult = await PrintPlaqueHelper.ExportWordAsByte<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
+                    CheckLongevityName(models);
+                    ExportResult = await PrintPlaqueHelper.ExportWord<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
                     filenameprefix = "功德主延生_";
                     break;
 
                 case PrintPlaqueContext.延生1蓮位大紅筒紅紙:
-                    ExportResult = await PrintPlaqueHelper.ExportWordAsByte<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
+                    CheckLongevityName(models);
+                    ExportResult = await PrintPlaqueHelper.ExportWord<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
                     filenameprefix = "功德主延生_";
                     break;
 
                 case PrintPlaqueContext.延生4蓮位小紅筒A4紅紙:
-                    ExportResult = await PrintPlaqueHelper.ExportWordAsByte<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
+                    CheckLongevityName(models);
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
                     filenameprefix = "功德主延生_";
                     break;
                 #endregion
@@ -99,21 +103,21 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 case PrintPlaqueContext.附薦5蓮位善字牌位A4紙:
                     ProcessDeceasedName(ref models);
                     //models.ForEach(x => x.BenefactorName = $"陽上：{x.BenefactorName}拜荐");
-                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     filenameprefix = "功德主附薦_";
                     break;
 
                 case PrintPlaqueContext.附薦3蓮位萬字牌位A4紙:
                     ProcessDeceasedName(ref models);
-                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     filenameprefix = "功德主附薦_";
                     break;
 
                 case PrintPlaqueContext.附薦2蓮位全字牌位A4紙:
                     ProcessDeceasedName(ref models);
-                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     filenameprefix = "功德主附薦_";
                     break;
@@ -164,6 +168,20 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 }
 
                 item.DeceasedName_1 = tmp.TrimEnd('\n');
+            }
+        }
+        #endregion
+
+        #region 檢查延生空名字
+        private void CheckLongevityName(List<Info_Donor> models)
+        {
+            // 檢查延生空名字
+            foreach (var model in models)
+            {
+                if (string.IsNullOrEmpty(model.LongevityName))
+                {
+                    throw new Exception($"功德主編號:{model.SerialCode}, 沒有可用的延生名");
+                }
             }
         }
         #endregion

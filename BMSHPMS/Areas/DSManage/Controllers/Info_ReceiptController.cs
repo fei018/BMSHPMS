@@ -132,10 +132,10 @@ namespace BMSHPMS.DSManage.Controllers
 
         #region Details
         [ActionDescription("Sys.Details")]
-        public async Task<ActionResult> Details(string id)
+        public IActionResult Details(string id)
         {
             var vm = Wtm.CreateVM<Info_ReceiptVM>(id);
-            await vm.InitialDetails();
+            vm.InitialDetails();
             return PartialView(vm);
         }
         #endregion
@@ -264,7 +264,7 @@ namespace BMSHPMS.DSManage.Controllers
         public IActionResult FillDonationDataGrid(string id)
         {
             var vm = Wtm.CreateVM<Info_ReceiptVM>(id);
-            vm.InitFillDonationData();
+            vm.InitListVM(ReceiptPageMode.FillData);
             return PartialView(vm);
         }
         #endregion

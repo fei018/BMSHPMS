@@ -62,31 +62,40 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
 
             var models = DC.Set<Info_Longevity>().AsNoTracking().CheckIDs(ids).OrderBy(x => x.SerialCode).ToList();
 
+            // 檢查延生空名字
+            foreach (var model in models)
+            {
+                if (string.IsNullOrEmpty(model.Name))
+                {
+                    throw new Exception($"延生編號:{model.SerialCode}, 沒有可用的名字");
+                }
+            }
+
             //string fileExtension;
 
             #region switch
             switch (post.Key)
             {
                 case PrintPlaqueContext.延生20格205x254mm紅紙:
-                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
                     //fileExtension = ".xlsx";
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
 
                 case PrintPlaqueContext.延生小5蓮210x130mm紅紙:
-                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
                     //fileExtension = ".xlsx";
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
 
                 case PrintPlaqueContext.延生大5蓮160x255mm紅紙:
-                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
                     //fileExtension = ".xlsx";
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
 
                 case PrintPlaqueContext.延生4蓮位小紅筒A4紅紙:
-                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
                     //fileExtension = ".xlsx";
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;

@@ -81,9 +81,6 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                     tmp += item.DeceasedName_3 + "\n";
                 }
 
-                //int length = tmp.LastIndexOf("\n");
-                //item.DeceasedName_1 = tmp.Substring(0, length);
-
                 if (string.IsNullOrEmpty(tmp))
                 {
                     throw new Exception($"附薦編號:{item.SerialCode}, 沒有可用的附薦名稱.");
@@ -95,13 +92,13 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
             switch (post.Key)
             {
                 case PrintPlaqueContext.附薦小10蓮位140x420黃紙:
-                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     //DownloadFileName = "附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
                     break;
 
                 case PrintPlaqueContext.附薦大10蓮位181x490黃紙:
-                    ExportResult = await PrintPlaqueHelper.ExportByteAsExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     //DownloadFileName = "附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
                     break;

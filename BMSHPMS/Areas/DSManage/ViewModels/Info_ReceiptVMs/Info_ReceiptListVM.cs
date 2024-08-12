@@ -22,7 +22,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 this.MakeAction("Info_Receipt","FillDonationData","填寫","填寫資料", GridActionParameterTypesEnum.SingleId,"DSManage").SetShowInRow().SetHideOnToolBar().SetShowDialog().SetIsRedirect(),
                 //this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800,dialogHeight:400),
                 this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800, dialogHeight : 600),
-                this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 1000, dialogHeight : 800),
+                this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 1000, dialogHeight : 800).SetMax(),
                 this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800, dialogHeight : 400),               
                 //this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "DSManage", dialogWidth: 800),
                 this.MakeStandardAction("Info_Receipt", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "DSManage", dialogWidth: 800),
