@@ -5,43 +5,45 @@
     var memorials = Model.MemorialInfos;
 }
 
-<wt:form vm="@Model" style="font-size:14px;">
-    <wt:row items-per-row="ItemsPerRowEnum.Two">
-        <wt:display field="Entity.CreateBy" Label-Text="登記人" />
-        <wt:display field="Entity.CreateTime" Label-Text="登記時間" />
-        <wt:display field="Entity.UpdateBy" />
-        <wt:display field="Entity.UpdateTime" />
-    </wt:row>
-    <hr />
-    <wt:row items-per-row="ItemsPerRowEnum.Two">      
-        <wt:display field="Entity.DharmaServiceYear" />
-        <wt:display field="Entity.DharmaServiceName" />
-        <wt:display field="Entity.ReceiptDate"/>
-        <wt:display field="Entity.ReceiptNumber" />    
-        <wt:display field="TotalSum" />
-        <wt:display field="Entity.ReceiptOwn" />
-        <wt:display field="Entity.ContactName" />
-        <wt:display field="Entity.ContactPhone" />
-    </wt:row>
-    <wt:row>
-        <wt:display field="Entity.DSRemark" />
-    </wt:row>
-    <hr />   
-    <wt:row align="AlignEnum.Right">
-        <wt:closebutton />
-    </wt:row>
-</wt:form>
-@if (Model.DonorInfos.Count > 0)
-{
-    <wt:grid vm="@Model.FillData_DonorListVM" hidden-checkbox use-local-data="true" height="400" />
-    <hr />
-}
-@if (Model.MemorialInfos.Count > 0)
-{
-    <wt:grid vm="@Model.FillData_MemorialListVM" hidden-checkbox use-local-data="true" height="400" />
-    <hr />
-}
-@if (Model.LongevityInfos.Count > 0)
-{
-    <wt:grid vm="@Model.FillData_LongevityListVM" hidden-checkbox use-local-data="true" height="400" />
-}
+<div style="margin-bottom:20px;">
+    <wt:form vm="@Model" style="font-size:14px;">
+        <wt:row items-per-row="ItemsPerRowEnum.Two">
+            <wt:display field="Entity.CreateBy" Label-Text="登記人" />
+            <wt:display field="Entity.CreateTime" Label-Text="登記時間" />
+            <wt:display field="Entity.UpdateBy" />
+            <wt:display field="Entity.UpdateTime" />
+        </wt:row>
+        <hr />
+        <wt:row items-per-row="ItemsPerRowEnum.Two">
+            <wt:display field="Entity.DharmaServiceYear" />
+            <wt:display field="Entity.DharmaServiceName" />
+            <wt:display field="Entity.ReceiptDate" />
+            <wt:display field="Entity.ReceiptNumber" />
+            <wt:display field="TotalSum" />
+            <wt:display field="Entity.ReceiptOwn" />
+            <wt:display field="Entity.ContactName" />
+            <wt:display field="Entity.ContactPhone" />
+        </wt:row>
+        <wt:row>
+            <wt:display field="Entity.DSRemark" />
+        </wt:row>
+        <hr />
+        <wt:row align="AlignEnum.Right">
+            <wt:closebutton />
+        </wt:row>
+    </wt:form>
+    @if (Model.DonorInfos.Count > 0)
+    {
+        <wt:grid vm="@Model.FillData_DonorListVM" hidden-checkbox use-local-data="true" height="400" />
+        <hr />
+    }
+    @if (Model.MemorialInfos.Count > 0)
+    {
+        <wt:grid vm="@Model.FillData_MemorialListVM" hidden-checkbox use-local-data="true" height="400" />
+        <hr />
+    }
+    @if (Model.LongevityInfos.Count > 0)
+    {
+        <wt:grid vm="@Model.FillData_LongevityListVM" hidden-checkbox use-local-data="true" height="400" />
+    }
+</div>
