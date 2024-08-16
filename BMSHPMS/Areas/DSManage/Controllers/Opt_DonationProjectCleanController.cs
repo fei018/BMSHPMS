@@ -36,20 +36,20 @@ namespace BMSHPMS.Areas.DSManage.Controllers
             }
         }
 
-        [HttpPost]
-        [ActionDescription("所有功德編號歸零")]
-        public async Task<IActionResult> CleanUsedNumberAll(Opt_DonationProjectCleanVM vm)
-        {
-            try
-            {
-                await vm.CleanUsedNumberAll();
-                return Json(new { code = 200, msg = "所有功德編號已歸零" });
-            }
-            catch (Exception ex)
-            {
-                return Json(new { code = 400, msg = ex.Message });
-            }
-        }
+        //[HttpPost]
+        //[ActionDescription("所有功德編號歸零")]
+        //public async Task<IActionResult> CleanUsedNumberAll(Opt_DonationProjectCleanVM vm)
+        //{
+        //    try
+        //    {
+        //        await vm.CleanUsedNumberAll();
+        //        return Json(new { code = 200, msg = "所有功德編號已歸零" });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Json(new { code = 400, msg = ex.Message });
+        //    }
+        //}
         #endregion
     }
 }

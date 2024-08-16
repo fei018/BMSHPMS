@@ -8,6 +8,6 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectCleanVMs
 
         public Guid DharmaServiceID { get; set; }
 
-        public int UsedNumberCount { get; set; }
+        public int TotalUsedNumberCount { get; set; }
     }
 }

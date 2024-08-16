@@ -3,10 +3,10 @@
 
 <wt:form vm="@Model">
     <wt:row items-per-row="ItemsPerRowEnum.Two">
-        <wt:textbox field="Entity.Sum" />
-        <wt:textbox field="Entity.SerialCode" />
-        <wt:combobox field="Entity.DonationCategory" items="AllOpt_DonationCategory"/>
         <wt:combobox field="Entity.DharmaServiceID" items="AllOpt_DharmaService" />
+        <wt:combobox field="Entity.DonationCategory" items="AllOpt_DonationCategory" />
+        <wt:textbox field="Entity.SerialCode" />
+        <wt:textbox field="Entity.Sum" />  
     </wt:row>
     <wt:row align="AlignEnum.Right">
         <wt:submitbutton />
