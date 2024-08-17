@@ -17,6 +17,7 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectCleanVMs
 
         public Guid? DharmaServiceID { get; set; }
 
+        public List<Opt_DonationProject> DonationProjectList { get; set; }
 
         protected override void InitVM()
         {

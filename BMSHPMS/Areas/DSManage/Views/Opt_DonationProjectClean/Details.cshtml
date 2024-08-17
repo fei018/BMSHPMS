@@ -1,0 +1,14 @@
+﻿@using BMSHPMS.Models.DharmaServiceExtention
+@model BMSHPMS.DSManage.ViewModels.Opt_DonationProjectCleanVMs.Opt_DonationProjectCleanVM
+
+<wt:form vm="@Model">
+    <wt:row items-per-row="ItemsPerRowEnum.One">
+        @foreach (var item in Model.DonationProjectList)
+        {
+            if (DonationProjectOptions.Category.功德主 == item.DonationCategory)
+            {
+                <wt:display field="@item.Sum" />
+            }
+        }
+    </wt:row>
+</wt:form>
