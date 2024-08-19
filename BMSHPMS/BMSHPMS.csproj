@@ -71,15 +71,5 @@
     <Folder Include="Areas\CommonManage\Controllers\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
-
-
-
-
-  <ItemGroup>
-    <Content Update="Areas\DSManage\Views\Opt_DonationProjectClean\Index - 複製.cshtml">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
 </Project>
 

@@ -1,14 +1,12 @@
 ﻿@using BMSHPMS.Models.DharmaServiceExtention
 @model BMSHPMS.DSManage.ViewModels.Opt_DonationProjectCleanVMs.Opt_DonationProjectCleanVM
 
-<wt:form vm="@Model">
-    <wt:row items-per-row="ItemsPerRowEnum.One">
-        @foreach (var item in Model.DonationProjectList)
-        {
-            if (DonationProjectOptions.Category.功德主 == item.DonationCategory)
-            {
-                <wt:display field="@item.Sum" />
-            }
-        }
+<wt:form vm="@Model" url="/DSManage/Opt_DonationProjectClean/CleanUsedNumber" >
+    <wt:quote>“@Model.DharmaService.ServiceName” 所有功德編號計數: @Model.DonationTotalUsedNumberCount</wt:quote>
+    <wt:hidden field="DharmaServiceID" />
+    <wt:grid vm="DonationProjectListVM" use-local-data="true" height="500" hidden-checkbox="true" hidden-panel="true" />
+    <wt:row align="AlignEnum.Right">
+        <wt:submitbutton theme="ButtonThemeEnum.Warm" text="清除" confirm-txt="清除 “@Model.DharmaService.ServiceName” 所有功德編號計數" />
+        <wt:closebutton />
     </wt:row>
 </wt:form>

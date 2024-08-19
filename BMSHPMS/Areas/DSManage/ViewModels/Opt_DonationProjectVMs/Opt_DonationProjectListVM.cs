@@ -1,12 +1,10 @@
-﻿using System;
+﻿using BMSHPMS.Models.DharmaService;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using BMSHPMS.Models.DharmaService;
 
 
 namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
@@ -35,8 +33,8 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
                 this.MakeGridHeader(x => x.ServiceName_view),
                 this.MakeGridHeader(x => x.DonationCategory),
                 this.MakeGridHeader(x => x.SerialCode),
-                this.MakeGridHeader(x => x.Sum),           
-                this.MakeGridHeader(x => x.UsedNumber),              
+                this.MakeGridHeader(x => x.Sum),
+                this.MakeGridHeader(x => x.UsedNumber),
                 this.MakeGridHeaderAction(width: 200)
             };
         }
@@ -66,7 +64,8 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
 
     }
 
-    public class Opt_DonationProject_View : Opt_DonationProject{
+    public class Opt_DonationProject_View : Opt_DonationProject
+    {
         [Display(Name = "法會名")]
         public String ServiceName_view { get; set; }
 

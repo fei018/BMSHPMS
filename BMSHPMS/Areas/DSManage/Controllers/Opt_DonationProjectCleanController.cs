@@ -21,35 +21,33 @@ namespace BMSHPMS.Areas.DSManage.Controllers
             return PartialView(vm);
         }
 
+        [ActionDescription("Details")]
+        public IActionResult Details(string DharmaServiceID)
+        {
+            var vm = Wtm.CreateVM<Opt_DonationProjectCleanVM>();
+            vm.InitDetail(DharmaServiceID);
+
+            return PartialView(vm);
+        }
+
         [HttpPost]
         [ActionDescription("單獨法會歸零")]
         public async Task<IActionResult> CleanUsedNumber(Opt_DonationProjectCleanVM vm)
         {
             try
             {
-                await vm.CleanUsedNumber();
-                return Json(new { code = 200, msg = "此法會功德編號已歸零" });
+                if (!vm.DharmaServiceID.HasValue)
+                {
+                    throw new Exception("DharmaServiceID is null");
+                }
+                await vm.CleanUsedNumber(vm.DharmaServiceID.Value);
+                return FFResult().CloseDialog().Alert("已清除");
             }
             catch (Exception ex)
             {
-                return Json(new { code = 400, msg = ex.Message });
+                return Content(ex.Message);
             }
         }
-
-        //[HttpPost]
-        //[ActionDescription("所有功德編號歸零")]
-        //public async Task<IActionResult> CleanUsedNumberAll(Opt_DonationProjectCleanVM vm)
-        //{
-        //    try
-        //    {
-        //        await vm.CleanUsedNumberAll();
-        //        return Json(new { code = 200, msg = "所有功德編號已歸零" });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Json(new { code = 400, msg = ex.Message });
-        //    }
-        //}
         #endregion
     }
 }
