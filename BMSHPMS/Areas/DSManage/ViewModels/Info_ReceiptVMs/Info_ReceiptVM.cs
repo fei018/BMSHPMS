@@ -84,14 +84,21 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 
         public override void DoDelete()
         {
-            Info_ReceiptHelper.ReceiptMoveToDeleteTable(Wtm, Entity.ID);
+            using var trans = DC.BeginTransaction();
+            try
+            {
+                Info_ReceiptHelper.ReceiptMoveToDeleteTable(Wtm, Entity.ID);
+                trans.Commit();
+            }
+            catch (Exception)
+            {
+                trans.Rollback();
+                throw;
+            }
         }
 
         public void InitialDetails()
         {
-            //DonorInfos = await DC.Set<Info_Donor>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
-            //LongevityInfos = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
-            //MemorialInfos = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == Entity.ID).OrderBy(q => q.Sum).ThenBy(q => q.SerialCode).ToListAsync();
             InitListVM(ReceiptPageMode.Detials);
 
             TotalSum = GetCalculateSum(Entity.ID);

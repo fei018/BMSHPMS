@@ -1,4 +1,5 @@
-﻿using BMSHPMS.Helper;
+﻿using BMSHPMS.DSManage.ViewModels.Common;
+using BMSHPMS.Helper;
 using BMSHPMS.Models.DharmaService;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -49,15 +50,16 @@ namespace BMSHPMS.DSReception.ViewModels
                         Error = "輸入的收據號碼不是最近一次登記";
                         return;
                     }
-
-                    // 刪除最近一次的收據記錄
-                    var del = DC.Set<Info_Receipt>().Where(x => x.ReceiptNumber == ReceiptNumber).FirstOrDefault();
-                    if (del == null)
+                   
+                    var toDel = DC.Set<Info_Receipt>().Where(x => x.ReceiptNumber == ReceiptNumber).FirstOrDefault();
+                    if (toDel == null)
                     {
                         Error = "輸入的收據號碼不存在, 可能已撤銷.";
                         return;
                     }
-                    DC.DeleteEntity(del);
+
+                    // 刪除最近一次的收據記錄, 不需要複製數據到 Delete 表里
+                    DC.DeleteEntity(toDel);
                     DC.SaveChanges();
 
                     // 更新 功德使用數 退回 上一次記錄

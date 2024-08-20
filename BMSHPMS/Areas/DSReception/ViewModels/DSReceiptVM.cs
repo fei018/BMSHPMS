@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
+using WalkingTec.Mvvm.Core.Extensions;
 
 namespace BMSHPMS.DSReception.ViewModels
 {
@@ -44,9 +45,19 @@ namespace BMSHPMS.DSReception.ViewModels
 
         public void Delete()
         {
-            Info_ReceiptHelper.ReceiptMoveToDeleteTable(Wtm, Receipt.ID);
-            DC.SaveChanges();
-            DeleteResult = $"收據：{Receipt.ReceiptNumber} 已刪除.";
+            using var trans = DC.BeginTransaction();
+            try
+            {
+                Info_ReceiptHelper.ReceiptMoveToDeleteTable(Wtm, Receipt.ID);
+                DeleteResult = $"收據：{Receipt.ReceiptNumber} 已刪除.";
+                trans.Commit();
+            }
+            catch (System.Exception)
+            {
+                trans.Rollback();
+                throw;
+            }
+            
         }
     }
 }
