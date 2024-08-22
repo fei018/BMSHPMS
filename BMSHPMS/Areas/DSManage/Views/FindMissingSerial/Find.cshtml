@@ -1,0 +1,17 @@
+﻿@using BMSHPMS.DSManage.ViewModels.FindMissingSerialVMs
+@model FindMissingVM
+
+<div style="padding:20px;">
+    <wt:form vm="@Model">
+        <wt:row items-per-row="ItemsPerRowEnum.Three">
+            <wt:display field="FindResult.DharmaServiceYear" hide-label="true" />
+            <wt:display field="FindResult.DharmaServiceName" hide-label="true" />
+            <wt:display field="FindResult.DonationProjectCategory" hide-label="true" />
+        </wt:row>
+    </wt:form>
+    <hr />
+    @foreach (var item in Model.FindResult.MissingSerials)
+    {
+        <p>@item</p>
+    }
+</div>

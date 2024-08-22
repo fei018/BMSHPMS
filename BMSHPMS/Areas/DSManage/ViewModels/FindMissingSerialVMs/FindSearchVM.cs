@@ -5,7 +5,7 @@ using System.Linq;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
 
-namespace BMSHPMS.DSManage.ViewModels.FindDeletedSerialVMs
+namespace BMSHPMS.DSManage.ViewModels.FindMissingSerialVMs
 {
     public class FindSearchVM : BaseVM
     {
@@ -25,5 +25,13 @@ namespace BMSHPMS.DSManage.ViewModels.FindDeletedSerialVMs
         [Required(ErrorMessage = "{0}必填")]
         public string DonationProjectID { get; set; }
 
+        public List<ComboSelectListItem> DharmaServiceSelectItems { get; set; }
+
+        protected override void InitVM()
+        {
+            DharmaServiceSelectItems = DC.Set<Opt_DharmaService>()
+                                         .OrderBy(x => x.SerialCode)
+                                         .GetSelectListItems(Wtm, x => x.ServiceName, y => y.ID);
+        }
     }
 }

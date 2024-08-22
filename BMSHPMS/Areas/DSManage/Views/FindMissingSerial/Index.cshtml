@@ -1,0 +1,16 @@
+﻿@using BMSHPMS.DSManage.ViewModels.FindMissingSerialVMs
+@model FindSearchVM
+
+<wt:quote>
+    查詢法會遺失的可用功德編號
+</wt:quote>
+<wt:form vm="@Model">
+    <wt:row items-per-row="ItemsPerRowEnum.Three">
+        <wt:datetime field="DharmaServiceYear" type="Year" />
+        <wt:combobox field="DharmaServiceID" items="DharmaServiceSelectItems" link-field="DonationProjectID" trigger-url="/DSManage/FindMissingSerial/DonationProjectSelectItems" />
+        <wt:combobox field="DonationProjectID" />
+    </wt:row>
+    <wt:row>
+        <wt:linkbutton text="查詢" window-title="遺失的可用功德編號" window-height="600" window-width="900" url="/DSManage/FindMissingSerial/Find" post-current-form="true" />
+    </wt:row>
+</wt:form>
