@@ -89,6 +89,8 @@ namespace BMSHPMS.DSManage.ViewModels.FindMissingSerialVMs
                 DharmaServiceYear = search.DharmaServiceYear,
                 DharmaServiceName = DC.Set<Opt_DharmaService>().CheckID(search.DharmaServiceID, x => x.ID).Single().ServiceName,
                 DonationProjectCategory = donation.DonationCategory,
+                DonationProjectSum = "$" + donation.Sum?.ToString(),
+                DPLastUsedNumberSerial = donation.SerialCode + donation.UsedNumber.ToString().PadLeft(4, '0'),
                 MissingSerials = serials
             };
         }

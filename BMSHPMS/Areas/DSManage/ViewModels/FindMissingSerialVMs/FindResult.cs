@@ -14,6 +14,12 @@ namespace BMSHPMS.DSManage.ViewModels.FindMissingSerialVMs
         [Display(Name = "功德項目")]
         public string DonationProjectCategory { get; set; }
 
+        [Display(Name = "功德金額")]
+        public string DonationProjectSum { get; set; }
+
+        [Display(Name = "最新編號")]
+        public string DPLastUsedNumberSerial { get; set; }
+
         public List<string> MissingSerials { get; set; } = new();
     }
 }

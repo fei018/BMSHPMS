@@ -10,12 +10,14 @@ namespace BMSHPMS.DSManage.Controllers
     [ActionDescription("查找遺失編號")]
     public class FindMissingSerialController : BaseController
     {
+        [ActionDescription("主頁")]
         public IActionResult Index()
         {
             var vm = Wtm.CreateVM<FindSearchVM>();
             return PartialView(vm);
         }
 
+        [ActionDescription("SelectItems")]
         public IActionResult DonationProjectSelectItems(string id)
         {
             var vm = Wtm.CreateVM<FindMissingVM>();
@@ -23,6 +25,7 @@ namespace BMSHPMS.DSManage.Controllers
             return JsonMore(list);
         }
 
+        [ActionDescription("Find")]
         [HttpPost]
         public IActionResult Find(FindSearchVM vm)
         {

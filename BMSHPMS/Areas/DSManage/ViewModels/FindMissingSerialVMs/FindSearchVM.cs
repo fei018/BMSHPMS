@@ -17,10 +17,6 @@ namespace BMSHPMS.DSManage.ViewModels.FindMissingSerialVMs
         [Required(ErrorMessage = "{0}必填")]
         public int? DharmaServiceYear { get; set; }
 
-        //[Display(Name = "功德類別")]
-        //[Required(ErrorMessage = "{0}必填")]
-        //public string DonationProjectCategory { get; set; }
-
         [Display(Name = "功德項目")]
         [Required(ErrorMessage = "{0}必填")]
         public string DonationProjectID { get; set; }
