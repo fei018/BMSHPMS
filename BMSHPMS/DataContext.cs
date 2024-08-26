@@ -1,12 +1,10 @@
-﻿using BMSHPMS.Models.GeneralDharmaService;
+﻿using BMSHPMS.Models.CommonDService;
 using BMSHPMS.Models.DharmaService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
-using BMSHPMS.Models.CommonDService;
 
 namespace BMSHPMS
 {

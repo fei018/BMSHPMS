@@ -35,10 +35,10 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
         {
             return new List<GridColumn<Info_Memorial_View>>{
                 this.MakeGridHeader(x => x.ReceiptDate,width:110).SetSort(),
-                this.MakeGridHeader(x => x.DharmaServiceFullName,width:150).SetSort(),
+                this.MakeGridHeader(x => x.DharmaServiceFullName,width:150),
                 this.MakeGridHeader(x => x.ReceiptNumber,width:120).SetSort(),
                 this.MakeGridHeader(x => x.SerialCode,width:110).SetSort(),
-                this.MakeGridHeader(x => x.Sum,width:80).SetSort().SetShowTotal(),
+                this.MakeGridHeader(x => x.Sum,width:100).SetSort().SetShowTotal(),
                 this.MakeGridHeader(x => x.DeceasedName_1,width:170).SetSort(),
                 this.MakeGridHeader(x => x.DeceasedName_2,width:170).SetSort(),
                 this.MakeGridHeader(x => x.DeceasedName_3,width:170).SetSort(),

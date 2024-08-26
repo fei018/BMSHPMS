@@ -8,6 +8,9 @@ using WalkingTec.Mvvm.Core.Extensions;
 
 namespace BMSHPMS.DSManage.ViewModels.FindMissingSerialVMs
 {
+    /// <summary>
+    /// 查詢 刪除後 遺失的功德編號
+    /// </summary>
     public class FindMissingVM : BaseVM
     {
         public FindSearchVM FindSearch { get; set; }

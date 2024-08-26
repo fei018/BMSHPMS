@@ -39,7 +39,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                 this.MakeGridHeader(x => x.ReceiptDate,width:150).SetSort(),
                 this.MakeGridHeader(x => x.ReceiptNumber,width:150).SetSort(),
                 this.MakeGridHeader(x => x.DharmaServiceFullName,width:150),
-                this.MakeGridHeader(x => x.CalculateSum,width:150).SetFormat(CalculateSumFormat).SetSort().SetShowTotal(),
+                this.MakeGridHeader(x => x.CalculateSum,width:110).SetFormat(CalculateSumFormat).SetShowTotal(),
                 this.MakeGridHeader(x => x.ReceiptOwn).SetSort(),
                 this.MakeGridHeader(x => x.ContactName).SetSort(),
                 this.MakeGridHeader(x => x.ContactPhone).SetSort(),

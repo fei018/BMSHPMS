@@ -22,8 +22,8 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 
         public List<ComboSelectListItem> AllOpt_DharmaServiceName { get; set; }
 
-        [Display(Name = "總金額")]
-        public int? TotalSum { get; set; }
+        [Display(Name = "合計金額")]
+        public int? CalculateSum { get; set; }
 
         public Info_ReceiptVM()
         {
@@ -101,7 +101,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
         {
             InitListVM(ReceiptPageMode.Detials);
 
-            TotalSum = GetCalculateSum(Entity.ID);
+            CalculateSum = GetCalculateSum(Entity.ID);
         }
 
         #region GetCalculateSum
