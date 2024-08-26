@@ -12,7 +12,10 @@
         }, 'html');
     }
 </script>
-<div class="layui-btn-container" style="padding:50px;">
+<wt:quote>
+    登記新的功德牌位 （每次法會開始第一個登記時 記得功德編號計數歸零）
+</wt:quote>
+<div class="layui-btn-container" style="padding:20px;">  
     @if (Model.DharmaServices != null && Model.DharmaServices.Count > 0)
     {
         @foreach (var ds in Model.DharmaServices)
