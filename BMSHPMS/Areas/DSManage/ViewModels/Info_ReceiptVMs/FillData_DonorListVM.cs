@@ -8,7 +8,7 @@ using WalkingTec.Mvvm.Core.Extensions;
 
 namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 {
-    public class FillData_DonorListVM : BasePagedListVM<Info_Donor_View, ReceiptListVMSearcher>
+    public class FillData_DonorListVM : BasePagedListVM<Info_Donor_View, FillDataSearcher>
     {
         public ReceiptPageMode PageMode { get; set; }
 
@@ -29,16 +29,17 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                     actions = new List<GridAction>
                     {
                         this.MakeAction("Info_Donor","EditFill","修改","修改", GridActionParameterTypesEnum.SingleId,"DSManage",dialogWidth: 800,dialogHeight:600).SetShowInRow().SetHideOnToolBar(),
+                        this.MakeAction("Info_Donor","DeleteFill","刪除","刪除", GridActionParameterTypesEnum.SingleId,"DSManage",dialogWidth: 800,dialogHeight:600).SetShowInRow().SetHideOnToolBar(),
                     };
                     break;
 
                 default:
                     actions = new List<GridAction>
                     {
-                        this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
-                        this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800,dialogHeight:600),
-                        this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800,dialogHeight:500),
-                        this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800,dialogHeight:500),
+                        //this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
+                        //this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800,dialogHeight:600),
+                        //this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800,dialogHeight:500),
+                        //this.MakeStandardAction("Info_Donor", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800,dialogHeight:500),
                     };
                     break;
             }

@@ -8,7 +8,7 @@ using WalkingTec.Mvvm.Core.Extensions;
 
 namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
 {
-    public class FillData_MemorialListVM : BasePagedListVM<Info_Memorial_View, ReceiptListVMSearcher>
+    public class FillData_MemorialListVM : BasePagedListVM<Info_Memorial_View, FillDataSearcher>
     {
         public ReceiptPageMode PageMode { get; set; }
 
@@ -26,15 +26,16 @@ namespace BMSHPMS.DSManage.ViewModels.Info_ReceiptVMs
                     return new List<GridAction>
                     {
                         this.MakeAction("Info_Memorial","EditFill","修改","修改", GridActionParameterTypesEnum.SingleId,"DSManage",dialogWidth: 800,dialogHeight:600).SetShowInRow().SetHideOnToolBar(),
+                        this.MakeAction("Info_Memorial","DeleteFill","刪除","刪除", GridActionParameterTypesEnum.SingleId,"DSManage",dialogWidth: 800,dialogHeight:600).SetShowInRow().SetHideOnToolBar(),
                     };
 
                 default:
                     return new List<GridAction>
                     {
-                        this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
-                        this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800,dialogHeight:600),
-                        this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800,dialogHeight:500),
-                        this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800,dialogHeight:500),
+                        //this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800),
+                        //this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800,dialogHeight:600),
+                        //this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800,dialogHeight:500),
+                        //this.MakeStandardAction("Info_Memorial", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800,dialogHeight:500),
                     };
             }
 

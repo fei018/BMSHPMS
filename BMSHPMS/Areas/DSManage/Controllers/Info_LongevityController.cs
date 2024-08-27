@@ -1,5 +1,4 @@
-﻿using BMSHPMS.DSManage.ViewModels.Info_DonorVMs;
-using BMSHPMS.DSManage.ViewModels.Info_LongevityVMs;
+﻿using BMSHPMS.DSManage.ViewModels.Info_LongevityVMs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -170,6 +169,31 @@ namespace BMSHPMS.DSManage.Controllers
             else
             {
                 return FFResult().CloseDialog().RefreshGrid();
+            }
+        }
+        #endregion
+
+        #region DeleteFill
+        [ActionDescription("Sys.Delete")]
+        public ActionResult DeleteFill(string id)
+        {
+            var vm = Wtm.CreateVM<Info_LongevityVM>(id);
+            return PartialView(vm);
+        }
+
+        [ActionDescription("Sys.Delete")]
+        [HttpPost]
+        public ActionResult DeleteFill(string id, IFormCollection nouse)
+        {
+            var vm = Wtm.CreateVM<Info_LongevityVM>(id);
+            vm.DoDelete();
+            if (!ModelState.IsValid)
+            {
+                return PartialView(vm);
+            }
+            else
+            {
+                return FFResult().CloseDialog().AddCustomScript("getDSReceiptFillDonationDataGrid()");
             }
         }
         #endregion

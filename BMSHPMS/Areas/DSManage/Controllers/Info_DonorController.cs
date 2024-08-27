@@ -174,6 +174,30 @@ namespace BMSHPMS.DSManage.Controllers
         }
         #endregion
 
+        #region DeleteFill
+        public ActionResult DeleteFill(string id)
+        {
+            var vm = Wtm.CreateVM<Info_DonorVM>(id);
+            return PartialView(vm);
+        }
+
+        [ActionDescription("Sys.Delete")]
+        [HttpPost]
+        public ActionResult DeleteFill(string id, IFormCollection nouse)
+        {
+            var vm = Wtm.CreateVM<Info_DonorVM>(id);
+            vm.DoDelete();
+            if (!ModelState.IsValid)
+            {
+                return PartialView(vm);
+            }
+            else
+            {
+                return FFResult().CloseDialog().AddCustomScript("getDSReceiptFillDonationDataGrid()");
+            }
+        }
+        #endregion
+
         #region Details
         [ActionDescription("Sys.Details")]
         public ActionResult Details(string id)
