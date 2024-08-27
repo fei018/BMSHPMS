@@ -62,5 +62,13 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
             DC.SaveChanges();
         }
 
+        public void EditUsedNumber()
+        {
+            var old = DC.Set<Opt_DonationProject>().Find(Entity.ID);
+            old.UsedNumber = Entity.UsedNumber;
+
+            DC.UpdateProperty(old,x=>x.UsedNumber);
+            DC.SaveChanges();
+        }
     }
 }

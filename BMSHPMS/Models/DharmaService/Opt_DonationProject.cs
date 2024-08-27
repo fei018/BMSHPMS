@@ -26,8 +26,8 @@ namespace BMSHPMS.Models.DharmaService
         [Required(ErrorMessage = "Validate.{0}required")]
         public string DonationCategory { get; set; }
 
-        [Display(Name = "編號已計數")]
-        [Comment("編號已計數")]
+        [Display(Name = "編號計數")]
+        [Comment("編號計數")]
         [DefaultValue(0)]
         public int UsedNumber { get; set; } = 0;
 

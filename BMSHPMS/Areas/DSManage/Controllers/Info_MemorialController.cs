@@ -167,14 +167,14 @@ namespace BMSHPMS.DSManage.Controllers
         #endregion
 
         #region DeleteFill
-        [ActionDescription("Sys.Delete")]
+        [ActionDescription("填寫刪除")]
         public ActionResult DeleteFill(string id)
         {
             var vm = Wtm.CreateVM<Info_MemorialVM>(id);
             return PartialView(vm);
         }
 
-        [ActionDescription("Sys.Delete")]
+        [ActionDescription("填寫刪除")]
         [HttpPost]
         public ActionResult DeleteFill(string id, IFormCollection nouse)
         {
@@ -284,8 +284,8 @@ namespace BMSHPMS.DSManage.Controllers
         }
         #endregion
 
-        #region 匯出Excel範本
-        [ActionDescription("匯出Excel範本")]
+        #region 牌位Excel
+        [ActionDescription("牌位Excel")]
         [HttpPost]
         public IActionResult ExportExcelTemplate(Info_MemorialListVM vm)
         {
@@ -306,7 +306,7 @@ namespace BMSHPMS.DSManage.Controllers
             }
         }
 
-        [ActionDescription("匯出Excel範本2")]
+        [ActionDescription("牌位Excel")]
         [HttpPost]
         public async Task<IActionResult> ExportExcelTemplate2(PrintPlaqueMemorialVM vm)
         {

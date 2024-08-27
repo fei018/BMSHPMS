@@ -1,0 +1,13 @@
+﻿@model BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs.Opt_DonationProjectVM
+
+<wt:form vm="@Model">
+    <wt:quote>請謹慎操作，功德編號計數 將從 修改後的號碼 開始計數</wt:quote>
+    <wt:row items-per-row="ItemsPerRowEnum.Three">
+        <wt:textbox field="Entity.UsedNumber" />
+    </wt:row>
+    <wt:hidden field="Entity.ID" />
+    <wt:row align="AlignEnum.Right">
+        <wt:submitbutton confirm-txt="確定修改" />
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

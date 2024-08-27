@@ -216,5 +216,38 @@ namespace BMSHPMS.DSManage.Controllers
             return vm.GetExportData();
         }
         #endregion
+
+        #region EditUsedNumber
+        [ActionDescription("EditUsedNumber")]
+        public ActionResult EditUsedNumber(string id)
+        {
+            var vm = Wtm.CreateVM<Opt_DonationProjectVM>(id);
+            return PartialView(vm);
+        }
+
+        [ActionDescription("EditUsedNumber")]
+        [HttpPost]
+        [ValidateFormItemOnly]
+        public ActionResult EditUsedNumber(Opt_DonationProjectVM vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return PartialView(vm);
+            }
+            else
+            {
+                vm.EditUsedNumber();
+                if (!ModelState.IsValid)
+                {
+                    vm.DoReInit();
+                    return PartialView(vm);
+                }
+                else
+                {
+                    return FFResult().CloseDialog().RefreshGridRow(vm.Entity.ID);
+                }
+            }
+        }
+        #endregion
     }
 }
