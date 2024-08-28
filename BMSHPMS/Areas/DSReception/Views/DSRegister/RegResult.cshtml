@@ -3,6 +3,8 @@
     var donors = Model.Donors;
     var longevitys = Model.Longevitys;
     var memorials = Model.Memorials;
+
+    string printUrl = "/DSReception/ReceiptPrint/PrintSerial?receiptNumber=" + @Model.ReceiptNumber;
 }
 
 <style>
@@ -125,7 +127,7 @@
                 <div class="layui-form-item">
                     <div class="layui-input-block">
                         <button class="layui-btn" onclick="loadDSRegisterPage('@Model.DharmaServiceID')">新功德</button>
-                        <a class="layui-btn layui-btn-primary" target="_blank" href="/DSReception/DSRegister/PrintSerial?receiptNumber=@Model.ReceiptNumber">列印</a>
+                        <a class="layui-btn layui-btn-primary" target="_blank" href="@printUrl">列印</a>
                     </div>
                 </div>
             </div>

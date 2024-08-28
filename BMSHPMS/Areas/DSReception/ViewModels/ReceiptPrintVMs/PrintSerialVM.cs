@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
@@ -10,6 +11,10 @@ namespace BMSHPMS.DSReception.ViewModels
 {
     public class PrintSerialVM : BaseVM
     {
+        [Display(Name = "收據號碼")]
+        [Required]
+        public string ReceiptNumber { get; set; }
+        
         public Info_Receipt Receipt { get; set; }
 
         public List<Info_Donor> Donors { get; set; }

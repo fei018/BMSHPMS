@@ -10,18 +10,18 @@ namespace BMSHPMS.DSReception.Controllers
     [NoLog]
     [Area("DSReception")]
     [ActionDescription("收據作廢")]
-    public class DSReceiptController : BaseController
+    public class ReceiptDeleteController : BaseController
     {
         [ActionDescription("Index")]
         public IActionResult Index()
         {
-            var vm = Wtm.CreateVM<DSReceiptVM>();
+            var vm = Wtm.CreateVM<ReceiptDeleteVM>();
             return PartialView(vm);
         }
 
         [HttpPost]
         [ActionDescription("Search")]
-        public async Task<IActionResult> Search(DSReceiptVM vm)
+        public async Task<IActionResult> Search(ReceiptDeleteVM vm)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace BMSHPMS.DSReception.Controllers
 
         [HttpPost]
         [ActionDescription("刪除")]
-        public IActionResult Delete(DSReceiptVM vm)
+        public IActionResult Delete(ReceiptDeleteVM vm)
         {
             try
             {

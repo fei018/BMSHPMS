@@ -76,7 +76,7 @@
 
 
   <ItemGroup>
-    <Content Update="Areas\DSReception\Views\DSRegister\PrintSerial - 複製.cshtml">
+    <Content Update="Areas\DSReception\Views\ReceiptPrint\PrintSerial - 複製.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

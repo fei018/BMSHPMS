@@ -1,0 +1,14 @@
+﻿@using BMSHPMS.DSReception.ViewModels
+@model PrintSerialVM
+
+<div>
+    <wt:form vm="@Model" old-post="true" target="_blank" url="/DSReception/ReceiptPrint/PrintSerial">
+        <wt:quote>打印收據功德編號</wt:quote>
+        <wt:row items-per-row="ItemsPerRowEnum.Two" >
+            <wt:textbox field="ReceiptNumber" name="ReceiptNumber" />
+        </wt:row>
+        <wt:row>
+            <wt:submitbutton />
+        </wt:row>
+    </wt:form>
+</div>

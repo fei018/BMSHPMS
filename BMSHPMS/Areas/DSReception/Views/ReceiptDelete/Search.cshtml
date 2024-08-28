@@ -1,4 +1,4 @@
-﻿@model BMSHPMS.DSReception.ViewModels.DSReceiptVM
+﻿@model BMSHPMS.DSReception.ViewModels.ReceiptDeleteVM
 
 <div>
     <wt:form vm="@Model">
@@ -34,7 +34,7 @@
             }
         </wt:row>
         <wt:row align="AlignEnum.Right">
-            <wt:linkbutton target="ButtonTargetEnum.self" window-title="結果" text="作廢" url="/DSReception/DSReceipt/Delete" post-current-form="true" />
+            <wt:linkbutton target="ButtonTargetEnum.self" window-title="結果" text="作廢" url="/DSReception/ReceiptDelete/Delete" post-current-form="true" />
             <wt:closebutton />
         </wt:row>
         <wt:hidden field="Receipt.ID" />

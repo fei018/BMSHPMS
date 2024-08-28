@@ -54,19 +54,5 @@ namespace BMSHPMS.Areas.DSReception.Controllers
             }
         }
 
-        [ActionDescription("列印編號")]
-        public async Task<IActionResult> PrintSerial(string receiptNumber)
-        {
-            try
-            {
-                var vm = Wtm.CreateVM<PrintSerialVM>();
-                await vm.GetSerials(receiptNumber);
-                return View(vm);
-            }
-            catch (Exception ex)
-            {
-                return View("Exception", ex);
-            }
-        }
     }
 }

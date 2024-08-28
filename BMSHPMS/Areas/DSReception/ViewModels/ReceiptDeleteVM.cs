@@ -1,6 +1,5 @@
 ﻿using BMSHPMS.DSManage.ViewModels.Common;
 using BMSHPMS.Models.DharmaService;
-using DotLiquid.Util;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,7 +10,7 @@ using WalkingTec.Mvvm.Core.Extensions;
 
 namespace BMSHPMS.DSReception.ViewModels
 {
-    public class DSReceiptVM : BaseVM
+    public class ReceiptDeleteVM : BaseVM
     {
         [Display(Name = "收據號碼")]
         public string ReceiptNumber { get; set; }
@@ -57,7 +56,7 @@ namespace BMSHPMS.DSReception.ViewModels
                 trans.Rollback();
                 throw;
             }
-            
+
         }
     }
 }
