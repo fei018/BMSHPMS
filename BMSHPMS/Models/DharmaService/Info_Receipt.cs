@@ -33,11 +33,11 @@ namespace BMSHPMS.Models.DharmaService
         //[Required(ErrorMessage = "Validate.{0}required")]
         public string DharmaServiceName { get; set; }
 
-        [Display(Name = "收據人姓名")]
-        [Comment("收據人姓名")]
+        [Display(Name = "收據人名")]
+        [Comment("收據人名")]
         public string ReceiptOwn { get; set; }
 
-        [Display(Name = "聯絡人姓名")]
+        [Display(Name = "聯絡人名")]
         [Comment("聯絡人姓名")]
         public string ContactName { get; set; }
 

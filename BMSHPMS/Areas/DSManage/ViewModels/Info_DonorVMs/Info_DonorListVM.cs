@@ -54,9 +54,9 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
             var query = DC.Set<Info_Donor>()
                 .AsNoTracking()
                 .CheckContain(Searcher.LongevityName, x => x.LongevityName)
-                .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_1)
-                .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_2)
-                .CheckContain(Searcher.DeceasedName, x => x.DeceasedName_3)
+                //.CheckContain(Searcher.DeceasedName, x => x.DeceasedName_1)
+                //.CheckContain(Searcher.DeceasedName, x => x.DeceasedName_2)
+                //.CheckContain(Searcher.DeceasedName, x => x.DeceasedName_3)
                 .CheckContain(Searcher.BenefactorName, x => x.BenefactorName)
                 .CheckContain(Searcher.DSRemark, x => x.DSRemark)
                 .CheckEqual(Searcher.Sum, x => x.Sum)
@@ -64,6 +64,14 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 .CheckBetween(Searcher.ReceiptDate?.GetStartTime(), Searcher.ReceiptDate?.GetEndTime(), x => x.Receipt.ReceiptDate, includeMax: false)
                 .CheckEqual(Searcher.DharmaServiceName, x => x.Receipt.DharmaServiceName)
                 .CheckEqual(Searcher.DharmaServiceYear, x => x.Receipt.DharmaServiceYear);
+
+            if (!string.IsNullOrWhiteSpace(Searcher.DeceasedName))
+            {
+                string decName = Searcher.DeceasedName.ToLower();
+                query = query.Where(x => x.DeceasedName_1.ToLower().Contains(decName)
+                                    || x.DeceasedName_2.ToLower().Contains(decName)
+                                    || x.DeceasedName_3.ToLower().Contains(decName));
+            }
 
             // serials
             var serials = new ListVMHelper().GetQuerySerialCodes(Searcher.SerialCode, Searcher.SerialCodeEnd);

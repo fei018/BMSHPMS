@@ -11,7 +11,7 @@ namespace BMSHPMS.DSManage.ViewModels.Common
     {
         public const int MaxNumber = 10000;
 
-        public static string MaxNumberString => $"範圍結尾編號,最大{MaxNumber}個";
+        public static string MaxNumberString => $"結尾編號,範圍最大{MaxNumber}個";
 
         /// <summary>
         /// 範圍查詢編號，返回連續編號, 最多連續10000個
