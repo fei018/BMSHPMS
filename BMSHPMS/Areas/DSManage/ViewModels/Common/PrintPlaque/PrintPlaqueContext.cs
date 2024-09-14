@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MessagePack.Resolvers;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -32,6 +33,10 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
         public const string 附薦2蓮位全字牌位A4紙 = "eccc5c074b3548119deadce02570187e";
 
         public const string 附薦3蓮位萬字牌位A4紙 = "a5128aae8f5e471da4719fd6c87dd72a";
+
+        public const string 附薦大黄5莲A4纸 = "f3c45d93a3514d709eb232cb50e336a4";
+
+        public const string 附薦20格黃A4紙 = "c0bd15e143d44b88be18c8341c5429bc";
         #endregion
 
         public static List<PrintPlaquePost> Longevity_PrintPlaquePostList { get; private set; }
@@ -105,6 +110,24 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
                     ButtonDisplayName = nameof(附薦大10蓮位181x490黃紙) ,
                     FilePath = Path.Combine(excelTplPath,"Memorial_10Seat_Big_181x490.xlsx"),
                     SeatCount=10,
+                    FileType = FileTypeEnum.Excel,
+                    PlaqueType = PlaqueTypeEnum.附薦,
+                },
+                new PrintPlaquePost()
+                {
+                    Key = 附薦大黄5莲A4纸,
+                    ButtonDisplayName = nameof(附薦大黄5莲A4纸) ,
+                    FilePath = Path.Combine(excelTplPath,"memorial_bigyellow_5seat_A4.xlsx"),
+                    SeatCount= 5,
+                    FileType = FileTypeEnum.Excel,
+                    PlaqueType = PlaqueTypeEnum.附薦,
+                },
+                new PrintPlaquePost()
+                {
+                    Key = 附薦20格黃A4紙,
+                    ButtonDisplayName = nameof(附薦20格黃A4紙) ,
+                    FilePath = Path.Combine(excelTplPath,"memorial_20Seat_A4.xlsx"),
+                    SeatCount= 20,
                     FileType = FileTypeEnum.Excel,
                     PlaqueType = PlaqueTypeEnum.附薦,
                 },

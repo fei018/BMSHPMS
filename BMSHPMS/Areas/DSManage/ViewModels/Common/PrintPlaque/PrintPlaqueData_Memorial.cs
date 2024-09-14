@@ -67,6 +67,68 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
         public string JDece3 { get; set; }
         public string JBene1 { get; set; }
         public string JSerial { get; set; }
+
+        //------------------------
+
+        public string A2Dece1 { get; set; }
+        public string A2Dece2 { get; set; }
+        public string A2Dece3 { get; set; }
+        public string A2Bene1 { get; set; }
+        public string A2Serial { get; set; }
+                       
+        public string B2Dece1 { get; set; }
+        public string B2Dece2 { get; set; }
+        public string B2Dece3 { get; set; }
+        public string B2Bene1 { get; set; }
+        public string B2Serial { get; set; }
+                       
+        public string C2Dece1 { get; set; }
+        public string C2Dece2 { get; set; }
+        public string C2Dece3 { get; set; }
+        public string C2Bene1 { get; set; }
+        public string C2Serial { get; set; }
+                       
+        public string D2Dece1 { get; set; }
+        public string D2Dece2 { get; set; }
+        public string D2Dece3 { get; set; }
+        public string D2Bene1 { get; set; }
+        public string D2Serial { get; set; }
+                       
+        public string E2Dece1 { get; set; }
+        public string E2Dece2 { get; set; }
+        public string E2Dece3 { get; set; }
+        public string E2Bene1 { get; set; }
+        public string E2Serial { get; set; }
+                       
+        public string F2Dece1 { get; set; }
+        public string F2Dece2 { get; set; }
+        public string F2Dece3 { get; set; }
+        public string F2Bene1 { get; set; }
+        public string F2Serial { get; set; }
+                       
+        public string G2Dece1 { get; set; }
+        public string G2Dece2 { get; set; }
+        public string G2Dece3 { get; set; }
+        public string G2Bene1 { get; set; }
+        public string G2Serial { get; set; }
+                       
+        public string H2Dece1 { get; set; }
+        public string H2Dece2 { get; set; }
+        public string H2Dece3 { get; set; }
+        public string H2Bene1 { get; set; }
+        public string H2Serial { get; set; }
+                       
+        public string I2Dece1 { get; set; }
+        public string I2Dece2 { get; set; }
+        public string I2Dece3 { get; set; }
+        public string I2Bene1 { get; set; }
+        public string I2Serial { get; set; }
+                       
+        public string J2Dece1 { get; set; }
+        public string J2Dece2 { get; set; }
+        public string J2Dece3 { get; set; }
+        public string J2Bene1 { get; set; }
+        public string J2Serial { get; set; }
         #endregion
 
         public PrintPlaqueData_Memorial(List<Info_Memorial> list)
@@ -131,6 +193,68 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
             JDece2 = list.ElementAtOrDefault(9) != null ? list[9].DeceasedName_2 : "";
             JDece3 = list.ElementAtOrDefault(9) != null ? list[9].DeceasedName_3 : "";
             JSerial = list.ElementAtOrDefault(9) != null ? list[9].SerialCode : "";
+            #endregion
+
+            #region 2
+            A2Bene1 = list.ElementAtOrDefault(10) != null ? list[10].BenefactorName : "";
+            A2Dece1 = list.ElementAtOrDefault(10) != null ? list[10].DeceasedName_1 : "";
+            A2Dece2 = list.ElementAtOrDefault(10) != null ? list[10].DeceasedName_2 : "";
+            A2Dece3 = list.ElementAtOrDefault(10) != null ? list[10].DeceasedName_3 : "";
+            A2Serial = list.ElementAtOrDefault(10) != null ? list[10].SerialCode : "";
+             
+            B2Bene1 = list.ElementAtOrDefault(11) != null ? list[11].BenefactorName : "";
+            B2Dece1 = list.ElementAtOrDefault(11) != null ? list[11].DeceasedName_1 : "";
+            B2Dece2 = list.ElementAtOrDefault(11) != null ? list[11].DeceasedName_2 : "";
+            B2Dece3 = list.ElementAtOrDefault(11) != null ? list[11].DeceasedName_3 : "";
+            B2Serial = list.ElementAtOrDefault(11) != null ? list[11].SerialCode : "";
+             
+            C2Bene1 = list.ElementAtOrDefault(12) != null ? list[12].BenefactorName : "";
+            C2Dece1 = list.ElementAtOrDefault(12) != null ? list[12].DeceasedName_1 : "";
+            C2Dece2 = list.ElementAtOrDefault(12) != null ? list[12].DeceasedName_2 : "";
+            C2Dece3 = list.ElementAtOrDefault(12) != null ? list[12].DeceasedName_3 : "";
+            C2Serial = list.ElementAtOrDefault(12) != null ? list[12].SerialCode : "";
+             
+            D2Bene1 = list.ElementAtOrDefault(13) != null ? list[13].BenefactorName : "";
+            D2Dece1 = list.ElementAtOrDefault(13) != null ? list[13].DeceasedName_1 : "";
+            D2Dece2 = list.ElementAtOrDefault(13) != null ? list[13].DeceasedName_2 : "";
+            D2Dece3 = list.ElementAtOrDefault(13) != null ? list[13].DeceasedName_3 : "";
+            D2Serial = list.ElementAtOrDefault(13) != null ? list[13].SerialCode : "";
+             
+            E2Bene1 = list.ElementAtOrDefault(14) != null ? list[14].BenefactorName : "";
+            E2Dece1 = list.ElementAtOrDefault(14) != null ? list[14].DeceasedName_1 : "";
+            E2Dece2 = list.ElementAtOrDefault(14) != null ? list[14].DeceasedName_2 : "";
+            E2Dece3 = list.ElementAtOrDefault(14) != null ? list[14].DeceasedName_3 : "";
+            E2Serial = list.ElementAtOrDefault(14) != null ? list[14].SerialCode : "";
+             
+            F2Bene1 = list.ElementAtOrDefault(15) != null ? list[15].BenefactorName : "";
+            F2Dece1 = list.ElementAtOrDefault(15) != null ? list[15].DeceasedName_1 : "";
+            F2Dece2 = list.ElementAtOrDefault(15) != null ? list[15].DeceasedName_2 : "";
+            F2Dece3 = list.ElementAtOrDefault(15) != null ? list[15].DeceasedName_3 : "";
+            F2Serial = list.ElementAtOrDefault(15) != null ? list[15].SerialCode : "";
+             
+            G2Bene1 = list.ElementAtOrDefault(16) != null ? list[16].BenefactorName : "";
+            G2Dece1 = list.ElementAtOrDefault(16) != null ? list[16].DeceasedName_1 : "";
+            G2Dece2 = list.ElementAtOrDefault(16) != null ? list[16].DeceasedName_2 : "";
+            G2Dece3 = list.ElementAtOrDefault(16) != null ? list[16].DeceasedName_3 : "";
+            G2Serial = list.ElementAtOrDefault(16) != null ? list[16].SerialCode : "";
+             
+            H2Bene1 = list.ElementAtOrDefault(17) != null ? list[17].BenefactorName : "";
+            H2Dece1 = list.ElementAtOrDefault(17) != null ? list[17].DeceasedName_1 : "";
+            H2Dece2 = list.ElementAtOrDefault(17) != null ? list[17].DeceasedName_2 : "";
+            H2Dece3 = list.ElementAtOrDefault(17) != null ? list[17].DeceasedName_3 : "";
+            H2Serial = list.ElementAtOrDefault(17) != null ? list[17].SerialCode : "";
+             
+            I2Bene1 = list.ElementAtOrDefault(18) != null ? list[18].BenefactorName : "";
+            I2Dece1 = list.ElementAtOrDefault(18) != null ? list[18].DeceasedName_1 : "";
+            I2Dece2 = list.ElementAtOrDefault(18) != null ? list[18].DeceasedName_2 : "";
+            I2Dece3 = list.ElementAtOrDefault(18) != null ? list[18].DeceasedName_3 : "";
+            I2Serial = list.ElementAtOrDefault(18) != null ? list[18].SerialCode : "";
+             
+            J2Bene1 = list.ElementAtOrDefault(19) != null ? list[19].BenefactorName : "";
+            J2Dece1 = list.ElementAtOrDefault(19) != null ? list[19].DeceasedName_1 : "";
+            J2Dece2 = list.ElementAtOrDefault(19) != null ? list[19].DeceasedName_2 : "";
+            J2Dece3 = list.ElementAtOrDefault(19) != null ? list[19].DeceasedName_3 : "";
+            J2Serial = list.ElementAtOrDefault(19) != null ? list[19].SerialCode : "";
             #endregion
         }
     }

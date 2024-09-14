@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
@@ -103,6 +102,16 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                     //DownloadFileName = "附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
                     break;
 
+                case PrintPlaqueContext.附薦大黄5莲A4纸:
+                    ProcessBenefactorName(ref models);
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
+                    break;
+
+                case PrintPlaqueContext.附薦20格黃A4紙:
+                    ProcessBenefactorName(ref models);
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
+                    break;
+
                 default:
                     throw new Exception(nameof(PrintPlaquePost) + " switch key not found: " + post.ButtonDisplayName);
             }
@@ -117,6 +126,16 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
             return fileContentResult;
         }
 
+        private void ProcessBenefactorName(ref List<Info_Memorial> models)
+        {
+            foreach (var m in models)
+            {
+                if (!string.IsNullOrEmpty(m.BenefactorName))
+                {
+                    m.BenefactorName = "陽上" + m.BenefactorName + "拜荐";
+                }
+            }
+        }
     }
 }
 
