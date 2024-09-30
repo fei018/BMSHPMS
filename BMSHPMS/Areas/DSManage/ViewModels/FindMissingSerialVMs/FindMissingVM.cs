@@ -28,6 +28,7 @@ namespace BMSHPMS.DSManage.ViewModels.FindMissingSerialVMs
                         .OrderBy(x => x.DonationCategory)
                         .ThenBy(x => x.Sum)
                         .GetSelectListItems(Wtm, x => $"{x.DonationCategory}, ${x.Sum}", y => y.ID);
+
             return list;
         }
 

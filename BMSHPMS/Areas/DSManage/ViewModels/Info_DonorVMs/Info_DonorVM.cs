@@ -42,7 +42,11 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
             var donationproject = new Opt_DonationProject();
             if (receipt.DharmaServiceId != null)
             {
-                donationproject = DC.Set<Opt_DonationProject>().AsNoTracking().CheckID(receipt.DharmaServiceId, x => x.DharmaServiceID).SingleOrDefault();
+                donationproject = DC.Set<Opt_DonationProject>().AsNoTracking()
+                                    .CheckID(receipt.DharmaServiceId, x => x.DharmaServiceID)
+                                    .CheckEqual(DonationProjectOptions.Category.功德主, x => x.DonationCategory)
+                                    .CheckEqual(CreateVMEntity.Sum, x => x.Sum)
+                                    .SingleOrDefault();
             }
             else
             {
@@ -57,6 +61,10 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 }
             }
 
+            //截取編號數
+            string tmpS1 = CreateVMEntity.SerialCode.Replace(donationproject.SerialCode, "", StringComparison.OrdinalIgnoreCase);
+            string tmpS2 = tmpS1.TrimStart('0');
+
             var newEntity = new Info_Donor
             {
                 BenefactorName = CreateVMEntity.BenefactorName,
@@ -70,7 +78,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
 
                 DonationProjectId = donationproject?.ID,
                 DProjectSerial = donationproject?.SerialCode,
-                DProjectSerialNumber = donationproject?.UsedNumber,
+                DProjectSerialNumber = int.Parse(tmpS2),
 
                 ReceiptID = receipt.ID,
                 CreateBy = LoginUserInfo.Name,

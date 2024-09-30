@@ -41,7 +41,11 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
             var donationproject = new Opt_DonationProject();
             if (receipt.DharmaServiceId != null)
             {
-                donationproject = DC.Set<Opt_DonationProject>().AsNoTracking().CheckID(receipt.DharmaServiceId, x => x.DharmaServiceID).SingleOrDefault();
+                donationproject = DC.Set<Opt_DonationProject>().AsNoTracking()
+                                    .CheckID(receipt.DharmaServiceId, x => x.DharmaServiceID)
+                                    .CheckEqual(DonationProjectOptions.Category.附薦位, x => x.DonationCategory)
+                                    .CheckEqual(CreateVMEntity.Sum, x => x.Sum)
+                                    .SingleOrDefault();
             }
             else
             {
@@ -50,11 +54,15 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                 {
                     donationproject = DC.Set<Opt_DonationProject>().AsNoTracking()
                                         .CheckID(dservice.ID, x => x.DharmaServiceID)
-                                        .CheckEqual(DonationProjectOptions.Category.功德主, x => x.DonationCategory)
+                                        .CheckEqual(DonationProjectOptions.Category.附薦位, x => x.DonationCategory)
                                         .CheckEqual(CreateVMEntity.Sum, x => x.Sum)
                                         .FirstOrDefault();
                 }
             }
+
+            //截取編號數
+            string tmpS1 = CreateVMEntity.SerialCode.Replace(donationproject.SerialCode, "", StringComparison.OrdinalIgnoreCase);
+            string tmpS2 = tmpS1.TrimStart('0');
 
             var newEntity = new Info_Memorial
             {
@@ -68,7 +76,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
 
                 DonationProjectId = donationproject?.ID,
                 DProjectSerial = donationproject?.SerialCode,
-                DProjectSerialNumber = donationproject?.UsedNumber,
+                DProjectSerialNumber = int.Parse(tmpS2),
 
                 ReceiptID = receipt.ID,
                 CreateBy = LoginUserInfo.Name,

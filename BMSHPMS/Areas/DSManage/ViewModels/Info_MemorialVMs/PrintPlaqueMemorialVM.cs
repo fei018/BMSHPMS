@@ -61,6 +61,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
 
             var models = DC.Set<Info_Memorial>().AsNoTracking().CheckIDs(ids).OrderBy(x => x.SerialCode).ToList();
 
+            #region 處理附薦名, 附薦名3合1
             foreach (var item in models)
             {
                 string tmp = null;
@@ -87,6 +88,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
 
                 item.DeceasedName_1 = tmp.TrimEnd('\n');
             }
+            #endregion
 
             switch (post.Key)
             {
@@ -102,12 +104,12 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                     //DownloadFileName = "附薦_" + models.FirstOrDefault().SerialCode + "_" + models.LastOrDefault()?.SerialCode + ".xlsx";
                     break;
 
-                case PrintPlaqueContext.附薦大黄5莲A4纸:
+                case PrintPlaqueContext.附薦大黄5莲A4:
                     ProcessBenefactorName(ref models);
                     ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
                     break;
 
-                case PrintPlaqueContext.附薦20格黃A4紙:
+                case PrintPlaqueContext.附薦20格黃紙A4:
                     ProcessBenefactorName(ref models);
                     ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
                     break;
@@ -126,6 +128,10 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
             return fileContentResult;
         }
 
+        /// <summary>
+        /// 處理陽上名
+        /// </summary>
+        /// <param name="models"></param>
         private void ProcessBenefactorName(ref List<Info_Memorial> models)
         {
             foreach (var m in models)

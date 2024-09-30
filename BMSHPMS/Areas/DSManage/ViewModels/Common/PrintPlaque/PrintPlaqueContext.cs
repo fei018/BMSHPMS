@@ -14,7 +14,7 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
 
         public const string 延生大5蓮160x255mm紅紙 = "d02daa2668b3456d8763301d981fa250";
 
-        public const string 延生4蓮位小紅筒A4紅紙 = "d6cb22cd8fdb4810979135edaf9ae31e";
+        public const string 延生4蓮位小紅筒紅紙A4 = "d6cb22cd8fdb4810979135edaf9ae31e";
 
         public const string 延生1蓮位小紅筒紅紙 = "c00c5e94de0047739f4ebdc4af8f579c";
 
@@ -28,15 +28,15 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
 
         public const string 附薦大10蓮位181x490黃紙 = "e86a36ec3b6246f1933e72cbb9030bf1";
 
-        public const string 附薦5蓮位善字牌位A4紙 = "b87312a99e10402b9b22549b01fc1d95";
+        public const string 附薦5蓮位善字牌位A4 = "b87312a99e10402b9b22549b01fc1d95";
 
-        public const string 附薦2蓮位全字牌位A4紙 = "eccc5c074b3548119deadce02570187e";
+        public const string 附薦2蓮位全字牌位A4 = "eccc5c074b3548119deadce02570187e";
 
-        public const string 附薦3蓮位萬字牌位A4紙 = "a5128aae8f5e471da4719fd6c87dd72a";
+        public const string 附薦3蓮位萬字牌位A4 = "a5128aae8f5e471da4719fd6c87dd72a";
 
-        public const string 附薦大黄5莲A4纸 = "f3c45d93a3514d709eb232cb50e336a4";
+        public const string 附薦大黄5莲A4 = "f3c45d93a3514d709eb232cb50e336a4";
 
-        public const string 附薦20格黃A4紙 = "c0bd15e143d44b88be18c8341c5429bc";
+        public const string 附薦20格黃紙A4 = "c0bd15e143d44b88be18c8341c5429bc";
         #endregion
 
         public static List<PrintPlaquePost> Longevity_PrintPlaquePostList { get; private set; }
@@ -81,8 +81,8 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
                 },
                 new PrintPlaquePost()
                 {
-                    Key = 延生4蓮位小紅筒A4紅紙,
-                    ButtonDisplayName = nameof(延生4蓮位小紅筒A4紅紙),
+                    Key = 延生4蓮位小紅筒紅紙A4,
+                    ButtonDisplayName = nameof(延生4蓮位小紅筒紅紙A4),
                     FilePath = Path.Combine(excelTplPath,"Longevity_4Seat_SmallRedBox_A4.xlsx"),
                     SeatCount = 4,
                     FileType = FileTypeEnum.Excel,
@@ -115,8 +115,8 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
                 },
                 new PrintPlaquePost()
                 {
-                    Key = 附薦大黄5莲A4纸,
-                    ButtonDisplayName = nameof(附薦大黄5莲A4纸) ,
+                    Key = 附薦大黄5莲A4,
+                    ButtonDisplayName = nameof(附薦大黄5莲A4) ,
                     FilePath = Path.Combine(excelTplPath,"memorial_bigyellow_5seat_A4.xlsx"),
                     SeatCount= 5,
                     FileType = FileTypeEnum.Excel,
@@ -124,8 +124,8 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
                 },
                 new PrintPlaquePost()
                 {
-                    Key = 附薦20格黃A4紙,
-                    ButtonDisplayName = nameof(附薦20格黃A4紙) ,
+                    Key = 附薦20格黃紙A4,
+                    ButtonDisplayName = nameof(附薦20格黃紙A4) ,
                     FilePath = Path.Combine(excelTplPath,"memorial_20Seat_A4.xlsx"),
                     SeatCount= 20,
                     FileType = FileTypeEnum.Excel,
@@ -139,8 +139,17 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
             {
                 new PrintPlaquePost()
                 {
-                    Key = 延生4蓮位小紅筒A4紅紙,
-                    ButtonDisplayName = nameof(延生4蓮位小紅筒A4紅紙),
+                    Key = 延生大5蓮160x255mm紅紙,
+                    ButtonDisplayName = nameof(延生大5蓮160x255mm紅紙) ,
+                    FilePath = Path.Combine(excelTplPath,"Longevity_Big5cell_160x255mm_RedPaper.xlsx"),
+                    SeatCount = 5,
+                    FileType = FileTypeEnum.Excel,
+                    PlaqueType = PlaqueTypeEnum.延生
+                },
+                new PrintPlaquePost()
+                {
+                    Key = 延生4蓮位小紅筒紅紙A4,
+                    ButtonDisplayName = nameof(延生4蓮位小紅筒紅紙A4),
                     FilePath = Path.Combine(excelTplPath,"Longevity_4Seat_SmallRedBox_A4.xlsx"),
                     SeatCount = 4,
                     FileType = FileTypeEnum.Excel,
@@ -175,8 +184,8 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
                 },
                 new PrintPlaquePost()
                 {
-                    Key = 附薦5蓮位善字牌位A4紙,
-                    ButtonDisplayName = nameof(附薦5蓮位善字牌位A4紙),
+                    Key = 附薦5蓮位善字牌位A4,
+                    ButtonDisplayName = nameof(附薦5蓮位善字牌位A4),
                     FilePath = Path.Combine(excelTplPath,"Memorial_5Seat_Kind.xlsx"),
                     SeatCount = 5,
                     FileType = FileTypeEnum.Excel,
@@ -184,8 +193,8 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
                 },
                 new PrintPlaquePost()
                 {
-                    Key = 附薦3蓮位萬字牌位A4紙,
-                    ButtonDisplayName = nameof(附薦3蓮位萬字牌位A4紙),
+                    Key = 附薦3蓮位萬字牌位A4,
+                    ButtonDisplayName = nameof(附薦3蓮位萬字牌位A4),
                     FilePath = Path.Combine(excelTplPath,"Memorial_3Seat_wan.xlsx"),
                     SeatCount = 3,
                     FileType = FileTypeEnum.Excel,
@@ -193,10 +202,19 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
                 },
                 new PrintPlaquePost()
                 {
-                    Key = 附薦2蓮位全字牌位A4紙,
-                    ButtonDisplayName = nameof(附薦2蓮位全字牌位A4紙),
+                    Key = 附薦2蓮位全字牌位A4,
+                    ButtonDisplayName = nameof(附薦2蓮位全字牌位A4),
                     FilePath = Path.Combine(excelTplPath,"Memorial_2Seat_quan.xlsx"),
                     SeatCount = 2,
+                    FileType = FileTypeEnum.Excel,
+                    PlaqueType = PlaqueTypeEnum.附薦,
+                },
+                new PrintPlaquePost()
+                {
+                    Key = 附薦大黄5莲A4,
+                    ButtonDisplayName = nameof(附薦大黄5莲A4) ,
+                    FilePath = Path.Combine(excelTplPath,"memorial_bigyellow_5seat_A4.xlsx"),
+                    SeatCount= 5,
                     FileType = FileTypeEnum.Excel,
                     PlaqueType = PlaqueTypeEnum.附薦,
                 },

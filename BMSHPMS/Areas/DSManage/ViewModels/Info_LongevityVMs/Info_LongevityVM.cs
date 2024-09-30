@@ -43,7 +43,11 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
             var donationproject = new Opt_DonationProject();
             if (receipt.DharmaServiceId != null)
             {
-                donationproject = DC.Set<Opt_DonationProject>().AsNoTracking().CheckID(receipt.DharmaServiceId, x => x.DharmaServiceID).SingleOrDefault();
+                donationproject = DC.Set<Opt_DonationProject>().AsNoTracking()
+                                .CheckID(receipt.DharmaServiceId, x => x.DharmaServiceID)
+                                .CheckEqual(CreateVMEntity.Sum, x => x.Sum)
+                                .CheckEqual(DonationProjectOptions.Category.延生位, x => x.DonationCategory)
+                                .Single();
             }
             else
             {
@@ -58,6 +62,10 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                 }
             }
 
+            //截取編號數
+            string tmpS1 = CreateVMEntity.SerialCode.Replace(donationproject.SerialCode, "", StringComparison.OrdinalIgnoreCase);                                 
+            string tmpS2 = tmpS1.TrimStart('0');
+
             var newEntity = new Info_Longevity
             {
                 Name = CreateVMEntity.Name,
@@ -66,7 +74,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                 DSRemark = CreateVMEntity.DSRemark,
                 DonationProjectId = donationproject?.ID,
                 DProjectSerial = donationproject?.SerialCode,
-                DProjectSerialNumber = donationproject?.UsedNumber,
+                DProjectSerialNumber = int.Parse(tmpS2),
 
                 ReceiptID = receipt.ID,
                 CreateBy = LoginUserInfo.Name,

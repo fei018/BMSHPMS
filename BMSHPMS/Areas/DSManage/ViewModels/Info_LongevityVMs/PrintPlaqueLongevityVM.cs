@@ -94,7 +94,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
 
-                case PrintPlaqueContext.延生4蓮位小紅筒A4紅紙:
+                case PrintPlaqueContext.延生4蓮位小紅筒紅紙A4:
                     ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
                     //fileExtension = ".xlsx";
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";

@@ -64,6 +64,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
             List<Info_Donor> models = await DC.Set<Info_Donor>().AsNoTracking().CheckIDs(ids).OrderBy(x => x.SerialCode).ToListAsync();
 
             string filenameprefix = "功德主_";
+
             #region switch
             switch (post.Key)
             {
@@ -91,7 +92,13 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                     filenameprefix = "功德主延生_";
                     break;
 
-                case PrintPlaqueContext.延生4蓮位小紅筒A4紅紙:
+                case PrintPlaqueContext.延生4蓮位小紅筒紅紙A4:
+                    CheckLongevityName(models);
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
+                    filenameprefix = "功德主延生_";
+                    break;
+
+                case PrintPlaqueContext.延生大5蓮160x255mm紅紙:
                     CheckLongevityName(models);
                     ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Donor_Long, Info_Donor>(models, post);
                     filenameprefix = "功德主延生_";
@@ -100,7 +107,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
 
                 #region 附薦 case
 
-                case PrintPlaqueContext.附薦5蓮位善字牌位A4紙:
+                case PrintPlaqueContext.附薦5蓮位善字牌位A4:
                     ProcessDeceasedName(ref models);
                     //models.ForEach(x => x.BenefactorName = $"陽上：{x.BenefactorName}拜荐");
                     ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
@@ -108,18 +115,24 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                     filenameprefix = "功德主附薦_";
                     break;
 
-                case PrintPlaqueContext.附薦3蓮位萬字牌位A4紙:
+                case PrintPlaqueContext.附薦3蓮位萬字牌位A4:
                     ProcessDeceasedName(ref models);
                     ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     filenameprefix = "功德主附薦_";
                     break;
 
-                case PrintPlaqueContext.附薦2蓮位全字牌位A4紙:
+                case PrintPlaqueContext.附薦2蓮位全字牌位A4:
                     ProcessDeceasedName(ref models);
                     ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     filenameprefix = "功德主附薦_";
+                    break;
+
+                case PrintPlaqueContext.附薦大黄5莲A4:
+                    ProcessDeceasedName(ref models);
+                    ProcessBenefactorName(ref models);
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
                     break;
 
                 #endregion
@@ -141,6 +154,11 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
         #endregion
 
         #region 處理附薦名
+        /// <summary>
+        /// 處理附薦名
+        /// </summary>
+        /// <param name="models"></param>
+        /// <exception cref="Exception"></exception>
         private void ProcessDeceasedName(ref List<Info_Donor> models)
         {
             foreach (var item in models)
@@ -168,6 +186,23 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 }
 
                 item.DeceasedName_1 = tmp.TrimEnd('\n');
+            }
+        }
+        #endregion
+
+        #region 處理陽上名字
+        /// <summary>
+        /// 處理陽上名字
+        /// </summary>
+        /// <param name="models"></param>
+        private void ProcessBenefactorName(ref List<Info_Donor> models)
+        {
+            foreach (var m in models)
+            {
+                if (!string.IsNullOrEmpty(m.BenefactorName))
+                {
+                    m.BenefactorName = "陽上" + m.BenefactorName + "拜荐";
+                }
             }
         }
         #endregion
