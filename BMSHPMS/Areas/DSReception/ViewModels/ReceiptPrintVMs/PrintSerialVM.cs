@@ -23,6 +23,8 @@ namespace BMSHPMS.DSReception.ViewModels
 
         public List<Info_Memorial> Memorials { get; set; }
 
+        public Opt_DharmaService DharmaService { get; set; }
+
         public async Task GetSerials(string receiptNumber)
         {
             Donors = new List<Info_Donor>();
@@ -38,6 +40,9 @@ namespace BMSHPMS.DSReception.ViewModels
                 Donors = await DC.Set<Info_Donor>().Where(q => q.ReceiptID == Receipt.ID).OrderBy(q => q.Sum).ThenBy(x => x.SerialCode).ToListAsync();
                 Longevitys = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == Receipt.ID).OrderBy(q => q.Sum).ThenBy(x => x.SerialCode).ToListAsync();
                 Memorials = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == Receipt.ID).OrderBy(q => q.Sum).ThenBy(x => x.SerialCode).ToListAsync();
+                
+                DharmaService = await DC.Set<Opt_DharmaService>().Where(q=>q.ServiceName == Receipt.DharmaServiceName).FirstOrDefaultAsync();
+                
             }
             else
             {

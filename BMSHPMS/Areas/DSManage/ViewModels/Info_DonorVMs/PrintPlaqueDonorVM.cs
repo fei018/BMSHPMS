@@ -133,6 +133,13 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                     ProcessDeceasedName(ref models);
                     ProcessBenefactorName(ref models);
                     ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
+                    filenameprefix = "功德主附薦_";
+                    break;
+
+                case PrintPlaqueContext.附薦中黃1莲:
+                    ProcessDeceasedName(ref models);
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Donor_Memo, Info_Donor>(models, post);
+                    filenameprefix = "功德主附薦_";
                     break;
 
                 #endregion

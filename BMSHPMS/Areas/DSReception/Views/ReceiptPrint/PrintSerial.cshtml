@@ -21,19 +21,6 @@
             body {
                 margin: 1cm;
             }
-
-            .print-receipt {
-                margin-bottom: 10px;
-            }
-
-            .print-receipt-item {
-                margin: 10px;
-            }
-
-            table {
-                display: inline-table;
-                margin: 10px;
-            }
         }
 
         @@media print {
@@ -48,17 +35,30 @@
     </style>
     <div id="printserial" class="layui-container">
         <div class="layui-row">
-            <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4">
-                @Model.Receipt?.ReceiptNumber
+            <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" style="text-align:center;font-weight:bold">
+                主辦：@Model.DharmaService.ServiceOrganizer
             </div>
-            <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4">
-                @Model.Receipt?.DharmaServiceName
+            <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
+                法會：@Model.DharmaService.ServiceName
             </div>
-            <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4">
-                @Model.Receipt?.ReceiptDate.Value.ToString("yyyy-MM-dd")
+            <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
+                日期：@Model.DharmaService.ServiceDateDescription
             </div>
         </div>
 
+        <div class="layui-row">
+            <div class="layui-col-xs6 layui-col-sm6 layui-col-md6 layui-col-lg6">
+                收據號碼：@Model.Receipt?.ReceiptNumber
+            </div>
+            <div class="layui-col-xs6 layui-col-sm6 layui-col-md6 layui-col-lg6">
+                收據日期：@Model.Receipt?.ReceiptDate.Value.ToString("yyyy-MM-dd")
+            </div>
+        </div>       
+        <hr />
+        <div class="layui-row">
+            <div class="layui-font-12">注：法會期間請凴登記編號查閲牌位，亦可出示此便條，請現場義工協助找尋。你的功德登記如下:</div>
+        </div>
+        <hr />
         <div class="layui-row">
             @if (Model.Donors.Count > 0)
             {
@@ -66,7 +66,7 @@
                     <p>功德主</p>
                     @foreach (var item in Model.Donors)
                     {
-                        <p>@item.Sum:&nbsp;@item.SerialCode</p>
+                        <p>$@item.Sum:&nbsp;@item.SerialCode</p>
                     }
                 </div>
             }
@@ -76,7 +76,7 @@
                     <p>延生</p>
                     @foreach (var item in Model.Longevitys)
                     {
-                        <p>@item.Sum:&nbsp;@item.SerialCode</p>
+                        <p>$@item.Sum:&nbsp;@item.SerialCode</p>
                     }
                 </div>
             }
@@ -86,7 +86,7 @@
                     <p>附薦</p>
                     @foreach (var item in Model.Memorials)
                     {
-                        <p>@item.Sum:&nbsp;@item.SerialCode</p>
+                        <p>$@item.Sum:&nbsp;@item.SerialCode</p>
                     }
                 </div>
             }

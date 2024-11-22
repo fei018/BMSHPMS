@@ -22,148 +22,6 @@ namespace BMSHPMS.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("BMSHPMS.Models.CommonDService.AnnualDabeiInfo", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("CommonReceiptId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreateBy")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime?>("CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Sum")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("UpdateBy")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime?>("UpdateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CommonReceiptId");
-
-                    b.ToTable("Info_AnnualDabei");
-                });
-
-            modelBuilder.Entity("BMSHPMS.Models.CommonDService.AnnualLightInfo", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("CommonReceiptId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ContactAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Count")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("CreateBy")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime?>("CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DonateLightMode")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Sum")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("UpdateBy")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime?>("UpdateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("WishNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CommonReceiptId");
-
-                    b.ToTable("Info_AnnualLight");
-                });
-
-            modelBuilder.Entity("BMSHPMS.Models.CommonDService.CommonReceipt", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CRemark")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ContactName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreateBy")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime?>("CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DonationCategory")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ReceiptDate")
-                        .IsRequired()
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ReceiptNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Sum")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UpdateBy")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime?>("UpdateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Info_CommonReceipt");
-                });
-
             modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_AutoComplete", b =>
                 {
                     b.Property<Guid>("ID")
@@ -597,7 +455,7 @@ namespace BMSHPMS.Migrations
 
                     b.Property<string>("ReceiptOwn")
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("收據人姓名");
+                        .HasComment("收據人名");
 
                     b.Property<int?>("Sum")
                         .HasColumnType("int")
@@ -700,10 +558,18 @@ namespace BMSHPMS.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasComment("編號代碼");
 
+                    b.Property<string>("ServiceDateDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ServiceName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasComment("法會名");
+
+                    b.Property<string>("ServiceOrganizer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdateBy")
                         .HasMaxLength(50)
@@ -759,7 +625,7 @@ namespace BMSHPMS.Migrations
 
                     b.Property<int>("UsedNumber")
                         .HasColumnType("int")
-                        .HasComment("編號已計數");
+                        .HasComment("編號計數");
 
                     b.HasKey("ID");
 
@@ -1657,24 +1523,6 @@ namespace BMSHPMS.Migrations
                     b.ToTable("WorkflowInstances", "Elsa");
                 });
 
-            modelBuilder.Entity("BMSHPMS.Models.CommonDService.AnnualDabeiInfo", b =>
-                {
-                    b.HasOne("BMSHPMS.Models.CommonDService.CommonReceipt", "CommonReceipt")
-                        .WithMany("AnnualDabeiInfos")
-                        .HasForeignKey("CommonReceiptId");
-
-                    b.Navigation("CommonReceipt");
-                });
-
-            modelBuilder.Entity("BMSHPMS.Models.CommonDService.AnnualLightInfo", b =>
-                {
-                    b.HasOne("BMSHPMS.Models.CommonDService.CommonReceipt", "CommonReceipt")
-                        .WithMany("AnnualLightInfos")
-                        .HasForeignKey("CommonReceiptId");
-
-                    b.Navigation("CommonReceipt");
-                });
-
             modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_Donor", b =>
                 {
                     b.HasOne("BMSHPMS.Models.DharmaService.Info_Receipt", "Receipt")
@@ -1778,13 +1626,6 @@ namespace BMSHPMS.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Photo");
-                });
-
-            modelBuilder.Entity("BMSHPMS.Models.CommonDService.CommonReceipt", b =>
-                {
-                    b.Navigation("AnnualDabeiInfos");
-
-                    b.Navigation("AnnualLightInfos");
                 });
 
             modelBuilder.Entity("BMSHPMS.Models.DharmaService.Info_Receipt", b =>

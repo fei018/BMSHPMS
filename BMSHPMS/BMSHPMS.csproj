@@ -60,8 +60,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
-    <PackageReference Include="WalkingTec.Mvvm.TagHelpers.LayUI" Version="6.5.7" />
-    <PackageReference Include="WalkingTec.Mvvm.Mvc" Version="6.5.7" />
+    <PackageReference Include="WalkingTec.Mvvm.TagHelpers.LayUI" Version="6.5.11" />
+    <PackageReference Include="WalkingTec.Mvvm.Mvc" Version="6.5.11" />
 </ItemGroup>
 
 

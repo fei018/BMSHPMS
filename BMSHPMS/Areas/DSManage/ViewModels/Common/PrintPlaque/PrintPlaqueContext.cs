@@ -1,7 +1,5 @@
-﻿using MessagePack.Resolvers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
 {
@@ -37,6 +35,8 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
         public const string 附薦大黄5莲A4 = "f3c45d93a3514d709eb232cb50e336a4";
 
         public const string 附薦20格黃紙A4 = "c0bd15e143d44b88be18c8341c5429bc";
+
+        public const string 附薦中黃1莲 = "e6f4803d3a6a45618d8b090913cbee21";
         #endregion
 
         public static List<PrintPlaquePost> Longevity_PrintPlaquePostList { get; private set; }
@@ -88,7 +88,33 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
                     FileType = FileTypeEnum.Excel,
                     PlaqueType = PlaqueTypeEnum.延生
                 },
-                
+                new PrintPlaquePost()
+                {
+                    Key = 延生1蓮位小紅筒紅紙,
+                    ButtonDisplayName = nameof(延生1蓮位小紅筒紅紙),
+                    FilePath = Path.Combine(excelTplPath,"Longevity_1Seat_SmallRedBox_152X215.docx"),
+                    SeatCount = 1,
+                    FileType = FileTypeEnum.Word,
+                    PlaqueType = PlaqueTypeEnum.延生
+                },
+                new PrintPlaquePost()
+                {
+                    Key = 延生1蓮位中紅筒紅紙,
+                    ButtonDisplayName = nameof(延生1蓮位中紅筒紅紙),
+                    FilePath = Path.Combine(excelTplPath,"Longevity_1Seat_MiddleRedBox_215X260.docx"),
+                    SeatCount = 1,
+                    FileType = FileTypeEnum.Word,
+                    PlaqueType = PlaqueTypeEnum.延生
+                },
+                new PrintPlaquePost()
+                {
+                    Key = 延生1蓮位大紅筒紅紙,
+                    ButtonDisplayName = nameof(延生1蓮位大紅筒紅紙),
+                    FilePath = Path.Combine(excelTplPath,"Longevity_1Seat_BigRedBox_215X343.docx"),
+                    SeatCount = 1,
+                    FileType = FileTypeEnum.Word,
+                    PlaqueType = PlaqueTypeEnum.延生
+                },
             };
             #endregion
 
@@ -128,6 +154,33 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
                     ButtonDisplayName = nameof(附薦20格黃紙A4) ,
                     FilePath = Path.Combine(excelTplPath,"memorial_20Seat_A4.xlsx"),
                     SeatCount= 20,
+                    FileType = FileTypeEnum.Excel,
+                    PlaqueType = PlaqueTypeEnum.附薦,
+                },
+                new PrintPlaquePost()
+                {
+                    Key = 附薦5蓮位善字牌位A4,
+                    ButtonDisplayName = nameof(附薦5蓮位善字牌位A4),
+                    FilePath = Path.Combine(excelTplPath,"Memorial_5Seat_Kind.xlsx"),
+                    SeatCount = 5,
+                    FileType = FileTypeEnum.Excel,
+                    PlaqueType = PlaqueTypeEnum.附薦,
+                },
+                new PrintPlaquePost()
+                {
+                    Key = 附薦3蓮位萬字牌位A4,
+                    ButtonDisplayName = nameof(附薦3蓮位萬字牌位A4),
+                    FilePath = Path.Combine(excelTplPath,"Memorial_3Seat_wan.xlsx"),
+                    SeatCount = 3,
+                    FileType = FileTypeEnum.Excel,
+                    PlaqueType = PlaqueTypeEnum.附薦,
+                },
+                new PrintPlaquePost()
+                {
+                    Key = 附薦2蓮位全字牌位A4,
+                    ButtonDisplayName = nameof(附薦2蓮位全字牌位A4),
+                    FilePath = Path.Combine(excelTplPath,"Memorial_2Seat_quan.xlsx"),
+                    SeatCount = 2,
                     FileType = FileTypeEnum.Excel,
                     PlaqueType = PlaqueTypeEnum.附薦,
                 },
@@ -215,6 +268,15 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
                     ButtonDisplayName = nameof(附薦大黄5莲A4) ,
                     FilePath = Path.Combine(excelTplPath,"memorial_bigyellow_5seat_A4.xlsx"),
                     SeatCount= 5,
+                    FileType = FileTypeEnum.Excel,
+                    PlaqueType = PlaqueTypeEnum.附薦,
+                },
+                new PrintPlaquePost()
+                {
+                    Key = 附薦中黃1莲,
+                    ButtonDisplayName = nameof(附薦中黃1莲) ,
+                    FilePath = Path.Combine(excelTplPath,"memorial_middleyellow_1Seat.xlsx"),
+                    SeatCount= 1,
                     FileType = FileTypeEnum.Excel,
                     PlaqueType = PlaqueTypeEnum.附薦,
                 },

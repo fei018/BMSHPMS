@@ -37,11 +37,11 @@ namespace BMSHPMS
 
         public DbSet<Info_AutoComplete> Info_AutoCompletes { get; set; }
 
-        public DbSet<CommonReceipt> CommonReceipts { get; set; }
+        //public DbSet<CommonReceipt> CommonReceipts { get; set; }
 
-        public DbSet<AnnualDabeiInfo> AnnualDabeiInfos { get; set; }
+        //public DbSet<AnnualDabeiInfo> AnnualDabeiInfos { get; set; }
 
-        public DbSet<AnnualLightInfo> AnnualLightInfos { get; set; }
+        //public DbSet<AnnualLightInfo> AnnualLightInfos { get; set; }
         #endregion
 
 

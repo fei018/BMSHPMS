@@ -20,6 +20,14 @@ namespace BMSHPMS.Models.DharmaService
         [Required(ErrorMessage = "Validate.{0}required")]
         public string SerialCode { get; set; }
 
+        [Display(Name = "法會主辦")]
+        [Required(ErrorMessage = "Validate.{0}required")]
+        public string ServiceOrganizer { get; set; }
+
+        [Display(Name = "法會日期描述")]
+        [Required(ErrorMessage = "Validate.{0}required")]
+        public string ServiceDateDescription { get; set; }
+
 
         public List<Opt_DonationProject> Opt_DonationProjects { get; set; } = new List<Opt_DonationProject>();
     }

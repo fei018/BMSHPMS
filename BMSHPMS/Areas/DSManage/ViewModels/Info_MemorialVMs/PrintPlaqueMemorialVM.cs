@@ -114,6 +114,18 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                     ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
                     break;
 
+                case PrintPlaqueContext.附薦2蓮位全字牌位A4:
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
+                    break;
+
+                case PrintPlaqueContext.附薦3蓮位萬字牌位A4:
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
+                    break;
+
+                case PrintPlaqueContext.附薦5蓮位善字牌位A4:
+                    ExportResult = await PrintPlaqueHelper.ExportExcel<PrintPlaqueData_Memorial, Info_Memorial>(models, post);
+                    break;
+
                 default:
                     throw new Exception(nameof(PrintPlaquePost) + " switch key not found: " + post.ButtonDisplayName);
             }

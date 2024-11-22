@@ -32,8 +32,10 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs
         protected override IEnumerable<IGridColumn<Opt_DharmaService_View>> InitGridHeader()
         {
             return new List<GridColumn<Opt_DharmaService_View>>{
-                this.MakeGridHeader(x => x.ServiceName),
                 this.MakeGridHeader(x => x.SerialCode),
+                this.MakeGridHeader(x => x.ServiceName),
+                this.MakeGridHeader(x => x.ServiceOrganizer),
+                this.MakeGridHeader(x => x.ServiceDateDescription),
                 this.MakeGridHeaderAction(width: 200)
             };
         }
@@ -48,6 +50,8 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs
 				    ID = x.ID,
                     ServiceName = x.ServiceName,
                     SerialCode = x.SerialCode,
+                    ServiceDateDescription = x.ServiceDateDescription,
+                    ServiceOrganizer = x.ServiceOrganizer,
                 })
                 .OrderBy(x => x.SerialCode);
             return query;

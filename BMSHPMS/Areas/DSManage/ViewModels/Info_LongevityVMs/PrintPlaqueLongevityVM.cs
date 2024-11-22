@@ -100,6 +100,18 @@ namespace BMSHPMS.DSManage.ViewModels.Info_LongevityVMs
                     //Mimetype = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     break;
 
+                case PrintPlaqueContext.延生1蓮位小紅筒紅紙:
+                    ExportResult = await PrintPlaqueHelper.ExportWord<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
+                    break;
+
+                case PrintPlaqueContext.延生1蓮位中紅筒紅紙:
+                    ExportResult = await PrintPlaqueHelper.ExportWord<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
+                    break;
+
+                case PrintPlaqueContext.延生1蓮位大紅筒紅紙:
+                    ExportResult = await PrintPlaqueHelper.ExportWord<PrintPlaqueData_Longevity, Info_Longevity>(models, post);
+                    break;
+
                 default:
                     throw new Exception(nameof(PrintPlaquePost) + " switch key not found: " + post.ButtonDisplayName);
             }

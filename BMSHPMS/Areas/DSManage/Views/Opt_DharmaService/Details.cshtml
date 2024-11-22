@@ -2,10 +2,12 @@
 @inject IStringLocalizer<Program> Localizer;
 
 <wt:form vm="@Model">
-<wt:row items-per-row="ItemsPerRowEnum.Two">
-<wt:display field="Entity.ServiceName" />
-<wt:display field="Entity.SerialCode" />
-</wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.One">
+        <wt:display field="Entity.ServiceName" />
+        <wt:display field="Entity.SerialCode" />
+        <wt:display field="Entity.ServiceDateDescription" />
+        <wt:display field="Entity.ServiceOrganizer" />
+    </wt:row>
     <wt:row align="AlignEnum.Right">
         <wt:closebutton />
     </wt:row>

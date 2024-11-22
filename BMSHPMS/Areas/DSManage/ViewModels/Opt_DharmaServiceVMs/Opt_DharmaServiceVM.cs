@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using WalkingTec.Mvvm.Core;
-using WalkingTec.Mvvm.Core.Extensions;
+﻿using BMSHPMS.Helper;
 using BMSHPMS.Models.DharmaService;
-using BMSHPMS.Helper;
+using System;
+using System.Linq;
+using WalkingTec.Mvvm.Core;
 
 
 namespace BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs
@@ -24,9 +20,9 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs
 
         public override void DoAdd()
         {
-            if(DC.Set<Opt_DharmaService>().Any(d => d.SerialCode == Entity.SerialCode))
+            if (DC.Set<Opt_DharmaService>().Any(d => d.SerialCode == Entity.SerialCode))
             {
-                Wtm.MSD.AddModelError("SerialCode", $"{ToolsHelper.GetDisplayName(()=>Entity.SerialCode)} 已存在.");
+                Wtm.MSD.AddModelError("SerialCode", $"{ToolsHelper.GetDisplayName(() => Entity.SerialCode)} 已存在.");
                 return;
             }
 
@@ -51,6 +47,8 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs
 
             if (!string.IsNullOrEmpty(Entity.ServiceName)) old.ServiceName = Entity.ServiceName;
             if (!string.IsNullOrEmpty(Entity.SerialCode)) old.SerialCode = Entity.SerialCode;
+            if (!string.IsNullOrEmpty(Entity.ServiceDateDescription)) old.ServiceDateDescription = Entity.ServiceDateDescription;
+            if (!string.IsNullOrEmpty(Entity.ServiceOrganizer)) old.ServiceOrganizer = Entity.ServiceOrganizer;
 
             DC.UpdateEntity(old);
             DC.SaveChanges();

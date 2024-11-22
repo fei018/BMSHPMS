@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="WalkingTec.Mvvm.TagHelpers.LayUI" Version="6.5.11" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BMSHPMS\BMSHPMS.csproj" />
   </ItemGroup>
 
