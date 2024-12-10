@@ -70,37 +70,37 @@ namespace BMSHPMS.DSManage.Controllers
         }
         #endregion
 
-        #region Edit 禁止修改
-        //[ActionDescription("Sys.Edit")]
-        //public ActionResult Edit(string id)
-        //{
-        //    var vm = Wtm.CreateVM<Opt_DonationProjectVM>(id);
-        //    return PartialView(vm);
-        //}
+        #region Edit 
+        [ActionDescription("Sys.Edit")]
+        public ActionResult Edit(string id)
+        {
+            var vm = Wtm.CreateVM<Opt_DonationProjectVM>(id);
+            return PartialView(vm);
+        }
 
-        //[ActionDescription("Sys.Edit")]
-        //[HttpPost]
-        //[ValidateFormItemOnly]
-        //public ActionResult Edit(Opt_DonationProjectVM vm)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return PartialView(vm);
-        //    }
-        //    else
-        //    {
-        //        vm.DoEdit();
-        //        if (!ModelState.IsValid)
-        //        {
-        //            vm.DoReInit();
-        //            return PartialView(vm);
-        //        }
-        //        else
-        //        {
-        //            return FFResult().CloseDialog().RefreshGridRow(vm.Entity.ID);
-        //        }
-        //    }
-        //}
+        [ActionDescription("Sys.Edit")]
+        [HttpPost]
+        [ValidateFormItemOnly]
+        public ActionResult Edit(Opt_DonationProjectVM vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return PartialView(vm);
+            }
+            else
+            {
+                vm.DoEdit();
+                if (!ModelState.IsValid)
+                {
+                    vm.DoReInit();
+                    return PartialView(vm);
+                }
+                else
+                {
+                    return FFResult().CloseDialog().RefreshGridRow(vm.Entity.ID);
+                }
+            }
+        }
         #endregion
 
         #region Delete
@@ -218,14 +218,14 @@ namespace BMSHPMS.DSManage.Controllers
         #endregion
 
         #region EditUsedNumber
-        [ActionDescription("EditUsedNumber")]
+        [ActionDescription("修改编号计数")]
         public ActionResult EditUsedNumber(string id)
         {
             var vm = Wtm.CreateVM<Opt_DonationProjectVM>(id);
             return PartialView(vm);
         }
 
-        [ActionDescription("EditUsedNumber")]
+        [ActionDescription("修改编号计数")]
         [HttpPost]
         [ValidateFormItemOnly]
         public ActionResult EditUsedNumber(Opt_DonationProjectVM vm)

@@ -134,32 +134,33 @@ namespace BMSHPMS.DSManage.Controllers
         public ActionResult Details(string id)
         {
             var vm = Wtm.CreateVM<Opt_DharmaServiceVM>(id);
+            vm.InitDetails();
             return PartialView(vm);
         }
         #endregion
 
         #region BatchEdit
-        //[HttpPost]
-        //[ActionDescription("Sys.BatchEdit")]
-        //public ActionResult BatchEdit(string[] IDs)
-        //{
-        //    var vm = Wtm.CreateVM<DServiceProjectBatchVM>(Ids: IDs);
-        //    return PartialView(vm);
-        //}
+        [HttpPost]
+        [ActionDescription("Sys.BatchEdit")]
+        public ActionResult BatchEdit(string[] IDs)
+        {
+            var vm = Wtm.CreateVM<Opt_DharmaServiceBatchVM>(Ids: IDs);
+            return PartialView(vm);
+        }
 
-        //[HttpPost]
-        //[ActionDescription("Sys.BatchEdit")]
-        //public ActionResult DoBatchEdit(DServiceProjectBatchVM vm, IFormCollection nouse)
-        //{
-        //    if (!ModelState.IsValid || !vm.DoBatchEdit())
-        //    {
-        //        return PartialView("BatchEdit",vm);
-        //    }
-        //    else
-        //    {
-        //        return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.BatchEditSuccess", vm.Ids.Length]);
-        //    }
-        //}
+        [HttpPost]
+        [ActionDescription("Sys.BatchEdit")]
+        public ActionResult DoBatchEdit(Opt_DharmaServiceBatchVM vm, IFormCollection nouse)
+        {
+            if (!ModelState.IsValid || !vm.DoBatchEdit())
+            {
+                return PartialView("BatchEdit", vm);
+            }
+            else
+            {
+                return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.BatchEditSuccess", vm.Ids.Length]);
+            }
+        }
         #endregion
 
         #region BatchDelete
@@ -187,26 +188,26 @@ namespace BMSHPMS.DSManage.Controllers
         #endregion
 
         #region Import
-		//[ActionDescription("Sys.Import")]
-  //      public ActionResult Import()
-  //      {
-  //          var vm = Wtm.CreateVM<DServiceProjectImportVM>();
-  //          return PartialView(vm);
-  //      }
+        //[ActionDescription("Sys.Import")]
+        //      public ActionResult Import()
+        //      {
+        //          var vm = Wtm.CreateVM<DServiceProjectImportVM>();
+        //          return PartialView(vm);
+        //      }
 
-  //      [HttpPost]
-  //      [ActionDescription("Sys.Import")]
-  //      public ActionResult Import(DServiceProjectImportVM vm, IFormCollection nouse)
-  //      {
-  //          if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
-  //          {
-  //              return PartialView(vm);
-  //          }
-  //          else
-  //          {
-  //              return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
-  //          }
-  //      }
+        //      [HttpPost]
+        //      [ActionDescription("Sys.Import")]
+        //      public ActionResult Import(DServiceProjectImportVM vm, IFormCollection nouse)
+        //      {
+        //          if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
+        //          {
+        //              return PartialView(vm);
+        //          }
+        //          else
+        //          {
+        //              return FFResult().CloseDialog().RefreshGrid().Alert(Localizer["Sys.ImportSuccess", vm.EntityList.Count.ToString()]);
+        //          }
+        //      }
         #endregion
 
         [ActionDescription("Sys.Export")]

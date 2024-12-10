@@ -16,7 +16,7 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
             return new List<GridAction>
             {
                 this.MakeStandardAction("Opt_DonationProject", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"DSManage", dialogWidth: 800,dialogHeight:600),
-                //this.MakeStandardAction("Opt_DonationProject", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800,dialogHeight:600),
+                this.MakeStandardAction("Opt_DonationProject", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "DSManage", dialogWidth: 800,dialogHeight:600),
                 this.MakeStandardAction("Opt_DonationProject", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "DSManage", dialogWidth: 800,dialogHeight:400),
                 this.MakeStandardAction("Opt_DonationProject", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "DSManage", dialogWidth: 800,dialogHeight:400),
                 //this.MakeStandardAction("Opt_DonationProject", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "DSManage", dialogWidth: 800,dialogHeight:500),

@@ -20,7 +20,8 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
 
         public List<Opt_DharmaService> GetDharmaServiceList()
         {
-            return DC.Set<Opt_DharmaService>().OrderBy(x => x.SerialCode).ToList();
+            var vm = Wtm.CreateVM<DSRegisterVM>();
+            return vm.DisplayDharmaServiceList();
         }
 
         public void InitAppendInfo(string serviceID)

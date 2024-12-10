@@ -3,6 +3,7 @@ using BMSHPMS.Models.DharmaService;
 using BMSHPMS.Models.DharmaServiceExtention;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using NetBox.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,33 @@ namespace BMSHPMS.DSReception.ViewModels
 
         public Guid DharmaServiceID { get; set; }
 
-        public void FillDharmaServiceList()
+        public List<Opt_DharmaService> DisplayDharmaServiceList()
         {
-            DharmaServices = DC.Set<Opt_DharmaService>().OrderBy(x => x.SerialCode).ToList();
+            // 獲取登錄用戶的角色Ids
+            var loginRoleIds = LoginUserInfo.Roles.Select(x => x.ID).ToList().ConvertAll(x => Convert.ToString(x));
+
+            // 根據登錄用戶角色Ids 獲取 Opt_DServiceRole 表裏的法會Ids
+            var dsIds = DC.Set<Opt_DServiceRole>().CheckIDs(loginRoleIds, x => x.FrameworkRoleId)
+                                .Select(x => x.DSId)
+                                .Distinct()
+                                .ToList()
+                                .ConvertAll(x => Convert.ToString(x));
+
+            if (dsIds == null || dsIds.Count <= 0)
+            {
+                DharmaServices = null;                
+            }
+            else
+            {
+                // 獲取要顯示的法會
+                DharmaServices = DC.Set<Opt_DharmaService>()
+                                    .Where(x => x.Enable)
+                                    .CheckIDs(dsIds, x => x.ID)
+                                    .OrderBy(x => x.SerialCode)
+                                    .ToList();
+            }
+
+            return DharmaServices;
         }
         #endregion
 
@@ -171,7 +196,7 @@ namespace BMSHPMS.DSReception.ViewModels
 
                 // 功德種類的當前已使用數目
                 int usedNumber = queryDonationProject.UsedNumber;
-                
+
                 // rollback 回退表中，記錄功德上一次的已使用數
                 rollbackInfos.Add(new Reg_RollbackInfo { PreUsedNumber = usedNumber, DonationProjectID = queryDonationProject.ID, LastReceiptNumber = receiptNumber });
 

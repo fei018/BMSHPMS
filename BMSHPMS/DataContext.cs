@@ -37,6 +37,8 @@ namespace BMSHPMS
 
         public DbSet<Info_AutoComplete> Info_AutoCompletes { get; set; }
 
+        public DbSet<Opt_DServiceRole> Opt_DServiceRoles { get; set; }
+
         //public DbSet<CommonReceipt> CommonReceipts { get; set; }
 
         //public DbSet<AnnualDabeiInfo> AnnualDabeiInfos { get; set; }

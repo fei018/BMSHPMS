@@ -18,6 +18,12 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs
             LinkedVM = new DServiceProject_BatchEdit();
         }
 
+        public override bool DoBatchEdit()
+        {
+
+            return base.DoBatchEdit();
+        }
+
     }
 
 	/// <summary>
@@ -29,6 +35,12 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs
         protected override void InitVM()
         {
         }
+
+        [Display(Name = "法會啓用")]
+        //[Required(ErrorMessage = "Validate.{0}required")]
+        public bool Enable { get; set; } = false;
+
+
 
     }
 

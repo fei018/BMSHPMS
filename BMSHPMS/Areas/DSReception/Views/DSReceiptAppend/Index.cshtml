@@ -8,10 +8,13 @@
     收據如需補加功德數目，請在此按需添加
 </wt:quote>
 <div class="layui-btn-container" style="padding:20px;">   
-    @foreach (var item in dServiceList)
+    @if (dServiceList != null)
     {
-        <div style="margin-bottom:20px;">
-            <wt:linkbutton text="@item.ServiceName" url="@appendUrl/@item.ID" target="ButtonTargetEnum.Layer" theme="ButtonThemeEnum.Normal" window-title="收據功德補加" window-height="500" window-width="800" size="ButtonSizeEnum.Big"/>
-        </div>
+        @foreach (var item in dServiceList)
+        {
+            <div style="margin-bottom:20px;">
+                <wt:linkbutton text="@item.ServiceName" url="@appendUrl/@item.ID" target="ButtonTargetEnum.Layer" theme="ButtonThemeEnum.Normal" window-title="收據功德補加" window-height="500" window-width="800" size="ButtonSizeEnum.Big" />
+            </div>
+        }
     }
 </div>

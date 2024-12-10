@@ -101,8 +101,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 DharmaServiceFullName = x.Receipt.DharmaServiceFullName,
                 UpdateTime = x.UpdateTime,
             })
-            .OrderByDescending(x => x.ReceiptDate)
-            .ThenBy(x => x.SerialCode);
+            .OrderByDescending(x => x.SerialCode);
 
             return query1;
         }

@@ -1,13 +1,9 @@
-﻿using System;
+﻿using BMSHPMS.Models.DharmaService;
+using BMSHPMS.Models.DharmaServiceExtention;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
-using BMSHPMS.Models.DharmaService;
-using BMSHPMS.Helper;
-using BMSHPMS.Models.DharmaServiceExtention;
 
 
 namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
@@ -67,7 +63,7 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DonationProjectVMs
             var old = DC.Set<Opt_DonationProject>().Find(Entity.ID);
             old.UsedNumber = Entity.UsedNumber;
 
-            DC.UpdateProperty(old,x=>x.UsedNumber);
+            DC.UpdateProperty(old, x => x.UsedNumber);
             DC.SaveChanges();
         }
     }

@@ -553,13 +553,15 @@ namespace BMSHPMS.Migrations
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("Enable")
+                        .HasColumnType("bit");
+
                     b.Property<string>("SerialCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasComment("編號代碼");
 
                     b.Property<string>("ServiceDateDescription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ServiceName")
@@ -568,7 +570,6 @@ namespace BMSHPMS.Migrations
                         .HasComment("法會名");
 
                     b.Property<string>("ServiceOrganizer")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdateBy")
@@ -632,6 +633,25 @@ namespace BMSHPMS.Migrations
                     b.HasIndex("DharmaServiceID");
 
                     b.ToTable("Opt_DonationProject");
+                });
+
+            modelBuilder.Entity("BMSHPMS.Models.DharmaService.Opt_DServiceRole", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("DSId")
+                        .IsRequired()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("FrameworkRoleId")
+                        .IsRequired()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Opt_DServiceRoles");
                 });
 
             modelBuilder.Entity("BMSHPMS.Models.DharmaService.Reg_RollbackInfo", b =>

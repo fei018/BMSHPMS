@@ -99,8 +99,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_MemorialVMs
                 ReceiptUpdateTime = x.Receipt.UpdateTime.Value,
                 DharmaServiceFullName = x.Receipt.DharmaServiceFullName,
             })
-            .OrderByDescending(x => x.ReceiptDate)
-            .ThenBy(x => x.SerialCode);
+            .OrderByDescending(x => x.SerialCode);
 
             return query1;
         }

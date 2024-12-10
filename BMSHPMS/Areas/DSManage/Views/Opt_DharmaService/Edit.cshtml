@@ -7,6 +7,10 @@
         <wt:textbox field="Entity.SerialCode" />
         <wt:textbox field="Entity.ServiceDateDescription" />
         <wt:textbox field="Entity.ServiceOrganizer" />
+        <wt:switch field="Entity.Enable" />
+    </wt:row>
+    <wt:row items-per-row="ItemsPerRowEnum.Three">
+        <wt:checkbox field="FrameworkRoleSelectedIds" items="FrameworkRoleIdSelectListItems" />
     </wt:row>
     <wt:hidden field="Entity.ID" />
     <wt:row align="AlignEnum.Right">

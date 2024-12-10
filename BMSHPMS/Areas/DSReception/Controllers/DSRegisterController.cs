@@ -17,7 +17,7 @@ namespace BMSHPMS.Areas.DSReception.Controllers
         public IActionResult Index()
         {
             DSRegisterVM vm = Wtm.CreateVM<DSRegisterVM>();
-            vm.FillDharmaServiceList();
+            vm.DisplayDharmaServiceList();
             return PartialView(vm);
         }
 

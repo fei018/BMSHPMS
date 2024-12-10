@@ -21,14 +21,21 @@ namespace BMSHPMS.Models.DharmaService
         public string SerialCode { get; set; }
 
         [Display(Name = "法會主辦")]
-        [Required(ErrorMessage = "Validate.{0}required")]
         public string ServiceOrganizer { get; set; }
 
         [Display(Name = "法會日期描述")]
-        [Required(ErrorMessage = "Validate.{0}required")]
         public string ServiceDateDescription { get; set; }
+
+        [Display(Name = "法會啓用")]
+        [Required(ErrorMessage = "Validate.{0}required")]
+        public bool Enable { get; set; } = false;
+
+        //[Display(Name = "法會角色")]
+        //public string DSRoles { get; set; }
 
 
         public List<Opt_DonationProject> Opt_DonationProjects { get; set; } = new List<Opt_DonationProject>();
+
+        
     }
 }
