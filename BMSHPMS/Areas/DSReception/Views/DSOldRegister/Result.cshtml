@@ -1,0 +1,42 @@
+﻿@model BMSHPMS.DSReception.ViewModels.DSOldRegisterVMs.DSOldRegisterVM
+@{
+    var donors = Model.DonorListVM.GetEntityList();
+    var memorials = Model.MemorialListVM.GetEntityList();
+    var longevitys = Model.LongevityListVM.GetEntityList();
+
+    string printUrl = "/DSReception/ReceiptPrint/PrintSerial?receiptNumber=" + @Model.NewReceipt.ReceiptNumber;
+}
+
+<div style="padding:20px;">
+    <wt:row align="AlignEnum.Right">
+        <a class="layui-btn layui-btn-primary" target="_blank" href="@printUrl">列印</a>
+        <wt:closebutton />
+    </wt:row>
+    <wt:form vm="@Model">
+        <wt:row items-per-row=" ItemsPerRowEnum.One">
+            <wt:display field="Message" label-text="登記結果" style="color:red" />
+        </wt:row>
+        <wt:row items-per-row=" ItemsPerRowEnum.One">
+            <wt:display field="DharmaService.ServiceName" />
+            <wt:display field="NewReceipt.ReceiptNumber" />
+            <wt:display field="NewReceipt.ReceiptDate" />
+        </wt:row>
+    </wt:form>
+    @if (donors.Count() > 0)
+    {
+        <wt:grid vm="@Model.DonorListVM" hidden-checkbox use-local-data="true" height="400" />
+        <hr />
+    }
+    @if (memorials.Count() > 0)
+    {
+        <wt:grid vm="@Model.MemorialListVM" hidden-checkbox use-local-data="true" height="400" />
+        <hr />
+    }
+    @if (longevitys.Count() > 0)
+    {
+        <wt:grid vm="@Model.LongevityListVM" hidden-checkbox use-local-data="true" height="400" />
+    }
+    <wt:row align="AlignEnum.Right">
+        <wt:closebutton />
+    </wt:row>
+</div>

@@ -1,5 +1,4 @@
-﻿using BMSHPMS.DSManage.ViewModels.Common;
-using BMSHPMS.Helper;
+﻿using BMSHPMS.Helper;
 using BMSHPMS.Models.DharmaService;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -50,7 +49,7 @@ namespace BMSHPMS.DSReception.ViewModels
                         Error = "輸入的收據號碼不是最近一次登記";
                         return;
                     }
-                   
+
                     var toDel = DC.Set<Info_Receipt>().Where(x => x.ReceiptNumber == ReceiptNumber).FirstOrDefault();
                     if (toDel == null)
                     {

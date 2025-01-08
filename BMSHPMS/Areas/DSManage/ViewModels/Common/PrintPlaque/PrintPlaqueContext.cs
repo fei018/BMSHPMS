@@ -45,7 +45,7 @@ namespace BMSHPMS.DSManage.ViewModels.Common.PrintPlaque
 
         public static List<PrintPlaquePost> Donor_PrintPlaquePostList { get; private set; }
 
-        public static void SetTemplateList(string wwwPath)
+        public static void SetTemplateListPath(string wwwPath)
         {
             string excelTplPath = Path.Combine(wwwPath, "excelTemplate");
 

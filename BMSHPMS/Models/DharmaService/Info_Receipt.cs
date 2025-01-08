@@ -41,7 +41,7 @@ namespace BMSHPMS.Models.DharmaService
         [Comment("聯絡人姓名")]
         public string ContactName { get; set; }
 
-        [Display(Name = "聯絡人電話")]
+        [Display(Name = "聯絡電話")]
         [Comment("聯絡人電話")]
         public string ContactPhone { get; set; }
 
@@ -56,14 +56,6 @@ namespace BMSHPMS.Models.DharmaService
         [Display(Name = "法會Id")]
         public Guid? DharmaServiceId { get; set; }
 
-        //[Display(Name = "銀行名")]
-        //[Comment("銀行名")]
-        //public string BankName { get; set; }
-
-        //[Display(Name = "支票號碼")]
-        //[Comment("支票號碼")]
-        //public string ChequeNumber { get; set; }
-        //==========
 
         [NotMapped]
         [Display(Name = "法會")]

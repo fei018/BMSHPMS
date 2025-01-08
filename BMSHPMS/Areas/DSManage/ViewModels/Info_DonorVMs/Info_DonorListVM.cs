@@ -97,7 +97,6 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
                 DSRemark = x.DSRemark,
                 ReceiptNumber = x.Receipt.ReceiptNumber,
                 ReceiptDate = x.Receipt.ReceiptDate.Value,
-                ReceiptUpdateTime = x.Receipt.UpdateTime.Value,
                 DharmaServiceFullName = x.Receipt.DharmaServiceFullName,
                 UpdateTime = x.UpdateTime,
             })
@@ -141,7 +140,7 @@ namespace BMSHPMS.DSManage.ViewModels.Info_DonorVMs
         public DateTime ReceiptDate { get; set; }
 
         [Display(Name = "更新日期")]
-        public DateTime ReceiptUpdateTime { get; set; }
+        public DateTime? ReceiptUpdateTime { get; set; }
 
         [Display(Name = "法會")]
         public string DharmaServiceFullName { get; set; }

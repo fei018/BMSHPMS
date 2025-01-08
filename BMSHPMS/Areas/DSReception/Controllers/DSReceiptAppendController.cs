@@ -6,6 +6,7 @@ using WalkingTec.Mvvm.Mvc;
 
 namespace BMSHPMS.DSReception.Controllers
 {
+    [NoLog]
     [Area("DSReception")]
     [ActionDescription("收據功德補加")]
     public class DSReceiptAppendController : BaseController

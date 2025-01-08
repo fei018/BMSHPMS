@@ -1,0 +1,21 @@
+﻿@inject BMSHPMS.DSReception.ViewModels.Common.DSRegisterHelper dsHepler
+@inject WalkingTec.Mvvm.Core.WTMContext wtm
+@{
+    var dServiceList = dsHepler.GetDisplayDharmaServiceList(wtm);
+    string url = "/dsreception/dsoldregister/register";
+}
+
+<wt:quote>
+    舊收據數據轉新功德登記, 只能使用相同法會數據
+</wt:quote>
+<div class="layui-btn-container" style="padding:20px;">
+    @if (dServiceList != null)
+    {
+        @foreach (var item in dServiceList)
+        {
+            <div style="margin-bottom:20px;">
+                <wt:linkbutton text="@item.ServiceName" url="@url/@item.ID" target="ButtonTargetEnum.Layer" theme="ButtonThemeEnum.Normal" window-title="舊數據轉新功德登記" max="true" size="ButtonSizeEnum.Big" />
+            </div>
+        }
+    }
+</div>

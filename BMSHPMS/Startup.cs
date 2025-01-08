@@ -1,4 +1,5 @@
 ﻿using BMSHPMS.DSManage.ViewModels.Common.PrintPlaque;
+using BMSHPMS.DSReception.ViewModels.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -69,7 +70,11 @@ namespace BMSHPMS
             // http response html 拉丁中文不编码
             services.AddSingleton(HtmlEncoder.Create(new[] { UnicodeRanges.BasicLatin, UnicodeRanges.CjkUnifiedIdeographs }));
 
-            PrintPlaqueContext.SetTemplateList(_webHostEnvironment.WebRootPath);
+            // 牌位excel範本路徑
+            PrintPlaqueContext.SetTemplateListPath(_webHostEnvironment.WebRootPath);
+
+            //
+            services.AddScoped<DSRegisterHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

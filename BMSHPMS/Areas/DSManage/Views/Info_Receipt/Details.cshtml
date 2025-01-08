@@ -33,17 +33,17 @@
             <wt:closebutton />
         </wt:row>
     </wt:form>
-    @if (Model.DonorInfos.Count > 0)
+    @if (donors.Count > 0)
     {
         <wt:grid vm="@Model.FillData_DonorListVM" hidden-checkbox use-local-data="true" height="400" />
         <hr />
     }
-    @if (Model.MemorialInfos.Count > 0)
+    @if (memorials.Count > 0)
     {
         <wt:grid vm="@Model.FillData_MemorialListVM" hidden-checkbox use-local-data="true" height="400" />
         <hr />
     }
-    @if (Model.LongevityInfos.Count > 0)
+    @if (longevitys.Count > 0)
     {
         <wt:grid vm="@Model.FillData_LongevityListVM" hidden-checkbox use-local-data="true" height="400" />
     }

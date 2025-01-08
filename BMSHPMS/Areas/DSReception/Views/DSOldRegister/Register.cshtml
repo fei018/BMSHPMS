@@ -1,0 +1,47 @@
+﻿@model BMSHPMS.DSReception.ViewModels.DSOldRegisterVMs.DSOldRegisterVM
+
+<div style="padding:20px;">
+    <wt:form vm="@Model">
+        <wt:row items-per-row=" ItemsPerRowEnum.One">
+            <wt:display field="DharmaService.ServiceName" style="color:red" />
+            <wt:hidden field="DharmaService.ID" />
+        </wt:row>
+        <hr />
+        <wt:row items-per-row="ItemsPerRowEnum.Three">
+            <wt:textbox field="SubmitInfo.ReceiptNumber" label-text="新收據號碼"/>
+            <wt:textbox field="SubmitInfo.ContactName" />
+            <wt:textbox field="SubmitInfo.ContactPhone" />
+        </wt:row>
+        <hr />
+        <wt:row items-per-row="ItemsPerRowEnum.One">
+            <wt:selector field="SubmitInfo.DonorIDListSelect" list-vm="DonorListVM" text-bind="DonorListVM.EntityList[0].SerialCode" >
+                <wt:searchpanel vm="DonorListVM">
+                    <wt:row tems-per-row="ItemsPerRowEnum.Two">
+                        <wt:textbox field="DonorListVM.Searcher.ReceiptNumber" />
+                    </wt:row>
+                </wt:searchpanel>
+            </wt:selector>
+
+            <wt:selector field="SubmitInfo.MemorialIDListSelect" list-vm="MemorialListVM" text-bind="MemorialListVM.EntityList[0].SerialCode">
+                <wt:searchpanel vm="MemorialListVM">
+                    <wt:row tems-per-row="ItemsPerRowEnum.Two">
+                        <wt:textbox field="MemorialListVM.Searcher.ReceiptNumber" />
+                    </wt:row>
+                </wt:searchpanel>
+            </wt:selector>
+
+            <wt:selector field="SubmitInfo.LongevityIDListSelect" list-vm="LongevityListVM" text-bind="LongevityListVM.EntityList[0].SerialCode" >
+                <wt:searchpanel vm="LongevityListVM">
+                    <wt:row tems-per-row="ItemsPerRowEnum.Two">
+                        <wt:textbox field="LongevityListVM.Searcher.ReceiptNumber" />
+                    </wt:row>
+                </wt:searchpanel>
+            </wt:selector>
+        </wt:row>
+        <hr />
+        <wt:row align="AlignEnum.Right">
+            <wt:submitbutton confirm-txt="確定登記？"/>
+            <wt:closebutton />
+        </wt:row>
+    </wt:form>
+</div>

@@ -20,7 +20,7 @@ namespace BMSHPMS.DSReception.ViewModels
 
         public Guid DharmaServiceID { get; set; }
 
-        public List<Opt_DharmaService> DisplayDharmaServiceList()
+        public List<Opt_DharmaService> GetDisplayDharmaServiceList()
         {
             // 獲取登錄用戶的角色Ids
             var loginRoleIds = LoginUserInfo.Roles.Select(x => x.ID).ToList().ConvertAll(x => Convert.ToString(x));
