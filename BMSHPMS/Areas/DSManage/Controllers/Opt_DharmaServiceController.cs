@@ -5,6 +5,7 @@ using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Mvc;
 using WalkingTec.Mvvm.Core.Extensions;
 using BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs;
+using WalkingTec.Mvvm.Mvc.Binders;
 
 namespace BMSHPMS.DSManage.Controllers
 {
@@ -82,6 +83,7 @@ namespace BMSHPMS.DSManage.Controllers
         [ActionDescription("Sys.Edit")]
         [HttpPost]
         [ValidateFormItemOnly]
+        [StringNeedLTGT]
         public ActionResult Edit(Opt_DharmaServiceVM vm)
         {
             if (!ModelState.IsValid)

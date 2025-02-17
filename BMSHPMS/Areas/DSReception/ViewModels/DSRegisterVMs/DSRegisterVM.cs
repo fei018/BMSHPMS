@@ -52,7 +52,7 @@ namespace BMSHPMS.DSReception.ViewModels
 
         #region Register page    
 
-        public string DharmaServiceName { get; set; }
+        public Opt_DharmaService DharmaServiceShow { get; set; }
 
         public List<Opt_DonationProject> DonationProject_Donors { get; set; }
 
@@ -68,7 +68,8 @@ namespace BMSHPMS.DSReception.ViewModels
         {
 
             var dharmasService = DC.Set<Opt_DharmaService>().Find(dsProjectID);
-            DharmaServiceName = dharmasService?.ServiceName;
+
+            DharmaServiceShow = dharmasService;
 
             DonationProject_Donors = new List<Opt_DonationProject>();
             DonationProject_Longevitys = new List<Opt_DonationProject>();
@@ -277,7 +278,7 @@ namespace BMSHPMS.DSReception.ViewModels
             #endregion
 
             #region 更新數據庫
-            Info_Receipt newReceipt;
+            Info_Receipt newReceipt2;
 
             string contactPhone = null;
             string contactName = null;
@@ -308,13 +309,12 @@ namespace BMSHPMS.DSReception.ViewModels
                     int newReceiptSum = 0;
 
                     // 添加新收據
-                    Info_Receipt receiptInfo = new()
+                    Info_Receipt newReceipt = new()
                     {
                         CreateTime = DateTime.Now,
                         CreateBy = LoginUserInfo.Name,
                         ReceiptNumber = receiptNumber,
                         DharmaServiceName = postDharmaService.ServiceName,
-                        DharmaServiceYear = DateTime.Now.Year,
                         ReceiptDate = DateTime.Now.Date,
                         UpdateBy = LoginUserInfo.Name,
                         UpdateTime = DateTime.Now,
@@ -323,14 +323,24 @@ namespace BMSHPMS.DSReception.ViewModels
                         DharmaServiceId = postDharmaServiceID,
                     };
 
-                    DC.AddEntity(receiptInfo);
+                    // 收據的法會年份
+                    if (postDharmaService.ServiceYear.HasValue)
+                    {
+                        newReceipt.DharmaServiceYear = postDharmaService.ServiceYear.Value;
+                    }
+                    else
+                    {
+                        newReceipt.DharmaServiceYear = DateTime.Now.Year;
+                    }
+
+                    DC.AddEntity(newReceipt);
                     DC.SaveChanges();
 
-                    newReceipt = DC.Set<Info_Receipt>()
+                    newReceipt2 = DC.Set<Info_Receipt>()
                                     .Where(r => r.ReceiptNumber.ToLower() == receiptNumber.ToLower())
                                     .FirstOrDefault();
 
-                    if (newReceipt == null)
+                    if (newReceipt2 == null)
                     {
                         regResultVM.Message = "新加收據後, 查詢收據是Null";
                         return regResultVM;
@@ -339,7 +349,7 @@ namespace BMSHPMS.DSReception.ViewModels
                     // 添加新功德主
                     newDonorList.ForEach(info =>
                     {
-                        info.ReceiptID = newReceipt.ID;
+                        info.ReceiptID = newReceipt2.ID;
                         DC.AddEntity(info);
 
                         if (info.Sum.HasValue)
@@ -351,7 +361,7 @@ namespace BMSHPMS.DSReception.ViewModels
                     // 添加新延生
                     newLongevityList.ForEach(info =>
                     {
-                        info.ReceiptID = newReceipt.ID;
+                        info.ReceiptID = newReceipt2.ID;
                         DC.AddEntity(info);
 
                         if (info.Sum.HasValue)
@@ -363,7 +373,7 @@ namespace BMSHPMS.DSReception.ViewModels
                     // 添加新附薦
                     newMemorialList.ForEach(info =>
                     {
-                        info.ReceiptID = newReceipt.ID;
+                        info.ReceiptID = newReceipt2.ID;
                         DC.AddEntity(info);
 
                         if (info.Sum.HasValue)
@@ -374,8 +384,8 @@ namespace BMSHPMS.DSReception.ViewModels
 
 
                     //更新收據金額
-                    newReceipt.Sum = newReceiptSum;
-                    DC.UpdateProperty(newReceipt, x => x.Sum);
+                    newReceipt2.Sum = newReceiptSum;
+                    DC.UpdateProperty(newReceipt2, x => x.Sum);
 
                     // 刪除舊 RollbackInfo
                     DC.Set<Reg_RollbackInfo>().ToList().ForEach(x => DC.DeleteEntity(x));
@@ -397,9 +407,9 @@ namespace BMSHPMS.DSReception.ViewModels
                 }
             }
 
-            regResultVM.Donors = await DC.Set<Info_Donor>().Where(q => q.ReceiptID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
-            regResultVM.Longevitys = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
-            regResultVM.Memorials = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == newReceipt.ID).OrderBy(q => q.Sum).ToListAsync();
+            regResultVM.Donors = await DC.Set<Info_Donor>().Where(q => q.ReceiptID == newReceipt2.ID).OrderBy(q => q.Sum).ToListAsync();
+            regResultVM.Longevitys = await DC.Set<Info_Longevity>().Where(q => q.ReceiptID == newReceipt2.ID).OrderBy(q => q.Sum).ToListAsync();
+            regResultVM.Memorials = await DC.Set<Info_Memorial>().Where(q => q.ReceiptID == newReceipt2.ID).OrderBy(q => q.Sum).ToListAsync();
 
             regResultVM.Message = "登記成功";
             regResultVM.Succed = true;

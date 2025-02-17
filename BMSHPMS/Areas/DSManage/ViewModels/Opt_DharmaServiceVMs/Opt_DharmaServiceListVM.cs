@@ -36,6 +36,7 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs
             return new List<GridColumn<Opt_DharmaService_View>>{
                 this.MakeGridHeader(x => x.SerialCode, width:100),
                 this.MakeGridHeader(x => x.ServiceName),
+                this.MakeGridHeader(x => x.ServiceYear),
                 this.MakeGridHeader(x => x.ServiceOrganizer),
                 this.MakeGridHeader(x => x.ServiceDateDescription),
                 this.MakeGridHeader(x => x.Enable, width:100),
@@ -61,6 +62,7 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs
                 {
 				    ID = x.ID,
                     ServiceName = x.ServiceName,
+                    ServiceYear = x.ServiceYear,
                     SerialCode = x.SerialCode,
                     ServiceDateDescription = x.ServiceDateDescription,
                     ServiceOrganizer = x.ServiceOrganizer,

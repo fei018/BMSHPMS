@@ -30,8 +30,14 @@ namespace BMSHPMS.DSManage.ViewModels.Common
         [ExporterHeader(DisplayName = "延生位姓名")]
         public string LongevityName { get; set; }
 
-        [ExporterHeader(DisplayName = "附薦宗親名及稱呼")]
-        public string DeceasedName { get; set; }
+        [ExporterHeader(DisplayName = "附薦名稱1")]
+        public string DeceasedName_1 { get; set; }
+
+        [ExporterHeader(DisplayName = "附薦名稱2")]
+        public string DeceasedName_2 { get; set; }
+
+        [ExporterHeader(DisplayName = "附薦名稱3")]
+        public string DeceasedName_3 { get; set; }
 
         [ExporterHeader(DisplayName = "陽居姓名")]
         public string BenefactorName { get; set; }

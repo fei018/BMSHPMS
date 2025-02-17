@@ -1,10 +1,14 @@
 ﻿@model BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs.Opt_DharmaServiceVM
 @inject IStringLocalizer<Program> Localizer;
 
+<wt:quote>
+    下一次新法會的年份請記得修改
+</wt:quote>
 <wt:form vm="@Model">
     <wt:row items-per-row="ItemsPerRowEnum.One">
         <wt:textbox field="Entity.ServiceName" />
         <wt:textbox field="Entity.SerialCode" />
+        <wt:datetime field="Entity.ServiceYear" type="Year" required="true" />
         <wt:textbox field="Entity.ServiceDateDescription" />
         <wt:textbox field="Entity.ServiceOrganizer" />
         <wt:switch field="Entity.Enable" />

@@ -556,6 +556,9 @@ namespace BMSHPMS.Migrations
                     b.Property<bool>("Enable")
                         .HasColumnType("bit");
 
+                    b.Property<string>("RemarkHtml")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SerialCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
@@ -571,6 +574,9 @@ namespace BMSHPMS.Migrations
 
                     b.Property<string>("ServiceOrganizer")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ServiceYear")
+                        .HasColumnType("int");
 
                     b.Property<string>("UpdateBy")
                         .HasMaxLength(50)

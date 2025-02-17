@@ -76,6 +76,10 @@
 
 
   <ItemGroup>
+    <Content Update="Areas\DSReception\Views\ReceiptPrint\PrintSerial - 複製 %282%29.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Update="Areas\DSReception\Views\ReceiptPrint\PrintSerial - 複製.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

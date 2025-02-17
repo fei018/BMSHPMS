@@ -30,9 +30,16 @@ namespace BMSHPMS.Models.DharmaService
         [Required(ErrorMessage = "Validate.{0}required")]
         public bool Enable { get; set; } = false;
 
-        //[Display(Name = "法會角色")]
-        //public string DSRoles { get; set; }
+        [Display(Name = "法會年份")]
+        public int? ServiceYear { get; set; }
 
+        [Display(Name = "備注")]
+        public string RemarkHtml { get; set; }
+
+        //notmap
+        [NotMapped]
+        [Display(Name = "法會")]
+        public string ServiceFullName => ServiceYear?.ToString() + " " + ServiceName;
 
         public List<Opt_DonationProject> Opt_DonationProjects { get; set; } = new List<Opt_DonationProject>();
 

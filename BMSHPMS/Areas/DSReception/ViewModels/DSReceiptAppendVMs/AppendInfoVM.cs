@@ -12,6 +12,9 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
         [Display(Name = "法會")]
         public string DharmaServiceName { get; set; }
 
+        [Display(Name = "法會年份")]
+        public int? DharmaServiceYear { get; set; }
+
         [Display(Name = "收據號碼")]
         [Required(ErrorMessage = "{0}必填")]
         public string ReceiptNumber { get; set; }
@@ -30,5 +33,8 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
 
         public List<ComboSelectListItem> DonationProjectCategoryList { get; set; }
 
+
+        [Display(Name = "法會")]
+        public string DharmaServiceFullName => DharmaServiceYear?.ToString() + " " + DharmaServiceName;
     }
 }

@@ -5,12 +5,16 @@
     <wt:row items-per-row="ItemsPerRowEnum.One">
         <wt:textbox field="Entity.ServiceName" />
         <wt:textbox field="Entity.SerialCode" />
+        <wt:datetime field="Entity.ServiceYear" type="Year" required="true" />
         <wt:textbox field="Entity.ServiceDateDescription" />
         <wt:textbox field="Entity.ServiceOrganizer" />
         <wt:switch field="Entity.Enable" />
     </wt:row>
     <wt:row items-per-row="ItemsPerRowEnum.Three">
         <wt:checkbox field="FrameworkRoleSelectedIds" items="FrameworkRoleIdSelectListItems" />
+    </wt:row>
+    <wt:row>
+        <wt:richtextbox field="Entity.RemarkHtml" height="200" upload-url="/badlink.html" />
     </wt:row>
     <wt:hidden field="Entity.ID" />
     <wt:row align="AlignEnum.Right">

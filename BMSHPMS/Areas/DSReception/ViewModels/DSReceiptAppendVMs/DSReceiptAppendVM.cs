@@ -33,6 +33,7 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
                 DharmaServiceID = serviceID,
                 DonationProjectCategoryList = DonationProjectOptions.GetCategoryComboSelectItems(),
                 DharmaServiceName = ds.ServiceName,
+                DharmaServiceYear =ds.ServiceYear,
             };
 
             foreach (var item in AppendInfo.DonationProjectCategoryList)
@@ -66,35 +67,35 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
             return list;
         }
 
-        public void DoAppend(AppendInfoVM info)
+        public void DoAppend(AppendInfoVM append)
         {
-            if (!info.DonationProjectCount.HasValue || info.DonationProjectCount.Value <= 0)
+            if (!append.DonationProjectCount.HasValue || append.DonationProjectCount.Value <= 0)
             {
                 MSD.AddModelError("DonationProjectCount", "功德數目不能小於等於0");
                 return;
             }
 
             // 檢查 收據號碼
-            var receipt = DC.Set<Info_Receipt>().CheckEqual(info.ReceiptNumber, x => x.ReceiptNumber).SingleOrDefault();
+            var receipt = DC.Set<Info_Receipt>().CheckEqual(append.ReceiptNumber, x => x.ReceiptNumber).SingleOrDefault();
             if (receipt == null)
             {
-                MSD.AddModelError("ReceiptNumber", "收據號碼:" + info.ReceiptNumber + " 不存在數據庫.");
+                MSD.AddModelError("ReceiptNumber", "收據號碼:" + append.ReceiptNumber + " 不存在數據庫.");
                 return;
             }
 
-            if (info.DharmaServiceName.ToLower() != receipt.DharmaServiceName.ToLower())
+            if (append.DharmaServiceName.ToLower() != receipt.DharmaServiceName.ToLower())
             {
                 MSD.AddModelError("DharmaServiceName", "所選法會與收據登記法會不相符");
                 return;
             }
 
             var donation = DC.Set<Opt_DonationProject>()
-                                 .CheckID(info.DonationProjectID, x => x.ID)
+                                 .CheckID(append.DonationProjectID, x => x.ID)
                                  .SingleOrDefault();
 
             if (donation == null)
             {
-                MSD.AddModelError("DonationProjectID", "功德項目ID is null: " + info.DonationProjectID);
+                MSD.AddModelError("DonationProjectID", "功德項目ID is null: " + append.DonationProjectID);
                 return;
             }
 
@@ -105,7 +106,7 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
                 using var dctrans = DC.BeginTransaction();
                 try
                 {
-                    for (int i = 0; i < info.DonationProjectCount.Value; i++)
+                    for (int i = 0; i < append.DonationProjectCount.Value; i++)
                     {
                         int nextNumber = donation.UsedNumber + 1;
                         donation.UsedNumber = nextNumber;
@@ -177,11 +178,11 @@ namespace BMSHPMS.DSReception.ViewModels.DSReceiptAppendVMs
                         }
                     }
 
-                    if (receipt.DharmaServiceId == null && !string.IsNullOrEmpty(info.DharmaServiceID))
+                    if (receipt.DharmaServiceId == null && !string.IsNullOrEmpty(append.DharmaServiceID))
                     {
                         try
                         {
-                            receipt.DharmaServiceId = Guid.Parse(info.DharmaServiceID);
+                            receipt.DharmaServiceId = Guid.Parse(append.DharmaServiceID);
                             DC.UpdateProperty(receipt, x => x.DharmaServiceId);
                         }
                         catch (Exception)

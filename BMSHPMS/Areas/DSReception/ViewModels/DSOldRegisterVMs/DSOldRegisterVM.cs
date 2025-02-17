@@ -103,11 +103,20 @@ namespace BMSHPMS.DSReception.ViewModels.DSOldRegisterVMs
                 ContactPhone = SubmitInfo.ContactPhone,
                 DharmaServiceId = DharmaService.ID,
                 DharmaServiceName = DharmaService.ServiceName,
-                DharmaServiceYear = DateTime.Now.Year,
                 Sum = 0,
                 CreateBy = LoginUserInfo.Name,
                 CreateTime = DateTime.Now,
             };
+
+            // 收據的法會年份
+            if (DharmaService.ServiceYear.HasValue)
+            {
+                newReceipt.DharmaServiceYear = DharmaService.ServiceYear.Value;
+            }
+            else
+            {
+                newReceipt.DharmaServiceYear = DateTime.Now.Year;
+            }
 
             lock (DbTableLocker.DSDonationTransactionEvent)
             {

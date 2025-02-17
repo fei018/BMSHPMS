@@ -72,6 +72,8 @@ namespace BMSHPMS.DSManage.ViewModels.Opt_DharmaServiceVMs
                 if (!string.IsNullOrEmpty(Entity.SerialCode)) old.SerialCode = Entity.SerialCode;
                 if (!string.IsNullOrEmpty(Entity.ServiceDateDescription)) old.ServiceDateDescription = Entity.ServiceDateDescription;
                 if (!string.IsNullOrEmpty(Entity.ServiceOrganizer)) old.ServiceOrganizer = Entity.ServiceOrganizer;
+                if (Entity.ServiceYear.HasValue) old.ServiceYear = Entity.ServiceYear.Value;
+                if (!string.IsNullOrWhiteSpace(Entity.RemarkHtml)) old.RemarkHtml = Entity.RemarkHtml;
 
                 old.Enable = Entity.Enable;
 

@@ -1,9 +1,12 @@
 ﻿@model BMSHPMS.DSReception.ViewModels.DSOldRegisterVMs.DSOldRegisterVM
 
 <div style="padding:20px;">
+    <wt:quote>
+        如果提交后有錯誤信息，所選功德牌位資料需要重新選擇一次
+    </wt:quote>
     <wt:form vm="@Model">
         <wt:row items-per-row=" ItemsPerRowEnum.One">
-            <wt:display field="DharmaService.ServiceName" style="color:red" />
+            <wt:display field="DharmaService.ServiceFullName" style="color:red" />
             <wt:hidden field="DharmaService.ID" />
         </wt:row>
         <hr />
